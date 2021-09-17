@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D638AACF-8C67-4C41-BB7C-478C3F4BC3AF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MESProject</RootNamespace>
+    <AssemblyName>MESProject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="z할일.cs" />
+    <Compile Include="SQL.cs" />
+    <Compile Include="기준정보\BOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기준정보\BOM.Designer.cs">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="기준정보\SPEC_MST%28사양 관리%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기준정보\SPEC_MST%28사양 관리%29.Designer.cs">
+      <DependentUpon>SPEC_MST%28사양 관리%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="기준정보\USER_ADMIN%28사용자 관리%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기준정보\USER_ADMIN%28사용자 관리%29.Designer.cs">
+      <DependentUpon>USER_ADMIN%28사용자 관리%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="기준정보\ITEM_MST%28품목 관리%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기준정보\ITEM_MST%28품목 관리%29.Designer.cs">
+      <DependentUpon>ITEM_MST%28품목 관리%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="기준정보\CODE_MST%28공통코드%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기준정보\CODE_MST%28공통코드%29.Designer.cs">
+      <DependentUpon>CODE_MST%28공통코드%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="생산계획\PLAN_MST%28생산계획%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="생산계획\PLAN_MST%28생산계획%29.Designer.cs">
+      <DependentUpon>PLAN_MST%28생산계획%29.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="기준정보\BOM.resx">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기준정보\SPEC_MST%28사양 관리%29.resx">
+      <DependentUpon>SPEC_MST%28사양 관리%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기준정보\USER_ADMIN%28사용자 관리%29.resx">
+      <DependentUpon>USER_ADMIN%28사용자 관리%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기준정보\ITEM_MST%28품목 관리%29.resx">
+      <DependentUpon>ITEM_MST%28품목 관리%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기준정보\CODE_MST%28공통코드%29.resx">
+      <DependentUpon>CODE_MST%28공통코드%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="생산계획\PLAN_MST%28생산계획%29.resx">
+      <DependentUpon>PLAN_MST%28생산계획%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="공정관리\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RYAN.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AIRBAG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ALC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\COVERING.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FOAMPAD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HEADREST.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PALLET.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TRACK.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
