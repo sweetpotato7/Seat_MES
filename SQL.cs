@@ -7,8 +7,8 @@ namespace MESProject
 {
     class SQL // 가져온 파일, 수정해야됨
     {
-        public SqlConnection conn = new SqlConnection("server = KMJ; Database=MES; Uid=sa; Pwd=1;");
-        public SqlConnection con = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = MES; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        public SqlConnection con = new SqlConnection("server = " + SystemInformation.ComputerName + "; Database=MES; Uid=sa; Pwd=1;");
+        //public SqlConnection con = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = MES; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         public void ConnectDb(string login_id, string login_pw, ref bool login)
         {
@@ -19,10 +19,10 @@ namespace MESProject
 
             try
             {
-                if (conn.State == ConnectionState.Open) { conn.Close(); }
-                conn.Open();
+                if (con.State == ConnectionState.Open) { con.Close(); }
+                con.Open();
 
-                cmd = conn.CreateCommand();
+                cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT WORKERID FROM TB_USER_INFO WHERE WORKERID='" + login_id + "' AND PASSWORD='" + login_pw + "'";
                 cmd.ExecuteNonQuery();
@@ -46,7 +46,7 @@ namespace MESProject
             }
             finally
             {
-                conn.Close();
+                con.Close();
             }
         }
 
@@ -58,7 +58,5 @@ namespace MESProject
             string Value = "Ver " + Version;
             return Value;
         }
-
-        
     }
 }

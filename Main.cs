@@ -27,8 +27,9 @@ namespace MESProject
         
         private void Main_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState     = FormWindowState.Maximized;
+            
 
             txtVersion.Text = SQL.VerCheck(); // 실행 시 SQL로 버전 받아서 업데이트(SQLSetting에서 받아오기)
             btnImageLoad();

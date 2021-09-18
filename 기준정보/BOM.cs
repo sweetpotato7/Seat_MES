@@ -13,14 +13,14 @@ namespace MESProject.기준정보
     public partial class BOM : Form
     {
         SQL sql = new SQL();
-        SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
         string strqry = "SELECT a.PLANTCODE, a.ITEMCODE, b.ITEMNAME AS PNAME, a.BASEQTY, a.UNITCODE, a.COMPONENT, c.ITEMNAME AS CNAME, a.COMPONENTQTY, a.COMPONENTUNIT, a.USEFLAG, a.CREATE_USERID, a.CREATE_DT, a.MODIFY_USERID, a.MODIFY_DT"
-                   + " FROM TB_BOM a LEFT JOIN TB_ITEM_MST b"
-                                 + " ON a.ITEMCODE = b.ITEMCODE"
-                                 + " LEFT JOIN TB_ITEM_MST c"
-                                 + " ON a.COMPONENT = c.ITEMCODE";
+                       + " FROM TB_BOM a LEFT JOIN TB_ITEM_MST b"
+                                     + " ON a.ITEMCODE = b.ITEMCODE"
+                                     + " LEFT JOIN TB_ITEM_MST c"
+                                     + " ON a.COMPONENT = c.ITEMCODE";
+
         public BOM()
         {
             InitializeComponent();
@@ -32,8 +32,8 @@ namespace MESProject.기준정보
             DGVLoad();
             DGV1Set(strqry);
             TreeViewLoad();
-            CboLoad(cboPlantCode, "TB_ITEM_MST", "PLANTCODE");
-            CboLoad(cboItemCode,  "TB_ITEM_MST", "ITEMCODE");
+            CboSet();
+
         }
 
         private void DGVLoad()
@@ -46,11 +46,8 @@ namespace MESProject.기준정보
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
             Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
-            dataGridView1.ReadOnly = false;
             dataGridView2.ReadOnly = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
@@ -63,7 +60,7 @@ namespace MESProject.기준정보
                 da = new SqlDataAdapter(sQuery, sql.con);
                 dt = new DataTable();
                 da.Fill(dt); // da값 => dt에 데이터 입력
-                dataGridView1.DataSource = dt;
+                //dataGridView1.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -80,18 +77,18 @@ namespace MESProject.기준정보
         {
             try
             {
-                if (cboPlantCode.Text == "ALL" && txtItemName.Text.Trim(' ').Length == 0 && cboItemCode.Text == "ALL")
+                if (cboPlantCode.Text == "" && txtItemName.Text.Trim(' ').Length == 0 && cboItemCode.Text == "")
                 {
                     DGV1Set(strqry);
                 }
                 else
                 {
                     string sOption = " Where";
-                    if (cboPlantCode.Text != "ALL")
+                    if (cboPlantCode.Text != "")
                         sOption += " a.PLANTCODE LIKE '%" + cboPlantCode.Text + "%'";
                     if (txtItemName.Text.Trim(' ').Length != 0)
                         sOption += " b.ITEMNAME LIKE '%" + txtItemName.Text + "%'";
-                    if (cboItemCode.Text != "ALL")
+                    if (cboItemCode.Text != "")
                         sOption += " a.ITEMCODE LIKE '%" + cboItemCode.Text + "%'";
                     sOption = strqry + sOption;
                     DGV1Set(sOption);
@@ -99,8 +96,6 @@ namespace MESProject.기준정보
                 cboPlantCode.Text = "";
                 txtItemName.Text  = "";
                 cboItemCode.Text  = "";
-
-
             }
             catch (Exception ex)
             {
@@ -114,33 +109,30 @@ namespace MESProject.기준정보
 
         public void DO_INSERT()
         {
-            int MaxRow = dataGridView1.Rows.Count;
-            try
-            {
-                if (MaxRow >= 0)
-                {
-                    if (dataGridView1.Rows[MaxRow - 1].Cells[0].Value.ToString() != "")
-                    {
-                        dt = new DataTable();
-                        dt = dataGridView1.DataSource as DataTable;
-                        string[] row0 = { "", "", "", "", "", "", "", "", "", "", "", DateTime.Now.ToString(), "", DateTime.Now.ToString() };
-                        dt.Rows.Add(row0);
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = dt;
-                    }
-                    else
-                    {
-                        MessageBox.Show("추가 등록은 한번에 하나씩만 가능합니다.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
-            
+            //int MaxRow = dataGridView1.Rows.Count;
+            //try
+            //{
+            //    if (MaxRow >= 0)
+            //    {
+            //        if (dataGridView1.Rows[MaxRow - 1].Cells[0].Value.ToString() != "")
+            //        {
+            //            dt = new DataTable();
+            //            dt = dataGridView1.DataSource as DataTable;
+            //            string[] row0 = { "", "", "", "", "", "", "", "", "", "", "", DateTime.Now.ToString(), "", DateTime.Now.ToString() };
+            //            dt.Rows.Add(row0);
+            //            dataGridView1.DataSource = null;
+            //            dataGridView1.DataSource = dt;
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("추가 등록은 한번에 하나씩만 가능합니다.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         public void DO_DELETE()
@@ -275,16 +267,20 @@ namespace MESProject.기준정보
         }
         #endregion
 
+        private void CboSet()
+        {
+            CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE");
+            CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE");
+            CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE");
+            CboLoad(cboUseFlag,    "TB_ITEM_MST", "USEFLAG");
+            CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE");
+            CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE");
+            CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE");
+            CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE");
+        }
         private void CboLoad(ComboBox Cbobox, string TableName, string ListName)
         {
-            Cbobox.Items.Clear();
-            Cbobox.Items.Add("ALL");
-            Cbobox.AutoCompleteMode   = AutoCompleteMode.SuggestAppend;
-            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
             string strqry = "SELECT DISTINCT " + ListName + " FROM " + TableName;
-
-            SQL sql = new SQL();
-            SqlDataAdapter da;
             DataSet ds;
             try
             {
@@ -296,7 +292,11 @@ namespace MESProject.기준정보
                 {
                     Cbobox.Items.Add(dr[ListName]);
                 }
+                Cbobox.Items.Clear();
+                Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
                 Cbobox.SelectedIndex = 0;
+                Cbobox.Text = "";
             }
             catch (Exception ex)
             {
@@ -308,11 +308,6 @@ namespace MESProject.기준정보
             }
         }
 
-        private void DGVChild()
-        {
-
-        }
-        
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //LoadTreeView(dataGridView1.SelectedCells[1].Value.ToString());
