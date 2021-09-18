@@ -58,7 +58,5 @@ namespace MESProject
             string Value = "Ver " + Version;
             return Value;
         }
-
-        
     }
 }

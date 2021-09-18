@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="z할일.cs" />
+    <Compile Include="기록.cs" />
     <Compile Include="SQL.cs" />
     <Compile Include="기준정보\BOM.cs">
       <SubType>Form</SubType>

@@ -188,7 +188,6 @@ namespace MESProject
             this.txtVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtVersion.BackColor = System.Drawing.SystemColors.Window;
             this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtVersion.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtVersion.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
@@ -202,7 +201,6 @@ namespace MESProject
             this.txtDT.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtDT.BackColor = System.Drawing.SystemColors.Window;
             this.txtDT.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDT.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtDT.Name = "txtDT";
             this.txtDT.ReadOnly = true;
             this.txtDT.ShortcutsEnabled = false;
@@ -448,6 +446,7 @@ namespace MESProject
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(969, 607);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Main";
