@@ -18,7 +18,7 @@ namespace MESProject
         기준정보.SPEC_MST Spec_Mst;
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
-
+        //안녕하세요
         public Main()
         {
             InitializeComponent();
