@@ -14,54 +14,62 @@ namespace MESProject.기준정보
 {
     public partial class USER_ADMIN : Form
     {
-        //SqlConnection 개체를 사용해 DB에 접속
-        //private string sqlCon = string.Format("Data Source={0}{1}; Initial Catalog={2}; User ID={3}; Password={4}", "127.0.0.1", 1433, "testdb", "sa", "1111");
 
-        SqlConnection sqlCon = new SqlConnection("server = 222.235.141.8;" + "Database=KFQB_MES_2021;" + "Uid=kfqb;" + "Pwd=2211;");
+        //private string sqlCon = string.Format("Data Source={0}{1}; Initial Catalog={2}; User ID={3}; Password={4}", "127.0.0.1", 1433, "testdb", "sa", "1111");
+        SqlConnection con = new SqlConnection("server = DESKTOP-E7U1E8O;" + "Database=MES;" + "Uid=sa;" + "Pwd=1;");
 
         public USER_ADMIN()
         {
             InitializeComponent();
-            sqlCon.Open();
+            //Grid Setting
             DGVLoad();
         }
 
-
-
         private void DGVLoad()
         {
+            string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE", "PLANTCODE", "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
+            string[] HeaderText = new string[] { "아이디", "이름", "비밀번호", "작업그룹", "공장코드", "전화번호", "입사일", "퇴사일", "사용여부", "등록일시", "등록자", "수정일시", "수정자" };
+            string[] HiddenColumn = null;
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            Font StyleFont = new Font("맑은고딕", 10, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 10, FontStyle.Regular);
 
-            SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sqlCon);
+            //스타일 지정 밎 그리드에 데이터 바인드
+            Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 16);
+            dataGridView1.ReadOnly = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            DataTable dt = new DataTable();
+            //데이터베이스 오픈
+            con.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", con);
             SqlDataAdapter da = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
             da.Fill(dt);
-            dt.Rows.Add();
             dataGridView1.DataSource = dt;
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btn_search_Click(object sender, EventArgs e)
         {
-            //조회개요
-            //SqlCommand를 이용하여 CRUD 쿼리를 실행할 수 있음
-            //SqlCommand는 쿼리를 실행하기 위해 대표적으로 3개의 메서드(ExecuteNonQuerys, ExecuteScalar, ExecuteReader)를 제공함
-
-
-            //조회방법 1
-            //SqlCommand cmd = sqlCon.CreateCommand();
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "select * from TB_USER_INFO";
-            //cmd.ExecuteNonQuery();
-
+            Do_Search();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Do_Search()
         {
-            //추가(수정필요)
-            SqlCommand cmd = new SqlCommand("INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_DT, CREATE_USERID, MODIFY_DT, MODIFY_USERID)", sqlCon);
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM TB_USER_INFO";
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            cmd.ExecuteNonQuery();
+
         }
 
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            Do_Add();
+        }
         private void Do_Add()
         {
             //SqlCommand cmd = new SqlCommand();
@@ -75,27 +83,111 @@ namespace MESProject.기준정보
             //cboItemCode.SelectedItem = "";
             //cboItemType.SelectedItem = "";
             //MessageBox.Show("품목이 추가되었습니다.");
-        }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //삭제
-            string itemcode;
-            itemcode = dataGridView1.SelectedCells[1].Value.ToString();
-
-
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE * FROM TB_USER_INFO WHERE WORKERID=" + "'" + itemcode + "'" + "";
+            cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_DT, CREATE_USERID, MODIFY_DT, MODIFY_USERID) " +
+                              "values ( '" + textBox1.Text + "',"
+                                    + " '" + textBox2.Text + "',"
+                                    + " '" + textBox3.Text + "',"
+                                    + " '" + textBox4.Text + "',"
+                                    + " '" + textBox5.Text + "',"
+                                    + " '" + textBox6.Text + "',"
+                                    + " '" + textBox7.Text + "',"
+                                    + " '" + textBox8.Text + "',"
+                                    + " '" + textBox9.Text + "',"
+                                    + " '" + textBox10.Text + "',"
+                                    + " '" + textBox11.Text + "',"
+                                    + " '" + textBox12.Text + "',"
+                                    + " '" + textBox13.Text + "')";
+
             cmd.ExecuteNonQuery();
-            MessageBox.Show("삭제되었습니다.");
+            Do_Search();
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+            textBox10.Text = "";
+            textBox11.Text = "";
+            textBox12.Text = "";
+            textBox13.Text = "";
+            MessageBox.Show("추가되었습니다");
+
+        }
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            Do_Delete();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Do_Delete()
         {
-            //닫기
-            Close();
+
+            string workerID;
+            workerID = dataGridView1.SelectedCells[0].Value.ToString();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "DELETE FROM TB_USER_INFO WHERE WORKERID = " + "'" + workerID + "'" + "";
+            cmd.ExecuteNonQuery();
+            Do_Search();
+            MessageBox.Show("삭제되었습니다");
         }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Do_Save();
+        }
+
+        private void Do_Save()
+        {
+
+            //사양관리 코드 참고
+            //string itemcode;
+            //string carcode;
+            //string spec1;
+            //string spec2;
+            //string spec3;
+            //string spec4;
+            //string spec5;
+            //string spec6;
+
+            //int i;
+            //i = dataGridView1.SelectedCells[0].RowIndex; // 현재 선택된 행 번호
+
+            //itemcode = dataGridView1.SelectedCells[0].Value.ToString();
+            //carcode = dataGridView1.Rows[i].Cells[2].Value.ToString(); // carcode선택
+            //spec1 = dataGridView1.Rows[i].Cells[3].Value.ToString();
+            //spec2 = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            //spec3 = dataGridView1.Rows[i].Cells[5].Value.ToString();
+            //spec4 = dataGridView1.Rows[i].Cells[6].Value.ToString();
+            //spec5 = dataGridView1.Rows[i].Cells[7].Value.ToString();
+            //spec6 = dataGridView1.Rows[i].Cells[8].Value.ToString();
+
+            //SqlCommand cmd = sql.con.CreateCommand();
+            //cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "update TB_SPEC SET ITEMCODE = " + "'" + itemcode + "'" + "," +
+            //                  "SPEC1 = " + "'" + spec1 + "'" + "," +
+            //                  "SPEC2 = " + "'" + spec2 + "'" + "," +
+            //                  "SPEC3 = " + "'" + spec3 + "'" + "," +
+            //                  "SPEC4 = " + "'" + spec4 + "'" + "," +
+            //                  "SPEC5 = " + "'" + spec5 + "'" + "," +
+            //                  "SPEC6 = " + "'" + spec6 + "'" +
+            //                  "where CARCODE = " + "'" + carcode + "'" + "";
+            //cmd.ExecuteNonQuery();
+            //Do_Search();
+            //MessageBox.Show("수정되었습니다.");
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
     }
 }
