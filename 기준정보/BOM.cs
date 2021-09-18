@@ -33,6 +33,8 @@ namespace MESProject.기준정보
             DGV1Set(strqry);
             TreeViewLoad();
             CboSet();
+            lblPItemName.Text = "";
+            lblCItemName.Text = "";
         }
 
         private void DGVLoad()
@@ -102,7 +104,7 @@ namespace MESProject.기준정보
             }
             finally
             {
-                sql.con.Close();
+                //sql.con.Close(); // 오픈 안함
             }
         }
 
@@ -196,60 +198,57 @@ namespace MESProject.기준정보
         
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            string SelectItem = e.Node.Text;
+            #region 이미지 출력
+            int i = 0;
+
+            if ( int.TryParse(SelectItem.Substring(0,1), out i))
+                SelectItem = SelectItem.Substring(0, 5);
+            else
+                SelectItem = SelectItem.Substring(2);
+
+            switch (SelectItem)
+            {
+                case "ALC":
+                    pictureBox1.Image = Properties.Resources.ALC;
+                    break;
+                case "PLT":
+                    pictureBox1.Image = Properties.Resources.PALLET;
+                    break;
+                case "LH":
+                    pictureBox1.Image = Properties.Resources.COVERING;
+                    break;
+                case "RH":
+                    pictureBox1.Image = Properties.Resources.COVERING;
+                    break;
+                case "88001":
+                    pictureBox1.Image = Properties.Resources.TRACK;
+                    break;
+                case "88100":
+                    pictureBox1.Image = Properties.Resources.FOAMPAD;
+                    break;
+                case "89000":
+                    pictureBox1.Image = Properties.Resources.HEADREST;
+                    break;
+                case "90000":
+                    pictureBox1.Image = Properties.Resources.COVERING;
+                    break;
+                case "91000":
+                    pictureBox1.Image = Properties.Resources.AIRBAG;
+                    break;
+                default:
+                    pictureBox1.Image = Properties.Resources.RYAN;
+                    break;
+            }
+            #endregion
             try
             {
-                string SelectItem = e.Node.Text;
-
                 sql.con.Open();
                 string qry = "SELECT * FROM FN_TopDown('" + SelectItem + "')";
                 da = new SqlDataAdapter(qry, sql.con);
                 dt = new DataTable();
                 da.Fill(dt); 
                 dataGridView2.DataSource = dt;
-
-                #region 이미지 출력
-                int i = 0;
-
-                if ( int.TryParse(SelectItem.Substring(0,1), out i))
-                    SelectItem = SelectItem.Substring(0, 5);
-                else
-                    SelectItem = SelectItem.Substring(2);
-
-                switch (SelectItem)
-                {
-                    case "ALC":
-                        pictureBox1.Image = Properties.Resources.ALC;
-                        break;
-                    case "PLT":
-                        pictureBox1.Image = Properties.Resources.PALLET;
-                        break;
-                    case "LH":
-                        pictureBox1.Image = Properties.Resources.COVERING;
-                        break;
-                    case "RH":
-                        pictureBox1.Image = Properties.Resources.COVERING;
-                        break;
-                    case "88001":
-                        pictureBox1.Image = Properties.Resources.TRACK;
-                        break;
-                    case "88100":
-                        pictureBox1.Image = Properties.Resources.FOAMPAD;
-                        break;
-                    case "89000":
-                        pictureBox1.Image = Properties.Resources.HEADREST;
-                        break;
-                    case "90000":
-                        pictureBox1.Image = Properties.Resources.COVERING;
-                        break;
-                    case "91000":
-                        pictureBox1.Image = Properties.Resources.AIRBAG;
-                        break;
-                    default:
-                        pictureBox1.Image = Properties.Resources.RYAN;
-                        break;
-                }
-                #endregion
-
 
             }
             catch (Exception ex)
@@ -269,16 +268,21 @@ namespace MESProject.기준정보
             CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE");
             CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE");
             CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE");
-            CboLoad(cboUseFlag,    "TB_ITEM_MST", "USEFLAG");
-            CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE");
-            CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE");
-            CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE");
-            CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE");
+            CboLoad(cboUseFlag, "TB_ITEM_MST", "USEFLAG");
+            CboLoad(cboPItemCode, "TB_ITEM_MST", "ITEMCODE");
+            CboLoad(cboCItemCode, "TB_ITEM_MST", "ITEMCODE");
+            CboLoad(cboPUnitCode, "TB_ITEM_MST", "UNITCODE");
+            CboLoad(cboCUnitCode, "TB_ITEM_MST", "UNITCODE");
         }
 
         private void CboLoad(ComboBox Cbobox, string TableName, string ListName)
         {
+            Cbobox.Items.Clear();
+            Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            Cbobox.Items.Add("");
             string strqry = "SELECT DISTINCT " + ListName + " FROM " + TableName;
+            SqlDataAdapter da;
             DataSet ds;
             try
             {
@@ -290,11 +294,8 @@ namespace MESProject.기준정보
                 {
                     Cbobox.Items.Add(dr[ListName]);
                 }
-                Cbobox.Items.Clear();
-                Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
-                Cbobox.SelectedIndex = 0;
-                Cbobox.Text = "";
+                //Cbobox.SelectedIndex = -1;
+                //Cbobox.Text = "";
             }
             catch (Exception ex)
             {
@@ -306,12 +307,66 @@ namespace MESProject.기준정보
             }
         }
         #endregion
+        private void LblLoad(string NodeText)
+        {
+            //SqlDataAdapter da;
+            //DataSet ds;
+            //string strqry = "SELECT DISTINCT ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + CboName.Text + "'";
 
+            //try
+            //{
+            //    sql.con.Open();
+            //    da = new SqlDataAdapter(strqry, sql.con);
+            //    ds = new DataSet();
+            //    da.Fill(ds);
+            //    LabelName.Text = ds.Tables[0].Rows[0].ItemArray[0].ToString();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    sql.con.Close();
+            //}
+        }
+        private void LblLoad(ComboBox CboName, Label LabelName)
+        {
+            if ( CboName.Text == "" )
+            {
+                LabelName.Text = "";
+                return;
+            }
 
+            SqlDataAdapter da;
+            DataSet ds;
+            string strqry = "SELECT DISTINCT ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + CboName.Text + "'";
 
+            try
+            {
+                sql.con.Open();
+                da = new SqlDataAdapter(strqry, sql.con);
+                ds = new DataSet();
+                da.Fill(ds);
+                LabelName.Text = ds.Tables[0].Rows[0].ItemArray[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sql.con.Close();
+            }
+        }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //LoadTreeView(dataGridView1.SelectedCells[1].Value.ToString());
+        }
+
+        private void cboPItemCode_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LblLoad(cboPItemCode, lblPItemName);
         }
     }
 }
