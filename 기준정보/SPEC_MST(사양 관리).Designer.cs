@@ -31,11 +31,13 @@ namespace MESProject.기준정보
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.cmb_S_ALC = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cmb_ALC = new System.Windows.Forms.ComboBox();
             this.cmb_CarCode = new System.Windows.Forms.ComboBox();
             this.cmbSAB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,8 +58,6 @@ namespace MESProject.기준정보
             this.label10 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmb_ALC = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -87,6 +87,17 @@ namespace MESProject.기준정보
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(969, 46);
             this.panel5.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(314, 10);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(66, 21);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "전체조회";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmb_S_ALC
             // 
@@ -156,6 +167,14 @@ namespace MESProject.기준정보
             this.panel4.Size = new System.Drawing.Size(252, 460);
             this.panel4.TabIndex = 11;
             // 
+            // cmb_ALC
+            // 
+            this.cmb_ALC.FormattingEnabled = true;
+            this.cmb_ALC.Location = new System.Drawing.Point(143, 44);
+            this.cmb_ALC.Name = "cmb_ALC";
+            this.cmb_ALC.Size = new System.Drawing.Size(94, 20);
+            this.cmb_ALC.TabIndex = 27;
+            // 
             // cmb_CarCode
             // 
             this.cmb_CarCode.FormattingEnabled = true;
@@ -180,16 +199,16 @@ namespace MESProject.기준정보
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(18, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 12);
+            this.label3.Size = new System.Drawing.Size(87, 12);
             this.label3.TabIndex = 24;
-            this.label3.Text = "ALC(ITEMCODE)";
+            this.label3.Text = "ALC(수정불가)";
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(89, 411);
+            this.btn_Delete.Location = new System.Drawing.Point(164, 367);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(66, 19);
+            this.btn_Delete.Size = new System.Drawing.Size(66, 24);
             this.btn_Delete.TabIndex = 2;
             this.btn_Delete.Text = "삭제";
             this.btn_Delete.UseVisualStyleBackColor = true;
@@ -197,12 +216,12 @@ namespace MESProject.기준정보
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(134, 364);
+            this.btn_Save.Location = new System.Drawing.Point(92, 367);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(66, 24);
             this.btn_Save.TabIndex = 3;
-            this.btn_Save.Text = "저장";
+            this.btn_Save.Text = "수정";
             this.btn_Save.UseVisualStyleBackColor = true;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
             // 
@@ -211,9 +230,9 @@ namespace MESProject.기준정보
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(18, 83);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 12);
+            this.label11.Size = new System.Drawing.Size(122, 12);
             this.label11.TabIndex = 3;
-            this.label11.Text = "CARCODE";
+            this.label11.Text = "CARCODE(수정불가)";
             // 
             // label5
             // 
@@ -237,7 +256,7 @@ namespace MESProject.기준정보
             // 
             // btn_Add
             // 
-            this.btn_Add.Location = new System.Drawing.Point(41, 365);
+            this.btn_Add.Location = new System.Drawing.Point(20, 367);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(66, 23);
@@ -353,25 +372,6 @@ namespace MESProject.기준정보
             this.dataGridView1.Size = new System.Drawing.Size(717, 460);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // cmb_ALC
-            // 
-            this.cmb_ALC.FormattingEnabled = true;
-            this.cmb_ALC.Location = new System.Drawing.Point(143, 44);
-            this.cmb_ALC.Name = "cmb_ALC";
-            this.cmb_ALC.Size = new System.Drawing.Size(94, 20);
-            this.cmb_ALC.TabIndex = 27;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(314, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 21);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "전체조회";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SPEC_MST
             // 

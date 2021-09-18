@@ -62,10 +62,16 @@ namespace MESProject.기준정보
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into TB_SPEC (PLANTCODE, ITEMCODE, CARCODE, SPEC1, SPEC2, SPEC3, SPEC4, SPEC5, SPEC6) values" +
-                "('D100','" + cmb_ALC.Text + "','" + cmb_CarCode.Text + "','" + cmbLocal.SelectedItem.ToString() + "','"
-                + cmbTrack.SelectedItem.ToString() + "','" + cmbFormpad.SelectedItem.ToString() + "','" + cmbHeadrestrian.SelectedItem.ToString()
-                + "','" + cmbCovering.SelectedItem.ToString() + "','" + cmbSAB.SelectedItem.ToString() + "')";
+            cmd.CommandText = "insert into TB_SPEC (PLANTCODE, ITEMCODE, CARCODE, SPEC1, SPEC2, SPEC3, SPEC4, SPEC5, SPEC6) values" 
+                + "('D100','" 
+                + cmb_ALC.Text + "','" 
+                + cmb_CarCode.Text + "','" 
+                + cmbLocal.SelectedItem.ToString() + "','"
+                + cmbTrack.SelectedItem.ToString() + "','" 
+                + cmbFormpad.SelectedItem.ToString() + "','" 
+                + cmbHeadrestrian.SelectedItem.ToString() + "','" 
+                + cmbCovering.SelectedItem.ToString() + "','" 
+                + cmbSAB.SelectedItem.ToString() + "')";
             cmd.ExecuteNonQuery();
 
             cmb_ALC.Text = "";
@@ -76,7 +82,7 @@ namespace MESProject.기준정보
             cmbHeadrestrian.SelectedIndex = 0;
             cmbHeadrestrian.SelectedIndex = 0;
             cmbSAB.SelectedIndex = 0;
-            Do_Search();
+            Do_Entire_Search();
             MessageBox.Show("추가되었습니다.");
         }
 
@@ -88,11 +94,10 @@ namespace MESProject.기준정보
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "delete from TB_SPEC where ITEMCODE=" + "'" + itemcode + "'" + "";
             cmd.ExecuteNonQuery();
-            Do_Search();
+            Do_Entire_Search();
             MessageBox.Show("삭제되었습니다.");
         }
 
-        // 수정필요
         public void Do_Save()
         {
             string carcode;
@@ -103,7 +108,7 @@ namespace MESProject.기준정보
 
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update TB_SPEC SET ITEMCODE = " + "'" + cmb_ALC.Text + "'" + "," +
+            cmd.CommandText = "update TB_SPEC SET " +
                               "SPEC1 = " + "'" + cmbLocal.Text + "'" + "," +
                               "SPEC2 = " + "'" + cmbTrack.Text + "'" + "," +
                               "SPEC3 = " + "'" + cmbFormpad.Text + "'" + "," +
@@ -112,7 +117,17 @@ namespace MESProject.기준정보
                               "SPEC6 = " + "'" + cmbSAB.Text + "'" +
                               "where CARCODE = " + "'" + carcode + "'" + "";
             cmd.ExecuteNonQuery();
-            Do_Search();
+
+            cmb_ALC.Text = "";
+            cmb_CarCode.Text = "";
+            cmbLocal.Text = "";
+            cmbTrack.Text = "";
+            cmbFormpad.Text = "";
+            cmbHeadrestrian.Text = "";
+            cmbCovering.Text = "";
+            cmbSAB.Text = "";
+
+            Do_Entire_Search();
             MessageBox.Show("수정되었습니다.");
         }
 
@@ -189,6 +204,5 @@ namespace MESProject.기준정보
 
     // 추가작업
     // - 품번마스터 만든후 ITEMCODE 불러오기
-    // - Do_Save 고치기
     // - SPEC: DB에는 코드로 표시, 그리드에는 O,X 또는 가죽 등으로 표시
 }
