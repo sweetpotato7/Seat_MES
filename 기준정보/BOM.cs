@@ -32,7 +32,7 @@ namespace MESProject.기준정보
             DGVLoad();
             DGV1Set(strqry);
             TreeViewLoad();
-            CboLoad(cboPlantCode, "TB_ITEM_MST", "PLANTCODE");
+            CboLoad(cboPlantCode, "TB_ITEM_MST", "PLANTCODE"); 
             CboLoad(cboItemCode,  "TB_ITEM_MST", "ITEMCODE");
         }
 
@@ -308,11 +308,6 @@ namespace MESProject.기준정보
             }
         }
 
-        private void DGVChild()
-        {
-
-        }
-        
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //LoadTreeView(dataGridView1.SelectedCells[1].Value.ToString());
