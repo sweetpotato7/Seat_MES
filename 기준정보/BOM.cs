@@ -33,7 +33,6 @@ namespace MESProject.기준정보
             DGV1Set(strqry);
             TreeViewLoad();
             CboSet();
-
         }
 
         private void DGVLoad()
@@ -179,7 +178,6 @@ namespace MESProject.기준정보
 
         private void TreeViewSet(string parentID, TreeNode parentNode)
         {
-            SQL sql = new SQL();
             SqlDataAdapter daChild = new SqlDataAdapter("SELECT * FROM TB_BOM WHERE ITEMCODE = '" + parentID + "'", 
                                                         sql.con);
             DataTable dtChild = new DataTable();
@@ -198,8 +196,6 @@ namespace MESProject.기준정보
         
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            SQL sql = new SQL();
-            
             try
             {
                 string SelectItem = e.Node.Text;
@@ -267,6 +263,7 @@ namespace MESProject.기준정보
         }
         #endregion
 
+        #region ========== 콤보박스 셋팅
         private void CboSet()
         {
             CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE");
@@ -278,6 +275,7 @@ namespace MESProject.기준정보
             CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE");
             CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE");
         }
+
         private void CboLoad(ComboBox Cbobox, string TableName, string ListName)
         {
             string strqry = "SELECT DISTINCT " + ListName + " FROM " + TableName;
@@ -307,6 +305,9 @@ namespace MESProject.기준정보
                 sql.con.Close();
             }
         }
+        #endregion
+
+
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
