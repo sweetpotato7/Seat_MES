@@ -326,6 +326,7 @@ namespace MESProject.기준정보
             this.cboCItemCode.Name = "cboCItemCode";
             this.cboCItemCode.Size = new System.Drawing.Size(145, 28);
             this.cboCItemCode.TabIndex = 26;
+            this.cboCItemCode.SelectedIndexChanged += new System.EventHandler(this.cboCItemCode_SelectedIndexChanged);
             // 
             // label18
             // 
