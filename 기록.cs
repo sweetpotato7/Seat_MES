@@ -1,4 +1,5 @@
-﻿#region  ____0 9 월 1 8 일
+﻿
+#region  ____0 9 월 1 8 일
 /*
 ========== 전체그리드 ==========
 등록할 때 내용 입력 시 콤보박스 뜨게끔
@@ -49,5 +50,12 @@ BOM 등록
 
 
 
+*/
+#endregion
+
+#region ____0 9 월 1 8 일 SQL 추가사항
+/*
+insert into TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, DISPLAYNO, USEFLAG, CREATE_DT) VALUES('D100', 'COMMON', 'Y', 'Y', '1', 'Y', GETDATE())
+insert into TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, DISPLAYNO, USEFLAG, CREATE_DT) VALUES('D100', 'COMMON', 'N', 'N', '2', 'Y', GETDATE())
 */
 #endregion
