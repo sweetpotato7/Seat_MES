@@ -18,14 +18,13 @@ namespace MESProject.기준정보
     public partial class BOM : Form
     {
         SQL sql = new SQL();
-        DataTable dt;
         SqlDataAdapter da;
+        DataTable dt;
         string strqry = "SELECT a.PLANTCODE, a.ITEMCODE, b.ITEMNAME AS PNAME, a.BASEQTY, a.UNITCODE, a.COMPONENT, c.ITEMNAME AS CNAME, a.COMPONENTQTY, a.COMPONENTUNIT, a.USEFLAG, a.CREATE_USERID, a.CREATE_DT, a.MODIFY_USERID, a.MODIFY_DT"
                        + " FROM TB_BOM a LEFT JOIN TB_ITEM_MST b"
                                      + " ON a.ITEMCODE = b.ITEMCODE"
                                      + " LEFT JOIN TB_ITEM_MST c"
                                      + " ON a.COMPONENT = c.ITEMCODE";
-
         public BOM()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace MESProject.기준정보
 
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "PNAME", "BASEQTY", "UNITCODE", "COMPONENT", "CNAME", "COMPONENTQTY", "COMPONENTUNIT", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "PITEMNAME", "BASEQTY", "UNITCODE", "COMPONENT", "CITEMNAME", "COMPONENTQTY", "COMPONENTUNIT", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "품목", "품명", "수량", "단위", "하위품목", "품명", "수량", "단위", "사용", "등록자", "등록일시", "수정자", "수정일시" };
             string[] HiddenColumn = null;
             float[] FillWeight = new float[] { 40, 100, 100, 40, 40, 100, 100, 40, 40, 40, 100, 130, 100, 130 };
@@ -266,29 +265,37 @@ namespace MESProject.기준정보
             CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE");
             CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE");
             CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE");
-            CboLoad(cboUseFlag,    "TB_ITEM_MST", "USEFLAG");
+            CboLoad(cboUseFlag,    "TB_CODE_MST", "MINORCODE", "MAJORCODE", "USEFLAG");
             CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE");
             CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE");
             CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE");
             CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE");
         }
 
-        private void CboLoad(ComboBox Cbobox, string TableName, string ListName)
+        private void CboLoad(ComboBox Cbobox, string Table, string Column)
         {
             Cbobox.Items.Clear();
             Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            Cbobox.Items.Add("");
             
-            string strqry = "SELECT DISTINCT " + ListName + " FROM " + TableName;
+            string strqry = "SELECT DISTINCT " + Column + " FROM " + Table;
             dt = GetDataTable(strqry);
-            
             foreach (DataRow dr in dt.Rows)
-            {
-                Cbobox.Items.Add(dr[ListName]);
-            }
-            //Cbobox.SelectedIndex = -1;
-            //Cbobox.Text = "";
+                Cbobox.Items.Add(dr[Column]);
+        }
+
+        private void CboLoad(ComboBox Cbobox, string Table, string Column, string Option1, string Option2)
+        {
+            Cbobox.Items.Clear();
+            Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            
+            string strqry = "SELECT " + Column + " FROM " + Table 
+                         + " WHERE " + Option1 + " = '" + Option2 + "'"
+                         + " ORDER BY DISPLAYNO";
+            dt = GetDataTable(strqry);
+            foreach (DataRow dr in dt.Rows)
+                Cbobox.Items.Add(dr[Column]);
         }
 
         private void cboPItemCode_SelectedValueChanged(object sender, EventArgs e)

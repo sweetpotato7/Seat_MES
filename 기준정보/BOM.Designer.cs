@@ -246,9 +246,9 @@ namespace MESProject.기준정보
             this.cboUseFlag.Font = new System.Drawing.Font("굴림", 15F);
             this.cboUseFlag.FormattingEnabled = true;
             this.cboUseFlag.ItemHeight = 20;
-            this.cboUseFlag.Location = new System.Drawing.Point(33, 221);
+            this.cboUseFlag.Location = new System.Drawing.Point(23, 221);
             this.cboUseFlag.Name = "cboUseFlag";
-            this.cboUseFlag.Size = new System.Drawing.Size(64, 28);
+            this.cboUseFlag.Size = new System.Drawing.Size(87, 28);
             this.cboUseFlag.TabIndex = 34;
             // 
             // label9
@@ -420,9 +420,9 @@ namespace MESProject.기준정보
             this.cboPlantCode2.Font = new System.Drawing.Font("굴림", 15F);
             this.cboPlantCode2.FormattingEnabled = true;
             this.cboPlantCode2.ItemHeight = 20;
-            this.cboPlantCode2.Location = new System.Drawing.Point(33, 149);
+            this.cboPlantCode2.Location = new System.Drawing.Point(23, 149);
             this.cboPlantCode2.Name = "cboPlantCode2";
-            this.cboPlantCode2.Size = new System.Drawing.Size(64, 28);
+            this.cboPlantCode2.Size = new System.Drawing.Size(86, 28);
             this.cboPlantCode2.TabIndex = 7;
             // 
             // cboPItemCode
