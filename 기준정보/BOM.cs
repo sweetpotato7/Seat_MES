@@ -8,8 +8,6 @@ using System.Linq;
 using System.Drawing;
 
 /// <summary>
-/// 사용여부, 공장, 단위 => 공통코드에서 가져오기
-/// 이미지 위 품번 라벨 넣기
 /// 조회 삽입 삭제 저장 추가하기
 /// </summary>
 
@@ -82,72 +80,28 @@ namespace MESProject.기준정보
         #region ========== CRUD
         public void Do_Search() // 인자 넣어서 검색되게 바꾸기
         {
-            #region ========== 사용안함
-            //try
-            //{
-            //    if (cboPlantCode.Text == "" && txtItemName.Text.Trim(' ').Length == 0 && cboItemCode.Text == "")
-            //    {
-            //        DGV1Set(strqry);
-            //    }
-            //    else
-            //    {
-            //        string sOption = " Where";
-            //        if (cboPlantCode.Text != "")
-            //            sOption += " a.PLANTCODE LIKE '%" + cboPlantCode.Text + "%'";
-            //        if (txtItemName.Text.Trim(' ').Length != 0)
-            //            sOption += " b.ITEMNAME LIKE '%" + txtItemName.Text + "%'";
-            //        if (cboItemCode.Text != "")
-            //            sOption += " a.ITEMCODE LIKE '%" + cboItemCode.Text + "%'";
-            //        sOption = strqry + sOption;
-            //        DGV1Set(sOption);
-            //    }
-            //    cboPlantCode.Text = "";
-            //    txtItemName.Text = "";
-            //    cboItemCode.Text = "";
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //finally
-            //{
-            //    //sql.con.Close(); // 오픈 안함
-            //}
-            #endregion
 
 
         }
 
         public void DO_INSERT()
         {
-            #region ========== 사용안함
-            //int MaxRow = dataGridView1.Rows.Count;
-            //try
-            //{
-            //    if (MaxRow >= 0)
-            //    {
-            //        if (dataGridView1.Rows[MaxRow - 1].Cells[0].Value.ToString() != "")
-            //        {
-            //            dt = new DataTable();
-            //            dt = dataGridView1.DataSource as DataTable;
-            //            string[] row0 = { "", "", "", "", "", "", "", "", "", "", "", DateTime.Now.ToString(), "", DateTime.Now.ToString() };
-            //            dt.Rows.Add(row0);
-            //            dataGridView1.DataSource = null;
-            //            dataGridView1.DataSource = dt;
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("추가 등록은 한번에 하나씩만 가능합니다.");
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            #endregion
+            strqry = "INSERT INTO TB_BOM ( PLANTCODE, ITEMCODE, BASEQTY, UNITCODE, COMPONENT, COMPONENTQTY, COMPONENTUNIT, USEFLAG)"
+                               + "VALUES ( '" + cboPlantCode2.Text + "', '" + cboPItemCode.Text + "', '" + txtPQty.Text + "', '" + cboPUnitCode.Text + "', '" + cboCItemCode.Text + "', '" + txtCQty.Text + "', '" + cboCUnitCode.Text + "', '" + cboUseFlag.Text + "'";
+            try
+            {
+                sql.con.Open();
+                da = new SqlDataAdapter(strqry, sql.con);
 
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sql.con.Close();
+            }
         }
 
         public void DO_DELETE()
@@ -307,16 +261,16 @@ namespace MESProject.기준정보
         {
             LblItemName_Load(cboCItemCode, lblCItemName);
         }
-        #endregion
-        
-        private void LblItemName_Load(string NodeText)
+
+        private void LblItemName_Load(string NodeText) // 이미지 위 라벨 이름
         {
-            string strqry = "SELECT DISTINCT ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + NodeText + "'";
+            string strqry = "SELECT ITEMCODE, ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + NodeText + "'";
             dt = GetDataTable(strqry);
-            lblItemName.Text = dt.Rows[0].ItemArray[0].ToString();
+            lblItemCode.Text = dt.Rows[0].ItemArray[0].ToString();
+            lblItemName.Text = dt.Rows[0].ItemArray[1].ToString();
         }
 
-        private void LblItemName_Load(ComboBox CboName, Label LabelName)
+        private void LblItemName_Load(ComboBox CboName, Label LabelName) // 입력창 라벨 설정
         {
             if ( CboName.Text == "" )
             {
@@ -327,6 +281,7 @@ namespace MESProject.기준정보
             dt = GetDataTable(strqry);
             LabelName.Text = dt.Rows[0].ItemArray[0].ToString();
         }
+        #endregion
         
         private DataTable GetDataTable(string Query)
         {
@@ -345,9 +300,7 @@ namespace MESProject.기준정보
             {
                 sql.con.Close();
             }
-
             return dt;
         }
-
     }
 }

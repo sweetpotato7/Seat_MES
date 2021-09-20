@@ -18,8 +18,7 @@ namespace MESProject
         기준정보.SPEC_MST Spec_Mst;
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
-        //안녕하세요
-        //안녕하십니까
+        
         public Main()
         {
             InitializeComponent();
@@ -29,9 +28,9 @@ namespace MESProject
         {
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState     = FormWindowState.Maximized;
-            
 
             txtVersion.Text = SQL.VerCheck(); // 실행 시 SQL로 버전 받아서 업데이트(SQLSetting에서 받아오기)
+            // 현재 시간 가져오기
             btnImageLoad();
             // 임시 ㅡㅡ 삭제 필요
             Bom = new 기준정보.BOM();
@@ -134,9 +133,9 @@ namespace MESProject
                         break;
                 }
             }
-            catch
+            catch ( Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }        
 
@@ -164,20 +163,70 @@ namespace MESProject
                         break;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (tabControl1.SelectedTab == null) return;
+            try
+            {
+                switch (tabControl1.SelectedTab.Name)
+                {
+                    case "CODE_MST":
+                        break;
+                    case "ITEM_MST":
+                        break;
+                    case "BOM":
+                        Bom.DO_DELETE();
+                        break;
+                    case "SPEC_MST":
+                        break;
+                    case "USER_ADMIN":
+                        break;
+                    case "Plan_Mst":
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            if (tabControl1.SelectedTab == null) return;
+            try
+            {
+                switch (tabControl1.SelectedTab.Name)
+                {
+                    case "CODE_MST":
+                        break;
+                    case "ITEM_MST":
+                        break;
+                    case "BOM":
+                        Bom.DO_SAVE();
+                        break;
+                    case "SPEC_MST":
+                        break;
+                    case "USER_ADMIN":
+                        break;
+                    case "Plan_Mst":
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void btnImageLoad()
         {
