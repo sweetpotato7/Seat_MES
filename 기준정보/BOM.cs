@@ -8,7 +8,8 @@ using System.Linq;
 using System.Drawing;
 
 /// <summary>
-/// 조회 삽입 삭제 저장 추가하기
+/// 조회 삭제 저장 추가하기
+/// 삭제 - 선택한 셀 정보 얻어서 SQL문으로 보내기(추가 참고)
 /// </summary>
 
 namespace MESProject.기준정보
@@ -87,14 +88,35 @@ namespace MESProject.기준정보
         public void DO_INSERT()
         {
             strqry = "INSERT INTO TB_BOM ( PLANTCODE, ITEMCODE, BASEQTY, UNITCODE, COMPONENT, COMPONENTQTY, COMPONENTUNIT, USEFLAG)"
-                               + "VALUES ( '" + cboPlantCode2.Text + "', '" + cboPItemCode.Text + "', '" + txtPQty.Text + "', '" + cboPUnitCode.Text + "', '" + cboCItemCode.Text + "', '" + txtCQty.Text + "', '" + cboCUnitCode.Text + "', '" + cboUseFlag.Text + "'";
+                               + "VALUES ( '" + cboPlantCode2.Text
+                                     + "', '" + cboPItemCode.Text
+                                     + "', '" + txtPQty.Text
+                                     + "', '" + cboPUnitCode.Text
+                                     + "', '" + cboCItemCode.Text
+                                     + "', '" + txtCQty.Text
+                                     + "', '" + cboCUnitCode.Text
+                                     + "', '" + cboUseFlag.SelectedItem.ToString() + "')";
+            MessageBox.Show(cboUseFlag.Text);
             try
             {
                 sql.con.Open();
-                da = new SqlDataAdapter(strqry, sql.con);
+                da = new SqlDataAdapter();
+                da.InsertCommand = new SqlCommand(strqry, sql.con);
+                da.InsertCommand.ExecuteNonQuery();
+                
+                // 입력 후 재조회
+                strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE NOT IN "
+                       + "(SELECT COMPONENT FROM TB_BOM GROUP BY COMPONENT)";
+                dt = GetDataTable(strqry);
+                dataGridView2.DataSource = dt;
 
+                MessageBox.Show("정상적으로 입력되었습니다!");
             }
-            catch (Exception ex)
+            catch ( SqlException ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch ( Exception ex )
             {
                 MessageBox.Show(ex.Message);
             }
@@ -106,7 +128,36 @@ namespace MESProject.기준정보
 
         public void DO_DELETE()
         {
+            strqry = "DELETE FROM TB_BOM "
+                   + "WHERE ";
             
+                   try
+            {
+                sql.con.Open();
+                da = new SqlDataAdapter();
+                da.InsertCommand = new SqlCommand(strqry, sql.con);
+                da.InsertCommand.ExecuteNonQuery();
+
+                // 입력 후 재조회
+                strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE NOT IN "
+                       + "(SELECT COMPONENT FROM TB_BOM GROUP BY COMPONENT)";
+                dt = GetDataTable(strqry);
+                dataGridView2.DataSource = dt;
+
+                MessageBox.Show("정상적으로 입력되었습니다!");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sql.con.Close();
+            }
         }
 
         public void DO_SAVE()

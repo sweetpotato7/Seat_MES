@@ -178,7 +178,7 @@ namespace MESProject.기준정보
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
             this.splitContainer1.Size = new System.Drawing.Size(1751, 1035);
-            this.splitContainer1.SplitterDistance = 473;
+            this.splitContainer1.SplitterDistance = 472;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -196,7 +196,7 @@ namespace MESProject.기준정보
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1751, 473);
+            this.splitContainer2.Size = new System.Drawing.Size(1751, 472);
             this.splitContainer2.SplitterDistance = 289;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 2;
@@ -208,7 +208,7 @@ namespace MESProject.기준정보
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(289, 473);
+            this.treeView1.Size = new System.Drawing.Size(289, 472);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -247,7 +247,7 @@ namespace MESProject.기준정보
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer3.Size = new System.Drawing.Size(1457, 473);
+            this.splitContainer3.Size = new System.Drawing.Size(1457, 472);
             this.splitContainer3.SplitterDistance = 941;
             this.splitContainer3.SplitterWidth = 5;
             this.splitContainer3.TabIndex = 0;
@@ -487,7 +487,7 @@ namespace MESProject.기준정보
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(511, 473);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(511, 472);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // pictureBox1
@@ -497,7 +497,7 @@ namespace MESProject.기준정보
             this.pictureBox1.Location = new System.Drawing.Point(3, 132);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(505, 337);
+            this.pictureBox1.Size = new System.Drawing.Size(505, 336);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -563,7 +563,7 @@ namespace MESProject.기준정보
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(1751, 557);
+            this.dataGridView2.Size = new System.Drawing.Size(1751, 558);
             this.dataGridView2.TabIndex = 0;
             // 
             // tableLayoutPanel1
