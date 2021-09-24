@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace MESProject
 {
@@ -30,11 +31,8 @@ namespace MESProject
             this.WindowState     = FormWindowState.Maximized;
 
             txtVersion.Text = SQL.VerCheck(); // 실행 시 SQL로 버전 받아서 업데이트(SQLSetting에서 받아오기)
-            // 현재 시간 가져오기
             btnImageLoad();
-            // 임시 ㅡㅡ 삭제 필요
-            Bom = new 기준정보.BOM();
-            tabCtrlAdd(Bom, sender);
+            timer();
         }
 
         #region ========== 탭컨트롤
@@ -228,7 +226,8 @@ namespace MESProject
                 MessageBox.Show(ex.Message);
             }
         }
-        private void btnImageLoad()
+
+        private void btnImageLoad() // 버튼 이미지
         {
             tabControl1.Controls.Clear();
             btnSearch.Image = Properties.Resources.Search;
@@ -257,7 +256,7 @@ namespace MESProject
             else { CellFont = CellStyleFont; }
 
             // DataGridView
-            Dgv.ReadOnly = false;
+            Dgv.ReadOnly = true;
             Dgv.EnableHeadersVisualStyles = false;
 
             Dgv.BorderStyle = BorderStyle.FixedSingle;
@@ -319,10 +318,23 @@ namespace MESProject
             int rowHeight = (int)Math.Truncate(calRowHeight);
             row.Height = rowHeight;
             row.MinimumHeight = 20;
-            row.ReadOnly = false;
         }
         #endregion
 
+        #region ========== 시간
+        private void timer()
+        {
+            timer1.Interval = 1000;
+            timer1.Enabled = true;
+            timer1.Tick += timer1_Tick;
+            txtDT.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            txtDT.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+        
+        #endregion
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -336,5 +348,6 @@ namespace MESProject
         {
             //MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
+
     }
 }

@@ -29,6 +29,7 @@ namespace MESProject
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.기준정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공통코드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,7 @@ namespace MESProject
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlStatus = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblTimeNow = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@ namespace MESProject
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.pnlCRUD.SuspendLayout();
             this.pnlStatus.SuspendLayout();
@@ -188,6 +190,7 @@ namespace MESProject
             this.txtVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtVersion.BackColor = System.Drawing.SystemColors.Window;
             this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVersion.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtVersion.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
@@ -201,6 +204,7 @@ namespace MESProject
             this.txtDT.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtDT.BackColor = System.Drawing.SystemColors.Window;
             this.txtDT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDT.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtDT.Name = "txtDT";
             this.txtDT.ReadOnly = true;
             this.txtDT.ShortcutsEnabled = false;
@@ -324,8 +328,8 @@ namespace MESProject
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.pnlStatus.Controls.Add(this.label7, 5, 0);
+            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.pnlStatus.Controls.Add(this.lblTimeNow, 5, 0);
             this.pnlStatus.Controls.Add(this.lblId, 3, 0);
             this.pnlStatus.Controls.Add(this.label4, 2, 0);
             this.pnlStatus.Controls.Add(this.label3, 1, 0);
@@ -339,21 +343,21 @@ namespace MESProject
             this.pnlStatus.Size = new System.Drawing.Size(963, 17);
             this.pnlStatus.TabIndex = 2;
             // 
-            // label7
+            // lblTimeNow
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(841, 2);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 12);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "label7";
+            this.lblTimeNow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTimeNow.AutoSize = true;
+            this.lblTimeNow.Location = new System.Drawing.Point(766, 2);
+            this.lblTimeNow.Name = "lblTimeNow";
+            this.lblTimeNow.Size = new System.Drawing.Size(194, 12);
+            this.lblTimeNow.TabIndex = 5;
+            this.lblTimeNow.Text = "label7";
             // 
             // lblId
             // 
             this.lblId.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(681, 2);
+            this.lblId.Location = new System.Drawing.Point(606, 2);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(38, 12);
             this.lblId.TabIndex = 4;
@@ -363,7 +367,7 @@ namespace MESProject
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(611, 2);
+            this.label4.Location = new System.Drawing.Point(536, 2);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 12);
             this.label4.TabIndex = 3;
@@ -373,7 +377,7 @@ namespace MESProject
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(541, 2);
+            this.label3.Location = new System.Drawing.Point(466, 2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 12);
             this.label3.TabIndex = 2;
@@ -383,7 +387,7 @@ namespace MESProject
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(751, 2);
+            this.lblName.Location = new System.Drawing.Point(676, 2);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 0;
@@ -438,6 +442,10 @@ namespace MESProject
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -486,7 +494,7 @@ namespace MESProject
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TableLayoutPanel pnlStatus;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTimeNow;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -498,5 +506,6 @@ namespace MESProject
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ToolStripTextBox txtVersion;
         private System.Windows.Forms.ToolStripTextBox txtDT;
+        private System.Windows.Forms.Timer timer1;
     }
 }
