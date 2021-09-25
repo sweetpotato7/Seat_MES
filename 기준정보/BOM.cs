@@ -196,15 +196,15 @@ namespace MESProject.기준정보
 
         public void DO_SAVE()
         {
-            strqry = "UPDATE TB_BOM "
-                   + "PLANTCODE = '"     + cboPlantCode2 + "', "
-                   + "ITEMCODE = '"      + cboPItemCode  + "', "
-                   + "BASEQTY = '"       + txtPQty       + "', "
-                   + "UNITCODE = '"      + cboPUnitCode  + "', "
-                   + "COMPONENT = '"     + cboCItemCode  + "', "
-                   + "COMPONENTQTY = '"  + txtCQty       + "', "
-                   + "COMPONENTUNIT = '" + cboPUnitCode  + "', "
-                   + "USEFLAG = '"       + cboUseFlag    + "' "
+            strqry = "UPDATE TB_BOM SET "
+                   + "PLANTCODE = '"     + cboPlantCode2.Text + "', "
+                   + "ITEMCODE = '"      + cboPItemCode.Text  + "', "
+                   + "BASEQTY = '"       + txtPQty.Text       + "', "
+                   + "UNITCODE = '"      + cboPUnitCode.Text  + "', "
+                   + "COMPONENT = '"     + cboCItemCode.Text  + "', "
+                   + "COMPONENTQTY = '"  + txtCQty.Text       + "', "
+                   + "COMPONENTUNIT = '" + cboPUnitCode.Text  + "', "
+                   + "USEFLAG = '"       + cboUseFlag.Text    + "' "
                    + "WHERE PLANTCODE = '" + dataGridView2.SelectedCells[2].Value.ToString() + "'"
                      + "AND ITEMCODE  = '" + dataGridView2.SelectedCells[3].Value.ToString() + "'"
                      + "AND COMPONENT = '" + dataGridView2.SelectedCells[6].Value.ToString() + "'";
@@ -238,7 +238,6 @@ namespace MESProject.기준정보
                 sql.con.Close();
             }
         }
-
         #endregion
 
         #region ========== 트리뷰
