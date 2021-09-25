@@ -26,6 +26,7 @@ namespace MESProject
             
             if(login)
             {
+                Main.ID = login_id;
                 Main main = new Main();
                 this.Hide();
                 main.ShowDialog();
