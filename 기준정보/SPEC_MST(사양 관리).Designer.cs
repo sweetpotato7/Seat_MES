@@ -31,22 +31,17 @@ namespace MESProject.기준정보
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.cmb_S_ALC = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_Search = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cmb_ALC = new System.Windows.Forms.ComboBox();
             this.cmb_CarCode = new System.Windows.Forms.ComboBox();
             this.cmbSAB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_Delete = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbCovering = new System.Windows.Forms.ComboBox();
-            this.btn_Add = new System.Windows.Forms.Button();
             this.cmbHeadrestrian = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,27 +72,14 @@ namespace MESProject.기준정보
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.cmb_S_ALC);
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.btn_Search);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(969, 46);
             this.panel5.TabIndex = 12;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(314, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 21);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "전체조회";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmb_S_ALC
             // 
@@ -119,17 +101,6 @@ namespace MESProject.기준정보
             this.label1.TabIndex = 22;
             this.label1.Text = "ALC(ITEMCODE)";
             // 
-            // btn_Search
-            // 
-            this.btn_Search.Location = new System.Drawing.Point(232, 10);
-            this.btn_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(66, 21);
-            this.btn_Search.TabIndex = 0;
-            this.btn_Search.Text = "조회";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click_1);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel4);
@@ -146,12 +117,9 @@ namespace MESProject.기준정보
             this.panel4.Controls.Add(this.cmb_CarCode);
             this.panel4.Controls.Add(this.cmbSAB);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.btn_Delete);
-            this.panel4.Controls.Add(this.btn_Save);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.cmbCovering);
-            this.panel4.Controls.Add(this.btn_Add);
             this.panel4.Controls.Add(this.cmbHeadrestrian);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label8);
@@ -203,28 +171,6 @@ namespace MESProject.기준정보
             this.label3.TabIndex = 24;
             this.label3.Text = "ALC(수정불가)";
             // 
-            // btn_Delete
-            // 
-            this.btn_Delete.Location = new System.Drawing.Point(164, 367);
-            this.btn_Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(66, 24);
-            this.btn_Delete.TabIndex = 2;
-            this.btn_Delete.Text = "삭제";
-            this.btn_Delete.UseVisualStyleBackColor = true;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click_1);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(92, 367);
-            this.btn_Save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(66, 24);
-            this.btn_Save.TabIndex = 3;
-            this.btn_Save.Text = "수정";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -253,17 +199,6 @@ namespace MESProject.기준정보
             this.cmbCovering.Name = "cmbCovering";
             this.cmbCovering.Size = new System.Drawing.Size(94, 20);
             this.cmbCovering.TabIndex = 19;
-            // 
-            // btn_Add
-            // 
-            this.btn_Add.Location = new System.Drawing.Point(20, 367);
-            this.btn_Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(66, 23);
-            this.btn_Add.TabIndex = 1;
-            this.btn_Add.Text = "추가";
-            this.btn_Add.UseVisualStyleBackColor = true;
-            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click_1);
             // 
             // cmbHeadrestrian
             // 
@@ -401,15 +336,11 @@ namespace MESProject.기준정보
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btn_Delete;
-        private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox cmbSAB;
-        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbCovering;
-        private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.ComboBox cmbHeadrestrian;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -427,6 +358,5 @@ namespace MESProject.기준정보
         private System.Windows.Forms.ComboBox cmb_CarCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmb_ALC;
-        private System.Windows.Forms.Button button1;
     }
 }

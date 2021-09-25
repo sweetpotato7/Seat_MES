@@ -13,7 +13,15 @@ namespace MESProject.기준정보
 {
     public partial class SPEC_MST : Form
     {
+        /// <summary>
+        /// 조회 추가 수정 삭제 버튼 통합함
+        /// 전체조회 = 조회시 txt칸 비움 -> txt칸 비었을 시 전체조회
+        /// </summary>
+        
+        Function func = new Function();
         SQL sql = new SQL();
+        DataTable dt;
+        SqlDataAdapter da;
 
         public SPEC_MST()
         {
@@ -27,21 +35,32 @@ namespace MESProject.기준정보
                 sql.con.Close();
             }
             sql.con.Open();
-            fill_cmb_ALC();
-            fill_cmb_carcode();
+            CboSet();
+
+            //fill_cmb_ALC();
+            //fill_cmb_carcode();
         }
 
+        #region ========== CRUD버튼
         public void Do_Search()
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC where ITEMCODE = " + "'" + cmb_S_ALC.SelectedItem + "'" + "";
+            if (cmb_S_ALC.Text == "")
+            {
+                cmd.CommandText = "select * from TB_SPEC";
+            }
+            else
+            {
+                cmd.CommandText = "select * from TB_SPEC where ITEMCODE LIKE '%" + cmb_S_ALC.Text + "%'";
+            }
             cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da = new SqlDataAdapter(cmd);
+            dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
             dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
+            cmb_S_ALC.Text = "";
         }
 
         public void Do_Entire_Search()
@@ -50,8 +69,8 @@ namespace MESProject.기준정보
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from TB_SPEC";
             cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             dataGridView1.DataSource = dt;
             dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
@@ -130,6 +149,56 @@ namespace MESProject.기준정보
             Do_Entire_Search();
             MessageBox.Show("수정되었습니다.");
         }
+        #endregion
+
+        #region ========== 콤보박스
+        private void CboSet()
+        {
+            func.CboLoad(cmb_S_ALC,       "TB_SPEC", "ITEMCODE", false);
+            func.CboLoad(cmb_CarCode,     "TB_SPEC", "CARCODE",  true);
+            func.CboLoad(cmb_ALC,         "TB_SPEC", "ITEMCODE", false);
+            func.CboLoad(cmbLocal,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_01");
+            func.CboLoad(cmbTrack,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_02");
+            func.CboLoad(cmbFormpad,      "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
+            func.CboLoad(cmbHeadrestrian, "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
+            func.CboLoad(cmbCovering,     "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_03");
+            func.CboLoad(cmbSAB,          "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
+        }
+        
+        public void fill_cmb_ALC()
+        {
+
+            cmb_S_ALC.Items.Clear();
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from TB_SPEC";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                cmb_S_ALC.Items.Add(dr["ITEMCODE"].ToString());
+            }
+        }
+
+        public void fill_cmb_carcode()
+        {
+
+            cmb_CarCode.Items.Clear();
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from TB_SPEC";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                cmb_CarCode.Items.Add(dr["CARCODE"].ToString());
+            }
+        }
+        #endregion
 
         // 자동완성
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -147,59 +216,6 @@ namespace MESProject.기준정보
             cmbSAB.Text          = dataGridView1.Rows[i].Cells[8].Value.ToString();
         }
 
-        public void fill_cmb_ALC()
-        {
-            cmb_S_ALC.Items.Clear();
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                cmb_S_ALC.Items.Add(dr["ITEMCODE"].ToString());
-            }
-        }
-
-        public void fill_cmb_carcode()
-        {
-            cmb_CarCode.Items.Clear();
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                cmb_CarCode.Items.Add(dr["CARCODE"].ToString());
-            }
-        }
-
-        private void btn_Search_Click_1(object sender, EventArgs e)
-        {
-            Do_Search();
-        }
-        private void btn_Add_Click_1(object sender, EventArgs e)
-        {
-            Do_Add();
-        }
-        private void btn_Delete_Click_1(object sender, EventArgs e)
-        {
-            Do_Delete();
-        }
-        private void btn_Save_Click_1(object sender, EventArgs e)
-        {
-            Do_Save();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Do_Entire_Search();
-        }
     }
 
     // 추가작업
