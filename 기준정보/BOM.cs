@@ -16,11 +16,12 @@ namespace MESProject.기준정보
 {
     public partial class BOM : Form
     {
+        Function func = new Function();
         SQL sql = new SQL();
         SqlDataAdapter da;
         DataTable dt;
         string strqry = string.Empty;
-        // BOM 리스트 조회문
+        // BOM 전체 리스트 조회문
         //string strqry = "SELECT a.PLANTCODE, a.ITEMCODE, b.ITEMNAME AS PNAME, a.BASEQTY, a.UNITCODE, a.COMPONENT, c.ITEMNAME AS CNAME, a.COMPONENTQTY, a.COMPONENTUNIT, a.USEFLAG, a.CREATE_USERID, a.CREATE_DT, a.MODIFY_USERID, a.MODIFY_DT"
         //               + " FROM TB_BOM a LEFT JOIN TB_ITEM_MST b"
         //                             + " ON a.ITEMCODE = b.ITEMCODE"
@@ -39,22 +40,10 @@ namespace MESProject.기준정보
             //DGV1Set(strqry); 사용안함
             TreeViewLoad();
             CboSet();
+            CboClear();
+            Do_Search();
             lblItemCode.Text = "";
             lblItemName.Text = "";
-            try
-            {
-                sql.con.Open();
-                dt = GetDataTable(strqry);
-                dataGridView2.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sql.con.Close();
-            }
         }
 
         private void DGVLoad()
@@ -96,13 +85,13 @@ namespace MESProject.기준정보
         #endregion
 
         #region ========== CRUD
-        public void Do_Search() // 인자 넣어서 검색되게 바꾸기
+        public void Do_Search() // 검색
         {
-            strqry = string.Empty;
             try
             {
                 sql.con.Open();
-                dt = GetDataTable(strqry);
+                strqry = "SELECT * FROM TB_BOM";
+                dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
             }
             catch (Exception ex)
@@ -115,7 +104,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_INSERT()
+        public void DO_INSERT() // 추가
         {
             strqry = "INSERT INTO TB_BOM ( PLANTCODE, ITEMCODE, BASEQTY, UNITCODE, COMPONENT, COMPONENTQTY, COMPONENTUNIT, USEFLAG)"
                                + "VALUES ( '" + cboPlantCode2.Text
@@ -132,10 +121,10 @@ namespace MESProject.기준정보
                 da = new SqlDataAdapter();
                 da.InsertCommand = new SqlCommand(strqry, sql.con);
                 da.InsertCommand.ExecuteNonQuery();
-                
+
                 // 입력 후 재조회
-                strqry = string.Empty;
-                dt = GetDataTable(strqry);
+                strqry = "SELECT * FROM TB_BOM";
+                dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
 
                 MessageBox.Show("입력되었습니다!");
@@ -157,7 +146,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_DELETE()
+        public void DO_DELETE() // 삭제
         {
             strqry = "DELETE FROM TB_BOM "
                     + "WHERE PLANTCODE = '" + dataGridView2.SelectedCells[2].Value.ToString() + "'"
@@ -172,8 +161,8 @@ namespace MESProject.기준정보
                 da.DeleteCommand.ExecuteNonQuery();
 
                 // 삭제 후 재조회
-                strqry = string.Empty;
-                dt = GetDataTable(strqry);
+                strqry = "SELECT * FROM TB_BOM";
+                dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
 
                 MessageBox.Show("삭제되었습니다!");
@@ -194,7 +183,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_SAVE()
+        public void DO_SAVE() // 수정
         {
             strqry = "UPDATE TB_BOM SET "
                    + "PLANTCODE = '"     + cboPlantCode2.Text + "', "
@@ -217,8 +206,8 @@ namespace MESProject.기준정보
                 da.UpdateCommand.ExecuteNonQuery();
 
                 // 수정 후 재조회
-                strqry = string.Empty;
-                dt = GetDataTable(strqry);
+                strqry = "SELECT * FROM TB_BOM";
+                dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
 
                 MessageBox.Show("수정되었습니다!");
@@ -241,7 +230,7 @@ namespace MESProject.기준정보
         #endregion
 
         #region ========== 트리뷰
-        public void TreeViewLoad()
+        public void TreeViewLoad() // 트리뷰 로드
         {
             TreeNode parentNode;
             string strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE NOT IN "
@@ -249,7 +238,7 @@ namespace MESProject.기준정보
             try
             {
                 sql.con.Open();
-                dt = GetDataTable(strqry);
+                dt = func.GetDataTable(strqry);
 
                 treeView1.Refresh();
 
@@ -270,10 +259,10 @@ namespace MESProject.기준정보
             }
         }
 
-        private void TreeViewSet(string parentID, TreeNode parentNode)
+        private void TreeViewSet(string parentID, TreeNode parentNode) // 트리뷰 세팅
         {
             string strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE = '" + parentID + "'";
-            DataTable dtChild = GetDataTable(strqry);
+            DataTable dtChild = func.GetDataTable(strqry);
 
             foreach (DataRow dr in dtChild.Rows)
             {
@@ -286,7 +275,7 @@ namespace MESProject.기준정보
             }
         }
         
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) // 트리뷰 선택 시 dgv2 바인딩, 이미지 출력
         {
             string SelectItem = e.Node.Text;
             try
@@ -294,7 +283,7 @@ namespace MESProject.기준정보
                 sql.con.Open();
                 LblItemName_Load(SelectItem);
                 string strqry = "SELECT * FROM FN_TopDown('" + SelectItem + "')";
-                dt = GetDataTable(strqry);
+                dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
 
                 #region 이미지 출력
@@ -354,67 +343,17 @@ namespace MESProject.기준정보
         #region ========== 콤보박스 셋팅
         private void CboSet()
         {
-            CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE");
-            CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE");
-            CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE");
-            CboLoad(cboUseFlag,    "TB_CODE_MST", "MINORCODE", "MAJORCODE", "USEFLAG");
-            CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE");
-            CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE");
-            CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE");
-            CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE");
+            func.CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE",  false);
+            func.CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cboUseFlag,    "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
+            func.CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
+            func.CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
+            func.CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE",  true);
+            func.CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE",  true);
         }
 
-        private void CboLoad(ComboBox Cbobox, string Table, string Column)
-        {
-            Cbobox.Items.Clear();
-            Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            
-            string strqry = "SELECT DISTINCT " + Column + " FROM " + Table;
-            try
-            {
-                sql.con.Open();
-                dt = GetDataTable(strqry);
-                foreach (DataRow dr in dt.Rows)
-                    Cbobox.Items.Add(dr[Column]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sql.con.Close();
-            }
-        }
-
-        private void CboLoad(ComboBox Cbobox, string Table, string Column, string Option1, string Option2)
-        {
-            Cbobox.Items.Clear();
-            Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            
-            string strqry = "SELECT " + Column + " FROM " + Table 
-                         + " WHERE " + Option1 + " = '" + Option2 + "'"
-                         + " ORDER BY DISPLAYNO";
-            try
-            {
-                sql.con.Open();
-                dt = GetDataTable(strqry);
-                foreach (DataRow dr in dt.Rows)
-                    Cbobox.Items.Add(dr[Column]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sql.con.Close();
-            }
-        }
-
-        private void cboPItemCode_SelectedValueChanged(object sender, EventArgs e)
+        private void cboPItemCode_SelectedValueChanged(object sender, EventArgs e) // 품목 선택 시 품명 출력
         {
             try
             {
@@ -431,7 +370,7 @@ namespace MESProject.기준정보
             }
         }
 
-        private void cboCItemCode_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboCItemCode_SelectedIndexChanged(object sender, EventArgs e) // 품목 선택 시 품명 출력
         {
             try
             {
@@ -451,7 +390,7 @@ namespace MESProject.기준정보
         private void LblItemName_Load(string NodeText) // 이미지 위 라벨 이름
         {
             string strqry = "SELECT ITEMCODE, ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + NodeText + "'";
-            dt = GetDataTable(strqry);
+            dt = func.GetDataTable(strqry);
             lblItemCode.Text = dt.Rows[0].ItemArray[0].ToString();
             lblItemName.Text = dt.Rows[0].ItemArray[1].ToString();
         }
@@ -464,41 +403,29 @@ namespace MESProject.기준정보
                 return;
             }
             string strqry = "SELECT DISTINCT ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + CboName.Text + "'";
-            dt = GetDataTable(strqry);
+            dt = func.GetDataTable(strqry);
             LabelName.Text = dt.Rows[0].ItemArray[0].ToString();
         }
 
-        private void CboClear()
+        private void CboClear() // 입력칸 초기화
         {
-            // 입력칸 초기화
-            cboPlantCode2.Text = "";
+            cboPlantCode2.SelectedItem = cboPlantCode2.Items[0];
+            cboUseFlag.SelectedItem    = cboUseFlag.Items[0];
+            cboPUnitCode.SelectedItem  = cboPUnitCode.Items[0];
+            cboCUnitCode.SelectedItem  = cboCUnitCode.Items[0];
             cboPItemCode.Text = "";
             cboCItemCode.Text = "";
-            cboPUnitCode.Text = "";
-            cboCUnitCode.Text = "";
-            cboUseFlag.Text = "";
             txtPQty.Text = "";
             txtCQty.Text = "";
+            lblPItemName.Text = "";
+            lblCItemName.Text = "";
         }
         #endregion
 
-        private DataTable GetDataTable(string Query)
-        {
-            if (Query == string.Empty)
-            {
-                Query = "SELECT * FROM TB_BOM";
-            }
-            da = new SqlDataAdapter(Query, sql.con);
-            dt = new DataTable();
-            da.Fill(dt);
-            return dt;
-        }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e) // 선택셀 입력칸 입력
         {
             try
             {
-                // 선택셀 입력칸 입력
                 cboPlantCode2.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
                 cboPItemCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtPQty.Text       = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();

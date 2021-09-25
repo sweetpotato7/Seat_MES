@@ -109,7 +109,7 @@ namespace MESProject.기준정보
             this.cboItemCode.Location = new System.Drawing.Point(467, 14);
             this.cboItemCode.Name = "cboItemCode";
             this.cboItemCode.Size = new System.Drawing.Size(121, 20);
-            this.cboItemCode.TabIndex = 6;
+            this.cboItemCode.TabIndex = 2;
             // 
             // label3
             // 
@@ -136,7 +136,7 @@ namespace MESProject.기준정보
             this.txtItemName.Location = new System.Drawing.Point(266, 14);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(100, 21);
-            this.txtItemName.TabIndex = 2;
+            this.txtItemName.TabIndex = 1;
             // 
             // cboPlantCode
             // 
@@ -144,7 +144,7 @@ namespace MESProject.기준정보
             this.cboPlantCode.Location = new System.Drawing.Point(64, 14);
             this.cboPlantCode.Name = "cboPlantCode";
             this.cboPlantCode.Size = new System.Drawing.Size(121, 20);
-            this.cboPlantCode.TabIndex = 1;
+            this.cboPlantCode.TabIndex = 0;
             // 
             // label1
             // 
@@ -198,7 +198,7 @@ namespace MESProject.기준정보
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(252, 377);
-            this.treeView1.TabIndex = 1;
+            this.treeView1.TabIndex = 99;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // splitContainer3
@@ -247,7 +247,7 @@ namespace MESProject.기준정보
             this.cboUseFlag.Location = new System.Drawing.Point(25, 220);
             this.cboUseFlag.Name = "cboUseFlag";
             this.cboUseFlag.Size = new System.Drawing.Size(87, 28);
-            this.cboUseFlag.TabIndex = 34;
+            this.cboUseFlag.TabIndex = 4;
             // 
             // label9
             // 
@@ -265,7 +265,7 @@ namespace MESProject.기준정보
             this.txtCQty.Location = new System.Drawing.Point(447, 184);
             this.txtCQty.Name = "txtCQty";
             this.txtCQty.Size = new System.Drawing.Size(145, 30);
-            this.txtCQty.TabIndex = 33;
+            this.txtCQty.TabIndex = 9;
             // 
             // label8
             // 
@@ -294,7 +294,7 @@ namespace MESProject.기준정보
             this.cboCUnitCode.Location = new System.Drawing.Point(447, 220);
             this.cboCUnitCode.Name = "cboCUnitCode";
             this.cboCUnitCode.Size = new System.Drawing.Size(145, 28);
-            this.cboCUnitCode.TabIndex = 30;
+            this.cboCUnitCode.TabIndex = 10;
             // 
             // label10
             // 
@@ -323,7 +323,7 @@ namespace MESProject.기준정보
             this.cboCItemCode.Location = new System.Drawing.Point(447, 115);
             this.cboCItemCode.Name = "cboCItemCode";
             this.cboCItemCode.Size = new System.Drawing.Size(145, 28);
-            this.cboCItemCode.TabIndex = 26;
+            this.cboCItemCode.TabIndex = 8;
             this.cboCItemCode.SelectedIndexChanged += new System.EventHandler(this.cboCItemCode_SelectedIndexChanged);
             // 
             // label18
@@ -352,7 +352,7 @@ namespace MESProject.기준정보
             this.txtPQty.Location = new System.Drawing.Point(186, 184);
             this.txtPQty.Name = "txtPQty";
             this.txtPQty.Size = new System.Drawing.Size(145, 30);
-            this.txtPQty.TabIndex = 24;
+            this.txtPQty.TabIndex = 6;
             // 
             // label15
             // 
@@ -391,7 +391,7 @@ namespace MESProject.기준정보
             this.cboPUnitCode.Location = new System.Drawing.Point(186, 220);
             this.cboPUnitCode.Name = "cboPUnitCode";
             this.cboPUnitCode.Size = new System.Drawing.Size(145, 28);
-            this.cboPUnitCode.TabIndex = 14;
+            this.cboPUnitCode.TabIndex = 7;
             // 
             // label7
             // 
@@ -421,7 +421,7 @@ namespace MESProject.기준정보
             this.cboPlantCode2.Location = new System.Drawing.Point(23, 149);
             this.cboPlantCode2.Name = "cboPlantCode2";
             this.cboPlantCode2.Size = new System.Drawing.Size(86, 28);
-            this.cboPlantCode2.TabIndex = 7;
+            this.cboPlantCode2.TabIndex = 3;
             // 
             // cboPItemCode
             // 
@@ -430,7 +430,7 @@ namespace MESProject.기준정보
             this.cboPItemCode.Location = new System.Drawing.Point(186, 115);
             this.cboPItemCode.Name = "cboPItemCode";
             this.cboPItemCode.Size = new System.Drawing.Size(145, 28);
-            this.cboPItemCode.TabIndex = 7;
+            this.cboPItemCode.TabIndex = 5;
             this.cboPItemCode.SelectedValueChanged += new System.EventHandler(this.cboPItemCode_SelectedValueChanged);
             // 
             // label5
@@ -456,7 +456,7 @@ namespace MESProject.기준정보
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 447F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 448F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
