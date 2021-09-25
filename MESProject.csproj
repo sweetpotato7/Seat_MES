@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Function.cs" />
     <Compile Include="기록.cs" />
     <Compile Include="SQL.cs" />
     <Compile Include="기준정보\BOM.cs">
