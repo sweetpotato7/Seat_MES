@@ -19,6 +19,7 @@ namespace MESProject
         기준정보.SPEC_MST Spec_Mst;
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
+        public static string ID;
         
         public Main()
         {
@@ -33,6 +34,7 @@ namespace MESProject
             txtVersion.Text = SQL.VerCheck(); // 실행 시 SQL로 버전 받아서 업데이트(SQLSetting에서 받아오기)
             btnImageLoad();
             timer();
+            lblStatemsg.Text = $"{ID}님 접속 중";
         }
 
         #region ========== 탭컨트롤
@@ -55,7 +57,6 @@ namespace MESProject
             tabControl1.TabPages[tabControl1.TabPages.Count - 1].Controls.Add(form);
             tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
 
-            tabControl1.SelectedTab.Name = form.ToString();
             int leng = (form.ToString().Length - 24) / 2;
             int word = leng + 24;
             tabControl1.SelectedTab.Name = form.ToString().Substring(word, leng);
@@ -113,6 +114,7 @@ namespace MESProject
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "CODE_MST":
+                        Code_Mst.DO_Search();
                         break;
                     case "ITEM_MST":
                         Item_Mst.Do_Search();
