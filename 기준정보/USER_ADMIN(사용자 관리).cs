@@ -68,6 +68,7 @@ namespace MESProject.기준정보
 
         public void Do_Search()
         {
+            //배고팡
             SqlCommand cmd = sql.con.CreateCommand();
 
             cmd.CommandType = CommandType.Text;
