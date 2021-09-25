@@ -20,7 +20,9 @@ namespace MESProject.기준정보
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// 추가 수정 삭제 기능 넣기
+        /// </summary>
         private void CODE_MST_Load(object sender, EventArgs e)
         {
             if (sql.con.State == ConnectionState.Open)
@@ -29,7 +31,7 @@ namespace MESProject.기준정보
             }
             sql.con.Open();
             DGVLoad();
-            disp(); // 전체조회
+            disp();   // 전체조회
             CboSet(); // 콤보박스 세팅
         }
 
@@ -58,16 +60,14 @@ namespace MESProject.기준정보
             cboSearch.Items.Add("부코드");
             cboSearch.Items.Add("코드명");
             cboSearch.SelectedIndex = 0;
-            cboSearch.BackColor = SystemColors.Window;
         }
 
         public void DO_Search()
         {
-            // 조건별 검색 기능 고민
             string strqry = string.Empty;
             if (txtSearch.Text != "")
             {
-                switch(cboSearch.Text) // 쿼리문 생성
+                switch(cboSearch.Text) // cboSearch에 맞는 쿼리문 생성
                 {
                     case "주코드":
                         strqry = "SELECT DISTINCT MAJORCODE , RELCODE5 FROM TB_CODE_MST "
