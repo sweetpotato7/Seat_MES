@@ -123,6 +123,7 @@ namespace MESProject
                         Bom.Do_Search();
                         break;
                     case "SPEC_MST":
+                        Spec_Mst.Do_Search();
                         break;
                     case "USER_ADMIN":
                         User_Admin.Do_Search();
@@ -154,6 +155,7 @@ namespace MESProject
                         Bom.DO_INSERT();
                         break;
                     case "SPEC_MST":
+                        Spec_Mst.Do_Add();
                         break;
                     case "USER_ADMIN":
                         User_Admin.Do_Add();
@@ -185,6 +187,7 @@ namespace MESProject
                         Bom.DO_DELETE();
                         break;
                     case "SPEC_MST":
+                        Spec_Mst.Do_Delete();
                         break;
                     case "USER_ADMIN":
                         User_Admin.Do_Delete();
@@ -216,6 +219,7 @@ namespace MESProject
                         Bom.DO_SAVE();
                         break;
                     case "SPEC_MST":
+                        Spec_Mst.Do_Save();
                         break;
                     case "USER_ADMIN":
                         User_Admin.Do_Save();
@@ -340,6 +344,7 @@ namespace MESProject
         }
         
         #endregion
+
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
