@@ -36,7 +36,7 @@ namespace MESProject.기준정보
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             DGVLoad();
-            //DGV1Set(strqry); 사용안함
+            //DGV1Set(strqry); 사용안함1
             TreeViewLoad();
             CboSet();
             lblItemCode.Text = "";
