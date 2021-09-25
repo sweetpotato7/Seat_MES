@@ -36,7 +36,7 @@ namespace MESProject.기준정보
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             DGVLoad();
-            //DGV1Set(strqry); 사용안함1
+            //DGV1Set(strqry); 사용안함
             TreeViewLoad();
             CboSet();
             lblItemCode.Text = "";
@@ -61,7 +61,7 @@ namespace MESProject.기준정보
         {
             string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "PITEMNAME", "BASEQTY", "UNITCODE", "COMPONENT", "CITEMNAME", "COMPONENTQTY", "COMPONENTUNIT", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "품목", "품명", "수량", "단위", "하위품목", "품명", "수량", "단위", "사용", "등록자", "등록일시", "수정자", "수정일시" };
-            string[] HiddenColumn = null;
+            string[] HiddenColumn     = null;
             float[] FillWeight = new float[] { 40, 100, 100, 40, 40, 100, 100, 40, 40, 40, 100, 130, 100, 130 };
             Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
