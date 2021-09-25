@@ -59,3 +59,68 @@ insert into TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, DISPLAYNO, U
 insert into TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, DISPLAYNO, USEFLAG, CREATE_DT) VALUES('D100', 'USEFLAG', 'N', 'N', '2', 'Y', GETDATE())
 */
 #endregion
+
+#region ____0 9 월 2 5 일
+/*
+========== 공정순서 ==========
+010 Track Loading
+
+020 Covering 적재
+
+030 Inspection
+
+
+작업지시, 이미지, 사양정보, 작업순서
+
+--작업순서
+1. 공통코드로 잡기
+공정코드 - 공정명
+000 - JIG 도착 (기본)
+010 - Lot 생성
+020 - Track Scan
+030 - Foam Pad Scan
+040 - H/R Scan
+050 - Covering Scan
+060 - SAB Scan
+070 - Complete (마무리)
+
+순서  Working(작업방법)  Value(스캔값, LotNo,...)  결과("OK")
+  1 /  JIG 도착       /                          /    OK
+  2 /  LOT 생성       /      LOT값               /    OK
+  3 /  Track Scan     / 트랙 바코드 값           /    OK
+  4 /  Complete       /                          /    OK
+ 
+--작업지시
+ OrderNo    작업일자  순서  품번  계획수량  LH  RH
+210930001 / 20210930 / 1 / A-ALC /   20   / 20 / 20
+210930002 / 20210930 / 2 / B-ALC /   5    / 2 / 1
+210930003 / 20210930 / 3 / A-ALC /   20   / O / O
+
+LH/RH 는 작업 완료 수량
+
+
+========== 생산계획 ==========
+--Master - 차량에 대한 계획
+작업지시NO   품번    계획량
+ 210930001 / A-ALC /   5
+* 상태값 추가 (계획중, 투입중, 생산완료)
+계획중 - 생산량 x면 계획중
+투입중 - 
+생산완료 - 계획량 = 생산량
+
+--Detail - 석별 계획
+ 작업지시NO / 품번 /   / 순번 LOT NO
+210930001 / A-ALC / LH /  1 / 210930001 + LH + 1
+210930001 / A-ALC / RH /  1 / 210930001 + RH + 1
+210930001 / A-ALC / LH /  2 / 210930001 + LH + 2
+210930001 / A-ALC / RH /  2 / 210930001 + RH + 2
+    "     /   "   /  " /  3 /
+    "     /   "   /  " /  3 /
+// 기준정보 A-ALC, B-ALC, C-ALC.. 여러개 만들기
+
+
+여담
+USB Type - 포커스가 가 있어야 데이터가 들어옴
+Serial Type - 다른작업을 해도 특정 위치에 데이터 넣을 수 있음
+*/
+#endregion
