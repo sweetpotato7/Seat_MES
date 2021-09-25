@@ -123,9 +123,9 @@ namespace MESProject
                         Bom.Do_Search();
                         break;
                     case "SPEC_MST":
-
                         break;
                     case "USER_ADMIN":
+                        User_Admin.Do_Search();
                         break;
                     case "Plan_Mst":
                         break;
@@ -156,6 +156,7 @@ namespace MESProject
                     case "SPEC_MST":
                         break;
                     case "USER_ADMIN":
+                        User_Admin.Do_Add();
                         break;
                     case "Plan_Mst":
                         break;
@@ -186,6 +187,7 @@ namespace MESProject
                     case "SPEC_MST":
                         break;
                     case "USER_ADMIN":
+                        User_Admin.Do_Delete();
                         break;
                     case "Plan_Mst":
                         break;
@@ -216,6 +218,7 @@ namespace MESProject
                     case "SPEC_MST":
                         break;
                     case "USER_ADMIN":
+                        User_Admin.Do_Save();
                         break;
                     case "Plan_Mst":
                         break;
