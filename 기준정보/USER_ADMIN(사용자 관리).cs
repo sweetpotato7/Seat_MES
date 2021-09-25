@@ -22,8 +22,28 @@ namespace MESProject.기준정보
         public USER_ADMIN()
         {
             InitializeComponent();
-
+            //this.dataGridView1.RowPostPaint -= RowPostPaint;
+            //this.dataGridView1.RowPostPaint += RowPostPaint;
         }
+
+        //데이터그리드뷰에 연번 표시
+        //private void RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        //{
+        //    var grid = sender as DataGridView;
+        //    var rowIdx = (e.RowIndex + 1).ToString();
+
+        //    StringFormat rightFormat = new StringFormat();
+            
+        //    Font font = new Font("맑은고딕", 11, FontStyle.Regular);
+        //    {
+        //        rightFormat.Alignment = StringAlignment.Center;
+        //        rightFormat.LineAlignment = StringAlignment.Center;
+
+        //        var headerBounds = new Rectangle( e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth = 80, e.RowBounds.Height); 
+        //        //숫자를 쓴다
+        //        e.Graphics.DrawString(rowIdx, font, SystemBrushes.ControlText, headerBounds, rightFormat);
+        //    }
+        //}
 
         private void USER_ADMIN_Load(object sender, EventArgs e)
         {
@@ -41,14 +61,15 @@ namespace MESProject.기준정보
             string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE", "PLANTCODE", "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
             string[] HeaderText = new string[] { "아이디", "이름", "비밀번호", "작업그룹", "공장코드", "전화번호", "입사일", "퇴사일", "사용여부", "등록일시", "등록자", "수정일시", "수정자" };
             float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
-            Font StyleFont = new Font("맑은고딕", 10, FontStyle.Bold);
-            Font BodyStyleFont = new Font("맑은고딕", 10, FontStyle.Regular);
+            Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
 
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
-            dataGridView1.ReadOnly = false;
+            dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.RowHeadersVisible = false;
 
             //데이터베이스 오픈
             SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
@@ -72,13 +93,17 @@ namespace MESProject.기준정보
             SqlCommand cmd = sql.con.CreateCommand();
 
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM TB_USER_INFO WHERE WORKERID LIKE " + "'%" + txtWorkerName.Text + "%'";
+            cmd.CommandText = "SELECT * FROM TB_USER_INFO WHERE WORKERID LIKE " + "'%" + txtWorkerName.Text + "%'" + 
+                              " AND WORKERNAME LIKE " + "'%" + txtName.Text + "%'";
             cmd.ExecuteNonQuery();
 
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+
+            txtWorkerName.Text = "";
+            txtName.Text = "";
 
             textBox1.Text = "";
             textBox2.Text = "";
@@ -158,19 +183,13 @@ namespace MESProject.기준정보
                                "BANCODE = " + "'" + comboBox1.Text + "'" + "," +
                                "PLANTCODE = " + "'" + comboBox2.Text + "'" + "," +
                                "PHONENO = " + "'" + textBox6.Text + "'" + "," +
-
                                "INDATE = " + "'" + dateTimePicker1.Text + "'" + "," +
                                "OUTDATE = " + "'" + dateTimePicker2.Text + "'" + "," +
-
                                "USEFLAG = " + "'" + comboBox3.Text + "'" + "," +
-
                                "CREATE_DT = " + "'" + dateTimePicker3.Text + "'" + "," +
-
                                "CREATE_USERID = " + "'" + textBox11.Text + "'" + "," +
-
                                "MODIFY_DT = " + "'" + dateTimePicker4.Text + "'" + "," +
                                "MODIFY_USERID = " + "'" + textBox13.Text + "'" +
-
                                "WHERE WORKERID = " + "'" + workerid + "'" + "";
 
             cmd.ExecuteNonQuery();
@@ -178,7 +197,7 @@ namespace MESProject.기준정보
             MessageBox.Show("수정되었습니다");
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i;
             i = dataGridView1.SelectedCells[0].RowIndex;
@@ -197,7 +216,5 @@ namespace MESProject.기준정보
             dateTimePicker4.Text = dataGridView1.Rows[i].Cells[11].Value.ToString();
             textBox13.Text = dataGridView1.Rows[i].Cells[12].Value.ToString();
         }
-
-
     }
 }
