@@ -30,13 +30,13 @@ namespace MESProject.기준정보
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cboSearch = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboPlantCode = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.cboSearch = new System.Windows.Forms.ComboBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,6 +59,22 @@ namespace MESProject.기준정보
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(969, 68);
             this.panel2.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(280, 9);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 21);
+            this.txtSearch.TabIndex = 13;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            // 
+            // cboSearch
+            // 
+            this.cboSearch.FormattingEnabled = true;
+            this.cboSearch.Location = new System.Drawing.Point(173, 10);
+            this.cboSearch.Name = "cboSearch";
+            this.cboSearch.Size = new System.Drawing.Size(100, 20);
+            this.cboSearch.TabIndex = 12;
             // 
             // label1
             // 
@@ -121,21 +137,6 @@ namespace MESProject.기준정보
             this.dataGridView2.RowTemplate.Height = 27;
             this.dataGridView2.Size = new System.Drawing.Size(740, 438);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // cboSearch
-            // 
-            this.cboSearch.FormattingEnabled = true;
-            this.cboSearch.Location = new System.Drawing.Point(173, 10);
-            this.cboSearch.Name = "cboSearch";
-            this.cboSearch.Size = new System.Drawing.Size(100, 20);
-            this.cboSearch.TabIndex = 12;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(280, 9);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(100, 21);
-            this.txtSearch.TabIndex = 13;
             // 
             // CODE_MST
             // 
