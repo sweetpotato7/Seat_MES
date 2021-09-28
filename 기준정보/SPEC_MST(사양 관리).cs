@@ -132,13 +132,13 @@ namespace MESProject.기준정보
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update TB_SPEC SET " +
-                              "SPEC1 = " + "'" + cmbLocal.Text + "'" + "," +
-                              "SPEC2 = " + "'" + cmbTrack.Text + "'" + "," +
-                              "SPEC3 = " + "'" + cmbFormpad.Text + "'" + "," +
-                              "SPEC4 = " + "'" + cmbHeadrestrian.Text + "'" + "," +
-                              "SPEC5 = " + "'" + cmbCovering.Text + "'" + "," +
-                              "SPEC6 = " + "'" + cmbSAB.Text + "'" +
-                              "where CARCODE = " + "'" + carcode + "'" + "";
+                              "SPEC1 = '" + cmbLocal.Text        + "', " +
+                              "SPEC2 = '" + cmbTrack.Text        + "', " +
+                              "SPEC3 = '" + cmbFormpad.Text      + "', " +
+                              "SPEC4 = '" + cmbHeadrestrian.Text + "', " +
+                              "SPEC5 = '" + cmbCovering.Text     + "', " +
+                              "SPEC6 = '" + cmbSAB.Text          + "'"   +
+                              "where CARCODE = '" + carcode      + "'";
             cmd.ExecuteNonQuery();
 
             cmb_ALC.Text = "";
@@ -158,9 +158,9 @@ namespace MESProject.기준정보
         #region ========== 콤보박스
         private void CboSet()
         {
-            func.CboLoad(cmb_S_ALC,       "TB_SPEC", "ITEMCODE", false);
-            func.CboLoad(cmb_CarCode,     "TB_SPEC", "CARCODE",  true);
-            func.CboLoad(cmb_ALC,         "TB_SPEC", "ITEMCODE", false);
+            func.CboLoad(cmb_S_ALC,       "TB_SPEC",     "ITEMCODE", false);
+            func.CboLoad(cmb_CarCode,     "TB_SPEC",     "CARCODE",  true );
+            func.CboLoad(cmb_ALC,         "TB_SPEC",     "ITEMCODE", false);
             func.CboLoad(cmbLocal,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_01");
             func.CboLoad(cmbTrack,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_02");
             func.CboLoad(cmbFormpad,      "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
