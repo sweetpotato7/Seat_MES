@@ -16,8 +16,12 @@ namespace MESProject.기준정보
         /// <summary>
         /// 조회 추가 수정 삭제 버튼 통합함
         /// 전체조회 = 조회시 txt칸 비움 -> txt칸 비었을 시 전체조회
+        /// 
+        /// 추가작업
+        /// - 품번마스터 만든후 ITEMCODE 불러오기
+        /// - SPEC: DB에는 코드로 표시, 그리드에는 O, X 또는 가죽 등으로 표시
         /// </summary>
-        
+
         Function func = new Function();
         SQL sql = new SQL();
         DataTable dt;
@@ -165,39 +169,7 @@ namespace MESProject.기준정보
             func.CboLoad(cmbSAB,          "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
         }
         
-        public void fill_cmb_ALC()
-        {
-
-            cmb_S_ALC.Items.Clear();
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                cmb_S_ALC.Items.Add(dr["ITEMCODE"].ToString());
-            }
-        }
-
-        public void fill_cmb_carcode()
-        {
-
-            cmb_CarCode.Items.Clear();
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                cmb_CarCode.Items.Add(dr["CARCODE"].ToString());
-            }
-        }
+        
         #endregion
 
         // 자동완성
@@ -218,7 +190,41 @@ namespace MESProject.기준정보
 
     }
 
-    // 추가작업
-    // - 품번마스터 만든후 ITEMCODE 불러오기
-    // - SPEC: DB에는 코드로 표시, 그리드에는 O,X 또는 가죽 등으로 표시
+    
 }
+
+#region ========== 사용 안함
+//public void fill_cmb_ALC()
+//{
+
+//    cmb_S_ALC.Items.Clear();
+//    SqlCommand cmd = sql.con.CreateCommand();
+//    cmd.CommandType = CommandType.Text;
+//    cmd.CommandText = "select * from TB_SPEC";
+//    cmd.ExecuteNonQuery();
+//    DataTable dt = new DataTable();
+//    SqlDataAdapter da = new SqlDataAdapter(cmd);
+//    da.Fill(dt);
+//    foreach (DataRow dr in dt.Rows)
+//    {
+//        cmb_S_ALC.Items.Add(dr["ITEMCODE"].ToString());
+//    }
+//}
+
+//public void fill_cmb_carcode()
+//{
+
+//    cmb_CarCode.Items.Clear();
+//    SqlCommand cmd = sql.con.CreateCommand();
+//    cmd.CommandType = CommandType.Text;
+//    cmd.CommandText = "select * from TB_SPEC";
+//    cmd.ExecuteNonQuery();
+//    DataTable dt = new DataTable();
+//    SqlDataAdapter da = new SqlDataAdapter(cmd);
+//    da.Fill(dt);
+//    foreach (DataRow dr in dt.Rows)
+//    {
+//        cmb_CarCode.Items.Add(dr["CARCODE"].ToString());
+//    }
+//}
+#endregion
