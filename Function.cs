@@ -116,8 +116,9 @@ namespace MESProject
         /// <param name="DGV"></param>
         /// <param name="Query"></param>
         /// <returns></returns>
-        public DataGridView GetDataTable2(DataGridView DGV, string Query)
+        public DataTable GetDataTable2(string Query)
         {
+            dt = new DataTable();
             try
             {
                 sql.con.Open();
@@ -126,9 +127,7 @@ namespace MESProject
                 cmd.CommandText = Query;
                 cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
                 da.Fill(dt);
-                DGV.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -138,8 +137,7 @@ namespace MESProject
             {
                 sql.con.Close();
             }
-            return DGV;
-            
+            return dt;
         }
     }
 }
