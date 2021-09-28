@@ -16,20 +16,25 @@ namespace MESProject
         DataTable dt;
 
         /// <summary>
-        /// 테이블의 전체 열 내용을 가져온다
+        /// 테이블의 열 리스트를 가져온다
         /// <para>ex) TB_ITEM_MST의 ITEMCODE</para>
         /// </summary>
         /// <param name="Cbobox">설정할 콤보박스</param>
         /// <param name="Table">찾을 테이블 - From</param>
         /// <param name="Column">가져올 열이름 - Select</param>
         /// <param name="DropDownList">수정불가 여부</param>
-        public void CboLoad(ComboBox Cbobox, string Table, string Column, bool DropDownList) // 품목 로드
+        public void CboLoad(ComboBox Cbobox, string Table, string Column, bool DropDownList)
         {
             Cbobox.Items.Clear();
-            Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
             if (DropDownList)
+            {
                 Cbobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            else
+            {
+                Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
 
             string strqry = "SELECT DISTINCT " + Column + " FROM " + Table;
             try
@@ -51,7 +56,7 @@ namespace MESProject
 
         /// <summary>
         /// 공통코드의 특정 부코드를 가져온다 
-        /// <para>ex) TB_CODE_MST의 MINORCODE</para>
+        /// <para>ex) SELECT 'Column' FROM 'Table' WHERE 'Option1' = 'Option2'</para>
         /// </summary>
         /// <param name="Cbobox">설정할 콤보박스</param>
         /// <param name="Table">찾을 테이블 - From</param>
@@ -62,10 +67,15 @@ namespace MESProject
         public void CboLoad(ComboBox Cbobox, string Table, string Column, bool DropDownList, string Option1, string Option2)// 공통코드 로드
         {
             Cbobox.Items.Clear();
-            Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
             if (DropDownList)
+            {
                 Cbobox.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            else
+            {
+                Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
 
             string strqry = "SELECT " + Column + " FROM " + Table
                          + " WHERE " + Option1 + " = '" + Option2 + "'"
@@ -98,6 +108,38 @@ namespace MESProject
             dt = new DataTable();
             da.Fill(dt);
             return dt;
+        }
+
+        /// <summary>
+        /// CreateCommand 이용한 해당 쿼리문 DT 반환
+        /// </summary>
+        /// <param name="DGV"></param>
+        /// <param name="Query"></param>
+        /// <returns></returns>
+        public DataGridView GetDataTable2(DataGridView DGV, string Query)
+        {
+            try
+            {
+                sql.con.Open();
+                SqlCommand cmd = sql.con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = Query;
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                DGV.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sql.con.Close();
+            }
+            return DGV;
+            
         }
     }
 }
