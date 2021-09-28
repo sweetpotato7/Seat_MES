@@ -16,6 +16,7 @@ namespace MESProject.기준정보
     {
         SQL sql = new SQL();
         Function func = new Function();
+        DataTable dt;
         string strqry = string.Empty;
         public CODE_MST()
         {
@@ -68,6 +69,7 @@ namespace MESProject.기준정보
         {
             try
             {
+                dt = new DataTable();
                 if (txtSearch.Text != "")
                 {
                     switch (cboSearch.Text) // cboSearch에 맞는 쿼리문 생성
@@ -75,19 +77,22 @@ namespace MESProject.기준정보
                         case "주코드":
                             strqry = "SELECT DISTINCT MAJORCODE , RELCODE5 FROM TB_CODE_MST "
                                    + "WHERE MAJORCODE LIKE '%" + txtSearch.Text + "%'";
-                            func.GetDataTable2(dataGridView1, strqry);
+                            dt = func.GetDataTable2(strqry);
+                            dataGridView1.DataSource = dt;
                             break;
                         case "부코드":
                             strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST "
                                    + "WHERE MINORCODE LIKE '%" + txtSearch.Text + "%'"
                                    + "ORDER BY DISPLAYNO";
-                            func.GetDataTable2(dataGridView2, strqry);
+                            dt = func.GetDataTable2(strqry);
+                            dataGridView2.DataSource = dt;
                             break;
                         case "코드명": // 코드명은 부코드 이름?
                             strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST "
                                    + "WHERE CODENAME LIKE '%"  + txtSearch.Text + "%'"
                                    + "ORDER BY DISPLAYNO";
-                            func.GetDataTable2(dataGridView2, strqry);
+                            dt = func.GetDataTable2(strqry);
+                            dataGridView2.DataSource = dt;
                             break;
                     }
                     txtSearch.Text = "";
@@ -95,9 +100,11 @@ namespace MESProject.기준정보
                 else
                 {
                     strqry = "SELECT DISTINCT MAJORCODE, RELCODE5 from TB_CODE_MST";
-                    func.GetDataTable2(dataGridView1, strqry);
+                    dt = func.GetDataTable2(strqry);
+                    dataGridView1.DataSource = dt;
                     strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST";
-                    func.GetDataTable2(dataGridView2, strqry);
+                    dt = func.GetDataTable2(strqry);
+                    dataGridView2.DataSource = dt;
                 }
             }
             catch (Exception ex)
@@ -116,6 +123,7 @@ namespace MESProject.기준정보
         {
             try
             {
+                dt = new DataTable();
                 string majorcode;
                 majorcode = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
 
@@ -123,8 +131,9 @@ namespace MESProject.기준정보
                         + "WHERE MAJORCODE = '" + majorcode + "' "
                         + "ORDER BY DISPLAYNO";
 
-                func.GetDataTable2(dataGridView2, strqry);
-            
+                dt = func.GetDataTable2(strqry);
+                dataGridView2.DataSource = dt;
+
                 cboPlantCode.SelectedItem = "D001";
             }
             catch (Exception ex)
