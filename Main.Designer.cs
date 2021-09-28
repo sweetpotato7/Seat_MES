@@ -53,7 +53,7 @@ namespace MESProject
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlStatus = new System.Windows.Forms.TableLayoutPanel();
-            this.lblTimeNow = new System.Windows.Forms.Label();
+            this.lblTimeUse = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -329,7 +329,7 @@ namespace MESProject
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.pnlStatus.Controls.Add(this.lblTimeNow, 5, 0);
+            this.pnlStatus.Controls.Add(this.lblTimeUse, 5, 0);
             this.pnlStatus.Controls.Add(this.lblId, 3, 0);
             this.pnlStatus.Controls.Add(this.label4, 2, 0);
             this.pnlStatus.Controls.Add(this.label3, 1, 0);
@@ -343,15 +343,15 @@ namespace MESProject
             this.pnlStatus.Size = new System.Drawing.Size(963, 17);
             this.pnlStatus.TabIndex = 2;
             // 
-            // lblTimeNow
+            // lblTimeUse
             // 
-            this.lblTimeNow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTimeNow.AutoSize = true;
-            this.lblTimeNow.Location = new System.Drawing.Point(766, 2);
-            this.lblTimeNow.Name = "lblTimeNow";
-            this.lblTimeNow.Size = new System.Drawing.Size(194, 12);
-            this.lblTimeNow.TabIndex = 5;
-            this.lblTimeNow.Text = "label7";
+            this.lblTimeUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTimeUse.AutoSize = true;
+            this.lblTimeUse.Location = new System.Drawing.Point(766, 2);
+            this.lblTimeUse.Name = "lblTimeUse";
+            this.lblTimeUse.Size = new System.Drawing.Size(194, 12);
+            this.lblTimeUse.TabIndex = 5;
+            this.lblTimeUse.Text = "label7";
             // 
             // lblId
             // 
@@ -494,7 +494,7 @@ namespace MESProject
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TableLayoutPanel pnlStatus;
-        private System.Windows.Forms.Label lblTimeNow;
+        private System.Windows.Forms.Label lblTimeUse;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

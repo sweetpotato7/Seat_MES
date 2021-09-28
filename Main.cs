@@ -35,6 +35,7 @@ namespace MESProject
             btnImageLoad();
             timer();
             lblStatemsg.Text = $"{ID}님 접속 중";
+            TimeUse(); // C# 소코반 코드 참고 사용시간 체크 추가하기 label7?
         }
 
         #region ========== 탭컨트롤
@@ -343,6 +344,10 @@ namespace MESProject
             txtDT.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
         
+        private void TimeUse()
+        {
+            lblTimeUse.Text = "사용시간";
+        }
         #endregion
 
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
