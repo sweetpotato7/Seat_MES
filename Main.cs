@@ -149,6 +149,7 @@ namespace MESProject
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "CODE_MST":
+                        Code_Mst.Do_Insert();
                         break;
                     case "ITEM_MST":
                         break;
@@ -181,11 +182,12 @@ namespace MESProject
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "CODE_MST":
+                        Code_Mst.Do_Delete();
                         break;
                     case "ITEM_MST":
                         break;
                     case "BOM":
-                        Bom.DO_DELETE();
+                        Bom.DO_Delete();
                         break;
                     case "SPEC_MST":
                         Spec_Mst.Do_Delete();
@@ -322,11 +324,11 @@ namespace MESProject
             // Row Header
             Dgv.RowHeadersVisible = false;
 
-            // Row
+            // Row 행 높이 이상해서 주석처리
             DataGridViewRow row = Dgv.RowTemplate;
-            decimal calRowHeight = (Dgv.Height - Dgv.ColumnHeadersHeight) / MaxRow;
-            int rowHeight = (int)Math.Truncate(calRowHeight);
-            row.Height = rowHeight;
+            //decimal calRowHeight = (Dgv.Height - Dgv.ColumnHeadersHeight) / MaxRow;
+            //int rowHeight = (int)Math.Truncate(calRowHeight);
+            //row.Height = rowHeight; 
             row.MinimumHeight = 20;
         }
         #endregion
