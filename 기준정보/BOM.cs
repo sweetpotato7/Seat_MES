@@ -117,7 +117,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_DELETE() // 삭제
+        public void DO_Delete() // 삭제
         {
             strqry = "DELETE FROM TB_BOM "
                     + "WHERE PLANTCODE = '" + dataGridView2.SelectedCells[2].Value.ToString() + "'"
