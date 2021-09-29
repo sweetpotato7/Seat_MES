@@ -45,11 +45,11 @@ namespace MESProject.기준정보
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.btnUpload = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtURL = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -201,7 +201,7 @@ namespace MESProject.기준정보
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(726, 532);
+            this.panel2.Size = new System.Drawing.Size(751, 532);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView1
@@ -211,75 +211,75 @@ namespace MESProject.기준정보
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(726, 532);
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(751, 532);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnBrowse);
-            this.panel3.Controls.Add(this.btnUpload);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.txtURL);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(732, 100);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(751, 100);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(375, 532);
+            this.panel3.Size = new System.Drawing.Size(356, 289);
             this.panel3.TabIndex = 2;
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Location = new System.Drawing.Point(83, 408);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(99, 52);
-            this.btnBrowse.TabIndex = 4;
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.Location = new System.Drawing.Point(216, 408);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(99, 52);
-            this.btnUpload.TabIndex = 3;
-            this.btnUpload.Text = "Upload";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 351);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 15);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "URL:";
-            // 
-            // txtURL
-            // 
-            this.txtURL.Location = new System.Drawing.Point(93, 348);
-            this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(257, 25);
-            this.txtURL.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(375, 301);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.Size = new System.Drawing.Size(356, 289);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(766, 435);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 15);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "URL";
+            // 
+            // txtURL
+            // 
+            this.txtURL.Location = new System.Drawing.Point(824, 435);
+            this.txtURL.Name = "txtURL";
+            this.txtURL.Size = new System.Drawing.Size(251, 25);
+            this.txtURL.TabIndex = 4;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(792, 513);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(97, 41);
+            this.btnBrowse.TabIndex = 5;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click_1);
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(962, 513);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(104, 41);
+            this.btnUpload.TabIndex = 5;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click_1);
             // 
             // ITEM_MST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1107, 632);
+            this.Controls.Add(this.btnUpload);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.txtURL);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -293,9 +293,9 @@ namespace MESProject.기준정보
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -311,16 +311,16 @@ namespace MESProject.기준정보
         private System.Windows.Forms.ComboBox cboPlantCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Del;
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.ComboBox cboUnit;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtURL;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Button btnUpload;
     }
 }

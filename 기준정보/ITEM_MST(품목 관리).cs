@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.IO;
 
 namespace MESProject.기준정보
 {
     public partial class ITEM_MST : Form
     {
         SQL sql = new SQL();
-        //string imageUrl = null;
+        string imageUrl = null;
+        //public byte[] Image { get; set; }
 
         public ITEM_MST()
         {
@@ -45,23 +46,6 @@ namespace MESProject.기준정보
                 sql.con.Close();
             }
             sql.con.Open();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) // 셀 클릭 시 자동완성
-        {
-            int i;
-            i = dataGridView1.SelectedCells[0].RowIndex;
-
-            cboPlantCode.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-            cboItemCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            txtItemName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            cboItemType.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-
-            using (OpenFileDialog ofd = new OpenFileDialog())
-                if (dataGridView1.Rows[i].Cells[6].Value != "")
-                {
-                    pictureBox1.Image = Image.FromFile(ofd.FileName);
-                }
         }
 
         #region 버튼기능
@@ -134,18 +118,51 @@ namespace MESProject.기준정보
         }
         #endregion
 
-        private void btnUpload_Click(object sender, EventArgs e) //이미지 업로드
+        #region 이미지처리
+        // 바이트 단위로 저장된 이미지를 다시 이미지로 만드는 함수
+        private Image ConvertByteToImage(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+        // 이미지를 바이트 단위로 저장하는 함수
+
+        private byte[] ConvertImageToByte(Image img)
+        {
+            Image temp = new Bitmap(img); // 중요
+            using (MemoryStream ms = new MemoryStream())
+            {
+                temp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+        private void btnBrowse_Click_1(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    imageUrl = ofd.FileName;
+                    txtURL.Text = imageUrl;
+                    pictureBox1.Image = Image.FromFile(ofd.FileName);
+                }
+            }
+        }
+
+        private void btnUpload_Click_1(object sender, EventArgs e)
         {
             Image img = pictureBox1.Image;
             byte[] arr;
             ImageConverter converter = new ImageConverter();
             arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
-            
+
             string itemcode;
             int i;
 
             i = dataGridView1.SelectedCells[0].RowIndex; // 현재 선택된 행 번호
-            itemcode = dataGridView1.Rows[i].Cells[1].Value.ToString(); 
+            itemcode = dataGridView1.Rows[i].Cells[1].Value.ToString();
 
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -157,19 +174,31 @@ namespace MESProject.기준정보
             Do_Search();
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            using(OpenFileDialog ofd = new OpenFileDialog())
+            int i;
+            i = dataGridView1.SelectedCells[0].RowIndex;
+
+            cboPlantCode.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            cboItemCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            txtItemName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            cboItemType.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+            //dataGridView1.Rows[i].Cells[6].Value
+
+            DataTable dt = dataGridView1.DataSource as DataTable;
+            if (dataGridView1.Rows[i].Cells[6].Value.ToString() != "")
             {
-                if(ofd.ShowDialog() == DialogResult.OK)
-                {
-                    //imageUrl = ofd.FileName;
-                    pictureBox1.Image = Image.FromFile(ofd.FileName);
-                }
+                DataRow row = dt.Rows[e.RowIndex];
+                pictureBox1.Image = ConvertByteToImage((byte[])row["IMAGE"]);
+            }
+            else
+            {
+                pictureBox1.Image = null;
             }
         }
+        #endregion
     }
 }
 
 // 검색조건 코드 어떻게?
-// 셀클릭시 이미지 출력되게 만들기
+// 셀헤드 클릭 했을때도 자동완성 and 이미지 출력 
