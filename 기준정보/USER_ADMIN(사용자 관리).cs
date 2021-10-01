@@ -20,28 +20,8 @@ namespace MESProject.기준정보
         public USER_ADMIN()
         {
             InitializeComponent();
-            //this.dataGridView1.RowPostPaint -= RowPostPaint;
-            //this.dataGridView1.RowPostPaint += RowPostPaint;
-        }
-
-        //데이터그리드뷰에 연번 표시
-        //private void RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        //{
-        //    var grid = sender as DataGridView;
-        //    var rowIdx = (e.RowIndex + 1).ToString();
-
-        //    StringFormat rightFormat = new StringFormat();
             
-        //    Font font = new Font("맑은고딕", 11, FontStyle.Regular);
-        //    {
-        //        rightFormat.Alignment = StringAlignment.Center;
-        //        rightFormat.LineAlignment = StringAlignment.Center;
-
-        //        var headerBounds = new Rectangle( e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth = 80, e.RowBounds.Height); 
-        //        //숫자를 쓴다
-        //        e.Graphics.DrawString(rowIdx, font, SystemBrushes.ControlText, headerBounds, rightFormat);
-        //    }
-        //}
+        }
 
         private void USER_ADMIN_Load(object sender, EventArgs e)
         {
@@ -69,6 +49,7 @@ namespace MESProject.기준정보
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Columns[2].Visible = false;
 
             //데이터베이스 오픈
             SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
@@ -82,13 +63,28 @@ namespace MESProject.기준정보
             comboBox1.SelectedIndex    = comboBox1.Items.IndexOf("조립반");
             comboBox2.SelectedIndex    = comboBox2.Items.IndexOf("D100");
             comboBox3.SelectedIndex    = comboBox3.Items.IndexOf("Y");
+            dateTimePicker1.Value      = DateTime.Today;
+            dateTimePicker2.Value      = DateTime.Today;
+            dateTimePicker3.Value      = DateTime.Today;
+            dateTimePicker4.Value      = DateTime.Today;
         }
 
+        //전화번호에 숫자만 입력
+        private void maskedTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToInt32(Keys.Back))
+            {
+
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
 
 
         public void Do_Search()
         {
-            //배고팡
             SqlCommand cmd = sql.con.CreateCommand();
 
             cmd.CommandType = CommandType.Text;
@@ -101,6 +97,7 @@ namespace MESProject.기준정보
             da.Fill(dt);
             dataGridView1.DataSource = dt;
 
+
             txtWorkerName.Text = "";
             txtName.Text   = "";
 
@@ -109,58 +106,84 @@ namespace MESProject.기준정보
             textBox3.Text  = "";
             comboBox1.Text = "조립반";
             comboBox2.Text = "D100";
-            textBox6.Text  = "";
+            maskedTextBox1.Text  = "";
+            dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.Today;
             comboBox3.Text = "Y";
+            dateTimePicker3.Value = DateTime.Today;
             textBox11.Text = "";
+            dateTimePicker4.Value = DateTime.Today;
             textBox13.Text = "";
+
         }
 
 
         public void Do_Add()
         {
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_DT, CREATE_USERID, MODIFY_DT, MODIFY_USERID) " +
-                              "values ( '" + textBox1.Text        + "',"
-                                    + " '" + textBox2.Text        + "',"
-                                    + " '" + textBox3.Text        + "',"
-                                    + " '" + comboBox1.Text       + "',"
-                                    + " '" + comboBox2.Text       + "',"
-                                    + " '" + textBox6.Text        + "',"
-                                    + " '" + dateTimePicker1.Text + "',"
-                                    + " '" + dateTimePicker2.Text + "',"
-                                    + " '" + comboBox3.Text       + "',"
-                                    + " '" + dateTimePicker3.Text + "',"
-                                    + " '" + textBox11.Text       + "',"
-                                    + " '" + dateTimePicker4.Text + "',"
-                                    + " '" + textBox13.Text       + "')";
+            try
+            {
+                if (textBox1.Text == "")
+                {
+                    MessageBox.Show("아이디를 입력하세요");
+                    return;
+                }
 
-            cmd.ExecuteNonQuery();
-            Do_Search();
-            MessageBox.Show("추가되었습니다");
+                SqlCommand cmd = sql.con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_DT, CREATE_USERID, MODIFY_DT, MODIFY_USERID) " +
+                                  "values ( '" + textBox1.Text + "',"
+                                        + " '" + textBox2.Text + "',"
+                                        + " '" + textBox3.Text + "',"
+                                        + " '" + comboBox1.Text + "',"
+                                        + " '" + comboBox2.Text + "',"
+                                        + " '" + maskedTextBox1.Text + "',"
+                                        + " '" + dateTimePicker1.Text + "',"
+                                        + " '" + dateTimePicker2.Text + "',"
+                                        + " '" + comboBox3.Text + "',"
+                                        + " '" + dateTimePicker3.Text + "',"
+                                        + " '" + textBox11.Text + "',"
+                                        + " '" + dateTimePicker4.Text + "',"
+                                        + " '" + textBox13.Text + "')";
+
+                cmd.ExecuteNonQuery();
+                Do_Search();
+                MessageBox.Show("추가되었습니다");
+            }
+            catch(Exception e)
+            {
+
+            }
+            
         }
-
 
         public void Do_Delete()
         {
             if (textBox1.Text == "")
             {
-                MessageBox.Show("데이터를 선택하세요");
+                //MessageBox.Show("데이터를 선택하세요");
                 return;
             }
             else
             {
-                string workerID;
-                workerID = dataGridView1.SelectedCells[0].Value.ToString();
+                DialogResult result = MessageBox.Show("삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                {
+                    string workerID;
+                    workerID = dataGridView1.SelectedCells[0].Value.ToString();
 
-                SqlCommand cmd = sql.con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM TB_USER_INFO WHERE WORKERID = " + "'" + workerID + "'" + "";
-                cmd.ExecuteNonQuery();
+                    SqlCommand cmd = sql.con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "DELETE FROM TB_USER_INFO WHERE WORKERID = " + "'" + workerID + "'" + "";
+                    cmd.ExecuteNonQuery();
 
-                Do_Search();
+                    Do_Search();
 
-                MessageBox.Show("삭제되었습니다");
+                    MessageBox.Show("삭제되었습니다");
+                }
+                else if(result == DialogResult.No)
+                {
+                    return;
+                }
             }
         }
 
@@ -181,7 +204,7 @@ namespace MESProject.기준정보
                                "PASSWORD = '"       + textBox3.Text        + "', " +
                                "BANCODE = '"        + comboBox1.Text       + "', " +
                                "PLANTCODE = '"      + comboBox2.Text       + "', " +
-                               "PHONENO = '"        + textBox6.Text        + "', " +
+                               "PHONENO = '"        + maskedTextBox1.Text  + "', " +
                                "INDATE = '"         + dateTimePicker1.Text + "', " +
                                "OUTDATE = '"        + dateTimePicker2.Text + "', " +
                                "USEFLAG = '"        + comboBox3.Text       + "', " +
@@ -196,24 +219,24 @@ namespace MESProject.기준정보
             MessageBox.Show("수정되었습니다");
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int i;
             i = dataGridView1.SelectedCells[0].RowIndex;
 
-            textBox1.Text        = dataGridView1.Rows[i].Cells[0].Value.ToString();
-            textBox2.Text        = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            textBox3.Text        = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            comboBox1.Text       = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            comboBox2.Text       = dataGridView1.Rows[i].Cells[4].Value.ToString();
-            textBox6.Text        = dataGridView1.Rows[i].Cells[5].Value.ToString();
+            textBox1.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            textBox2.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            textBox3.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            comboBox1.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+            comboBox2.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            maskedTextBox1.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
             dateTimePicker1.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();
             dateTimePicker2.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();
-            comboBox3.Text       = dataGridView1.Rows[i].Cells[8].Value.ToString();
+            comboBox3.Text = dataGridView1.Rows[i].Cells[8].Value.ToString();
             dateTimePicker3.Text = dataGridView1.Rows[i].Cells[9].Value.ToString();
-            textBox11.Text       = dataGridView1.Rows[i].Cells[10].Value.ToString();
+            textBox11.Text = dataGridView1.Rows[i].Cells[10].Value.ToString();
             dateTimePicker4.Text = dataGridView1.Rows[i].Cells[11].Value.ToString();
-            textBox13.Text       = dataGridView1.Rows[i].Cells[12].Value.ToString();
+            textBox13.Text = dataGridView1.Rows[i].Cells[12].Value.ToString();
         }
     }
 }
