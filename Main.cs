@@ -152,6 +152,7 @@ namespace MESProject
                         Code_Mst.Do_Insert();
                         break;
                     case "ITEM_MST":
+                        Item_Mst.Do_Add();
                         break;
                     case "BOM":
                         Bom.DO_INSERT();
@@ -185,6 +186,7 @@ namespace MESProject
                         Code_Mst.Do_Delete();
                         break;
                     case "ITEM_MST":
+                        Item_Mst.Do_Delete();
                         break;
                     case "BOM":
                         Bom.DO_Delete();
@@ -218,6 +220,7 @@ namespace MESProject
                         Code_Mst.Do_Save();
                         break;
                     case "ITEM_MST":
+                        Item_Mst.Do_Save();
                         break;
                     case "BOM":
                         Bom.DO_SAVE();

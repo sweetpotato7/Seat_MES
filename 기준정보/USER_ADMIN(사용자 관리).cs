@@ -54,6 +54,7 @@ namespace MESProject.기준정보
             DGVLoad();
         }
 
+
         private void DGVLoad()
         {
             string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE", "PLANTCODE", "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };

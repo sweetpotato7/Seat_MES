@@ -20,6 +20,7 @@ namespace MESProject.기준정보
         /// 추가작업
         /// - 품번마스터 만든후 ITEMCODE 불러오기
         /// - SPEC: DB에는 코드로 표시, 그리드에는 O, X 또는 가죽 등으로 표시
+        /// 셀클릭시 선택셀 표시
         /// </summary>
 
         Function func = new Function();
@@ -32,6 +33,24 @@ namespace MESProject.기준정보
             InitializeComponent();
         }
 
+        #region 그리드세팅
+        private void DGVLoad()
+        {
+            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SPEC1", "SPEC2", "SPEC3", "SPEC4", "SPEC5", "SPEC6", "USEFLAG", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
+            string[] HeaderText = new string[] { "공장코드", "품번", "차종", "지역", "트랙", "폼패드", "헤드레스트", "커버링", "SAB", "사용여부", "등록일시", "등록자", "수정일시", "수정자" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
+
+
+            //스타일 지정 밎 그리드에 데이터 바인드
+            Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.RowHeadersVisible = false;
+        }
+        #endregion
+
         public void SPEC_MST_Load(object sender, EventArgs e)
         {
             if (sql.con.State == ConnectionState.Open)
@@ -40,6 +59,7 @@ namespace MESProject.기준정보
             }
             sql.con.Open();
             CboSet();
+            DGVLoad();
 
             //fill_cmb_ALC();
             //fill_cmb_carcode();
@@ -123,11 +143,11 @@ namespace MESProject.기준정보
 
         public void Do_Save()
         {
-            string carcode;
+            string itemcode;
             int i;
 
             i = dataGridView1.SelectedCells[0].RowIndex; // 현재 선택된 행 번호
-            carcode  = dataGridView1.Rows[i].Cells[2].Value.ToString(); // carcode선택
+            itemcode  = dataGridView1.Rows[i].Cells[1].Value.ToString(); // carcode선택
 
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -138,17 +158,17 @@ namespace MESProject.기준정보
                               "SPEC4 = '" + cmbHeadrestrian.Text + "', " +
                               "SPEC5 = '" + cmbCovering.Text     + "', " +
                               "SPEC6 = '" + cmbSAB.Text          + "'"   +
-                              "where CARCODE = '" + carcode      + "'";
+                              "where ITEMCODE = '" + itemcode + "'";
             cmd.ExecuteNonQuery();
 
-            cmb_ALC.Text = "";
+            /*cmb_ALC.Text = "";
             cmb_CarCode.Text = "";
             cmbLocal.Text = "";
             cmbTrack.Text = "";
             cmbFormpad.Text = "";
             cmbHeadrestrian.Text = "";
             cmbCovering.Text = "";
-            cmbSAB.Text = "";
+            cmbSAB.Text = "";*/
 
             Do_Entire_Search();
             MessageBox.Show("수정되었습니다.");
@@ -228,3 +248,4 @@ namespace MESProject.기준정보
 //    }
 //}
 #endregion
+
