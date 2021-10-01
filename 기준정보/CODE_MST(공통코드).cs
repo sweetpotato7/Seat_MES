@@ -78,7 +78,6 @@ namespace MESProject.기준정보
                             break;
                         case "부코드":
                             strqry = "SELECT * FROM TB_CODE_MST "
-                            //strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST "
                                    + "WHERE MINORCODE LIKE '%" + txtSearch.Text + "%'"
                                    + "ORDER BY DISPLAYNO";
                             dt = func.GetDataTable2(strqry);
@@ -86,7 +85,6 @@ namespace MESProject.기준정보
                             break;
                         case "코드명": // 코드명은 부코드 이름?
                             strqry = "SELECT * FROM TB_CODE_MST "
-                            //strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST "
                                    + "WHERE CODENAME LIKE '%"  + txtSearch.Text + "%'"
                                    + "ORDER BY DISPLAYNO";
                             dt = func.GetDataTable2(strqry);
@@ -103,7 +101,6 @@ namespace MESProject.기준정보
                     dataGridView1.DataSource = dt;
                     // 부코드 로드
                     strqry = "SELECT * FROM TB_CODE_MST";
-                    //strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST";
                     dt = func.GetDataTable2(strqry);
                     dataGridView2.DataSource = dt;
                 }
@@ -115,10 +112,6 @@ namespace MESProject.기준정보
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-
             }
         }
         public void Do_Insert()
@@ -181,10 +174,6 @@ namespace MESProject.기준정보
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-
-            }
         }
 
         public void Do_Delete()
@@ -216,6 +205,59 @@ namespace MESProject.기준정보
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void Do_Save()
+        {
+            string message = "다음 항목을 입력해 주세요";
+            if (cboIPlantcode.Text == "") message += "\n공장";
+            if (cboIMajorCode.Text == "") message += "\n주코드";
+            if (txtIMajorName.Text == "") message += "\n주코드명";
+            if (cboIMinorCode.Text == "") message += "\n부코드";
+            if (txtIMinorName.Text == "") message += "\n부코드명";
+            if (txtIDisplayNo.Text == "") message += "\n순서";
+            if (message.Length > 14)
+            {
+                MessageBox.Show(message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            strqry = "UPDATE TB_CODE_MST SET "
+                   + "PLANTCODE = '" + cboIPlantcode.Text + "', "
+                   + "MAJORCODE = '" + cboIMajorCode.Text + "', "
+                   + "RELCODE5  = '" + txtIMajorName.Text + "', "
+                   + "MINORCODE = '" + cboIMinorCode.Text + "', "
+                   + "CODENAME  = '" + txtIMinorName.Text + "', "
+                   + "RELCODE1  = '" + txtIRelCode1.Text  + "', "
+                   + "RELCODE2  = '" + txtIRelCode2.Text  + "', "
+                   + "RELCODE3  = '" + txtIRelCode3.Text  + "', "
+                   + "RELCODE4  = '" + txtIRelCode4.Text  + "', "
+                   + "DISPLAYNO = '" + txtIDisplayNo.Text + "', "
+                   + "USEFLAG   = '" + cboIUseFlag.Text   + "' "
+                   + "WHERE PLANTCODE = '" + cboIPlantcode.Text + "'"
+                     + "AND MAJORCODE = '" + cboIMajorCode.Text + "'"
+                     + "AND MINORCODE = '" + cboIMinorCode.Text + "'";
+            try
+            {
+                da = new SqlDataAdapter();
+                da.UpdateCommand = new SqlCommand(strqry, sql.con);
+                da.UpdateCommand.ExecuteNonQuery();
+                
+                DO_Search(); //재조회
+                
+                MessageBox.Show("수정되었습니다!");
+                
+                cboclear(); // 입력칸 초기화
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void cboclear()
         {
             cboIPlantcode.Text = "";
@@ -230,7 +272,6 @@ namespace MESProject.기준정보
             txtIRelCode3.Text = "";
             txtIRelCode4.Text = "";
         }
-
         #endregion
 
         // MAJORCODE 클릭 시 MINORCODE, CODENAME 조회

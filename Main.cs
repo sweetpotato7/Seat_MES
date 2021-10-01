@@ -215,6 +215,7 @@ namespace MESProject
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "CODE_MST":
+                        Code_Mst.Do_Save();
                         break;
                     case "ITEM_MST":
                         break;
