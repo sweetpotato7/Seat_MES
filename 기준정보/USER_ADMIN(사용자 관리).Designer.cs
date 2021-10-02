@@ -201,7 +201,7 @@ namespace MESProject.기준정보
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(121, 184);
+            this.maskedTextBox1.Location = new System.Drawing.Point(121, 190);
             this.maskedTextBox1.Mask = "000-9000-0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(121, 21);
@@ -213,7 +213,7 @@ namespace MESProject.기준정보
             this.comboBox3.Items.AddRange(new object[] {
             "Y",
             "N"});
-            this.comboBox3.Location = new System.Drawing.Point(121, 275);
+            this.comboBox3.Location = new System.Drawing.Point(121, 283);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 20);
             this.comboBox3.TabIndex = 4;
@@ -223,7 +223,7 @@ namespace MESProject.기준정보
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "D100"});
-            this.comboBox2.Location = new System.Drawing.Point(121, 127);
+            this.comboBox2.Location = new System.Drawing.Point(121, 160);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 20);
             this.comboBox2.TabIndex = 109;
@@ -233,7 +233,7 @@ namespace MESProject.기준정보
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "조립반"});
-            this.comboBox1.Location = new System.Drawing.Point(121, 156);
+            this.comboBox1.Location = new System.Drawing.Point(121, 130);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 108;
@@ -242,47 +242,47 @@ namespace MESProject.기준정보
             // 
             this.dateTimePicker4.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker4.Location = new System.Drawing.Point(121, 364);
+            this.dateTimePicker4.Location = new System.Drawing.Point(121, 406);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(121, 21);
             this.dateTimePicker4.TabIndex = 107;
-            this.dateTimePicker4.Value = new System.DateTime(2021, 9, 30, 0, 0, 0, 0);
+            this.dateTimePicker4.Value = new System.DateTime(2021, 10, 2, 0, 0, 0, 0);
             // 
             // dateTimePicker3
             // 
             this.dateTimePicker3.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(121, 304);
+            this.dateTimePicker3.Location = new System.Drawing.Point(121, 344);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(121, 21);
             this.dateTimePicker3.TabIndex = 106;
-            this.dateTimePicker3.Value = new System.DateTime(2021, 9, 30, 0, 0, 0, 0);
+            this.dateTimePicker3.Value = new System.DateTime(2021, 10, 2, 0, 0, 0, 0);
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(121, 245);
+            this.dateTimePicker2.Location = new System.Drawing.Point(121, 252);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(121, 21);
             this.dateTimePicker2.TabIndex = 105;
-            this.dateTimePicker2.Value = new System.DateTime(2021, 9, 30, 0, 0, 0, 0);
+            this.dateTimePicker2.Value = new System.DateTime(2021, 10, 2, 0, 0, 0, 0);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(121, 215);
+            this.dateTimePicker1.Location = new System.Drawing.Point(121, 221);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(121, 21);
             this.dateTimePicker1.TabIndex = 104;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 9, 30, 11, 20, 56, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2021, 10, 2, 0, 0, 0, 0);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.Location = new System.Drawing.Point(23, 308);
+            this.label16.Location = new System.Drawing.Point(23, 348);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(63, 15);
             this.label16.TabIndex = 103;
@@ -290,21 +290,21 @@ namespace MESProject.기준정보
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(121, 394);
+            this.textBox13.Location = new System.Drawing.Point(121, 375);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(121, 21);
             this.textBox13.TabIndex = 6;
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(121, 334);
+            this.textBox11.Location = new System.Drawing.Point(121, 313);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(121, 21);
             this.textBox11.TabIndex = 5;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(121, 97);
+            this.textBox3.Location = new System.Drawing.Point(121, 99);
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(121, 21);
@@ -312,7 +312,7 @@ namespace MESProject.기준정보
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(121, 67);
+            this.textBox2.Location = new System.Drawing.Point(121, 68);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(121, 21);
             this.textBox2.TabIndex = 1;
@@ -328,7 +328,7 @@ namespace MESProject.기준정보
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(23, 398);
+            this.label15.Location = new System.Drawing.Point(23, 379);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(49, 15);
             this.label15.TabIndex = 96;
@@ -338,7 +338,7 @@ namespace MESProject.기준정보
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.Location = new System.Drawing.Point(23, 368);
+            this.label14.Location = new System.Drawing.Point(23, 410);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(63, 15);
             this.label14.TabIndex = 95;
@@ -348,7 +348,7 @@ namespace MESProject.기준정보
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(23, 338);
+            this.label13.Location = new System.Drawing.Point(23, 317);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 15);
             this.label13.TabIndex = 94;
@@ -358,7 +358,7 @@ namespace MESProject.기준정보
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(23, 278);
+            this.label12.Location = new System.Drawing.Point(23, 286);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 15);
             this.label12.TabIndex = 93;
@@ -368,7 +368,7 @@ namespace MESProject.기준정보
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(23, 248);
+            this.label11.Location = new System.Drawing.Point(23, 255);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 15);
             this.label11.TabIndex = 92;
@@ -378,7 +378,7 @@ namespace MESProject.기준정보
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(23, 218);
+            this.label10.Location = new System.Drawing.Point(23, 224);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 15);
             this.label10.TabIndex = 91;
@@ -388,7 +388,7 @@ namespace MESProject.기준정보
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(23, 188);
+            this.label9.Location = new System.Drawing.Point(23, 193);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(63, 15);
             this.label9.TabIndex = 90;
@@ -398,7 +398,7 @@ namespace MESProject.기준정보
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(23, 128);
+            this.label8.Location = new System.Drawing.Point(23, 162);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 15);
             this.label8.TabIndex = 89;
@@ -408,7 +408,7 @@ namespace MESProject.기준정보
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(23, 158);
+            this.label7.Location = new System.Drawing.Point(23, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 15);
             this.label7.TabIndex = 88;
@@ -418,7 +418,7 @@ namespace MESProject.기준정보
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(23, 98);
+            this.label6.Location = new System.Drawing.Point(23, 100);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 15);
             this.label6.TabIndex = 87;
@@ -428,7 +428,7 @@ namespace MESProject.기준정보
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("NanumGothicCoding", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(23, 68);
+            this.label5.Location = new System.Drawing.Point(23, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 15);
             this.label5.TabIndex = 86;

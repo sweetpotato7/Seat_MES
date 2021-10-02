@@ -20,7 +20,6 @@ namespace MESProject.기준정보
         public USER_ADMIN()
         {
             InitializeComponent();
-            
         }
 
         private void USER_ADMIN_Load(object sender, EventArgs e)
@@ -37,8 +36,8 @@ namespace MESProject.기준정보
 
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE", "PLANTCODE", "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
-            string[] HeaderText       = new string[] { "아이디", "이름", "비밀번호", "작업그룹", "공장코드", "전화번호", "입사일", "퇴사일", "사용여부", "등록일시", "등록자", "수정일시", "수정자" };
+            string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE",  "PLANTCODE",  "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText       = new string[] { "아이디",   "이름",       "비밀번호", "작업그룹", "공장코드",   "전화번호", "입사일", "퇴사일", "사용여부", "등록자",       "등록일시",  "수정자",        "수정일시" };
             float[]  FillWeight       = new float[]  { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
@@ -49,7 +48,7 @@ namespace MESProject.기준정보
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Columns[2].Visible = false;
+            //dataGridView1.Columns[2].Visible = false;
 
             //데이터베이스 오픈
             SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
@@ -58,7 +57,7 @@ namespace MESProject.기준정보
             da.Fill(dt);
             dataGridView1.DataSource = dt;
 
-            //콤보박스 기본값 셋팅
+            //기본값 셋팅
             cboPlantCode.SelectedIndex = cboPlantCode.Items.IndexOf("D100");
             comboBox1.SelectedIndex    = comboBox1.Items.IndexOf("조립반");
             comboBox2.SelectedIndex    = comboBox2.Items.IndexOf("D100");
@@ -86,7 +85,6 @@ namespace MESProject.기준정보
         public void Do_Search()
         {
             SqlCommand cmd = sql.con.CreateCommand();
-
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT * FROM TB_USER_INFO WHERE WORKERID LIKE " + "'%" + txtWorkerName.Text + "%'" + 
                               " AND WORKERNAME LIKE " + "'%" + txtName.Text + "%'";
@@ -130,7 +128,7 @@ namespace MESProject.기준정보
 
                 SqlCommand cmd = sql.con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_DT, CREATE_USERID, MODIFY_DT, MODIFY_USERID) " +
+                cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT) " +
                                   "values ( '" + textBox1.Text + "',"
                                         + " '" + textBox2.Text + "',"
                                         + " '" + textBox3.Text + "',"
@@ -160,7 +158,7 @@ namespace MESProject.기준정보
         {
             if (textBox1.Text == "")
             {
-                //MessageBox.Show("데이터를 선택하세요");
+                MessageBox.Show("데이터를 선택하세요");
                 return;
             }
             else
@@ -224,19 +222,19 @@ namespace MESProject.기준정보
             int i;
             i = dataGridView1.SelectedCells[0].RowIndex;
 
-            textBox1.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-            textBox2.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            textBox3.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            comboBox1.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            comboBox2.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
-            maskedTextBox1.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
-            dateTimePicker1.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();
-            dateTimePicker2.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();
-            comboBox3.Text = dataGridView1.Rows[i].Cells[8].Value.ToString();
-            dateTimePicker3.Text = dataGridView1.Rows[i].Cells[9].Value.ToString();
-            textBox11.Text = dataGridView1.Rows[i].Cells[10].Value.ToString();
-            dateTimePicker4.Text = dataGridView1.Rows[i].Cells[11].Value.ToString();
-            textBox13.Text = dataGridView1.Rows[i].Cells[12].Value.ToString();
+            textBox1.Text           = dataGridView1.Rows[i].Cells[0].Value.ToString();    //아이디
+            textBox2.Text           = dataGridView1.Rows[i].Cells[1].Value.ToString();    //이름
+            textBox3.Text           = dataGridView1.Rows[i].Cells[2].Value.ToString();    //비밀번호
+            comboBox1.Text          = dataGridView1.Rows[i].Cells[3].Value.ToString();    //작업반
+            comboBox2.Text          = dataGridView1.Rows[i].Cells[4].Value.ToString();    //공장코드
+            maskedTextBox1.Text     = dataGridView1.Rows[i].Cells[5].Value.ToString();    //전화번호
+            dateTimePicker1.Text    = dataGridView1.Rows[i].Cells[6].Value.ToString();    //입사일
+            dateTimePicker2.Text    = dataGridView1.Rows[i].Cells[7].Value.ToString();    //퇴사일
+            comboBox3.Text          = dataGridView1.Rows[i].Cells[8].Value.ToString();    //사용유무
+            textBox11.Text          = dataGridView1.Rows[i].Cells[9].Value.ToString();    //등록자
+            dateTimePicker3.Text    = dataGridView1.Rows[i].Cells[10].Value.ToString();   //등록일시
+            textBox13.Text          = dataGridView1.Rows[i].Cells[11].Value.ToString();   //수정일시
+            dateTimePicker4.Text    = dataGridView1.Rows[i].Cells[12].Value.ToString();   //수정자
         }
     }
 }
