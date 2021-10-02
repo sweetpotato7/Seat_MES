@@ -124,3 +124,29 @@ USB Type - 포커스가 가 있어야 데이터가 들어옴
 Serial Type - 다른작업을 해도 특정 위치에 데이터 넣을 수 있음
 */
 #endregion
+
+#region ____1 0 월 0 2 일
+/* 사양관리
+사양관리는 차종에 대한 시트 사양을 표시
+
+사양관리 왼쪽 DGV 품번 -> ALC로 
+Bom에서 검색해서 뜨게
+ALC를 선택했을 때 ALC의 FERT에 해당하는 품번을 검색
+아이템마스터의 ALC로 검색(ITEM_MST & BOM 사용)
+(SELECT * FROM TB_BOM WHERE FERT = (SELECT FERT FROM TB_BOM WHERE PLT = '선택한 ALC의 PLT')
+
+SP2IABEF (ALC)            / SP2IABEF 20EA
+ㄴPLSP2IABEF (PLT)        / QY7SABEF 15EA
+ ㄴ82100-2A000 (FRONT LH) / 
+ ㄴ82200-2A000 (FRONT RH) / 
+QY7SABEF (ALC)            / 
+ㄴPLQY7SABEF              / 
+ ㄴ82100-2A000 (FRONT LH) / 
+ ㄴ82200-2A000 (FRONT RH) / 
+
+뽑아낼려면 - ALC에 대한 
+품목 - TYPE (ALC, FERT)
+BOM - 1 Level 자품목, 상위품목)
+
+*/
+#endregion
