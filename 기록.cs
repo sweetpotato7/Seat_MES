@@ -84,13 +84,17 @@ insert into TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, DISPLAYNO, U
 060 - SAB Scan
 070 - Complete (마무리)
 
+-- 사양
+색상, LH 차종, POWER
+
+-- 순서
 순서  Working(작업방법)  Value(스캔값, LotNo,...)  결과("OK")
   1 /  JIG 도착       /                          /    OK
   2 /  LOT 생성       /      LOT값               /    OK
   3 /  Track Scan     / 트랙 바코드 값           /    OK
   4 /  Complete       /                          /    OK
  
---작업지시
+-- 작업지시
  OrderNo    작업일자  순서  품번  계획수량  LH  RH
 210930001 / 20210930 / 1 / A-ALC /   20   / 20 / 20
 210930002 / 20210930 / 2 / B-ALC /   5    / 2 / 1
@@ -127,13 +131,17 @@ Serial Type - 다른작업을 해도 특정 위치에 데이터 넣을 수 있�
 
 #region ____1 0 월 0 2 일
 /* 사양관리
+--폼 수정 
+왼쪽 DGV 품번 -> ALC로 
+왼쪽 DGV TYPE열 추가 (LH, RH인지)
+
 사양관리는 차종에 대한 시트 사양을 표시
 
-사양관리 왼쪽 DGV 품번 -> ALC로 
 Bom에서 검색해서 뜨게
 ALC를 선택했을 때 ALC의 FERT에 해당하는 품번을 검색
 아이템마스터의 ALC로 검색(ITEM_MST & BOM 사용)
-(SELECT * FROM TB_BOM WHERE FERT = (SELECT FERT FROM TB_BOM WHERE PLT = '선택한 ALC의 PLT')
+(SELECT * FROM TB_ITEM_MST WHERE FERT = (SELECT FERT FROM TB_BOM 
+                      WHERE PLT  = (SELECT PLT  FROM TB_BOM )
 
 SP2IABEF (ALC)            / SP2IABEF 20EA
 ㄴPLSP2IABEF (PLT)        / QY7SABEF 15EA
@@ -147,6 +155,73 @@ QY7SABEF (ALC)            /
 뽑아낼려면 - ALC에 대한 
 품목 - TYPE (ALC, FERT)
 BOM - 1 Level 자품목, 상위품목)
-
 */
+
+/* 공정 순서 (공정 순서를 정의하는 테이블)
+-- 사양
+색상, LH 차종, POWER
+순서 / 작업방법 / 순서
+010  /  010     /   1
+010  /  020     /   2
+010  /  030     /   3
+010  /  050     /   4
+010  /  060     /   5
+
+TB_PROC_STEP
+PROC_CD(키) - 공정 (공통코드)
+STEP_CD(키) - 작업 방법 (공통코드)
+SEQ_CD - 작업 순서
+
+PROC_CD 공정 코드 - 공통코드에 등록
+010 - 트랙 적재
+020 - 부품 조립
+030 - 검사 공정
+
+STEP_CD 작업 방법 - 공통코드에 등록
+010 - 지그 도착
+020 - LOT 생성
+030 - 트랙 스캔
+040 - 폼패드 스캔
+050 - 헤드레스트 스캔
+060 - 커버링 스캔
+070 - 에어백 스캔
+080 - 작업 완료
+ */
+
+/* 작업지시 (폼) 
+(검색패널) 날짜 / ALC / 수량      생성(버튼)
+프로시저로 작업
+
+TB_PLAN_MST
+날짜   / 순서 / ALC      / 수량 / 작업지시 No  / 생산수량 / 계획상태(Flag)
+211002 / 1    / SP2IABEF / 10   / 20211002-001 /   10     / C(생산완료,공통코드)
+211002 / 2    / QY7SABEF / 5    / 20211002-002 /   2      / I(투입중, 공통코드)
+211002 / 3    / SP2IABEF / 10   / 20211002-003 /   0      / R(계획수립,공통코드)
+현장 업데이트 항목 - 생산수량, 투입일시
+
+(위 DGV 선택시 아래 DGV 표현)
+
+TB_PLAN_DET
+작업지시 No  / 순서 / Seq No / SIDE / ALC      / 품번        / LotNo / 투입일시
+20211002-001 / 1    / 1      / LH   / SP2IABEF / 82100-2A000 / ~~~~~ / 
+20211002-001 / 1    / 1      / RH   / SP2IABEF / 82200-2A000 / ~~~~~ /
+20211002-001 / 1    / 2
+20211002-001 / 1    / 2
+20211002-001 / 1    / 3
+20211002-001 / 1    / 3
+20211002-001 / 1    / 10
+20211002-001 / 1    / 10
+
+확인사항
+1. BOM 체크 - ALC 내렸을 때 FERT 품목 2개 있는지 체크
+ㄴALC LH, RH가 있는지
+2. SPEC 체크 - LH, RH 있는지
+
+ */
+// 확인 해야할 내용
+// BOM에 정보가 있는지
+// 사양에 
+// FERT에 대해 LH, RH가 있는지
+// 스캔했을 때 해당 FERT가 ALC의 하부FERT에 해당하는지 확인
+//
 #endregion
