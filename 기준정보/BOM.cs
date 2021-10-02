@@ -75,7 +75,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_INSERT() // 추가
+        public void Do_INSERT() // 추가
         {
             strqry = "INSERT INTO TB_BOM ( PLANTCODE, ITEMCODE, BASEQTY, UNITCODE, COMPONENT, COMPONENTQTY, COMPONENTUNIT, USEFLAG)"
                                + "VALUES ( '" + cboPlantCode2.Text
@@ -117,7 +117,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_Delete() // 삭제
+        public void Do_Delete() // 삭제
         {
             strqry = "DELETE FROM TB_BOM "
                     + "WHERE PLANTCODE = '" + dataGridView2.SelectedCells[2].Value.ToString() + "'"
@@ -153,7 +153,7 @@ namespace MESProject.기준정보
             }
         }
 
-        public void DO_SAVE() // 수정
+        public void Do_SAVE() // 수정
         {
             strqry = "UPDATE TB_BOM SET "
                    + "PLANTCODE = '"     + cboPlantCode2.Text + "', "

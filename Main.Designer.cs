@@ -40,7 +40,7 @@ namespace MESProject
             this.생산계획ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.생산계획ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.공정관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.작업시작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.작업지시ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공정실적ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.품질검사ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,29 +153,30 @@ namespace MESProject
             // 공정관리ToolStripMenuItem
             // 
             this.공정관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.작업시작ToolStripMenuItem,
+            this.작업지시ToolStripMenuItem,
             this.공정실적ToolStripMenuItem,
             this.품질검사ToolStripMenuItem});
             this.공정관리ToolStripMenuItem.Name = "공정관리ToolStripMenuItem";
             this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             this.공정관리ToolStripMenuItem.Text = "공정관리";
             // 
-            // 작업시작ToolStripMenuItem
+            // 작업지시ToolStripMenuItem
             // 
-            this.작업시작ToolStripMenuItem.Name = "작업시작ToolStripMenuItem";
-            this.작업시작ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.작업시작ToolStripMenuItem.Text = "작업시작";
+            this.작업지시ToolStripMenuItem.Name = "작업지시ToolStripMenuItem";
+            this.작업지시ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.작업지시ToolStripMenuItem.Text = "작업지시";
+            this.작업지시ToolStripMenuItem.Click += new System.EventHandler(this.작업지시ToolStripMenuItem_Click);
             // 
             // 공정실적ToolStripMenuItem
             // 
             this.공정실적ToolStripMenuItem.Name = "공정실적ToolStripMenuItem";
-            this.공정실적ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.공정실적ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.공정실적ToolStripMenuItem.Text = "공정실적";
             // 
             // 품질검사ToolStripMenuItem
             // 
             this.품질검사ToolStripMenuItem.Name = "품질검사ToolStripMenuItem";
-            this.품질검사ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.품질검사ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.품질검사ToolStripMenuItem.Text = "품질검사";
             // 
             // 종료ToolStripMenuItem
@@ -484,7 +485,7 @@ namespace MESProject
         private System.Windows.Forms.ToolStripMenuItem 생산계획ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 생산계획ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 공정관리ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 작업시작ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 작업지시ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 공정실적ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 품질검사ToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel pnlCRUD;

@@ -92,7 +92,7 @@ namespace MESProject.기준정보
             this.txtSearch.Location = new System.Drawing.Point(293, 10);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(143, 30);
-            this.txtSearch.TabIndex = 13;
+            this.txtSearch.TabIndex = 3;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // cboSearch
@@ -102,7 +102,7 @@ namespace MESProject.기준정보
             this.cboSearch.Location = new System.Drawing.Point(187, 12);
             this.cboSearch.Name = "cboSearch";
             this.cboSearch.Size = new System.Drawing.Size(100, 28);
-            this.cboSearch.TabIndex = 12;
+            this.cboSearch.TabIndex = 2;
             // 
             // label1
             // 
@@ -123,7 +123,7 @@ namespace MESProject.기준정보
             this.cboPlantCode.Location = new System.Drawing.Point(60, 12);
             this.cboPlantCode.Name = "cboPlantCode";
             this.cboPlantCode.Size = new System.Drawing.Size(121, 28);
-            this.cboPlantCode.TabIndex = 5;
+            this.cboPlantCode.TabIndex = 0;
             // 
             // splitContainer1
             // 
@@ -221,7 +221,7 @@ namespace MESProject.기준정보
             this.txtIDisplayNo.Location = new System.Drawing.Point(95, 230);
             this.txtIDisplayNo.Name = "txtIDisplayNo";
             this.txtIDisplayNo.Size = new System.Drawing.Size(171, 30);
-            this.txtIDisplayNo.TabIndex = 27;
+            this.txtIDisplayNo.TabIndex = 9;
             // 
             // txtIMinorName
             // 
@@ -229,7 +229,7 @@ namespace MESProject.기준정보
             this.txtIMinorName.Location = new System.Drawing.Point(95, 191);
             this.txtIMinorName.Name = "txtIMinorName";
             this.txtIMinorName.Size = new System.Drawing.Size(171, 30);
-            this.txtIMinorName.TabIndex = 26;
+            this.txtIMinorName.TabIndex = 8;
             // 
             // txtIMajorName
             // 
@@ -237,7 +237,7 @@ namespace MESProject.기준정보
             this.txtIMajorName.Location = new System.Drawing.Point(95, 113);
             this.txtIMajorName.Name = "txtIMajorName";
             this.txtIMajorName.Size = new System.Drawing.Size(171, 30);
-            this.txtIMajorName.TabIndex = 25;
+            this.txtIMajorName.TabIndex = 6;
             // 
             // txtIRelCode4
             // 
@@ -245,7 +245,7 @@ namespace MESProject.기준정보
             this.txtIRelCode4.Location = new System.Drawing.Point(95, 425);
             this.txtIRelCode4.Name = "txtIRelCode4";
             this.txtIRelCode4.Size = new System.Drawing.Size(171, 30);
-            this.txtIRelCode4.TabIndex = 23;
+            this.txtIRelCode4.TabIndex = 14;
             // 
             // txtIRelCode3
             // 
@@ -253,7 +253,7 @@ namespace MESProject.기준정보
             this.txtIRelCode3.Location = new System.Drawing.Point(95, 386);
             this.txtIRelCode3.Name = "txtIRelCode3";
             this.txtIRelCode3.Size = new System.Drawing.Size(171, 30);
-            this.txtIRelCode3.TabIndex = 22;
+            this.txtIRelCode3.TabIndex = 13;
             // 
             // txtIRelCode2
             // 
@@ -261,7 +261,7 @@ namespace MESProject.기준정보
             this.txtIRelCode2.Location = new System.Drawing.Point(95, 347);
             this.txtIRelCode2.Name = "txtIRelCode2";
             this.txtIRelCode2.Size = new System.Drawing.Size(171, 30);
-            this.txtIRelCode2.TabIndex = 21;
+            this.txtIRelCode2.TabIndex = 12;
             // 
             // txtIRelCode1
             // 
@@ -269,7 +269,7 @@ namespace MESProject.기준정보
             this.txtIRelCode1.Location = new System.Drawing.Point(95, 308);
             this.txtIRelCode1.Name = "txtIRelCode1";
             this.txtIRelCode1.Size = new System.Drawing.Size(171, 30);
-            this.txtIRelCode1.TabIndex = 14;
+            this.txtIRelCode1.TabIndex = 11;
             // 
             // cboIUseFlag
             // 
@@ -278,7 +278,7 @@ namespace MESProject.기준정보
             this.cboIUseFlag.Location = new System.Drawing.Point(95, 269);
             this.cboIUseFlag.Name = "cboIUseFlag";
             this.cboIUseFlag.Size = new System.Drawing.Size(171, 28);
-            this.cboIUseFlag.TabIndex = 20;
+            this.cboIUseFlag.TabIndex = 10;
             // 
             // cboIMinorCode
             // 
@@ -287,7 +287,7 @@ namespace MESProject.기준정보
             this.cboIMinorCode.Location = new System.Drawing.Point(95, 152);
             this.cboIMinorCode.Name = "cboIMinorCode";
             this.cboIMinorCode.Size = new System.Drawing.Size(171, 28);
-            this.cboIMinorCode.TabIndex = 18;
+            this.cboIMinorCode.TabIndex = 7;
             this.cboIMinorCode.SelectionChangeCommitted += new System.EventHandler(this.cboIMinorCode_SelectionChangeCommitted);
             // 
             // cboIMajorCode
@@ -297,19 +297,17 @@ namespace MESProject.기준정보
             this.cboIMajorCode.Location = new System.Drawing.Point(95, 77);
             this.cboIMajorCode.Name = "cboIMajorCode";
             this.cboIMajorCode.Size = new System.Drawing.Size(171, 28);
-            this.cboIMajorCode.TabIndex = 17;
+            this.cboIMajorCode.TabIndex = 5;
             this.cboIMajorCode.SelectionChangeCommitted += new System.EventHandler(this.cboIMajorCode_SelectionChangeCommitted);
             // 
             // cboIPlantcode
             // 
             this.cboIPlantcode.Font = new System.Drawing.Font("굴림", 15F);
             this.cboIPlantcode.FormattingEnabled = true;
-            this.cboIPlantcode.Items.AddRange(new object[] {
-            "D001"});
             this.cboIPlantcode.Location = new System.Drawing.Point(95, 35);
             this.cboIPlantcode.Name = "cboIPlantcode";
             this.cboIPlantcode.Size = new System.Drawing.Size(171, 28);
-            this.cboIPlantcode.TabIndex = 14;
+            this.cboIPlantcode.TabIndex = 4;
             // 
             // label12
             // 

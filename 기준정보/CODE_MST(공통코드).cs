@@ -38,7 +38,7 @@ namespace MESProject.기준정보
             }
             sql.con.Open();
             DGVLoad();
-            DO_Search(); // 전체조회
+            Do_Search(); // 전체조회
             CboSet(); // 콤보박스 세팅
         }
 
@@ -61,7 +61,7 @@ namespace MESProject.기준정보
         }
 
         #region ========== CRUD
-        public void DO_Search()
+        public void Do_Search()
         {
             try
             {
@@ -114,6 +114,7 @@ namespace MESProject.기준정보
                 MessageBox.Show(ex.Message);
             }
         }
+
         public void Do_Insert()
         {
             try
@@ -189,7 +190,7 @@ namespace MESProject.기준정보
                 da.DeleteCommand.ExecuteNonQuery();
                 
                 //재조회
-                DO_Search();
+                Do_Search();
 
                 MessageBox.Show("삭제되었습니다!");
 
@@ -233,16 +234,16 @@ namespace MESProject.기준정보
                    + "RELCODE4  = '" + txtIRelCode4.Text  + "', "
                    + "DISPLAYNO = '" + txtIDisplayNo.Text + "', "
                    + "USEFLAG   = '" + cboIUseFlag.Text   + "' "
-                   + "WHERE PLANTCODE = '" + cboIPlantcode.Text + "'"
-                     + "AND MAJORCODE = '" + cboIMajorCode.Text + "'"
-                     + "AND MINORCODE = '" + cboIMinorCode.Text + "'";
+                   + "WHERE PLANTCODE = '" + dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[0].Value.ToString() + "'"
+                     + "AND MAJORCODE = '" + dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[1].Value.ToString() + "'"
+                     + "AND MINORCODE = '" + dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[2].Value.ToString() + "'";
             try
             {
                 da = new SqlDataAdapter();
                 da.UpdateCommand = new SqlCommand(strqry, sql.con);
                 da.UpdateCommand.ExecuteNonQuery();
                 
-                DO_Search(); //재조회
+                Do_Search(); //재조회
                 
                 MessageBox.Show("수정되었습니다!");
                 
@@ -322,8 +323,11 @@ namespace MESProject.기준정보
             cboSearch.Items.Add("부코드");
             cboSearch.Items.Add("코드명");
             cboSearch.SelectedIndex = 0;
+            func.CboLoad(cboIPlantcode, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboIMajorCode, "TB_CODE_MST", "MAJORCODE", false);
-            func.CboLoad(cboIUseFlag, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
+            func.CboLoad(cboIUseFlag,   "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
+            cboIPlantcode.SelectedIndex = 0;
+            cboIUseFlag.SelectedIndex = 0;
         }
 
         private void cboIMajorCode_SelectionChangeCommitted(object sender, EventArgs e)
@@ -372,7 +376,7 @@ namespace MESProject.기준정보
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) DO_Search();
+            if (e.KeyCode == Keys.Enter) Do_Search();
         }
     }
 }

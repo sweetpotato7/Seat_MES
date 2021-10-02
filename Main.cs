@@ -19,6 +19,7 @@ namespace MESProject
         기준정보.SPEC_MST Spec_Mst;
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
+        공정관리.PROC_SEQ Proc_Seq;
         public static string ID;
         
         public Main()
@@ -63,6 +64,7 @@ namespace MESProject
             tabControl1.SelectedTab.Name = form.ToString().Substring(word, leng);
 
             form.Dock = DockStyle.Fill;
+            form.FormBorderStyle = FormBorderStyle.None;
             form.Show();
         }
 
@@ -96,6 +98,11 @@ namespace MESProject
             Plan_Mst = new 생산계획.PLAN_MST();
             tabCtrlAdd(Plan_Mst, sender);
         }
+        private void 작업지시ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Proc_Seq = new 공정관리.PROC_SEQ();
+            tabCtrlAdd(Proc_Seq, sender);
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (tabControl1.TabPages.Count > 0)
@@ -115,7 +122,7 @@ namespace MESProject
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "CODE_MST":
-                        Code_Mst.DO_Search();
+                        Code_Mst.Do_Search();
                         break;
                     case "ITEM_MST":
                         Item_Mst.Do_Search();
@@ -130,6 +137,9 @@ namespace MESProject
                         User_Admin.Do_Search();
                         break;
                     case "Plan_Mst":
+                        break;
+                    case "PROC_SEQ":
+                        Proc_Seq.Do_Search();
                         break;
                     default:
                         break;
@@ -155,7 +165,7 @@ namespace MESProject
                         Item_Mst.Do_Add();
                         break;
                     case "BOM":
-                        Bom.DO_INSERT();
+                        Bom.Do_INSERT();
                         break;
                     case "SPEC_MST":
                         Spec_Mst.Do_Add();
@@ -164,6 +174,9 @@ namespace MESProject
                         User_Admin.Do_Add();
                         break;
                     case "Plan_Mst":
+                        break;
+                    case "PROC_SEQ":
+                        Proc_Seq.Do_Insert();
                         break;
                     default:
                         break;
@@ -189,7 +202,7 @@ namespace MESProject
                         Item_Mst.Do_Delete();
                         break;
                     case "BOM":
-                        Bom.DO_Delete();
+                        Bom.Do_Delete();
                         break;
                     case "SPEC_MST":
                         Spec_Mst.Do_Delete();
@@ -223,7 +236,7 @@ namespace MESProject
                         Item_Mst.Do_Save();
                         break;
                     case "BOM":
-                        Bom.DO_SAVE();
+                        Bom.Do_SAVE();
                         break;
                     case "SPEC_MST":
                         Spec_Mst.Do_Save();

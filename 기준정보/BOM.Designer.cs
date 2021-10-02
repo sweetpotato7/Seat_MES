@@ -98,9 +98,10 @@ namespace MESProject.기준정보
             this.panel1.Controls.Add(this.txtItemName);
             this.panel1.Controls.Add(this.cboPlantCode);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(963, 41);
+            this.panel1.Size = new System.Drawing.Size(1531, 41);
             this.panel1.TabIndex = 2;
             // 
             // cboItemCode
