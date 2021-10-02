@@ -78,8 +78,11 @@ namespace MESProject
             }
 
             string strqry = "SELECT " + Column + " FROM " + Table
-                         + " WHERE " + Option1 + " = '" + Option2 + "'"
-                         + " ORDER BY DISPLAYNO";
+                         + " WHERE " + Option1 + " = '" + Option2 + "'";
+            if (Table.ToUpper() == "TB_CODE_MST")
+            {
+                strqry += " ORDER BY DISPLAYNO";
+            }
             try
             {
                 sql.con.Open();
@@ -126,7 +129,7 @@ namespace MESProject
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = Query;
                 cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
             catch (Exception ex)
