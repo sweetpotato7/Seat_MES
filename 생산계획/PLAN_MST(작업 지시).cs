@@ -9,22 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MESProject.공정관리
+namespace MESProject.생산계획
 {
     /// <summary>
     /// DB에 추가해야될 것
     /// INSERT INTO TB_CODE_MST ( PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE5, DISPLAYNO, USEFLAG) VALUES ( 'D100', 'PLANFLAG', 'C', '생산완료', '계획상태', '3', 'Y')
     /// INSERT INTO TB_CODE_MST ( PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE5, DISPLAYNO, USEFLAG) VALUES ( 'D100', 'PLANFLAG', 'I', '투입중', '계획상태', '2', 'Y')
     /// INSERT INTO TB_CODE_MST ( PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE5, DISPLAYNO, USEFLAG) VALUES ( 'D100', 'PLANFLAG', 'R', '계획수립', '계획상태', '1', 'Y')
+    
     /// PLANDATE 형식 6자리 변경 (211002)
     /// ALTER TABLE TB_PLAN_MST ALTER COLUMN PLANDATE VARCHAR(6) NOT NULL;
-    /// 
+    /// ALTER TABLE TB_PLAN_DET ALTER COLUMN PLANDATE VARCHAR(6) NOT NULL;
     /// </summary>
 
 
 
 
-    public partial class PROC_SEQ : Form
+    public partial class PLAN_MST : Form
     {
         Function func = new Function();
         SQL sql = new SQL();
@@ -32,14 +33,10 @@ namespace MESProject.공정관리
         DataTable dt;
         string strqry = string.Empty;
 
-        public PROC_SEQ()
+        public PLAN_MST()
         {
             InitializeComponent();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
 
         private void PROC_SEQ_Load(object sender, EventArgs e)
         {
@@ -74,8 +71,6 @@ namespace MESProject.공정관리
             Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 12);
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-
-
 
         #region ========== CRUD
         public void Do_Search() // 검색

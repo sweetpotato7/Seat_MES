@@ -19,7 +19,7 @@ namespace MESProject
         기준정보.SPEC_MST Spec_Mst;
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
-        공정관리.PROC_SEQ Proc_Seq;
+
         public static string ID;
         
         public Main()
@@ -100,8 +100,8 @@ namespace MESProject
         }
         private void 작업지시ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Proc_Seq = new 공정관리.PROC_SEQ();
-            tabCtrlAdd(Proc_Seq, sender);
+            Plan_Mst = new 생산계획.PLAN_MST();
+            tabCtrlAdd(Plan_Mst, sender);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -139,7 +139,7 @@ namespace MESProject
                     case "Plan_Mst":
                         break;
                     case "PROC_SEQ":
-                        Proc_Seq.Do_Search();
+                        Plan_Mst.Do_Search();
                         break;
                     default:
                         break;
@@ -176,7 +176,7 @@ namespace MESProject
                     case "Plan_Mst":
                         break;
                     case "PROC_SEQ":
-                        Proc_Seq.Do_Insert();
+                        Plan_Mst.Do_Insert();
                         break;
                     default:
                         break;

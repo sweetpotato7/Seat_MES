@@ -1,7 +1,7 @@
 ﻿
-namespace MESProject.공정관리
+namespace MESProject.생산계획
 {
-    partial class PROC_SEQ
+    partial class PLAN_MST
     {
         /// <summary>
         /// Required designer variable.
