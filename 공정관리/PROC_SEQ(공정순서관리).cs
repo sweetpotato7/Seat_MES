@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace MESProject.공정관리
 {
@@ -15,13 +17,16 @@ namespace MESProject.공정관리
         SQL sql = new SQL();
         string strqry = string.Empty;
         Function func = new Function();
+        SqlDataAdapter da;
+        DataTable dt;
+        
 
         public PROC_SEQ_공정순서관리_()
         {
             InitializeComponent();
         }
 
-        private void PRODSEQ_MST_Load(object sender, EventArgs e)
+        private void PROC_SEQ_공정순서관리__Load(object sender, EventArgs e)
         {
             if (sql.con.State == ConnectionState.Open)
             {
@@ -30,12 +35,13 @@ namespace MESProject.공정관리
             sql.con.Open();
             DGVLoad();
             Do_Search();
+            CboSet();
         }
 
         private void DGVLoad() // 작업지시
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "ITEMNAME", "ITEMTYPE", "UNITCODE", "USEFLAG", "IMAGE", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
-            string[] HeaderText = new string[] { "공장", "품목코드", "품목명", "품목타입", "단위", "사용여부", "이미지", "등록일시", "등록자", "수정일시", "수정자" };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "LINE_CD", "PROC_CD", "PROC_SEQ", "STEP_CD", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText = new string[] { "공장", "라인번호", "공정", "공정순서", "작업", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "등록자", "등록일시", "수정자", "수정일시" };
             float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
@@ -46,13 +52,46 @@ namespace MESProject.공정관리
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = false;
+
         }
+
+        private void CboSet()
+        {
+            func.CboLoad(cboProc, "TB_PROC_SEQ", "PROC_CD", false);
+        }
+
+        private void ChangeValue()
+        {
+            dt = GetDataTable(strqry);
+            foreach (DataRow dr in dt.Rows)
+                if (dr["PROC_CD"].ToString() == "010")
+                {
+                    dr["PROC_CD"] = "트랙적재";
+                }
+                else if(dr["PROC_CD"].ToString() == "020")
+                {
+                    dr["PROC_CD"] = "부품조립";
+                }
+                else if(dr["PROC_CD"].ToString() == "020")
+                {
+                    dr["PROC_CD"] = "검사공정";
+                }
+        }
+
+        public DataTable GetDataTable(string Query)
+        {
+            da = new SqlDataAdapter(Query, sql.con);
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
 
         public void Do_Search()
         {
-            string Proc = cmbProc.Text;
+            string Proc = cboProc.Text;
 
-            if (cmbProc.Text == "")
+            if (cboProc.Text == "")
             {
                 strqry = "select * from TB_PROC_SEQ";
                 dataGridView1.DataSource = func.GetDataTable(strqry);
@@ -60,9 +99,10 @@ namespace MESProject.공정관리
 
             else
             {
-                strqry = "select * from TB_PROC_SEQ where PROC_CD =" + "'" + cmbProc.Text + "'";
+                strqry = "select * from TB_PROC_SEQ where PROC_CD =" + "'" + cboProc.Text + "'";
                 dataGridView1.DataSource = func.GetDataTable(strqry);
             }
+            ChangeValue();
 
             // 공정 번호가 아닌 공정 이름으로 출력
             // 작업 번호가 아닌 작업 이름으로 출력
