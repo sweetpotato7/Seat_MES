@@ -65,6 +65,10 @@ namespace MESProject.기준정보
                 dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -411,33 +415,3 @@ namespace MESProject.기준정보
         }
     }
 }
-
-#region =========== 사용안하는 코드
-//private void DGV1Set(string sQuery)
-//{
-//    try
-//    {
-//        sql.con.Open();
-
-//        da = new SqlDataAdapter(sQuery, sql.con);
-//        dt = new DataTable();
-//        da.Fill(dt); // da값 => dt에 데이터 입력
-//        //dataGridView1.DataSource = dt;
-//    }
-//    catch (Exception ex)
-//    {
-//        MessageBox.Show(ex.Message);
-//    }
-//    finally
-//    {
-//        sql.con.Close();
-//    }
-//}
-
-// BOM 전체 리스트 조회문
-//string strqry = "SELECT a.PLANTCODE, a.ITEMCODE, b.ITEMNAME AS PNAME, a.BASEQTY, a.UNITCODE, a.COMPONENT, c.ITEMNAME AS CNAME, a.COMPONENTQTY, a.COMPONENTUNIT, a.USEFLAG, a.CREATE_USERID, a.CREATE_DT, a.MODIFY_USERID, a.MODIFY_DT"
-//               + " FROM TB_BOM a LEFT JOIN TB_ITEM_MST b"
-//                             + " ON a.ITEMCODE = b.ITEMCODE"
-//                             + " LEFT JOIN TB_ITEM_MST c"
-//                             + " ON a.COMPONENT = c.ITEMCODE";
-#endregion
