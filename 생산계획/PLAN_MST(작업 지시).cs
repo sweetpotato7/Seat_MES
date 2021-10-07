@@ -11,20 +11,6 @@ using System.Windows.Forms;
 
 namespace MESProject.생산계획
 {
-    /// <summary>
-    /// DB에 추가해야될 것
-    /// INSERT INTO TB_CODE_MST ( PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE5, DISPLAYNO, USEFLAG) VALUES ( 'D100', 'PLANFLAG', 'C', '생산완료', '계획상태', '3', 'Y')
-    /// INSERT INTO TB_CODE_MST ( PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE5, DISPLAYNO, USEFLAG) VALUES ( 'D100', 'PLANFLAG', 'I', '투입중', '계획상태', '2', 'Y')
-    /// INSERT INTO TB_CODE_MST ( PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE5, DISPLAYNO, USEFLAG) VALUES ( 'D100', 'PLANFLAG', 'R', '계획수립', '계획상태', '1', 'Y')
-    
-    /// PLANDATE 형식 6자리 변경 (211002)
-    /// ALTER TABLE TB_PLAN_MST ALTER COLUMN PLANDATE VARCHAR(6) NOT NULL;
-    /// ALTER TABLE TB_PLAN_DET ALTER COLUMN PLANDATE VARCHAR(6) NOT NULL;
-    /// </summary>
-
-
-
-
     public partial class PLAN_MST : Form
     {
         Function func = new Function();
@@ -32,25 +18,27 @@ namespace MESProject.생산계획
         SqlDataAdapter da;
         DataTable dt;
         string strqry = string.Empty;
+        SqlTransaction transaction;
 
         public PLAN_MST()
         {
             InitializeComponent();
         }
 
-        private void PROC_SEQ_Load(object sender, EventArgs e)
+        private void PLAN_MST_Load(object sender, EventArgs e)
         {
-            DGVLoad();
-            func.CboLoad(cboALC, "TB_ITEM_MST", "ITEMCODE", false, "ITEMTYPE", "ALC");
+            func.CboLoad(cboALC, "TB_ITEM_MST", "ITEMCODE", true, "ITEMTYPE", "ALC");
+            DGV1Load();
             Do_Search();
         }
 
-        private void DGVLoad()
+        #region ========== DGV Setting
+        private void DGV1Load()
         {
             // DGV1
             string[] DataPropertyName = new string[] { "PLANTCODE", "PLANDATE", "PLANSEQ", "ALC_CD", "PLANQTY", "ORDERNO", "PRODQTY", "PLANFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "날짜", "순서", "ALC", "수량", "작업지시번호", "생산수량", "계획상태", "등록자", "등록일자", "수정자", "수정일자" };
-            string[] HiddenColumn     = new string[] { "공장" };
+            string[] HiddenColumn     = new string[] { "PLANTCODE" };
             float[] FillWeight        = new float[] { 40, 100, 40, 100, 40, 130, 40, 40, 100, 130, 100, 130 };
             Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
@@ -58,65 +46,290 @@ namespace MESProject.생산계획
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 12);
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
 
+        private void DGV2Load()
+        {
             // DGV2 수정!
-            DataPropertyName = new string[] { "PLANTCODE", "PLANDATE", "PLANSEQ", "ALC_CD", "PLANQTY", "ORDERNO", "PRODQTY", "PLANFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            HeaderText       = new string[] { "공장", "날짜", "순서", "ALC", "수량", "작업지시번호", "생산수량", "계획상태", "등록자", "등록일자", "수정자", "수정일자" };
-            HiddenColumn     = new string[] { "공장" };
-            FillWeight       = new float[]  { 40, 100, 40, 100, 40, 130, 40, 40, 100, 130, 100, 130 };
-            StyleFont     = new Font("굴림", 9, FontStyle.Bold);
-            BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
+            string[] DataPropertyName = new string[] { "CHK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText       = new string[] { "완료", "공장", "작업순서", "작업번호", "순서", "위치", "LOTNO", "ALC", "투입일자", "완료일자", "등록자", "등록일자", "수정자", "수정일자" };
+            string[] HiddenColumn     = new string[] { "PLANTCODE" };
+            float[]  FillWeight       = new float[]  { 40, 40, 40, 80, 40, 40, 130, 100, 100, 100, 100, 130, 100, 130 };
+            Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
+            Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 12);
+            Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+        #endregion
 
         #region ========== CRUD
         public void Do_Search() // 검색
         {
-            strqry = "SELECT * FROM TB_PLAN_MST";
-            if (dtDate.Value.ToString("yyMMdd") != DateTime.Now.ToString("yyMMdd"))
-            {
-                strqry += " WHERE PLANDATE = '" + dtDate.Value.ToString("yyMMdd") + "'";
-            }
-            strqry += " ORDER BY PLANDATE, PLANSEQ";
+            strqry = "SELECT * FROM TB_PLAN_MST"
+                   + " WHERE PLANDATE = '" + dtDate.Value.ToString("yyMMdd") + "'"
+                   + " ORDER BY PLANDATE, PLANSEQ";
+            dt = func.GetDataTable2(strqry);
+            dataGridView1.DataSource = dt;
+            DGV2Load();
+        }
 
+        public void Do_Insert()
+        {
+            string check = "해당 칸을 입력해주세요";
+            if (cboALC.Text == "")
+            {
+                check += "\n          ALC";
+            }
+            if (txtQty.Text == "")
+            {
+                check += "\n          수량 ";
+            }
+            if (check.Length != 12)
+            {
+                MessageBox.Show(check, "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            using (SqlCommand cmd = new SqlCommand("PLAN_MST_I1", sql.con))
+            {
+                try
+                {
+                    string sDate = dtDate.Value.ToString("yyyyMMdd");
+                    string sALC  = cboALC.Text;
+                    int    iQty  = int.Parse(txtQty.Text);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar).Value = "D100";
+                    cmd.Parameters.Add("@PLANDATE",  SqlDbType.VarChar).Value = sDate;
+                    cmd.Parameters.Add("@ALC_CD",    SqlDbType.VarChar).Value = sALC;
+                    cmd.Parameters.Add("@PLANQTY",   SqlDbType.Int    ).Value = iQty;
+                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
+                    
+                    var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
+                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    rscode.Direction = ParameterDirection.Output;
+                    rsmsg.Direction  = ParameterDirection.Output;
+                    rscode.Size = 2;
+                    rsmsg.Size  = 200;
+                    cmd.Parameters.Add(rscode);
+                    cmd.Parameters.Add(rsmsg);
+
+                    sql.con.Open();
+                    transaction = sql.con.BeginTransaction();
+                    cmd.Transaction = transaction;
+                    cmd.ExecuteNonQuery();
+
+                    if (cmd.Parameters["@RS_CODE"].Value.ToString() == "E")
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show(cmd.Parameters["@RS_MSG"].Value.ToString());
+                        return;
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("입력되었습니다!");
+                }
+                catch (SqlException ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    sql.con.Close();
+                }
+                Do_Search();
+            }
+        }
+
+        public void Do_Delete()
+        {
+            using (SqlCommand cmd = new SqlCommand("PLAN_MST_D1", sql.con))
+            {
+                try
+                {
+                    int i = dataGridView1.SelectedCells[0].RowIndex; // 현재 선택된 행 번호
+                    string sOrderno = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                    if (dataGridView1.Rows[i].Cells[7].Value.ToString() != "R")
+                    {
+                        MessageBox.Show("투입중인 작업은 삭제할 수 없습니다!");
+                        return;
+                    }
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar).Value = "D100";
+                    cmd.Parameters.Add("@ORDERNO",   SqlDbType.VarChar).Value = sOrderno;
+                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
+
+                    var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
+                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    rscode.Direction = ParameterDirection.Output;
+                    rsmsg.Direction  = ParameterDirection.Output;
+                    rscode.Size = 2;
+                    rsmsg.Size  = 200;
+                    cmd.Parameters.Add(rscode);
+                    cmd.Parameters.Add(rsmsg);
+
+                    sql.con.Open();
+                    transaction = sql.con.BeginTransaction();
+                    cmd.Transaction = transaction;
+                    cmd.ExecuteNonQuery();
+                    if (cmd.Parameters["@RS_CODE"].Value.ToString() == "E")
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show(cmd.Parameters["@RS_MSG"].Value.ToString());
+                        return;
+                    }
+                    transaction.Commit();
+                    MessageBox.Show("삭제되었습니다!");
+                }
+                catch (SqlException ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    sql.con.Close();
+                }
+                Do_Search();
+            }
+        }
+
+        public void Do_Save()
+        {
+            // dgv2 체크박스 추가 및 체크 저장 시 해당 작업 완료
+            // dgv1 planflag R -> I, 체크 개수 = 생산수량 (Count(*)사용)
+            // 전체 완료 시 I -> C / if( Count(*) == 0 ) update
+
+            using (SqlCommand cmd = new SqlCommand("PLAN_MST_U1", sql.con))
+            {
+                try
+                {
+                    string sLotno;
+                    DataTable dtchange = dt.Clone();
+                    dt = new DataTable();
+                    dt = func.GetDataGridViewAsDataTable(dataGridView2);
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (dr.ItemArray[0].ToString() == "0") continue;
+                        dtchange.ImportRow(dr);
+                    }
+
+                    sql.con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@LOTNO",     SqlDbType.VarChar);
+                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar); // ID아닌 이름?
+
+                    var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
+                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    rscode.Direction = ParameterDirection.Output;
+                    rsmsg.Direction  = ParameterDirection.Output;
+                    rscode.Size = 2;
+                    rsmsg.Size  = 200;
+                    cmd.Parameters.Add(rscode);
+                    cmd.Parameters.Add(rsmsg);
+
+                    cmd.Parameters["@PLANTCODE"].Value = "D100";
+                    cmd.Parameters["@USERID"].Value    = Main.ID;
+
+                    for (int i = 0; i < dtchange.Rows.Count; i++)
+                    {
+                        sLotno = dtchange.Rows[i].ItemArray[6].ToString();
+                        cmd.Parameters["@LOTNO"].Value     = sLotno;
+
+                        transaction = sql.con.BeginTransaction();
+                        cmd.Transaction = transaction;
+                        cmd.ExecuteNonQuery();
+
+                        if (cmd.Parameters["@RS_CODE"].Value.ToString() == "E")
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show(cmd.Parameters["@RS_MSG"].Value.ToString());
+                            return;
+                        }
+                        transaction.Commit();
+                    }
+
+                    MessageBox.Show("저장되었습니다!");
+                }
+                catch (SqlException ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    sql.con.Close();
+                }
+            }
+            string sOrderNo = dataGridView1.SelectedCells[3].Value.ToString();
+            Do_Search();
+            strqry = "SELECT * FROM TB_PLAN_DET "
+                    + "WHERE ORDERNO = '" + sOrderNo + "' "
+                    + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             try
             {
-                sql.con.Open();
+                dt = new DataTable();
                 dt = func.GetDataTable2(strqry);
-                dataGridView1.DataSource = dt;
+                dataGridView2.DataSource = dt;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                sql.con.Close();
-            }
-        }
-        public void Do_Insert()
-        {
-            string sDate = dtDate.Value.ToString("yyMMdd");
-            string sALC  = cboALC.Text;
-            int iQty     = int.Parse(txtQty.Text);
-
-            SqlCommand cmd = new SqlCommand("저장프로시저이름", sql.con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add("@PLANDATE", SqlDbType.VarChar, 6).Value  = dtDate.Value.ToString("yyMMdd");
-            cmd.Parameters.Add("@ALC_CD",   SqlDbType.VarChar, 20).Value = cboALC.Text;
-            cmd.Parameters.Add("@PLANQTY",  SqlDbType.Int).Value         = txtQty.Text;
-
-            //SqlCommand cmd = new SqlCommand("EXEC 프로시저명 값1, 값2", conn);
-
-            cmd.ExecuteNonQuery();
-
         }
         #endregion
 
+        #region ========== DGV 이벤트
+        private void dtDate_ValueChanged(object sender, EventArgs e)
+        {
+            Do_Search();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            string Orderno = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            strqry = "SELECT * FROM TB_PLAN_DET "
+                    + "WHERE ORDERNO = '" + Orderno + "' "
+                    + "ORDER BY ORDERNO, SUBSEQ, SIDE";
+            try
+            {
+                dt = new DataTable();
+                dt = func.GetDataTable2(strqry);
+                dataGridView2.DataSource = dt;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
     }
 }
