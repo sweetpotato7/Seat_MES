@@ -85,6 +85,7 @@ namespace MESProject.생산계획
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(150, 30);
             this.dtDate.TabIndex = 6;
+            this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
             // 
             // cboALC
             // 
@@ -157,6 +158,7 @@ namespace MESProject.생산계획
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1509, 309);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // dataGridView2
             // 
@@ -168,16 +170,16 @@ namespace MESProject.생산계획
             this.dataGridView2.Size = new System.Drawing.Size(1509, 467);
             this.dataGridView2.TabIndex = 1;
             // 
-            // PROC_SEQ
+            // PLAN_MST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1521, 841);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "PROC_SEQ";
-            this.Text = "PROC_SEQ";
-            this.Load += new System.EventHandler(this.PROC_SEQ_Load);
+            this.Name = "PLAN_MST";
+            this.Text = "PLAN_MST";
+            this.Load += new System.EventHandler(this.PLAN_MST_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

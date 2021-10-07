@@ -132,6 +132,10 @@ namespace MESProject
                 da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -141,6 +145,40 @@ namespace MESProject
                 sql.con.Close();
             }
             return dt;
+        }
+
+        public DataTable GetDataGridViewAsDataTable(DataGridView _DataGridView)
+        {
+            try
+            {
+                if (_DataGridView.ColumnCount == 0)
+                    return null;
+                DataTable dt = new DataTable();
+                //////create columns
+                foreach (DataGridViewColumn col in _DataGridView.Columns)
+                {
+                    if (col.ValueType == null)
+                        dt.Columns.Add(col.Name, typeof(string));
+                    else
+                        dt.Columns.Add(col.Name, col.ValueType);
+                    dt.Columns[col.Name].Caption = col.HeaderText;
+                }
+                ///////insert row data
+                foreach (DataGridViewRow row in _DataGridView.Rows)
+                {
+                    DataRow drNewRow = dt.NewRow();
+                    foreach (DataColumn col in dt.Columns)
+                    {
+                        drNewRow[col.ColumnName] = row.Cells[col.ColumnName].Value;
+                    }
+                    dt.Rows.Add(drNewRow);
+                }
+                return dt;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
