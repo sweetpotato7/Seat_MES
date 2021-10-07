@@ -29,6 +29,8 @@ namespace MESProject
         
         private void Main_Load(object sender, EventArgs e)
         {
+            ID = "USERID"; // 로그인폼 사용시 삭제
+
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState     = FormWindowState.Maximized;
 
@@ -136,9 +138,7 @@ namespace MESProject
                     case "USER_ADMIN":
                         User_Admin.Do_Search();
                         break;
-                    case "Plan_Mst":
-                        break;
-                    case "PROC_SEQ":
+                    case "PLAN_MST":
                         Plan_Mst.Do_Search();
                         break;
                     default:
@@ -173,9 +173,7 @@ namespace MESProject
                     case "USER_ADMIN":
                         User_Admin.Do_Add();
                         break;
-                    case "Plan_Mst":
-                        break;
-                    case "PROC_SEQ":
+                    case "PLAN_MST":
                         Plan_Mst.Do_Insert();
                         break;
                     default:
@@ -210,7 +208,8 @@ namespace MESProject
                     case "USER_ADMIN":
                         User_Admin.Do_Delete();
                         break;
-                    case "Plan_Mst":
+                    case "PLAN_MST":
+                        Plan_Mst.Do_Delete();
                         break;
                     default:
                         break;
@@ -244,7 +243,8 @@ namespace MESProject
                     case "USER_ADMIN":
                         User_Admin.Do_Save();
                         break;
-                    case "Plan_Mst":
+                    case "PLAN_MST":
+                        Plan_Mst.Do_Save();
                         break;
                     default:
                         break;
@@ -285,7 +285,7 @@ namespace MESProject
             else { CellFont = CellStyleFont; }
 
             // DataGridView
-            Dgv.ReadOnly = true;
+            Dgv.ReadOnly = false;
             Dgv.EnableHeadersVisualStyles = false;
 
             Dgv.BorderStyle = BorderStyle.FixedSingle;
@@ -315,27 +315,52 @@ namespace MESProject
             // Column
             for (int i = 0; i < DataPropertyName.Length; i++)
             {
-                DataGridViewColumn column = new DataGridViewTextBoxColumn();
-                column.Name             = DataPropertyName[i];
-                column.HeaderText       = HeaderText[i];
-                column.DataPropertyName = DataPropertyName[i];
-                column.SortMode         = DataGridViewColumnSortMode.NotSortable;
-                column.FillWeight       = FillWeight[i];
-                column.DefaultCellStyle.SelectionBackColor = Dgv.DefaultCellStyle.BackColor;
-                column.DefaultCellStyle.SelectionForeColor = Dgv.DefaultCellStyle.ForeColor;
-                column.DefaultCellStyle.ForeColor          = Color.Black;
-                column.DefaultCellStyle.Font               = CellFont;
-                if (HiddenColumn != null)
+                if (DataPropertyName[i] == "CHK")
                 {
-                    for (int j = 0; j < HiddenColumn.Length; j++)
+                    DataGridViewCheckBoxColumn chkcol = new DataGridViewCheckBoxColumn();
+                    chkcol.Name             = DataPropertyName[i];
+                    chkcol.HeaderText       = HeaderText[i];
+                    chkcol.DataPropertyName = DataPropertyName[i];
+                    chkcol.FillWeight       = FillWeight[i];
+                    chkcol.TrueValue  = 1;
+                    chkcol.FalseValue = 0;
+                    if (HiddenColumn != null)
                     {
-                        if (column.Name == HiddenColumn[j])
+                        for (int j = 0; j < HiddenColumn.Length; j++)
                         {
-                            column.Visible = false;
+                            if (chkcol.Name == HiddenColumn[j])
+                            {
+                                chkcol.Visible = false;
+                            }
                         }
                     }
+                    Dgv.Columns.Add(chkcol);
                 }
-                Dgv.Columns.Add(column);
+                else
+                {
+                    DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                    column.Name             = DataPropertyName[i];
+                    column.HeaderText       = HeaderText[i];
+                    column.DataPropertyName = DataPropertyName[i];
+                    column.SortMode         = DataGridViewColumnSortMode.NotSortable;
+                    column.FillWeight       = FillWeight[i];
+                    column.DefaultCellStyle.SelectionBackColor = Dgv.DefaultCellStyle.BackColor;
+                    column.DefaultCellStyle.SelectionForeColor = Dgv.DefaultCellStyle.ForeColor;
+                    column.DefaultCellStyle.ForeColor          = Color.Black;
+                    column.DefaultCellStyle.Font               = CellFont;
+                    column.ReadOnly = true;
+                    if (HiddenColumn != null)
+                    {
+                        for (int j = 0; j < HiddenColumn.Length; j++)
+                        {
+                            if (column.Name == HiddenColumn[j])
+                            {
+                                column.Visible = false;
+                            }
+                        }
+                    }
+                    Dgv.Columns.Add(column);
+                }
             }
 
             // Row Header
