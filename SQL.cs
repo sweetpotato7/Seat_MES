@@ -7,8 +7,8 @@ namespace MESProject
 {
     class SQL // 가져온 파일, 수정해야됨
     {
-        public SqlConnection con = new SqlConnection("server = " + SystemInformation.ComputerName + "; Database=MES; Uid=sa; Pwd=1;");
-        //public SqlConnection con = new SqlConnection("server = 61.83.51.99, 1433; Database=MES; Uid=sa; Pwd=1;"); //서버 외부 접속
+        //public SqlConnection con = new SqlConnection("server = " + SystemInformation.ComputerName + "; Database=MES; Uid=sa; Pwd=1;");
+        public SqlConnection con = new SqlConnection("server = 61.83.51.99, 1433; Database=MES; Uid=sa; Pwd=1;"); //서버 외부 접속
         //public SqlConnection con = new SqlConnection(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = MES; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         public void ConnectDb(string login_id, string login_pw, ref bool login)

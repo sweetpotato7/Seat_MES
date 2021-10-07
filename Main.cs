@@ -19,6 +19,7 @@ namespace MESProject
         기준정보.SPEC_MST Spec_Mst;
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
+        공정관리.PROC_SEQ_공정순서관리_ Proc_Seq;
 
         public static string ID;
         
@@ -103,6 +104,11 @@ namespace MESProject
             Plan_Mst = new 생산계획.PLAN_MST();
             tabCtrlAdd(Plan_Mst, sender);
         }
+        private void 공정순서관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Proc_Seq = new 공정관리.PROC_SEQ_공정순서관리_();
+            tabCtrlAdd(Proc_Seq, sender);
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (tabControl1.TabPages.Count > 0)
@@ -138,8 +144,8 @@ namespace MESProject
                         break;
                     case "Plan_Mst":
                         break;
-                    case "PROC_SEQ":
-                        Plan_Mst.Do_Search();
+                    case "PROC_SEQ_공정순서관리_":
+                        Proc_Seq.Do_Search();
                         break;
                     default:
                         break;
@@ -383,5 +389,6 @@ namespace MESProject
             //MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
 
+       
     }
 }

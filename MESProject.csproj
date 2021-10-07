@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Function.cs" />
+    <Compile Include="공정관리\PROC_SEQ%28공정순서관리%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="공정관리\PROC_SEQ%28공정순서관리%29.Designer.cs">
+      <DependentUpon>PROC_SEQ%28공정순서관리%29.cs</DependentUpon>
+    </Compile>
     <Compile Include="생산계획\PLAN_MST%28작업 지시%29.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="공정관리\PROC_SEQ%28공정순서관리%29.resx">
+      <DependentUpon>PROC_SEQ%28공정순서관리%29.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="생산계획\PLAN_MST%28작업 지시%29.resx">
       <DependentUpon>PLAN_MST%28작업 지시%29.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,9 +155,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="공정관리\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\search.png" />
   </ItemGroup>
