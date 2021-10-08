@@ -36,9 +36,9 @@ namespace MESProject.기준정보
         #region 그리드세팅
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SPEC1", "SPEC2", "SPEC3", "SPEC4", "SPEC5", "SPEC6", "USEFLAG", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
-            string[] HeaderText = new string[] { "공장코드", "품번", "차종", "지역", "트랙", "폼패드", "헤드레스트", "커버링", "SAB", "사용여부", "등록일시", "등록자", "수정일시", "수정자" };
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SEATTYPE", "SPEC1", "SPEC2", "SPEC3", "SPEC4", "SPEC5", "SPEC6", "LOTNO", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText = new string[] { "공장코드", "품번", "차종", "시트타입", "지역", "트랙", "시트", "헤드레스트", "색상", "SAB", "사용여부", "고유번호", "등록자", "등록일시", "수정자", "수정일시" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -79,6 +79,7 @@ namespace MESProject.기준정보
                 cmd.CommandText = "select * from TB_SPEC where ITEMCODE LIKE '%" + cmb_S_ALC.Text + "%'";
             }
             cmd.ExecuteNonQuery();
+
             da = new SqlDataAdapter(cmd);
             dt = new DataTable();
             da.Fill(dt);
@@ -105,28 +106,44 @@ namespace MESProject.기준정보
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into TB_SPEC (PLANTCODE, ITEMCODE, CARCODE, SPEC1, SPEC2, SPEC3, SPEC4, SPEC5, SPEC6) values" 
-                + "('D100','" 
-                + cmb_ALC.Text + "','" 
-                + cmb_CarCode.Text + "','" 
-                + cmbLocal.SelectedItem.ToString() + "','"
-                + cmbTrack.SelectedItem.ToString() + "','" 
-                + cmbFormpad.SelectedItem.ToString() + "','" 
-                + cmbHeadrestrian.SelectedItem.ToString() + "','" 
-                + cmbCovering.SelectedItem.ToString() + "','" 
-                + cmbSAB.SelectedItem.ToString() + "')";
+            cmd.CommandText = "INSERT INTO TB_SPEC (PLANTCODE, ITEMCODE, CARCODE, SEATTYPE, SPEC1, SPEC2, SPEC3, SPEC4, SPEC5, SPEC6, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT) VALUES"
+                + "('" + cmb_PlantCode.Text + "','"
+                + cmb_ItemCode.Text + "','"
+                + cmb_CarCode.Text + "','"
+                + cmb_SeatType.Text + "','"
+                + cmbLocal.Text + "','"
+                + cmbTrack.Text + "','"
+                + cmbFormpad.Text + "','"
+                + cmbHeadrestrian.Text + "','"
+                + cmbCovering.Text + "','"
+                + cmbSAB.Text + "','"
+                + cmbUseFlag.Text + "','"
+                + txtMaker.Text + "','"
+                + dtMakeDate.Text + "','"
+                + txtEditor.Text + "','"
+                + dtEditDate.Text + "')";
             cmd.ExecuteNonQuery();
 
-            cmb_ALC.Text = "";
+
+
+
+            cmb_PlantCode.Text = "";
+            cmb_ItemCode.Text = "";
             cmb_CarCode.Text = "";
-            cmbLocal.SelectedIndex = 0;
-            cmbTrack.SelectedIndex = 0;
-            cmbFormpad.SelectedIndex = 0;
-            cmbHeadrestrian.SelectedIndex = 0;
-            cmbHeadrestrian.SelectedIndex = 0;
-            cmbSAB.SelectedIndex = 0;
+            cmb_SeatType.Text = "";
+
+            cmbLocal.Text = "";
+            cmbTrack.Text = "";
+            cmbFormpad.Text = "";
+            cmbHeadrestrian.Text = "";
+            cmbCovering.Text = "";
+            cmbSAB.Text = "";
+
             Do_Entire_Search();
             MessageBox.Show("추가되었습니다.");
+
+            //SqlCommand cmd2 = new SqlCommand("EXEC TB_SPEC_I1", sql.con);
+            //cmd2.ExecuteNonQuery();
         }
 
         public void Do_Delete()
@@ -141,6 +158,7 @@ namespace MESProject.기준정보
             MessageBox.Show("삭제되었습니다.");
         }
 
+        //수정
         public void Do_Save()
         {
             string itemcode;
@@ -152,12 +170,24 @@ namespace MESProject.기준정보
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update TB_SPEC SET " +
-                              "SPEC1 = '" + cmbLocal.Text        + "', " +
-                              "SPEC2 = '" + cmbTrack.Text        + "', " +
-                              "SPEC3 = '" + cmbFormpad.Text      + "', " +
+                              "PLANTCODE = '" + cmb_PlantCode.Text + "', " +
+                              "ITEMCODE = '" + cmb_ItemCode.Text + "', " +
+                              "CARCODE = '" + cmb_CarCode.Text + "'," +
+                              "SEATTYPE = '" + cmb_SeatType.Text + "'," +
+
+                              "SPEC1 = '" + cmbLocal.Text + "', " +
+                              "SPEC2 = '" + cmbTrack.Text + "', " +
+                              "SPEC3 = '" + cmbFormpad.Text + "', " +
                               "SPEC4 = '" + cmbHeadrestrian.Text + "', " +
-                              "SPEC5 = '" + cmbCovering.Text     + "', " +
-                              "SPEC6 = '" + cmbSAB.Text          + "'"   +
+                              "SPEC5 = '" + cmbCovering.Text + "', " +
+                              "SPEC6 = '" + cmbSAB.Text + "'," +
+
+                              "USEFLAG = '" + cmbUseFlag.Text + "'," +
+                              "CREATE_USERID = '" + txtMaker.Text + "'," +
+                              "CREATE_DT = '" + dtMakeDate.Text + "'," +
+                              "MODIFY_USERID = '" + txtEditor.Text + "'," +
+                              "MODIFY_DT = '" + dtEditDate.Text + "'" +
+
                               "where ITEMCODE = '" + itemcode + "'";
             cmd.ExecuteNonQuery();
 
@@ -178,36 +208,47 @@ namespace MESProject.기준정보
         #region ========== 콤보박스
         private void CboSet()
         {
-            func.CboLoad(cmb_S_ALC,       "TB_SPEC",     "ITEMCODE", false);
-            func.CboLoad(cmb_CarCode,     "TB_SPEC",     "CARCODE",  true );
-            func.CboLoad(cmb_ALC,         "TB_SPEC",     "ITEMCODE", false);
+            func.CboLoad(cmb_PlantCode, "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cmb_ItemCode, "TB_ITEM_MST", "ITEMTYPE", true);
+            func.CboLoad(cmb_CarCode, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "CAR_CD");
+            func.CboLoad(cmb_SeatType, "TB_BOM", "ITEMCODE", true);
+
             func.CboLoad(cmbLocal,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_01");
             func.CboLoad(cmbTrack,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_02");
-            func.CboLoad(cmbFormpad,      "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
+            func.CboLoad(cmbFormpad,      "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_03");
             func.CboLoad(cmbHeadrestrian, "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
-            func.CboLoad(cmbCovering,     "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_03");
-            func.CboLoad(cmbSAB,          "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
+            func.CboLoad(cmbCovering,     "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_05");
+            func.CboLoad(cmbSAB,          "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_06");
         }
         
         
         #endregion
 
-        // 자동완성
-        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        //자동완성
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i;
             i = dataGridView1.SelectedCells[0].RowIndex;
 
-            cmb_ALC.Text         = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            cmb_CarCode.Text     = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            cmbLocal.Text        = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            cmbTrack.Text        = dataGridView1.Rows[i].Cells[4].Value.ToString();
-            cmbFormpad.Text      = dataGridView1.Rows[i].Cells[5].Value.ToString();
-            cmbHeadrestrian.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();
-            cmbCovering.Text     = dataGridView1.Rows[i].Cells[7].Value.ToString();
-            cmbSAB.Text          = dataGridView1.Rows[i].Cells[8].Value.ToString();
-        }
+            cmb_PlantCode.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            cmb_ItemCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            cmb_CarCode.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            cmb_SeatType.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
 
+            cmbLocal.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            cmbTrack.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+            cmbFormpad.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();
+            cmbHeadrestrian.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();
+            cmbCovering.Text = dataGridView1.Rows[i].Cells[8].Value.ToString();
+            cmbSAB.Text = dataGridView1.Rows[i].Cells[9].Value.ToString();
+
+            cmbUseFlag.Text = dataGridView1.Rows[i].Cells[10].Value.ToString();
+            txtMaker.Text = dataGridView1.Rows[i].Cells[11].Value.ToString();
+            dtMakeDate.Text = dataGridView1.Rows[i].Cells[12].Value.ToString();
+            txtEditor.Text = dataGridView1.Rows[i].Cells[13].Value.ToString();
+            dtEditDate.Text = dataGridView1.Rows[i].Cells[14].Value.ToString();
+        }
     }
 
     

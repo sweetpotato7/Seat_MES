@@ -180,5 +180,10 @@ namespace MESProject
                 return null;
             }
         }
+
+        internal void CboLoad(ComboBox cmb_ALC, string v1, string v2, bool v3, string v4)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
