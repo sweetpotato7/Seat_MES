@@ -48,7 +48,7 @@ namespace MESProject.공정관리
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersVisible = true;
 
         }
 
@@ -57,6 +57,12 @@ namespace MESProject.공정관리
             func.CboLoad(cboPlant, "TB_PROC_SEQ", "PLANTCODE", false);
             func.CboLoad(cboLine, "TB_PROC_SEQ", "LINE_CD", false);
             func.CboLoad(cboProc, "TB_PROC_SEQ", "PROC_CD", false);
+            func.CboLoad(cboPlantCode, "TB_PROC_SEQ", "PLANTCODE", false);
+            func.CboLoad(cboLineNum, "TB_PROC_SEQ", "LINE_CD", false);
+            func.CboLoad(cboProcCode, "TB_PROC_SEQ", "PROC_CD", false);
+            func.CboLoad(cboProcName, "TB_PROC_SEQ", "PROC_NAME", false);
+            func.CboLoad(cboStepCode, "TB_PROC_SEQ", "STEP_CD", false);
+            func.CboLoad(cboStepName, "TB_PROC_SEQ", "STEP_NAME", false);
             cboPlant.Text = "D100";
             cboLine.Text = "1";
         }
@@ -76,11 +82,6 @@ namespace MESProject.공정관리
                 strqry = "select * from TB_PROC_SEQ where PROC_CD =" + "'" + cboProc.Text + "'";
                 dataGridView1.DataSource = func.GetDataTable(strqry);
             }
-
-            // 공정 번호가 아닌 공정 이름으로 출력
-            // 작업 번호가 아닌 작업 이름으로 출력
-            // 공정번호, 작업번호 콤보박스에서 이름으로 받고 번호로 변환해서 SQL저장
-            
             // 공정추가
             // 추가 시 순서중복 방지
             // 공정번호 중복방지
@@ -108,6 +109,7 @@ namespace MESProject.공정관리
             cboStepCode.Text = "";
             cboStepName.Text = "";
             txtProcSeq.Text  = "";
+            Do_Search();
 
             MessageBox.Show("추가되었습니다.");
         }
@@ -122,8 +124,15 @@ namespace MESProject.공정관리
 
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from TB_SPEC where ITEMCODE=" + "'" + proc_cd + "'" + "'" + step_cd + "'" + "";
+            cmd.CommandText = "delete from TB_PROC_SEQ where PROC_CD = " + "'" + proc_cd + "'" + "AND STEP_CD = " + "'" + step_cd + "'" + "";
             cmd.ExecuteNonQuery();
+            
+            cboLineNum.Text = "";
+            cboProcCode.Text = "";
+            cboProcName.Text = "";
+            cboStepCode.Text = "";
+            cboStepName.Text = "";
+            txtProcSeq.Text = "";
             Do_Search();
             MessageBox.Show("삭제되었습니다.");
         }
@@ -140,6 +149,7 @@ namespace MESProject.공정관리
             cboStepCode.Text  = dataGridView1.Rows[i].Cells[4].Value.ToString();
             cboStepName.Text  = dataGridView1.Rows[i].Cells[5].Value.ToString();
             txtProcSeq.Text   = dataGridView1.Rows[i].Cells[6].Value.ToString();
+
         }
 
     }
