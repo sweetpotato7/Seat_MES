@@ -32,23 +32,27 @@ namespace MESProject.공정관리
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboProc = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboLine = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboPlant = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cboStepCode = new System.Windows.Forms.ComboBox();
+            this.cboProcCode = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cboLineNum = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboPlantCode = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtProcSeq = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboProcName = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboStepName = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -59,9 +63,9 @@ namespace MESProject.공정관리
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.cboProc);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.cboLine);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cboPlant);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -72,7 +76,7 @@ namespace MESProject.공정관리
             // cboProc
             // 
             this.cboProc.FormattingEnabled = true;
-            this.cboProc.Location = new System.Drawing.Point(449, 10);
+            this.cboProc.Location = new System.Drawing.Point(479, 9);
             this.cboProc.Name = "cboProc";
             this.cboProc.Size = new System.Drawing.Size(121, 23);
             this.cboProc.TabIndex = 5;
@@ -82,17 +86,17 @@ namespace MESProject.공정관리
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(406, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 4;
-            this.label3.Text = "공정";
+            this.label3.Text = "공정코드";
             // 
-            // comboBox2
+            // cboLine
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(268, 11);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 3;
+            this.cboLine.FormattingEnabled = true;
+            this.cboLine.Location = new System.Drawing.Point(268, 11);
+            this.cboLine.Name = "cboLine";
+            this.cboLine.Size = new System.Drawing.Size(121, 23);
+            this.cboLine.TabIndex = 3;
             // 
             // label2
             // 
@@ -103,13 +107,13 @@ namespace MESProject.공정관리
             this.label2.TabIndex = 2;
             this.label2.Text = "라인넘버";
             // 
-            // comboBox1
+            // cboPlant
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(56, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 1;
+            this.cboPlant.FormattingEnabled = true;
+            this.cboPlant.Location = new System.Drawing.Point(56, 10);
+            this.cboPlant.Name = "cboPlant";
+            this.cboPlant.Size = new System.Drawing.Size(121, 23);
+            this.cboPlant.TabIndex = 1;
             // 
             // label1
             // 
@@ -123,15 +127,19 @@ namespace MESProject.공정관리
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel2.Controls.Add(this.comboBox8);
-            this.panel2.Controls.Add(this.comboBox7);
-            this.panel2.Controls.Add(this.comboBox6);
+            this.panel2.Controls.Add(this.txtProcSeq);
+            this.panel2.Controls.Add(this.cboStepName);
+            this.panel2.Controls.Add(this.cboStepCode);
+            this.panel2.Controls.Add(this.cboProcName);
+            this.panel2.Controls.Add(this.cboProcCode);
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.comboBox5);
+            this.panel2.Controls.Add(this.cboLineNum);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.comboBox4);
+            this.panel2.Controls.Add(this.cboPlantCode);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -140,43 +148,35 @@ namespace MESProject.공정관리
             this.panel2.Size = new System.Drawing.Size(200, 402);
             this.panel2.TabIndex = 1;
             // 
-            // comboBox8
+            // cboStepCode
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(69, 225);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(99, 23);
-            this.comboBox8.TabIndex = 9;
+            this.cboStepCode.FormattingEnabled = true;
+            this.cboStepCode.Location = new System.Drawing.Point(79, 210);
+            this.cboStepCode.Name = "cboStepCode";
+            this.cboStepCode.Size = new System.Drawing.Size(99, 23);
+            this.cboStepCode.TabIndex = 9;
             // 
-            // comboBox7
+            // cboProcCode
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(69, 191);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(99, 23);
-            this.comboBox7.TabIndex = 9;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(69, 153);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(99, 23);
-            this.comboBox6.TabIndex = 9;
+            this.cboProcCode.FormattingEnabled = true;
+            this.cboProcCode.Location = new System.Drawing.Point(80, 127);
+            this.cboProcCode.Name = "cboProcCode";
+            this.cboProcCode.Size = new System.Drawing.Size(99, 23);
+            this.cboProcCode.TabIndex = 9;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(-4, 228);
+            this.label9.Location = new System.Drawing.Point(7, 213);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 15);
             this.label9.TabIndex = 8;
-            this.label9.Text = "작업방법";
+            this.label9.Text = "작업코드";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-4, 194);
+            this.label8.Location = new System.Drawing.Point(7, 277);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 15);
             this.label8.TabIndex = 8;
@@ -185,41 +185,41 @@ namespace MESProject.공정관리
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 156);
+            this.label7.Location = new System.Drawing.Point(7, 131);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(67, 15);
             this.label7.TabIndex = 8;
-            this.label7.Text = "공정";
+            this.label7.Text = "공정코드";
             // 
-            // comboBox5
+            // cboLineNum
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(69, 116);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(99, 23);
-            this.comboBox5.TabIndex = 7;
+            this.cboLineNum.FormattingEnabled = true;
+            this.cboLineNum.Location = new System.Drawing.Point(80, 90);
+            this.cboLineNum.Name = "cboLineNum";
+            this.cboLineNum.Size = new System.Drawing.Size(99, 23);
+            this.cboLineNum.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(-4, 118);
+            this.label6.Location = new System.Drawing.Point(7, 92);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 15);
             this.label6.TabIndex = 6;
             this.label6.Text = "라인넘버";
             // 
-            // comboBox4
+            // cboPlantCode
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(69, 77);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(99, 23);
-            this.comboBox4.TabIndex = 5;
+            this.cboPlantCode.FormattingEnabled = true;
+            this.cboPlantCode.Location = new System.Drawing.Point(80, 51);
+            this.cboPlantCode.Name = "cboPlantCode";
+            this.cboPlantCode.Size = new System.Drawing.Size(99, 23);
+            this.cboPlantCode.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 80);
+            this.label5.Location = new System.Drawing.Point(37, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 4;
@@ -243,6 +243,48 @@ namespace MESProject.공정관리
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(600, 402);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // txtProcSeq
+            // 
+            this.txtProcSeq.Location = new System.Drawing.Point(79, 277);
+            this.txtProcSeq.Name = "txtProcSeq";
+            this.txtProcSeq.Size = new System.Drawing.Size(99, 25);
+            this.txtProcSeq.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(37, 169);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 15);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "공정";
+            // 
+            // cboProcName
+            // 
+            this.cboProcName.FormattingEnabled = true;
+            this.cboProcName.Location = new System.Drawing.Point(80, 166);
+            this.cboProcName.Name = "cboProcName";
+            this.cboProcName.Size = new System.Drawing.Size(99, 23);
+            this.cboProcName.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(37, 244);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 15);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "작업";
+            // 
+            // cboStepName
+            // 
+            this.cboStepName.FormattingEnabled = true;
+            this.cboStepName.Location = new System.Drawing.Point(79, 241);
+            this.cboStepName.Name = "cboStepName";
+            this.cboStepName.Size = new System.Drawing.Size(99, 23);
+            this.cboStepName.TabIndex = 9;
             // 
             // PROC_SEQ_공정순서관리_
             // 
@@ -270,22 +312,26 @@ namespace MESProject.공정관리
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cboProc;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboLine;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboPlant;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cboStepCode;
+        private System.Windows.Forms.ComboBox cboProcCode;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cboLineNum;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboPlantCode;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtProcSeq;
+        private System.Windows.Forms.ComboBox cboStepName;
+        private System.Windows.Forms.ComboBox cboProcName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

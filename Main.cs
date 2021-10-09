@@ -185,6 +185,9 @@ namespace MESProject
                     case "PLAN_MST":
                         Plan_Mst.Do_Insert();
                         break;
+                    case "PROC_SEQ_공정순서관리_":
+                        Proc_Seq.Do_Insert();
+                        break;
                     default:
                         break;
                 }
@@ -219,6 +222,9 @@ namespace MESProject
                         break;
                     case "PLAN_MST":
                         Plan_Mst.Do_Delete();
+                        break;
+                    case "PROC_SEQ_공정순서관리_":
+                        Proc_Seq.Do_Delete();
                         break;
                     default:
                         break;

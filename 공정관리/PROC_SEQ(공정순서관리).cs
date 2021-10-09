@@ -17,9 +17,6 @@ namespace MESProject.공정관리
         SQL sql = new SQL();
         string strqry = string.Empty;
         Function func = new Function();
-        SqlDataAdapter da;
-        DataTable dt;
-        
 
         public PROC_SEQ_공정순서관리_()
         {
@@ -40,9 +37,9 @@ namespace MESProject.공정관리
 
         private void DGVLoad() // 작업지시
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "LINE_CD", "PROC_CD", "PROC_SEQ", "STEP_CD", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "공장", "라인번호", "공정", "공정순서", "작업", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "등록자", "등록일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "LINE_CD", "PROC_CD", "PROC_NAME", "STEP_CD", "STEP_NAME", "PROC_SEQ", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText = new string[] { "공장", "라인번호", "공정코드", "공정", "작업코드", "작업", "작업순서", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "등록자", "등록일시", "수정자", "수정일시" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -57,36 +54,13 @@ namespace MESProject.공정관리
 
         private void CboSet()
         {
+            func.CboLoad(cboPlant, "TB_PROC_SEQ", "PLANTCODE", false);
+            func.CboLoad(cboLine, "TB_PROC_SEQ", "LINE_CD", false);
             func.CboLoad(cboProc, "TB_PROC_SEQ", "PROC_CD", false);
+            cboPlant.Text = "D100";
+            cboLine.Text = "1";
         }
-
-        private void ChangeValue()
-        {
-            dt = GetDataTable(strqry);
-            foreach (DataRow dr in dt.Rows)
-                if (dr["PROC_CD"].ToString() == "010")
-                {
-                    dr["PROC_CD"] = "트랙적재";
-                }
-                else if(dr["PROC_CD"].ToString() == "020")
-                {
-                    dr["PROC_CD"] = "부품조립";
-                }
-                else if(dr["PROC_CD"].ToString() == "020")
-                {
-                    dr["PROC_CD"] = "검사공정";
-                }
-        }
-
-        public DataTable GetDataTable(string Query)
-        {
-            da = new SqlDataAdapter(Query, sql.con);
-            dt = new DataTable();
-            da.Fill(dt);
-            return dt;
-        }
-
-
+        
         public void Do_Search()
         {
             string Proc = cboProc.Text;
@@ -102,7 +76,6 @@ namespace MESProject.공정관리
                 strqry = "select * from TB_PROC_SEQ where PROC_CD =" + "'" + cboProc.Text + "'";
                 dataGridView1.DataSource = func.GetDataTable(strqry);
             }
-            ChangeValue();
 
             // 공정 번호가 아닌 공정 이름으로 출력
             // 작업 번호가 아닌 작업 이름으로 출력
@@ -114,5 +87,60 @@ namespace MESProject.공정관리
             // 작업번호 중복방지
             // 기타 중복방지 
         }
+
+        public void Do_Insert()
+        {
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT INTO TB_PROC_SEQ (PLANTCODE, LINE_CD, PROC_CD, PROC_NAME, STEP_CD, STEP_NAME, PROC_SEQ) VALUES"
+                + "('" + cboPlantCode.Text + "','"
+                + cboLineNum.Text + "','"
+                + cboProcCode.Text + "','"
+                + cboProcName.Text + "','"
+                + cboStepCode.Text + "','"
+                + cboStepName.Text + "','"
+                + txtProcSeq.Text + "')";
+            cmd.ExecuteNonQuery();
+
+            cboLineNum.Text  = "";
+            cboProcCode.Text = "";
+            cboProcName.Text = "";
+            cboStepCode.Text = "";
+            cboStepName.Text = "";
+            txtProcSeq.Text  = "";
+
+            MessageBox.Show("추가되었습니다.");
+        }
+
+        public void Do_Delete()
+        {
+            string proc_cd;
+            string step_cd;
+
+            proc_cd = dataGridView1.SelectedCells[2].Value.ToString();
+            step_cd = dataGridView1.SelectedCells[4].Value.ToString();
+
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from TB_SPEC where ITEMCODE=" + "'" + proc_cd + "'" + "'" + step_cd + "'" + "";
+            cmd.ExecuteNonQuery();
+            Do_Search();
+            MessageBox.Show("삭제되었습니다.");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dataGridView1.SelectedCells[0].RowIndex;
+
+            cboPlantCode.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            cboLineNum.Text   = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            cboProcCode.Text  = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            cboProcName.Text  = dataGridView1.Rows[i].Cells[3].Value.ToString();
+            cboStepCode.Text  = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            cboStepName.Text  = dataGridView1.Rows[i].Cells[5].Value.ToString();
+            txtProcSeq.Text   = dataGridView1.Rows[i].Cells[6].Value.ToString();
+        }
+
     }
 }
