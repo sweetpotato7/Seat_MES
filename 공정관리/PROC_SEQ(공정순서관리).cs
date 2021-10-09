@@ -35,7 +35,7 @@ namespace MESProject.공정관리
             CboSet();
         }
 
-        private void DGVLoad() // 작업지시
+        private void DGVLoad() 
         {
             string[] DataPropertyName = new string[] { "PLANTCODE", "LINE_CD", "PROC_CD", "PROC_NAME", "STEP_CD", "STEP_NAME", "PROC_SEQ", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText = new string[] { "공장", "라인번호", "공정코드", "공정", "작업코드", "작업", "작업순서", "INCOMDE", "WORK_START", "LOTNO", "WORK_END", "등록자", "등록일시", "수정자", "수정일시" };
@@ -49,7 +49,6 @@ namespace MESProject.공정관리
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = true;
-
         }
 
         private void CboSet()
