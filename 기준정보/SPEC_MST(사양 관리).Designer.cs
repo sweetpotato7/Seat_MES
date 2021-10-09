@@ -35,6 +35,16 @@ namespace MESProject.기준정보
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dtEditDate = new System.Windows.Forms.DateTimePicker();
+            this.dtMakeDate = new System.Windows.Forms.DateTimePicker();
+            this.txtEditor = new System.Windows.Forms.TextBox();
+            this.txtMaker = new System.Windows.Forms.TextBox();
+            this.cmbUseFlag = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.cmb_PlantCode = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cmb_ItemCode = new System.Windows.Forms.ComboBox();
@@ -57,16 +67,7 @@ namespace MESProject.기준정보
             this.label10 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cmbUseFlag = new System.Windows.Forms.ComboBox();
-            this.txtMaker = new System.Windows.Forms.TextBox();
-            this.txtEditor = new System.Windows.Forms.TextBox();
-            this.dtMakeDate = new System.Windows.Forms.DateTimePicker();
-            this.dtEditDate = new System.Windows.Forms.DateTimePicker();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -86,6 +87,7 @@ namespace MESProject.기준정보
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnSearch);
             this.panel5.Controls.Add(this.cmb_S_ALC);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -159,6 +161,99 @@ namespace MESProject.기준정보
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(252, 633);
             this.panel4.TabIndex = 11;
+            // 
+            // dtEditDate
+            // 
+            this.dtEditDate.CustomFormat = "yyyy-MM-dd";
+            this.dtEditDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEditDate.Location = new System.Drawing.Point(143, 594);
+            this.dtEditDate.Name = "dtEditDate";
+            this.dtEditDate.Size = new System.Drawing.Size(94, 21);
+            this.dtEditDate.TabIndex = 43;
+            // 
+            // dtMakeDate
+            // 
+            this.dtMakeDate.CustomFormat = "yyyy-MM-dd";
+            this.dtMakeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtMakeDate.Location = new System.Drawing.Point(143, 530);
+            this.dtMakeDate.Name = "dtMakeDate";
+            this.dtMakeDate.Size = new System.Drawing.Size(94, 21);
+            this.dtMakeDate.TabIndex = 42;
+            // 
+            // txtEditor
+            // 
+            this.txtEditor.Location = new System.Drawing.Point(143, 562);
+            this.txtEditor.Name = "txtEditor";
+            this.txtEditor.Size = new System.Drawing.Size(94, 21);
+            this.txtEditor.TabIndex = 41;
+            // 
+            // txtMaker
+            // 
+            this.txtMaker.Location = new System.Drawing.Point(143, 498);
+            this.txtMaker.Name = "txtMaker";
+            this.txtMaker.Size = new System.Drawing.Size(94, 21);
+            this.txtMaker.TabIndex = 40;
+            // 
+            // cmbUseFlag
+            // 
+            this.cmbUseFlag.FormattingEnabled = true;
+            this.cmbUseFlag.Items.AddRange(new object[] {
+            "Y",
+            "N"});
+            this.cmbUseFlag.Location = new System.Drawing.Point(143, 466);
+            this.cmbUseFlag.Name = "cmbUseFlag";
+            this.cmbUseFlag.Size = new System.Drawing.Size(94, 20);
+            this.cmbUseFlag.TabIndex = 39;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label16.Location = new System.Drawing.Point(18, 598);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(60, 17);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "수정일시";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Location = new System.Drawing.Point(18, 566);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(47, 17);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "수정자";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(18, 534);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 17);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "등록일시";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Location = new System.Drawing.Point(18, 502);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(47, 17);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "등록자";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(18, 470);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 17);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "사용여부";
             // 
             // cmb_PlantCode
             // 
@@ -362,98 +457,15 @@ namespace MESProject.기준정보
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // label3
+            // btnSearch
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(18, 470);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 17);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "사용여부";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(18, 502);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 17);
-            this.label13.TabIndex = 35;
-            this.label13.Text = "등록자";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.Location = new System.Drawing.Point(18, 534);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 17);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "등록일시";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(18, 566);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(47, 17);
-            this.label15.TabIndex = 37;
-            this.label15.Text = "수정자";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.Location = new System.Drawing.Point(18, 598);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(60, 17);
-            this.label16.TabIndex = 38;
-            this.label16.Text = "수정일시";
-            // 
-            // cmbUseFlag
-            // 
-            this.cmbUseFlag.FormattingEnabled = true;
-            this.cmbUseFlag.Items.AddRange(new object[] {
-            "Y",
-            "N"});
-            this.cmbUseFlag.Location = new System.Drawing.Point(143, 466);
-            this.cmbUseFlag.Name = "cmbUseFlag";
-            this.cmbUseFlag.Size = new System.Drawing.Size(94, 20);
-            this.cmbUseFlag.TabIndex = 39;
-            // 
-            // txtMaker
-            // 
-            this.txtMaker.Location = new System.Drawing.Point(143, 498);
-            this.txtMaker.Name = "txtMaker";
-            this.txtMaker.Size = new System.Drawing.Size(94, 21);
-            this.txtMaker.TabIndex = 40;
-            // 
-            // txtEditor
-            // 
-            this.txtEditor.Location = new System.Drawing.Point(143, 562);
-            this.txtEditor.Name = "txtEditor";
-            this.txtEditor.Size = new System.Drawing.Size(94, 21);
-            this.txtEditor.TabIndex = 41;
-            // 
-            // dtMakeDate
-            // 
-            this.dtMakeDate.CustomFormat = "yyyy-MM-dd";
-            this.dtMakeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtMakeDate.Location = new System.Drawing.Point(143, 530);
-            this.dtMakeDate.Name = "dtMakeDate";
-            this.dtMakeDate.Size = new System.Drawing.Size(94, 21);
-            this.dtMakeDate.TabIndex = 42;
-            // 
-            // dtEditDate
-            // 
-            this.dtEditDate.CustomFormat = "yyyy-MM-dd";
-            this.dtEditDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEditDate.Location = new System.Drawing.Point(143, 594);
-            this.dtEditDate.Name = "dtEditDate";
-            this.dtEditDate.Size = new System.Drawing.Size(94, 21);
-            this.dtEditDate.TabIndex = 43;
+            this.btnSearch.Location = new System.Drawing.Point(230, 11);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 28;
+            this.btnSearch.Text = "조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // SPEC_MST
             // 
@@ -519,5 +531,6 @@ namespace MESProject.기준정보
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

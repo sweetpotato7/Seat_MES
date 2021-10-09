@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace MESProject.기준정보
 {
     public partial class SPEC_MST : Form
@@ -27,18 +28,22 @@ namespace MESProject.기준정보
         SQL sql = new SQL();
         DataTable dt;
         SqlDataAdapter da;
+        BOM bom = new BOM();
+
 
         public SPEC_MST()
         {
             InitializeComponent();
         }
 
+        
+
         #region 그리드세팅
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SEATTYPE", "SPEC1", "SPEC2", "SPEC3", "SPEC4", "SPEC5", "SPEC6", "LOTNO", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "공장코드", "품번", "차종", "시트타입", "지역", "트랙", "시트", "헤드레스트", "색상", "SAB", "사용여부", "고유번호", "등록자", "등록일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SEATTYPE", "SPEC1", "SPEC2", "SPEC3", "SPEC4",      "SPEC5", "SPEC6", "USEFLAG",  "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText       = new string[] { "공장코드",  "품번",     "차종",    "시트타입", "지역",  "트랙",  "시트",  "헤드레스트", "색상",  "SAB",   "사용여부", "등록자",        "등록일시",  "수정자",        "수정일시" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -48,6 +53,14 @@ namespace MESProject.기준정보
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = false;
+
+            //상단 콤보박스 세팅
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT DISTINCT A.ITEMCODE FROM TB_BOM AS A, TB_BOM AS B, TB_ITEM_MST AS C WHERE A.ITEMCODE LIKE '%ALC'AND A.COMPONENT = B.ITEMCODE AND A.ITEMCODE = C.ITEMCODE";
+            cmd.ExecuteNonQuery();
+
+            
         }
         #endregion
 
@@ -65,19 +78,12 @@ namespace MESProject.기준정보
             //fill_cmb_carcode();
         }
 
-        #region ========== CRUD버튼
+        #region CRUD버튼
         public void Do_Search()
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            if (cmb_S_ALC.Text == "")
-            {
-                cmd.CommandText = "select * from TB_SPEC";
-            }
-            else
-            {
-                cmd.CommandText = "select * from TB_SPEC where ITEMCODE LIKE '%" + cmb_S_ALC.Text + "%'";
-            }
+            cmd.CommandText = "select * from TB_SPEC";
             cmd.ExecuteNonQuery();
 
             da = new SqlDataAdapter(cmd);
@@ -88,19 +94,19 @@ namespace MESProject.기준정보
             cmb_S_ALC.Text = "";
         }
 
-        public void Do_Entire_Search()
-        {
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
-            cmd.ExecuteNonQuery();
-            dt = new DataTable();
-            da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
-            cmb_S_ALC.Text = "ALL";
-        }
+        //public void Do_Entire_Search()
+        //{
+        //    SqlCommand cmd = sql.con.CreateCommand();
+        //    cmd.CommandType = CommandType.Text;
+        //    cmd.CommandText = "select * from TB_SPEC";
+        //    cmd.ExecuteNonQuery();
+        //    dt = new DataTable();
+        //    da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    dataGridView1.DataSource = dt;
+        //    dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
+        //    cmb_S_ALC.Text = "ALL";
+        //}
 
         public void Do_Add()
         {
@@ -124,9 +130,6 @@ namespace MESProject.기준정보
                 + dtEditDate.Text + "')";
             cmd.ExecuteNonQuery();
 
-
-
-
             cmb_PlantCode.Text = "";
             cmb_ItemCode.Text = "";
             cmb_CarCode.Text = "";
@@ -139,7 +142,7 @@ namespace MESProject.기준정보
             cmbCovering.Text = "";
             cmbSAB.Text = "";
 
-            Do_Entire_Search();
+            Do_Search();
             MessageBox.Show("추가되었습니다.");
 
             //SqlCommand cmd2 = new SqlCommand("EXEC TB_SPEC_I1", sql.con);
@@ -154,7 +157,7 @@ namespace MESProject.기준정보
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "delete from TB_SPEC where ITEMCODE=" + "'" + itemcode + "'" + "";
             cmd.ExecuteNonQuery();
-            Do_Entire_Search();
+            Do_Search();
             MessageBox.Show("삭제되었습니다.");
         }
 
@@ -200,19 +203,19 @@ namespace MESProject.기준정보
             cmbCovering.Text = "";
             cmbSAB.Text = "";*/
 
-            Do_Entire_Search();
+            Do_Search();
             MessageBox.Show("수정되었습니다.");
         }
         #endregion
 
-        #region ========== 콤보박스
+        #region 콤보박스
         private void CboSet()
         {
+            
             func.CboLoad(cmb_PlantCode, "TB_ITEM_MST", "PLANTCODE", true);
-            func.CboLoad(cmb_ItemCode, "TB_ITEM_MST", "ITEMTYPE", true);
+            func.CboLoad(cmb_ItemCode, "TB_ITEM_MST", "ITEMCODE", true, "ITEMTYPE", "FERT");
             func.CboLoad(cmb_CarCode, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "CAR_CD");
-            func.CboLoad(cmb_SeatType, "TB_BOM", "ITEMCODE", true);
-
+            func.CboLoad(cmb_SeatType, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "SEAT_TYPE");
             func.CboLoad(cmbLocal,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_01");
             func.CboLoad(cmbTrack,        "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_02");
             func.CboLoad(cmbFormpad,      "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_03");
@@ -220,12 +223,11 @@ namespace MESProject.기준정보
             func.CboLoad(cmbCovering,     "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_05");
             func.CboLoad(cmbSAB,          "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_06");
         }
-        
-        
         #endregion
 
+        
 
-        //자동완성
+        #region 자동완성
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i;
@@ -249,12 +251,29 @@ namespace MESProject.기준정보
             txtEditor.Text = dataGridView1.Rows[i].Cells[13].Value.ToString();
             dtEditDate.Text = dataGridView1.Rows[i].Cells[14].Value.ToString();
         }
+        #endregion
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from TB_SPEC";
+
+            cmd.ExecuteNonQuery();
+
+            da = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
+            cmb_S_ALC.Text = "";
+        }
     }
 
-    
+
 }
 
-#region ========== 사용 안함
+#region 사용 안함
 //public void fill_cmb_ALC()
 //{
 

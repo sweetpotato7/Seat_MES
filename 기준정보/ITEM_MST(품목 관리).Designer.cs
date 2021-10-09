@@ -68,8 +68,9 @@ namespace MESProject.기준정보
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1107, 100);
+            this.panel1.Size = new System.Drawing.Size(969, 80);
             this.panel1.TabIndex = 0;
             // 
             // cboUnit
@@ -77,18 +78,17 @@ namespace MESProject.기준정보
             this.cboUnit.FormattingEnabled = true;
             this.cboUnit.Items.AddRange(new object[] {
             "BBB"});
-            this.cboUnit.Location = new System.Drawing.Point(946, 61);
-            this.cboUnit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboUnit.Location = new System.Drawing.Point(850, 32);
             this.cboUnit.Name = "cboUnit";
-            this.cboUnit.Size = new System.Drawing.Size(138, 23);
-            this.cboUnit.TabIndex = 19;
+            this.cboUnit.Size = new System.Drawing.Size(95, 20);
+            this.cboUnit.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(886, 42);
+            this.label5.Location = new System.Drawing.Point(757, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 15);
+            this.label5.Size = new System.Drawing.Size(87, 12);
             this.label5.TabIndex = 18;
             this.label5.Text = "단위(수정가능)";
             // 
@@ -97,18 +97,17 @@ namespace MESProject.기준정보
             this.cboItemType.FormattingEnabled = true;
             this.cboItemType.Items.AddRange(new object[] {
             "BBB"});
-            this.cboItemType.Location = new System.Drawing.Point(722, 61);
-            this.cboItemType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboItemType.Location = new System.Drawing.Point(644, 32);
             this.cboItemType.Name = "cboItemType";
-            this.cboItemType.Size = new System.Drawing.Size(138, 23);
-            this.cboItemType.TabIndex = 16;
+            this.cboItemType.Size = new System.Drawing.Size(95, 20);
+            this.cboItemType.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(616, 42);
+            this.label4.Location = new System.Drawing.Point(527, 36);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 15);
+            this.label4.Size = new System.Drawing.Size(111, 12);
             this.label4.TabIndex = 15;
             this.label4.Text = "품목타입(수정가능)";
             // 
@@ -117,79 +116,78 @@ namespace MESProject.기준정보
             this.cboItemCode.FormattingEnabled = true;
             this.cboItemCode.Items.AddRange(new object[] {
             "AAA"});
-            this.cboItemCode.Location = new System.Drawing.Point(294, 39);
-            this.cboItemCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboItemCode.Location = new System.Drawing.Point(235, 32);
             this.cboItemCode.Name = "cboItemCode";
-            this.cboItemCode.Size = new System.Drawing.Size(138, 23);
-            this.cboItemCode.TabIndex = 14;
+            this.cboItemCode.Size = new System.Drawing.Size(95, 20);
+            this.cboItemCode.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(221, 41);
+            this.label3.Location = new System.Drawing.Point(176, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 13;
             this.label3.Text = "품목코드";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(438, 42);
+            this.label2.Location = new System.Drawing.Point(355, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
+            this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 12;
             this.label2.Text = "품목명";
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(496, 36);
-            this.txtItemName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtItemName.Location = new System.Drawing.Point(406, 32);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(114, 25);
-            this.txtItemName.TabIndex = 11;
+            this.txtItemName.Size = new System.Drawing.Size(95, 21);
+            this.txtItemName.TabIndex = 2;
             // 
             // cboPlantCode
             // 
             this.cboPlantCode.FormattingEnabled = true;
             this.cboPlantCode.Items.AddRange(new object[] {
             "D001"});
-            this.cboPlantCode.Location = new System.Drawing.Point(68, 38);
-            this.cboPlantCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboPlantCode.Location = new System.Drawing.Point(54, 31);
             this.cboPlantCode.Name = "cboPlantCode";
-            this.cboPlantCode.Size = new System.Drawing.Size(138, 23);
-            this.cboPlantCode.TabIndex = 10;
+            this.cboPlantCode.Size = new System.Drawing.Size(95, 20);
+            this.cboPlantCode.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 41);
+            this.label1.Location = new System.Drawing.Point(19, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "공장";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 350);
+            this.label6.Location = new System.Drawing.Point(7, 280);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 15);
+            this.label6.Size = new System.Drawing.Size(28, 12);
             this.label6.TabIndex = 3;
             this.label6.Text = "URL";
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(58, 347);
+            this.txtURL.Location = new System.Drawing.Point(51, 278);
+            this.txtURL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(251, 25);
+            this.txtURL.Size = new System.Drawing.Size(220, 21);
             this.txtURL.TabIndex = 4;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(58, 410);
+            this.btnBrowse.Location = new System.Drawing.Point(51, 328);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(97, 41);
+            this.btnBrowse.Size = new System.Drawing.Size(85, 33);
             this.btnBrowse.TabIndex = 5;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -197,9 +195,10 @@ namespace MESProject.기준정보
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(183, 410);
+            this.btnUpload.Location = new System.Drawing.Point(160, 328);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(104, 41);
+            this.btnUpload.Size = new System.Drawing.Size(91, 33);
             this.btnUpload.TabIndex = 5;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
@@ -213,9 +212,10 @@ namespace MESProject.기준정보
             this.panel2.Controls.Add(this.txtURL);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(788, 100);
+            this.panel2.Location = new System.Drawing.Point(690, 80);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(319, 532);
+            this.panel2.Size = new System.Drawing.Size(279, 426);
             this.panel2.TabIndex = 6;
             // 
             // pictureBox1
@@ -223,8 +223,9 @@ namespace MESProject.기준정보
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(319, 299);
+            this.pictureBox1.Size = new System.Drawing.Size(279, 240);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -232,24 +233,24 @@ namespace MESProject.기준정보
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 100);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 80);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(788, 532);
+            this.dataGridView1.Size = new System.Drawing.Size(690, 426);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // ITEM_MST
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 632);
+            this.ClientSize = new System.Drawing.Size(969, 506);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ITEM_MST";
             this.Text = "ITEM_MST";
             this.Load += new System.EventHandler(this.ITEM_MST_Load);

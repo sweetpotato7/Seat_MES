@@ -85,7 +85,8 @@ namespace MESProject.기준정보
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into TB_ITEM_MST (PLANTCODE, ITEMCODE, ITEMNAME, ITEMTYPE, UNITCODE) values('" + cboPlantCode.SelectedItem.ToString() + "','" + txtItemName.Text + "','" + cboItemCode.Text.ToString() + "','" + cboItemType.Text.ToString() + "','" + cboUnit.Text.ToString() + "')";
+            //cmd.CommandText = "insert into TB_ITEM_MST (PLANTCODE, ITEMCODE, ITEMNAME, ITEMTYPE, UNITCODE) values('" + cboPlantCode.SelectedItem.ToString() + "','" + txtItemName.Text + "','" + cboItemCode.Text.ToString() + "','" + cboItemType.Text.ToString() + "','" + cboUnit.Text.ToString() + "')";
+            cmd.CommandText = "insert into TB_ITEM_MST (PLANTCODE, ITEMCODE, ITEMNAME, ITEMTYPE, UNITCODE) values('" + cboPlantCode.SelectedItem.ToString() + "','" + cboItemCode.Text + "','" + txtItemName.Text + "','" + cboItemType.Text.ToString() + "','" + cboUnit.Text.ToString() + "')";
             cmd.ExecuteNonQuery();
 
             cboPlantCode.SelectedItem = "";
