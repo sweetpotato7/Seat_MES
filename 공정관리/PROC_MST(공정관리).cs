@@ -60,7 +60,7 @@ namespace MESProject.공정관리
         {
             int i;
             i = dataGridView3.SelectedCells[0].RowIndex;
-            dataGridView3.Rows[i].Cells[3].Value.ToString()
+            dataGridView3.Rows[i].Cells[3].Value.ToString();
             // 셀 더블 클릭 시 결과 셀에 "완료" 입력
 
         }
