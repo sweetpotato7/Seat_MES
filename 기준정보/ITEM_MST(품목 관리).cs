@@ -49,7 +49,7 @@ namespace MESProject.기준정보
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersVisible = true;
         }
         #endregion
 
@@ -200,7 +200,7 @@ namespace MESProject.기준정보
             //dataGridView1.Rows[i].Cells[6].Value
 
             DataTable dt = dataGridView1.DataSource as DataTable;
-            if (dataGridView1.Rows[i].Cells[6].Value.ToString() != "")
+            if (dataGridView1.Rows[i].Cells[6].Value.ToString() != null)
             {
                 DataRow row = dt.Rows[e.RowIndex];
                 pictureBox1.Image = ConvertByteToImage((byte[])row["IMAGE"]);
