@@ -30,6 +30,11 @@ namespace MESProject.공정관리
             dataGridView3.DataSource = func.GetDataTable(strqry);
         }
 
+        public void Plan_dv()
+        {
+            
+        }
+
         private void DGVLoad_ProcSeq()
         {
             string[] DataPropertyName = new string[] { "PROC_SEQ", "STEP_CD", "STEP_NAME", "RESULT"};
