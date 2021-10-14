@@ -22,6 +22,7 @@ namespace MESProject.기준정보
         DataTable dt;
         SqlDataAdapter da;
         string strqry = string.Empty;
+        
 
         public CODE_MST()
         {
