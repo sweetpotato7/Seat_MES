@@ -14,29 +14,18 @@ namespace MESProject.기준정보
 {
     public partial class SPEC_MST : Form
     {
-        /// <summary>
-        /// 조회 추가 수정 삭제 버튼 통합함
-        /// 전체조회 = 조회시 txt칸 비움 -> txt칸 비었을 시 전체조회
-        /// 
-        /// 추가작업
-        /// - 품번마스터 만든후 ITEMCODE 불러오기
-        /// - SPEC: DB에는 코드로 표시, 그리드에는 O, X 또는 가죽 등으로 표시
-        /// 셀클릭시 선택셀 표시
+        
         /// </summary>
 
         Function func = new Function();
         SQL sql = new SQL();
         DataTable dt;
         SqlDataAdapter da;
-        BOM bom = new BOM();
-
 
         public SPEC_MST()
         {
             InitializeComponent();
         }
-
-        
 
         #region 그리드세팅
         private void DGVLoad()
@@ -55,12 +44,19 @@ namespace MESProject.기준정보
             dataGridView1.RowHeadersVisible = false;
 
             //상단 콤보박스 세팅
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT DISTINCT A.ITEMCODE FROM TB_BOM AS A, TB_BOM AS B, TB_ITEM_MST AS C WHERE A.ITEMCODE LIKE '%ALC'AND A.COMPONENT = B.ITEMCODE AND A.ITEMCODE = C.ITEMCODE";
+            SqlCommand cmd = new SqlCommand("SELECT ITEMCODE FROM TB_ITEM_MST WHERE ITEMTYPE = 'ALC';", sql.con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
             cmd.ExecuteNonQuery();
 
-            
+            cmb_S_ALC.DataSource = ds.Tables[0];
+            cmb_S_ALC.DisplayMember = "ITEMCODE";
+            cmb_S_ALC.ValueMember = "ITEMCODE";
+
+            //데이터그리드 뷰 전체 조회
+            cmb_S_ALC.Text = "";
+            Do_Search();
         }
         #endregion
 
@@ -81,32 +77,38 @@ namespace MESProject.기준정보
         #region CRUD버튼
         public void Do_Search()
         {
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
-            cmd.ExecuteNonQuery();
+            if(cmb_S_ALC.Text == "")
+            {
+                SqlCommand cmd = sql.con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM TB_SPEC";
+                cmd.ExecuteNonQuery();
 
-            da = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
-            cmb_S_ALC.Text = "";
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                //dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
+                cmb_S_ALC.Text = "";
+            }
+            else
+            {
+                string s = cmb_S_ALC.Text;
+
+                SqlCommand cmd = sql.con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM TB_SPEC WHERE LEFT(ITEMCODE, 1) = '" + s.Substring(0, 1) + "'";
+                cmd.ExecuteNonQuery();
+
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                cmb_S_ALC.Text = "";
+            }
+
+
         }
-
-        //public void Do_Entire_Search()
-        //{
-        //    SqlCommand cmd = sql.con.CreateCommand();
-        //    cmd.CommandType = CommandType.Text;
-        //    cmd.CommandText = "select * from TB_SPEC";
-        //    cmd.ExecuteNonQuery();
-        //    dt = new DataTable();
-        //    da = new SqlDataAdapter(cmd);
-        //    da.Fill(dt);
-        //    dataGridView1.DataSource = dt;
-        //    dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
-        //    cmb_S_ALC.Text = "ALL";
-        //}
 
         public void Do_Add()
         {
@@ -134,7 +136,6 @@ namespace MESProject.기준정보
             cmb_ItemCode.Text = "";
             cmb_CarCode.Text = "";
             cmb_SeatType.Text = "";
-
             cmbLocal.Text = "";
             cmbTrack.Text = "";
             cmbFormpad.Text = "";
@@ -145,8 +146,6 @@ namespace MESProject.기준정보
             Do_Search();
             MessageBox.Show("추가되었습니다.");
 
-            //SqlCommand cmd2 = new SqlCommand("EXEC TB_SPEC_I1", sql.con);
-            //cmd2.ExecuteNonQuery();
         }
 
         public void Do_Delete()
@@ -194,15 +193,6 @@ namespace MESProject.기준정보
                               "where ITEMCODE = '" + itemcode + "'";
             cmd.ExecuteNonQuery();
 
-            /*cmb_ALC.Text = "";
-            cmb_CarCode.Text = "";
-            cmbLocal.Text = "";
-            cmbTrack.Text = "";
-            cmbFormpad.Text = "";
-            cmbHeadrestrian.Text = "";
-            cmbCovering.Text = "";
-            cmbSAB.Text = "";*/
-
             Do_Search();
             MessageBox.Show("수정되었습니다.");
         }
@@ -222,6 +212,8 @@ namespace MESProject.기준정보
             func.CboLoad(cmbHeadrestrian, "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_04");
             func.CboLoad(cmbCovering,     "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_05");
             func.CboLoad(cmbSAB,          "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "SPEC_06");
+
+            cmbUseFlag.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         #endregion
 
@@ -253,21 +245,8 @@ namespace MESProject.기준정보
         }
         #endregion
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            SqlCommand cmd = sql.con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from TB_SPEC";
 
-            cmd.ExecuteNonQuery();
 
-            da = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            dataGridView1.Columns[2].ReadOnly = true; // carcode 수정방지
-            cmb_S_ALC.Text = "";
-        }
     }
 
 

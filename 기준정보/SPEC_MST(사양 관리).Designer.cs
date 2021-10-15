@@ -67,7 +67,6 @@ namespace MESProject.기준정보
             this.label10 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -87,7 +86,6 @@ namespace MESProject.기준정보
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.btnSearch);
             this.panel5.Controls.Add(this.cmb_S_ALC);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -457,16 +455,6 @@ namespace MESProject.기준정보
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(230, 11);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 28;
-            this.btnSearch.Text = "조회";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // SPEC_MST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -531,6 +519,5 @@ namespace MESProject.기준정보
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSearch;
     }
 }
