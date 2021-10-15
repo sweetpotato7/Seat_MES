@@ -17,8 +17,6 @@ namespace MESProject.공정관리
         string strqry = string.Empty;
         Function func = new Function();
 
-        
-
         public PROC_MST_공정관리_()
         {
             InitializeComponent();
@@ -88,43 +86,12 @@ namespace MESProject.공정관리
             timer1.Start();
         }
 
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView3.Rows[e.RowIndex].Cells[0].ColumnIndex == 1)
-            {
-                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Blue;
-            }
-
-        }
-
         // 작업지시 타이머(자동새로고침)
         private void timer1_Tick(object sender, EventArgs e)
         {
             DGVLoad_Plan();
             strqry = "select * from TB_PLAN_MST";
             dataGridView4.DataSource = func.GetDataTable(strqry);
-        }
-
-        private void dataGridView3_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i;
-            i = dataGridView3.SelectedCells[0].RowIndex;
-
-            dataGridView4.Rows[i].Cells[3].Value = "OK";
-        }
-
-       
-
-        private void dataGridView3_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView3.Rows[e.RowIndex].Cells[0].ColumnIndex == 1)
-            {
-                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Blue;
-            }
         }
 
         // 체크박스 체크시 셀 색변환

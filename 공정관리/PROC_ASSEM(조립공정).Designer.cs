@@ -29,6 +29,7 @@ namespace MESProject.공정관리
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@ namespace MESProject.공정관리
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
@@ -87,6 +89,8 @@ namespace MESProject.공정관리
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.Size = new System.Drawing.Size(1263, 408);
             this.dataGridView3.TabIndex = 0;
+            this.dataGridView3.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellValueChanged_1);
+            this.dataGridView3.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView3_CurrentCellDirtyStateChanged_1);
             // 
             // label6
             // 
@@ -366,6 +370,7 @@ namespace MESProject.공정관리
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PROC_ASSEM_조립공정_";
             this.Text = "PROC_ASSEM_조립공정_";
+            this.Load += new System.EventHandler(this.PROC_ASSEM_조립공정__Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
@@ -419,5 +424,6 @@ namespace MESProject.공정관리
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

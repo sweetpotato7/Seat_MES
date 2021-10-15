@@ -63,6 +63,7 @@ namespace MESProject
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.조립공정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlCRUD.SuspendLayout();
             this.pnlStatus.SuspendLayout();
@@ -156,7 +157,8 @@ namespace MESProject
             this.공정관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.공정실적ToolStripMenuItem,
             this.공정순서관리ToolStripMenuItem,
-            this.공정관리ToolStripMenuItem1});
+            this.공정관리ToolStripMenuItem1,
+            this.조립공정ToolStripMenuItem});
             this.공정관리ToolStripMenuItem.Name = "공정관리ToolStripMenuItem";
             this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
             this.공정관리ToolStripMenuItem.Text = "공정관리";
@@ -193,6 +195,7 @@ namespace MESProject
             this.txtVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtVersion.BackColor = System.Drawing.SystemColors.Window;
             this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVersion.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtVersion.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
@@ -206,6 +209,7 @@ namespace MESProject
             this.txtDT.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtDT.BackColor = System.Drawing.SystemColors.Window;
             this.txtDT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDT.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtDT.Name = "txtDT";
             this.txtDT.ReadOnly = true;
             this.txtDT.ShortcutsEnabled = false;
@@ -452,6 +456,13 @@ namespace MESProject
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // 조립공정ToolStripMenuItem
+            // 
+            this.조립공정ToolStripMenuItem.Name = "조립공정ToolStripMenuItem";
+            this.조립공정ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.조립공정ToolStripMenuItem.Text = "조립공정";
+            this.조립공정ToolStripMenuItem.Click += new System.EventHandler(this.조립공정ToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -514,5 +525,6 @@ namespace MESProject
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem 공정순서관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 공정관리ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 조립공정ToolStripMenuItem;
     }
 }

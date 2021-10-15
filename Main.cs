@@ -20,7 +20,8 @@ namespace MESProject
         기준정보.USER_ADMIN User_Admin;
         생산계획.PLAN_MST Plan_Mst;
         공정관리.PROC_SEQ_공정순서관리_ Proc_Seq;
-        공정관리.PROC_MST_공정관리_ Proc_Mst;
+        공정관리.PROC_MST_공정관리_ Proc_Mst; // 트랙공정
+        공정관리.PROC_ASSEM_조립공정_ Proc_Assem;
 
         public static string ID;
         
@@ -116,6 +117,12 @@ namespace MESProject
         {
             Proc_Mst = new 공정관리.PROC_MST_공정관리_();
             tabCtrlAdd(Proc_Mst, sender);
+        }
+
+        private void 조립공정ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Proc_Assem = new 공정관리.PROC_ASSEM_조립공정_();
+            tabCtrlAdd(Proc_Assem, sender);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -428,7 +435,5 @@ namespace MESProject
         {
             //MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
-
-      
     }
 }
