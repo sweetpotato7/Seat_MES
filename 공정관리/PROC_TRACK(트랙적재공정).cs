@@ -17,6 +17,8 @@ namespace MESProject.공정관리
         string strqry = string.Empty;
         Function func = new Function();
 
+        
+
         public PROC_MST_공정관리_()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace MESProject.공정관리
 
         public void ProcSeq_dv()
         {
-            DGVLoad_ProcSeq();
+            //DGVLoad_ProcSeq();
             string proc_cd = "010";
             strqry = "select PROC_SEQ, STEP_CD, STEP_NAME from TB_PROC_SEQ WHERE PROC_CD =" + "'" + proc_cd + "'" + "";
             dataGridView3.DataSource = func.GetDataTable(strqry);
@@ -75,6 +77,9 @@ namespace MESProject.공정관리
             {
                 sql.con.Close();
             }
+            DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
+            check.Name = "작업완료";
+            dataGridView3.Columns.Add(check);
             sql.con.Open();
             ProcSeq_dv();
             Plan_dv();
@@ -85,10 +90,10 @@ namespace MESProject.공정관리
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i;
-            i = dataGridView3.SelectedCells[0].RowIndex;
-            
-            // 셀 더블 클릭 시 결과 셀에 "완료" 입력
+            if (dataGridView3.Rows[e.RowIndex].Cells[0].ColumnIndex == 1)
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Blue;
+            }
 
         }
 
@@ -106,6 +111,47 @@ namespace MESProject.공정관리
             i = dataGridView3.SelectedCells[0].RowIndex;
 
             dataGridView4.Rows[i].Cells[3].Value = "OK";
+        }
+
+       
+
+        private void dataGridView3_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView3.Rows[e.RowIndex].Cells[0].ColumnIndex == 1)
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Blue;
+            }
+        }
+
+        // 체크박스 체크시 셀 색변환
+        private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dataGridView3.SelectedCells[0].RowIndex;
+
+            foreach (DataGridViewRow row in dataGridView3.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["작업완료"].Value) == true)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Blue;
+                }
+
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
+
+        // 셀 색변환 바로 적용
+        private void dataGridView3_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridView3.IsCurrentCellDirty)
+                dataGridView3.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
     }
 }
