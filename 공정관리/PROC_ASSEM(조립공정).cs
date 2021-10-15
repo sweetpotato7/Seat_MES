@@ -31,16 +31,17 @@ namespace MESProject.공정관리
         }
         public void Plan_dv()
         {
+            string Date = DateTime.Now.ToString("M/d/yyyy");
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_MST";
+            strqry = "select * from TB_PLAN_DET WHERE ORDERNO =" + "'" + /*Date*/ "20211005004" + "'" + "";
             dataGridView4.DataSource = func.GetDataTable(strqry);
         }
 
         private void DGVLoad_Plan()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "PLANDATE", "PLANSEQ", "ORDERNO", "ALC_CD", "PLANQTY", "PRODQTY", "PLANFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "공장", "작업일시", "작업순서", "주문번호", "타입", "계획수량", "생산수량", "PLANFLAG", "생성자", "생성일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText = new string[] { "공장", "계획수량", "주문번호", "순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 

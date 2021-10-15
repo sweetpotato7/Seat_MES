@@ -33,6 +33,7 @@ namespace MESProject.공정관리
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
@@ -51,6 +52,8 @@ namespace MESProject.공정관리
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,6 +113,9 @@ namespace MESProject.공정관리
             // 
             // splitContainer4.Panel2
             // 
+            this.splitContainer4.Panel2.Controls.Add(this.label13);
+            this.splitContainer4.Panel2.Controls.Add(this.label14);
+            this.splitContainer4.Panel2.Controls.Add(this.label10);
             this.splitContainer4.Panel2.Controls.Add(this.label1);
             this.splitContainer4.Size = new System.Drawing.Size(1942, 260);
             this.splitContainer4.SplitterDistance = 1323;
@@ -125,6 +131,17 @@ namespace MESProject.공정관리
             this.dataGridView4.RowTemplate.Height = 27;
             this.dataGridView4.Size = new System.Drawing.Size(1323, 260);
             this.dataGridView4.TabIndex = 0;
+            this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("굴림", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(17, 131);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(181, 48);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "label10";
             // 
             // label1
             // 
@@ -134,7 +151,7 @@ namespace MESProject.공정관리
             this.label1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label1.Location = new System.Drawing.Point(-1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(614, 64);
+            this.label1.Size = new System.Drawing.Size(385, 64);
             this.label1.TabIndex = 0;
             this.label1.Text = "ORDER NO.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -366,6 +383,29 @@ namespace MESProject.공정관리
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label13.Font = new System.Drawing.Font("굴림", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label13.Location = new System.Drawing.Point(390, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(225, 64);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "TYPE";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("굴림", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(392, 131);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(181, 48);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "label14";
+            // 
             // PROC_MST_공정관리_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -382,6 +422,7 @@ namespace MESProject.공정관리
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
+            this.splitContainer4.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -430,5 +471,8 @@ namespace MESProject.공정관리
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

@@ -33,15 +33,15 @@ namespace MESProject.공정관리
         public void Plan_dv()
         {
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_MST";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 AND ORDERNO =" + "'" + 20211005004 + "'" + "";
             dataGridView4.DataSource = func.GetDataTable(strqry);
         }
 
         private void DGVLoad_Plan()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "PLANDATE", "PLANSEQ", "ORDERNO", "ALC_CD", "PLANQTY", "PRODQTY", "PLANFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "공장", "작업일시", "작업순서", "주문번호", "타입", "계획수량", "생산수량", "PLANFLAG", "생성자", "생성일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PROC_TRACK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText = new string[] { "완료", "공장", "순서", "주문번호", "작업순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -84,19 +84,22 @@ namespace MESProject.공정관리
             timer1_Tick(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
+            
         }
 
         // 작업지시 타이머(자동새로고침)
         private void timer1_Tick(object sender, EventArgs e)
         {
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_MST";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 AND ORDERNO =" + "'" + 20211005004 + "'" + "";
             dataGridView4.DataSource = func.GetDataTable(strqry);
         }
 
         // 체크박스 체크시 셀 색변환
         private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            bool check = Convert.ToBoolean(dataGridView3.Rows[0].Cells[0].Value);
+            bool check2 = Convert.ToBoolean(dataGridView3.Rows[1].Cells[0].Value);
             int i;
             i = dataGridView3.SelectedCells[0].RowIndex;
 
@@ -112,6 +115,16 @@ namespace MESProject.공정관리
                     row.DefaultCellStyle.BackColor = Color.White;
                 }
             }
+
+            if (check == true && check2 == true)
+            {
+                strqry = "update TB_PLAN_DET set PROC_TRACK = 1 where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "";
+                dataGridView3.DataSource = func.GetDataTable(strqry);
+
+                MessageBox.Show(label10.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
+                ProcSeq_dv();
+                Plan_dv();
+            }
         }
 
         // 셀 색변환 바로 적용
@@ -119,6 +132,15 @@ namespace MESProject.공정관리
         {
             if (dataGridView3.IsCurrentCellDirty)
                 dataGridView3.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = dataGridView4.SelectedCells[0].RowIndex;
+
+            label10.Text = dataGridView4.Rows[i].Cells[5].Value.ToString();
+            label14.Text = dataGridView4.Rows[i].Cells[7].Value.ToString();
         }
     }
 }

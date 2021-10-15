@@ -343,7 +343,7 @@ namespace MESProject
             // Column
             for (int i = 0; i < DataPropertyName.Length; i++)
             {
-                if (DataPropertyName[i] == "CHK")
+                if (DataPropertyName[i] == "CHK" || DataPropertyName[i] == "PROC_TRACK" || DataPropertyName[i] == "PROC_ASSEM")
                 {
                     DataGridViewCheckBoxColumn chkcol = new DataGridViewCheckBoxColumn();
                     chkcol.Name             = DataPropertyName[i];
