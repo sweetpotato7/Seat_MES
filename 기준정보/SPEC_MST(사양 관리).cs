@@ -200,7 +200,7 @@ namespace MESProject.기준정보
 
         #region 콤보박스
         private void CboSet()
-        {
+        {//test
             
             func.CboLoad(cmb_PlantCode, "TB_ITEM_MST", "PLANTCODE", true);
             func.CboLoad(cmb_ItemCode, "TB_ITEM_MST", "ITEMCODE", true, "ITEMTYPE", "FERT");
