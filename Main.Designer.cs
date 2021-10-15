@@ -84,8 +84,8 @@ namespace MESProject
             this.txtDT});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 0);
-            this.menuStrip1.Size = new System.Drawing.Size(969, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 0);
+            this.menuStrip1.Size = new System.Drawing.Size(1107, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,41 +98,41 @@ namespace MESProject
             this.사양관리ToolStripMenuItem,
             this.사용자관리ToolStripMenuItem1});
             this.기준정보ToolStripMenuItem.Name = "기준정보ToolStripMenuItem";
-            this.기준정보ToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.기준정보ToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
             this.기준정보ToolStripMenuItem.Text = "기준정보";
             // 
             // 공통코드ToolStripMenuItem
             // 
             this.공통코드ToolStripMenuItem.Name = "공통코드ToolStripMenuItem";
-            this.공통코드ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.공통코드ToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.공통코드ToolStripMenuItem.Text = "공통코드";
             this.공통코드ToolStripMenuItem.Click += new System.EventHandler(this.공통코드ToolStripMenuItem_Click);
             // 
             // 품번ToolStripMenuItem
             // 
             this.품번ToolStripMenuItem.Name = "품번ToolStripMenuItem";
-            this.품번ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.품번ToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.품번ToolStripMenuItem.Text = "품목관리";
             this.품번ToolStripMenuItem.Click += new System.EventHandler(this.품번ToolStripMenuItem_Click);
             // 
             // bOMToolStripMenuItem
             // 
             this.bOMToolStripMenuItem.Name = "bOMToolStripMenuItem";
-            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.bOMToolStripMenuItem.Text = "BOM";
             this.bOMToolStripMenuItem.Click += new System.EventHandler(this.bOMToolStripMenuItem_Click);
             // 
             // 사양관리ToolStripMenuItem
             // 
             this.사양관리ToolStripMenuItem.Name = "사양관리ToolStripMenuItem";
-            this.사양관리ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.사양관리ToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.사양관리ToolStripMenuItem.Text = "사양관리";
             this.사양관리ToolStripMenuItem.Click += new System.EventHandler(this.사양관리ToolStripMenuItem_Click);
             // 
             // 사용자관리ToolStripMenuItem1
             // 
             this.사용자관리ToolStripMenuItem1.Name = "사용자관리ToolStripMenuItem1";
-            this.사용자관리ToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.사용자관리ToolStripMenuItem1.Size = new System.Drawing.Size(167, 26);
             this.사용자관리ToolStripMenuItem1.Text = "사용자관리";
             this.사용자관리ToolStripMenuItem1.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
             // 
@@ -141,13 +141,13 @@ namespace MESProject
             this.생산계획ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.생산계획ToolStripMenuItem1});
             this.생산계획ToolStripMenuItem.Name = "생산계획ToolStripMenuItem";
-            this.생산계획ToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.생산계획ToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
             this.생산계획ToolStripMenuItem.Text = "생산계획";
             // 
             // 생산계획ToolStripMenuItem1
             // 
             this.생산계획ToolStripMenuItem1.Name = "생산계획ToolStripMenuItem1";
-            this.생산계획ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.생산계획ToolStripMenuItem1.Size = new System.Drawing.Size(152, 26);
             this.생산계획ToolStripMenuItem1.Text = "작업지시";
             this.생산계획ToolStripMenuItem1.Click += new System.EventHandler(this.생산계획ToolStripMenuItem1_Click);
             // 
@@ -158,33 +158,33 @@ namespace MESProject
             this.공정순서관리ToolStripMenuItem,
             this.공정관리ToolStripMenuItem1});
             this.공정관리ToolStripMenuItem.Name = "공정관리ToolStripMenuItem";
-            this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(83, 28);
             this.공정관리ToolStripMenuItem.Text = "공정관리";
             // 
             // 공정실적ToolStripMenuItem
             // 
             this.공정실적ToolStripMenuItem.Name = "공정실적ToolStripMenuItem";
-            this.공정실적ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.공정실적ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.공정실적ToolStripMenuItem.Text = "공정실적";
             // 
             // 공정순서관리ToolStripMenuItem
             // 
             this.공정순서관리ToolStripMenuItem.Name = "공정순서관리ToolStripMenuItem";
-            this.공정순서관리ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.공정순서관리ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.공정순서관리ToolStripMenuItem.Text = "공정순서관리";
             this.공정순서관리ToolStripMenuItem.Click += new System.EventHandler(this.공정순서관리ToolStripMenuItem_Click);
             // 
             // 공정관리ToolStripMenuItem1
             // 
             this.공정관리ToolStripMenuItem1.Name = "공정관리ToolStripMenuItem1";
-            this.공정관리ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
-            this.공정관리ToolStripMenuItem1.Text = "공정관리";
+            this.공정관리ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.공정관리ToolStripMenuItem1.Text = "트랙적재공정";
             this.공정관리ToolStripMenuItem1.Click += new System.EventHandler(this.공정관리ToolStripMenuItem1_Click);
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(43, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(53, 28);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -198,7 +198,7 @@ namespace MESProject
             this.txtVersion.ReadOnly = true;
             this.txtVersion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtVersion.ShortcutsEnabled = false;
-            this.txtVersion.Size = new System.Drawing.Size(75, 22);
+            this.txtVersion.Size = new System.Drawing.Size(86, 28);
             this.txtVersion.Text = "ver 00.0000";
             // 
             // txtDT
@@ -209,30 +209,31 @@ namespace MESProject
             this.txtDT.Name = "txtDT";
             this.txtDT.ReadOnly = true;
             this.txtDT.ShortcutsEnabled = false;
-            this.txtDT.Size = new System.Drawing.Size(125, 22);
+            this.txtDT.Size = new System.Drawing.Size(143, 28);
             this.txtDT.Text = "0000-00-00 00:00:00";
             // 
             // pnlCRUD
             // 
             this.pnlCRUD.ColumnCount = 6;
             this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.pnlCRUD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.pnlCRUD.Controls.Add(this.btnClose, 5, 0);
             this.pnlCRUD.Controls.Add(this.btnSave, 4, 0);
             this.pnlCRUD.Controls.Add(this.btnDelete, 3, 0);
             this.pnlCRUD.Controls.Add(this.btnInsert, 2, 0);
             this.pnlCRUD.Controls.Add(this.btnSearch, 1, 0);
             this.pnlCRUD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCRUD.Location = new System.Drawing.Point(3, 27);
+            this.pnlCRUD.Location = new System.Drawing.Point(3, 34);
+            this.pnlCRUD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlCRUD.Name = "pnlCRUD";
             this.pnlCRUD.RowCount = 1;
             this.pnlCRUD.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlCRUD.Size = new System.Drawing.Size(963, 44);
+            this.pnlCRUD.Size = new System.Drawing.Size(1101, 54);
             this.pnlCRUD.TabIndex = 1;
             // 
             // btnClose
@@ -244,10 +245,10 @@ namespace MESProject
             this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(913, 0);
+            this.btnClose.Location = new System.Drawing.Point(1044, 0);
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(50, 44);
+            this.btnClose.Size = new System.Drawing.Size(57, 54);
             this.btnClose.TabIndex = 4;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -261,10 +262,10 @@ namespace MESProject
             this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(863, 0);
+            this.btnSave.Location = new System.Drawing.Point(987, 0);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(50, 44);
+            this.btnSave.Size = new System.Drawing.Size(57, 54);
             this.btnSave.TabIndex = 3;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -278,10 +279,10 @@ namespace MESProject
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(813, 0);
+            this.btnDelete.Location = new System.Drawing.Point(930, 0);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(50, 44);
+            this.btnDelete.Size = new System.Drawing.Size(57, 54);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -295,10 +296,10 @@ namespace MESProject
             this.btnInsert.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnInsert.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsert.Location = new System.Drawing.Point(763, 0);
+            this.btnInsert.Location = new System.Drawing.Point(873, 0);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(0);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(50, 44);
+            this.btnInsert.Size = new System.Drawing.Size(57, 54);
             this.btnInsert.TabIndex = 1;
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
@@ -312,10 +313,10 @@ namespace MESProject
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(713, 0);
+            this.btnSearch.Location = new System.Drawing.Point(816, 0);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(50, 44);
+            this.btnSearch.Size = new System.Drawing.Size(57, 54);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -325,11 +326,11 @@ namespace MESProject
             // 
             this.pnlStatus.ColumnCount = 6;
             this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.pnlStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
             this.pnlStatus.Controls.Add(this.lblTimeUse, 5, 0);
             this.pnlStatus.Controls.Add(this.lblId, 3, 0);
             this.pnlStatus.Controls.Add(this.label4, 2, 0);
@@ -337,20 +338,21 @@ namespace MESProject
             this.pnlStatus.Controls.Add(this.lblName, 4, 0);
             this.pnlStatus.Controls.Add(this.lblStatemsg, 0, 0);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlStatus.Location = new System.Drawing.Point(3, 587);
+            this.pnlStatus.Location = new System.Drawing.Point(3, 734);
+            this.pnlStatus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlStatus.Name = "pnlStatus";
             this.pnlStatus.RowCount = 1;
             this.pnlStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlStatus.Size = new System.Drawing.Size(963, 17);
+            this.pnlStatus.Size = new System.Drawing.Size(1101, 21);
             this.pnlStatus.TabIndex = 2;
             // 
             // lblTimeUse
             // 
             this.lblTimeUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTimeUse.AutoSize = true;
-            this.lblTimeUse.Location = new System.Drawing.Point(766, 2);
+            this.lblTimeUse.Location = new System.Drawing.Point(875, 3);
             this.lblTimeUse.Name = "lblTimeUse";
-            this.lblTimeUse.Size = new System.Drawing.Size(194, 12);
+            this.lblTimeUse.Size = new System.Drawing.Size(223, 15);
             this.lblTimeUse.TabIndex = 5;
             this.lblTimeUse.Text = "label7";
             // 
@@ -358,9 +360,9 @@ namespace MESProject
             // 
             this.lblId.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(606, 2);
+            this.lblId.Location = new System.Drawing.Point(692, 3);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(38, 12);
+            this.lblId.Size = new System.Drawing.Size(45, 15);
             this.lblId.TabIndex = 4;
             this.lblId.Text = "label5";
             // 
@@ -368,9 +370,9 @@ namespace MESProject
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(536, 2);
+            this.label4.Location = new System.Drawing.Point(612, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 12);
+            this.label4.Size = new System.Drawing.Size(45, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "label4";
             // 
@@ -378,9 +380,9 @@ namespace MESProject
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(466, 2);
+            this.label3.Location = new System.Drawing.Point(532, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 12);
+            this.label3.Size = new System.Drawing.Size(45, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
@@ -388,9 +390,9 @@ namespace MESProject
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(676, 2);
+            this.lblName.Location = new System.Drawing.Point(772, 3);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 12);
+            this.lblName.Size = new System.Drawing.Size(52, 15);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "가나다";
             // 
@@ -398,9 +400,9 @@ namespace MESProject
             // 
             this.lblStatemsg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblStatemsg.AutoSize = true;
-            this.lblStatemsg.Location = new System.Drawing.Point(3, 2);
+            this.lblStatemsg.Location = new System.Drawing.Point(3, 3);
             this.lblStatemsg.Name = "lblStatemsg";
-            this.lblStatemsg.Size = new System.Drawing.Size(93, 12);
+            this.lblStatemsg.Size = new System.Drawing.Size(109, 15);
             this.lblStatemsg.TabIndex = 1;
             this.lblStatemsg.Text = "StatusMessage";
             // 
@@ -414,31 +416,34 @@ namespace MESProject
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(969, 607);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1107, 759);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 77);
+            this.tabControl1.Location = new System.Drawing.Point(3, 96);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(963, 504);
+            this.tabControl1.Size = new System.Drawing.Size(1101, 630);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(955, 478);
+            this.tabPage1.Size = new System.Drawing.Size(1093, 601);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -449,14 +454,15 @@ namespace MESProject
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(969, 607);
+            this.ClientSize = new System.Drawing.Size(1107, 759);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
             this.Text = "Main";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
