@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,12 @@
     </Compile>
     <Compile Include="공정관리\PROC_ASSEM%28조립공정%29.Designer.cs">
       <DependentUpon>PROC_ASSEM%28조립공정%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="공정관리\PROC_RST%28공정실적%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="공정관리\PROC_RST%28공정실적%29.Designer.cs">
+      <DependentUpon>PROC_RST%28공정실적%29.cs</DependentUpon>
     </Compile>
     <Compile Include="공정관리\PROC_TRACK%28트랙적재공정%29.cs">
       <SubType>Form</SubType>
@@ -119,6 +126,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="공정관리\PROC_ASSEM%28조립공정%29.resx">
       <DependentUpon>PROC_ASSEM%28조립공정%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="공정관리\PROC_RST%28공정실적%29.resx">
+      <DependentUpon>PROC_RST%28공정실적%29.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="공정관리\PROC_TRACK%28트랙적재공정%29.resx">
       <DependentUpon>PROC_TRACK%28트랙적재공정%29.cs</DependentUpon>
