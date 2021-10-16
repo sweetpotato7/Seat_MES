@@ -33,6 +33,7 @@ namespace MESProject.기준정보
             }
             sql.con.Open();
             DGVLoad();
+            Do_Search();
         }
 
         #region 그리드세팅
@@ -146,13 +147,24 @@ namespace MESProject.기준정보
         }
         private void btnBrowse_Click_1(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            int i;
+            i = dataGridView1.SelectedCells[0].RowIndex;
+            string picture = dataGridView1.Rows[i].Cells[5].Value.ToString();
+
+            if (picture != null)
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("기존 이미지를 삭제 후 Browse 해주세요.");
+            }
+            else
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-                    imageUrl = ofd.FileName;
-                    txtURL.Text = imageUrl;
-                    pictureBox1.Image = Image.FromFile(ofd.FileName);
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        imageUrl = ofd.FileName;
+                        txtURL.Text = imageUrl;
+                        pictureBox1.Image = Image.FromFile(ofd.FileName);
+                    }
                 }
             }
         }
@@ -162,7 +174,7 @@ namespace MESProject.기준정보
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into TB_ITEM_MST (IMAGE) values(@image)";
+            cmd.CommandText = "update TB_ITEM_MST set IMAGE = @image";
             cmd.ExecuteNonQuery();
         }
 
@@ -189,7 +201,7 @@ namespace MESProject.기준정보
             Do_Search();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i;
             i = dataGridView1.SelectedCells[0].RowIndex;
@@ -198,20 +210,39 @@ namespace MESProject.기준정보
             cboItemCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
             txtItemName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
             cboItemType.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            //dataGridView1.Rows[i].Cells[6].Value
+            
+            var picture = dataGridView1.Rows[i].Cells[5].Value.ToString();
 
             DataTable dt = dataGridView1.DataSource as DataTable;
-            if (dataGridView1.Rows[i].Cells[6].Value.ToString() != null)
+            if (picture != string.Empty)
             {
                 DataRow row = dt.Rows[e.RowIndex];
                 pictureBox1.Image = ConvertByteToImage((byte[])row["IMAGE"]);
             }
-            else
+            if (picture == string.Empty)
             {
                 pictureBox1.Image = null;
             }
         }
+
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int i;
+            string itemcode;
+            
+            i = dataGridView1.SelectedCells[0].RowIndex;
+            itemcode = dataGridView1.Rows[i].Cells[1].Value.ToString();
+
+            SqlCommand cmd = sql.con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "insert into TB_ITEM_MST (PLANTCODE, ITEMCODE, ITEMNAME, ITEMTYPE, UNITCODE) values('" + cboPlantCode.SelectedItem.ToString() + "','" + txtItemName.Text + "','" + cboItemCode.Text.ToString() + "','" + cboItemType.Text.ToString() + "','" + cboUnit.Text.ToString() + "')";
+            cmd.CommandText = "update TB_ITEM_MST set IMAGE = NULL where ITEMCODE =" + "'" + itemcode + "'" + "";
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("이미지가 삭제되었습니다.");
+            Do_Search();
+        }
     }
 }
 
