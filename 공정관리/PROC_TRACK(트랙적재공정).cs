@@ -22,6 +22,12 @@ namespace MESProject.공정관리
             InitializeComponent();
         }
 
+        public void Do_Search()
+        {
+            Plan_dv();
+            ProcSeq_dv();
+        }
+
         public void ProcSeq_dv()
         {
             //DGVLoad_ProcSeq();
@@ -93,7 +99,6 @@ namespace MESProject.공정관리
             sql.con.Open();
             ProcSeq_dv();
             Plan_dv();
-            Cell_Lock();
             timer1_Tick(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
@@ -133,10 +138,10 @@ namespace MESProject.공정관리
             {
                 string lotno;
                 lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
-                strqry = "update TB_PLAN_DET set PROC_TRACK = 1 where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + lotno + "'" + "";
+                strqry = "update TB_PLAN_DET set PROC_TRACK = 1 where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
                 dataGridView3.DataSource = func.GetDataTable(strqry);
 
-                MessageBox.Show(label10.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
+                MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
                 ProcSeq_dv();
                 Plan_dv();
             }
@@ -156,7 +161,8 @@ namespace MESProject.공정관리
 
             label10.Text = dataGridView4.Rows[0].Cells[5].Value.ToString(); // ORDERNO
             label14.Text = dataGridView4.Rows[0].Cells[7].Value.ToString(); // TYPE
-            
+            label16.Text = dataGridView4.Rows[0].Cells[8].Value.ToString(); // LOTNO
+
             Plan_Mst();
             label7.Text = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
 
@@ -199,8 +205,6 @@ namespace MESProject.공정관리
             {
                 label6.BackColor = Color.Blue;
             }
-
-
         }
 
         

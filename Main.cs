@@ -163,6 +163,12 @@ namespace MESProject
                     case "PLAN_MST":
                         Plan_Mst.Do_Search();
                         break;
+                    case "PROC_TRACK":
+                        Proc_Mst.Do_Search();
+                        break;
+                    case "PROC_ASSEM":
+                        Proc_Assem.Do_Search();
+                        break;
                     default:
                         break;
                 }
