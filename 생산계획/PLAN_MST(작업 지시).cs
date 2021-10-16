@@ -248,7 +248,7 @@ namespace MESProject.생산계획
 
                     for (int i = 0; i < dtchange.Rows.Count; i++)
                     {
-                        sLotno = dtchange.Rows[i].ItemArray[6].ToString();
+                        sLotno = dtchange.Rows[i].ItemArray[8].ToString();
                         cmd.Parameters["@LOTNO"].Value     = sLotno;
 
                         transaction = sql.con.BeginTransaction();
