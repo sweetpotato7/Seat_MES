@@ -32,6 +32,7 @@ namespace MESProject.공정관리
             func.CboLoad(cboPlantCode, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             cboPlantCode.SelectedIndex = 0;
             DGVLoad();
+            Do_Search();
             SetChart();
         }
 
@@ -71,15 +72,14 @@ namespace MESProject.공정관리
         public void SetChart()
         {
             chart1.Series[0].ChartType = SeriesChartType.Doughnut;
-            //chart1.ChartAreas[0].AxisX.Maximum = 100; //최대값
             chart1.Legends.Clear();
             chart1.Titles.Add("진행도");
-            
             chart1.Titles[0].Font = new Font("굴림", 17, FontStyle.Bold);
-            chart1.Series[0].Points.Add(50);
-            chart1.Series[0].Points.Add(50);
-            //chart1.Series[0].Points.Add(30);
-            //chart1.Series[0].Points.Add(20);
+            // 하나는 전체 계획수 하나는 완료수
+            // 전체계획수 - 완료수 = 빈공간
+            // 완료수 / 전체계획수 = 중간 퍼센트
+            chart1.Series[0].Points.Add(60); // 완료수
+            chart1.Series[0].Points.Add(40); // 빈공간
             chart1.Invalidate();
 
 

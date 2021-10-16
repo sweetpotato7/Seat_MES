@@ -153,7 +153,7 @@ namespace MESProject.공정관리
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series1.CustomProperties = "CollectedColor=White, CollectedLegendText=";
+            series1.CustomProperties = "CollectedColor=White, PieStartAngle=270, CollectedLegendText=";
             series1.EmptyPointStyle.Color = System.Drawing.Color.White;
             series1.EmptyPointStyle.CustomProperties = "PieLineColor=White";
             series1.Legend = "Legend1";
