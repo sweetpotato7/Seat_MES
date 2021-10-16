@@ -34,11 +34,11 @@ namespace MESProject.공정관리
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.cboPlantCode = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dtDate = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1.SuspendLayout();
@@ -78,6 +78,26 @@ namespace MESProject.공정관리
             this.panel1.Size = new System.Drawing.Size(1531, 41);
             this.panel1.TabIndex = 3;
             // 
+            // dtDate
+            // 
+            this.dtDate.Font = new System.Drawing.Font("굴림", 15F);
+            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtDate.Location = new System.Drawing.Point(251, 7);
+            this.dtDate.Name = "dtDate";
+            this.dtDate.Size = new System.Drawing.Size(150, 30);
+            this.dtDate.TabIndex = 8;
+            this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 15F);
+            this.label2.Location = new System.Drawing.Point(195, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "날짜";
+            // 
             // cboPlantCode
             // 
             this.cboPlantCode.FormattingEnabled = true;
@@ -106,26 +126,6 @@ namespace MESProject.공정관리
             this.dataGridView1.Size = new System.Drawing.Size(1531, 527);
             this.dataGridView1.TabIndex = 4;
             // 
-            // dtDate
-            // 
-            this.dtDate.Font = new System.Drawing.Font("굴림", 15F);
-            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDate.Location = new System.Drawing.Point(251, 7);
-            this.dtDate.Name = "dtDate";
-            this.dtDate.Size = new System.Drawing.Size(150, 30);
-            this.dtDate.TabIndex = 8;
-            this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("굴림", 15F);
-            this.label2.Location = new System.Drawing.Point(195, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "날짜";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
@@ -151,12 +151,18 @@ namespace MESProject.공정관리
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series1.CustomProperties = "CollectedColor=White, CollectedLegendText=";
+            series1.EmptyPointStyle.Color = System.Drawing.Color.White;
+            series1.EmptyPointStyle.CustomProperties = "PieLineColor=White";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(294, 288);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            this.chart1.PrePaint += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ChartPaintEventArgs>(this.chart1_PrePaint);
             // 
             // PROC_RST
             // 

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MESProject.공정관리
 {
@@ -68,9 +70,36 @@ namespace MESProject.공정관리
         // 주간 생산 숫자
         public void SetChart()
         {
-            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;   
+            chart1.Series[0].ChartType = SeriesChartType.Doughnut;
+            //chart1.ChartAreas[0].AxisX.Maximum = 100; //최대값
+            chart1.Legends.Clear();
+            chart1.Titles.Add("진행도");
+            
+            chart1.Titles[0].Font = new Font("굴림", 17, FontStyle.Bold);
+            chart1.Series[0].Points.Add(50);
+            chart1.Series[0].Points.Add(50);
+            //chart1.Series[0].Points.Add(30);
+            //chart1.Series[0].Points.Add(20);
+            chart1.Invalidate();
+
 
         }
 
+        private void chart1_PrePaint(object sender, ChartPaintEventArgs e)
+        {
+            if (e.ChartElement is ChartArea)
+            {
+                var ta = new TextAnnotation();
+                string stxt = "50";
+                ta.Text = stxt + "%";
+                ta.Width  = e.Position.Width;
+                ta.Height = e.Position.Height;
+                ta.X = e.Position.X;
+                ta.Y = e.Position.Y + 1;
+                ta.Font = new Font("굴림", 15, FontStyle.Bold);
+
+                chart1.Annotations.Add(ta);
+            }
+        }
     }
 }
