@@ -178,20 +178,20 @@ namespace MESProject.공정관리
             }
 
             Spec();
-          /*  label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString();
+            label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString();
             label5.Text = dataGridView2.Rows[0].Cells[5].Value.ToString();
-            label12.Text = dataGridView2.Rows[0].Cells[8].Value.ToString();*/
+            label12.Text = dataGridView2.Rows[0].Cells[8].Value.ToString();
 
             string formpad;
             string head;
             string sab;
-            
-           /* formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
+
+            formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
             head = dataGridView2.Rows[0].Cells[7].Value.ToString();
-            sab = dataGridView2.Rows[0].Cells[9].Value.ToString();*/
+            sab = dataGridView2.Rows[0].Cells[9].Value.ToString();
 
 
-          /*  if (head == "O")
+            if (head == "O")
             {
                 label3.BackColor = Color.Blue;
             }
@@ -204,7 +204,7 @@ namespace MESProject.공정관리
             if (sab == "O")
             {
                 label6.BackColor = Color.Blue;
-            }*/
+            }
         }
 
         
@@ -236,10 +236,14 @@ namespace MESProject.공정관리
 
         public void Spec()
         {
-            string itemcode;
-            itemcode = dataGridView4.Rows[0].Cells[5].Value.ToString();
+            string side;
+            string alc;
+            string cutalc;
+            side = dataGridView4.Rows[0].Cells[7].Value.ToString();
+            alc = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            cutalc = alc.Substring(0, 2);
 
-            strqry = "select * from TB_SPEC where ITEMCODE =" + "'" + itemcode + "'" + "";
+            strqry = "select * from TB_SPEC where ITEMCODE LIKE" + "'" + cutalc + side + "'" + "";
             dataGridView2.DataSource = func.GetDataTable(strqry);
         }
     }
