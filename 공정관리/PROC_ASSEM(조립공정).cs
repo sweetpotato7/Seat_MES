@@ -236,10 +236,14 @@ namespace MESProject.공정관리
 
         public void Spec()
         {
-            string itemcode;
-            itemcode = dataGridView4.Rows[0].Cells[9].Value.ToString();
+            string side;
+            string alc;
+            string cutalc;
+            side = dataGridView4.Rows[0].Cells[7].Value.ToString();
+            alc = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            cutalc = alc.Substring(0, 2);
 
-            strqry = "select * from TB_SPEC where ITEMCODE = " + "'" + itemcode + "'" + "and SEATTYPE =" + "'" + label14.Text + "'" + "";
+            strqry = "select * from TB_SPEC where ITEMCODE LIKE" + "'" + cutalc + side + "'" + "";
             dataGridView2.DataSource = func.GetDataTable(strqry);
         }
 

@@ -39,8 +39,8 @@ namespace MESProject.기준정보
         #region 그리드세팅
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "ITEMNAME", "ITEMTYPE", "UNITCODE", "USEFLAG", "IMAGE", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID" };
-            string[] HeaderText = new string[] { "공장", "품목코드", "품목명", "품목타입", "단위", "사용여부", "이미지", "등록일시", "등록자", "수정일시", "수정자" };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "ITEMNAME", "ITEMTYPE", "UNITCODE", "USEFLAG", "IMAGE", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID"};
+            string[] HeaderText = new string[] { "공장", "품목코드", "품목명", "품목타입", "단위", "사용여부", "이미지", "등록일시", "등록자", "수정일시", "수정자"};
             float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
@@ -51,6 +51,8 @@ namespace MESProject.기준정보
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.RowHeadersVisible = true;
+            dataGridView1.Columns[6].Visible = false;
+
         }
         #endregion
 
@@ -243,6 +245,7 @@ namespace MESProject.기준정보
             MessageBox.Show("이미지가 삭제되었습니다.");
             Do_Search();
         }
+
     }
 }
 

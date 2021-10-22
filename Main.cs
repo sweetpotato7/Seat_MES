@@ -378,6 +378,7 @@ namespace MESProject
                     }
                     Dgv.Columns.Add(chkcol);
                 }
+
                 else
                 {
                     DataGridViewColumn column = new DataGridViewTextBoxColumn();
