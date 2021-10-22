@@ -13,6 +13,7 @@ namespace MESProject
 {
     public partial class Main : Form
     {
+        #region ========== 폼 객체
         기준정보.CODE_MST Code_Mst;
         기준정보.ITEM_MST Item_Mst;
         기준정보.BOM Bom;
@@ -23,8 +24,9 @@ namespace MESProject
         공정관리.PROC_MST_공정관리_ Proc_Mst; // 트랙공정
         공정관리.PROC_ASSEM_조립공정_ Proc_Assem;
         공정관리.PROC_RST Proc_Rst;
+        #endregion
 
-        public static string ID;
+        public static string ID; // 로그인 아이디
         
         public Main()
         {
@@ -119,13 +121,11 @@ namespace MESProject
             Proc_Mst = new 공정관리.PROC_MST_공정관리_();
             tabCtrlAdd(Proc_Mst, sender);
         }
-
         private void 조립공정ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Proc_Assem = new 공정관리.PROC_ASSEM_조립공정_();
             tabCtrlAdd(Proc_Assem, sender);
         }
-
         private void 공정실적ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Proc_Rst = new 공정관리.PROC_RST();
@@ -142,7 +142,6 @@ namespace MESProject
         #endregion
 
         #region ========== CRUD버튼
-
         public void btnSearch_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == null) return;
@@ -176,6 +175,9 @@ namespace MESProject
                         break;
                     case "PROC_ASSEM":
                         Proc_Assem.Do_Search();
+                        break;
+                    case "PROC_RST":
+                        Proc_Rst.Do_Search();
                         break;
                     default:
                         break;
