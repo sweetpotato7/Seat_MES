@@ -13,6 +13,10 @@ namespace MESProject.생산계획
 {
     public partial class PLAN_MST : Form
     {
+        /// <summary>
+        /// 수정 부분 확인후 삭제
+        /// </summary>
+        
         Function func = new Function();
         SQL sql = new SQL();
         SqlDataAdapter da;
@@ -129,6 +133,7 @@ namespace MESProject.생산계획
 
                     transaction.Commit();
                     MessageBox.Show("입력되었습니다!");
+                    txtQty.Text = "";
                 }
                 catch (SqlException ex)
                 {
