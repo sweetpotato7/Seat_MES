@@ -394,6 +394,7 @@ namespace MESProject
                     column.DefaultCellStyle.ForeColor          = Color.Black;
                     column.DefaultCellStyle.Font               = CellFont;
                     column.ReadOnly = true;
+
                     if (HiddenColumn != null)
                     {
                         for (int j = 0; j < HiddenColumn.Length; j++)
@@ -416,7 +417,7 @@ namespace MESProject
             //decimal calRowHeight = (Dgv.Height - Dgv.ColumnHeadersHeight) / MaxRow;
             //int rowHeight = (int)Math.Truncate(calRowHeight);
             //row.Height = rowHeight; 
-            row.MinimumHeight = 20;
+            row.MinimumHeight = 28;
         }
         #endregion
 

@@ -16,6 +16,7 @@ namespace MESProject.기준정보
     {
 
         SQL sql = new SQL();
+        Function func = new Function();
 
         public USER_ADMIN()
         {
@@ -31,54 +32,68 @@ namespace MESProject.기준정보
             sql.con.Open();
             //Grid Setting
             DGVLoad();
+            CboSet();
         }
 
 
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE",  "PLANTCODE",  "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText       = new string[] { "아이디",   "이름",       "비밀번호", "작업그룹", "공장코드",   "전화번호", "입사일", "퇴사일", "사용여부", "등록자",       "등록일시",  "수정자",        "수정일시" };
-            float[]  FillWeight       = new float[]  { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "WORKERID", "WORKERNAME", "PASSWORD", "BANCODE", "PLANTCODE", "PHONENO", "INDATE", "OUTDATE", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText = new string[] { "아이디", "이름", "비밀번호", "작업그룹", "공장코드", "전화번호", "입사일", "퇴사일", "사용여부", "등록자", "등록일시", "수정자", "수정일시" };
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
-
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.RowHeadersVisible = false;
+
+            //데이터그리드뷰 스타일 지정
+            StyleDatagridview();
+
+            //dataGridView1.ReadOnly = true;
+            //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dataGridView1.RowHeadersVisible = false;
             //dataGridView1.Columns[2].Visible = false;
 
             //데이터베이스 오픈
             SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
             SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
+            dataGridView1.DataSource = da;
+
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
 
             //기본값 셋팅
-            cboPlantCode.SelectedIndex = cboPlantCode.Items.IndexOf("D100");
-            comboBox1.SelectedIndex    = comboBox1.Items.IndexOf("조립반");
-            comboBox2.SelectedIndex    = comboBox2.Items.IndexOf("D100");
-            comboBox3.SelectedIndex    = comboBox3.Items.IndexOf("Y");
-            dateTimePicker1.Value      = DateTime.Today;
-            dateTimePicker2.Value      = DateTime.Today;
-            dateTimePicker3.Value      = DateTime.Today;
-            dateTimePicker4.Value      = DateTime.Today;
+            dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.Today;
+            dateTimePicker3.Value = DateTime.Today;
+            dateTimePicker4.Value = DateTime.Today;
         }
 
-        //전화번호에 숫자만 입력
-        private void maskedTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void StyleDatagridview()
         {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToInt32(Keys.Back))
-            {
 
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
+
+            //ColumnHeader 부분
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 70);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            //Row 부분
+            dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.ForestGreen;
+        }
+
+        //콤보박스 세팅
+        private void CboSet()
+        {  
+            func.CboLoad(comboBox1, "TB_CODE_MST", "CODENAME", true, "MAJORCODE", "BANCODE");
+            func.CboLoad(comboBox2, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
+            func.CboLoad(comboBox3, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
         }
 
 
@@ -86,8 +101,8 @@ namespace MESProject.기준정보
         {
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM TB_USER_INFO WHERE WORKERID LIKE " + "'%" + txtWorkerName.Text + "%'" + 
-                              " AND WORKERNAME LIKE " + "'%" + txtName.Text + "%'";
+            cmd.CommandText = "SELECT * FROM TB_USER_INFO WHERE WORKERID LIKE " + "'%" + txtSearch.Text + "%'" + 
+                              " AND WORKERNAME LIKE " + "'%" + textBox4.Text + "%'";
             cmd.ExecuteNonQuery();
 
             DataTable dt = new DataTable();
@@ -95,23 +110,19 @@ namespace MESProject.기준정보
             da.Fill(dt);
             dataGridView1.DataSource = dt;
 
-
-            txtWorkerName.Text = "";
-            txtName.Text   = "";
+            //txtWorkerName.Text = "";
+            //txtName.Text   = "";
 
             textBox1.Text  = "";
             textBox2.Text  = "";
             textBox3.Text  = "";
-            comboBox1.Text = "조립반";
-            comboBox2.Text = "D100";
+            textBox11.Text = "";
+            textBox13.Text = "";
             maskedTextBox1.Text  = "";
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
-            comboBox3.Text = "Y";
             dateTimePicker3.Value = DateTime.Today;
-            textBox11.Text = "";
             dateTimePicker4.Value = DateTime.Today;
-            textBox13.Text = "";
 
         }
 
@@ -138,10 +149,10 @@ namespace MESProject.기준정보
                                         + " '" + dateTimePicker1.Text + "',"
                                         + " '" + dateTimePicker2.Text + "',"
                                         + " '" + comboBox3.Text + "',"
-                                        + " '" + dateTimePicker3.Text + "',"
                                         + " '" + textBox11.Text + "',"
-                                        + " '" + dateTimePicker4.Text + "',"
-                                        + " '" + textBox13.Text + "')";
+                                        + " '" + dateTimePicker3.Text + "',"
+                                        + " '" + textBox13.Text + "',"
+                                        + " '" + dateTimePicker4.Text + "')";
 
                 cmd.ExecuteNonQuery();
                 Do_Search();
@@ -166,12 +177,9 @@ namespace MESProject.기준정보
                 DialogResult result = MessageBox.Show("삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo);
                 if(result == DialogResult.Yes)
                 {
-                    string workerID;
-                    workerID = dataGridView1.SelectedCells[0].Value.ToString();
-
                     SqlCommand cmd = sql.con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "DELETE FROM TB_USER_INFO WHERE WORKERID = " + "'" + workerID + "'" + "";
+                    cmd.CommandText = "DELETE FROM TB_USER_INFO WHERE WORKERID = " + "'" + textBox1.Text + "'" + "";
                     cmd.ExecuteNonQuery();
 
                     Do_Search();
@@ -185,14 +193,10 @@ namespace MESProject.기준정보
             }
         }
 
-
         public void Do_Save()
         {
             int i;
-            i = dataGridView1.SelectedCells[0].RowIndex; // 현재 선택된 행 번호
-
-            string workerid;
-            workerid = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            i = dataGridView1.SelectedCells[0].RowIndex;
 
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -206,35 +210,41 @@ namespace MESProject.기준정보
                                "INDATE = '"         + dateTimePicker1.Text + "', " +
                                "OUTDATE = '"        + dateTimePicker2.Text + "', " +
                                "USEFLAG = '"        + comboBox3.Text       + "', " +
-                               "CREATE_DT = '"      + dateTimePicker3.Text + "', " +
                                "CREATE_USERID = '"  + textBox11.Text       + "', " +
-                               "MODIFY_DT = '"      + dateTimePicker4.Text + "', " +
-                               "MODIFY_USERID = '"  + textBox13.Text       + "'" +
-                               "WHERE WORKERID = '" + workerid             + "'";
+                               "CREATE_DT = '"      + dateTimePicker3.Text + "', " +
+                               "MODIFY_USERID = '"  + textBox13.Text       + "', " +
+                               "MODIFY_DT = '"      + dateTimePicker4.Text + "'" +
+                               "WHERE WORKERID = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'";
 
             cmd.ExecuteNonQuery();
             Do_Search();
             MessageBox.Show("수정되었습니다");
         }
 
-        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i;
             i = dataGridView1.SelectedCells[0].RowIndex;
 
-            textBox1.Text           = dataGridView1.Rows[i].Cells[0].Value.ToString();    //아이디
-            textBox2.Text           = dataGridView1.Rows[i].Cells[1].Value.ToString();    //이름
-            textBox3.Text           = dataGridView1.Rows[i].Cells[2].Value.ToString();    //비밀번호
-            comboBox1.Text          = dataGridView1.Rows[i].Cells[3].Value.ToString();    //작업반
-            comboBox2.Text          = dataGridView1.Rows[i].Cells[4].Value.ToString();    //공장코드
-            maskedTextBox1.Text     = dataGridView1.Rows[i].Cells[5].Value.ToString();    //전화번호
-            dateTimePicker1.Text    = dataGridView1.Rows[i].Cells[6].Value.ToString();    //입사일
-            dateTimePicker2.Text    = dataGridView1.Rows[i].Cells[7].Value.ToString();    //퇴사일
-            comboBox3.Text          = dataGridView1.Rows[i].Cells[8].Value.ToString();    //사용유무
-            textBox11.Text          = dataGridView1.Rows[i].Cells[9].Value.ToString();    //등록자
-            dateTimePicker3.Text    = dataGridView1.Rows[i].Cells[10].Value.ToString();   //등록일시
-            textBox13.Text          = dataGridView1.Rows[i].Cells[11].Value.ToString();   //수정일시
-            dateTimePicker4.Text    = dataGridView1.Rows[i].Cells[12].Value.ToString();   //수정자
+            textBox1.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();    //아이디
+            textBox2.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();    //이름
+            textBox3.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();    //비밀번호
+            comboBox1.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();    //작업반
+            comboBox2.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();    //공장코드
+            maskedTextBox1.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();    //전화번호
+            dateTimePicker1.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();    //입사일
+            dateTimePicker2.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();    //퇴사일
+            comboBox3.Text = dataGridView1.Rows[i].Cells[8].Value.ToString();    //사용유무
+            textBox11.Text = dataGridView1.Rows[i].Cells[9].Value.ToString();    //등록자
+            dateTimePicker3.Text = dataGridView1.Rows[i].Cells[10].Value.ToString();   //등록일시
+            textBox13.Text = dataGridView1.Rows[i].Cells[11].Value.ToString();   //수정자
+            dateTimePicker4.Text = dataGridView1.Rows[i].Cells[12].Value.ToString();   //수정일시
+            
+        }
+
+        private void dataGridView1_SizeChanged(object sender, EventArgs e)
+        {
+            Do_Search();
         }
     }
 }
