@@ -99,9 +99,9 @@ namespace MESProject
             this.bOMToolStripMenuItem,
             this.사양관리ToolStripMenuItem,
             this.사용자관리ToolStripMenuItem1});
-            this.기준정보ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.기준정보ToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.기준정보ToolStripMenuItem.Name = "기준정보ToolStripMenuItem";
-            this.기준정보ToolStripMenuItem.Size = new System.Drawing.Size(68, 22);
+            this.기준정보ToolStripMenuItem.Size = new System.Drawing.Size(81, 22);
             this.기준정보ToolStripMenuItem.Text = "기준정보";
             // 
             // 공통코드ToolStripMenuItem
@@ -109,7 +109,7 @@ namespace MESProject
             this.공통코드ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.공통코드ToolStripMenuItem.Image = global::MESProject.Properties.Resources._111_removebg_preview;
             this.공통코드ToolStripMenuItem.Name = "공통코드ToolStripMenuItem";
-            this.공통코드ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.공통코드ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.공통코드ToolStripMenuItem.Text = "공통코드";
             this.공통코드ToolStripMenuItem.Click += new System.EventHandler(this.공통코드ToolStripMenuItem_Click);
             // 
@@ -118,7 +118,7 @@ namespace MESProject
             this.품번ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.품번ToolStripMenuItem.Image = global::MESProject.Properties.Resources._222_removebg_preview;
             this.품번ToolStripMenuItem.Name = "품번ToolStripMenuItem";
-            this.품번ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.품번ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.품번ToolStripMenuItem.Text = "품목관리";
             this.품번ToolStripMenuItem.Click += new System.EventHandler(this.품번ToolStripMenuItem_Click);
             // 
@@ -127,7 +127,7 @@ namespace MESProject
             this.bOMToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.bOMToolStripMenuItem.Image = global::MESProject.Properties.Resources._333_removebg_preview;
             this.bOMToolStripMenuItem.Name = "bOMToolStripMenuItem";
-            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.bOMToolStripMenuItem.Text = "BOM";
             this.bOMToolStripMenuItem.Click += new System.EventHandler(this.bOMToolStripMenuItem_Click);
             // 
@@ -136,7 +136,7 @@ namespace MESProject
             this.사양관리ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.사양관리ToolStripMenuItem.Image = global::MESProject.Properties.Resources._444_removebg_preview;
             this.사양관리ToolStripMenuItem.Name = "사양관리ToolStripMenuItem";
-            this.사양관리ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.사양관리ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.사양관리ToolStripMenuItem.Text = "사양관리";
             this.사양관리ToolStripMenuItem.Click += new System.EventHandler(this.사양관리ToolStripMenuItem_Click);
             // 
@@ -145,7 +145,7 @@ namespace MESProject
             this.사용자관리ToolStripMenuItem1.BackColor = System.Drawing.Color.White;
             this.사용자관리ToolStripMenuItem1.Image = global::MESProject.Properties.Resources._555_removebg_preview;
             this.사용자관리ToolStripMenuItem1.Name = "사용자관리ToolStripMenuItem1";
-            this.사용자관리ToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
+            this.사용자관리ToolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
             this.사용자관리ToolStripMenuItem1.Text = "사용자관리";
             this.사용자관리ToolStripMenuItem1.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
             // 
@@ -153,8 +153,9 @@ namespace MESProject
             // 
             this.생산계획ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.생산계획ToolStripMenuItem1});
+            this.생산계획ToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.생산계획ToolStripMenuItem.Name = "생산계획ToolStripMenuItem";
-            this.생산계획ToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.생산계획ToolStripMenuItem.Size = new System.Drawing.Size(81, 22);
             this.생산계획ToolStripMenuItem.Text = "생산계획";
             // 
             // 생산계획ToolStripMenuItem1
@@ -162,7 +163,7 @@ namespace MESProject
             this.생산계획ToolStripMenuItem1.BackColor = System.Drawing.Color.White;
             this.생산계획ToolStripMenuItem1.Image = global::MESProject.Properties.Resources._666_removebg_preview;
             this.생산계획ToolStripMenuItem1.Name = "생산계획ToolStripMenuItem1";
-            this.생산계획ToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.생산계획ToolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
             this.생산계획ToolStripMenuItem1.Text = "작업지시";
             this.생산계획ToolStripMenuItem1.Click += new System.EventHandler(this.생산계획ToolStripMenuItem1_Click);
             // 
@@ -173,8 +174,9 @@ namespace MESProject
             this.공정순서관리ToolStripMenuItem,
             this.공정관리ToolStripMenuItem1,
             this.조립공정ToolStripMenuItem});
+            this.공정관리ToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.공정관리ToolStripMenuItem.Name = "공정관리ToolStripMenuItem";
-            this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.공정관리ToolStripMenuItem.Size = new System.Drawing.Size(81, 22);
             this.공정관리ToolStripMenuItem.Text = "공정관리";
             // 
             // 공정실적ToolStripMenuItem
@@ -182,7 +184,7 @@ namespace MESProject
             this.공정실적ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.공정실적ToolStripMenuItem.Image = global::MESProject.Properties.Resources._777_removebg_preview;
             this.공정실적ToolStripMenuItem.Name = "공정실적ToolStripMenuItem";
-            this.공정실적ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.공정실적ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.공정실적ToolStripMenuItem.Text = "공정실적";
             this.공정실적ToolStripMenuItem.Click += new System.EventHandler(this.공정실적ToolStripMenuItem_Click);
             // 
@@ -191,7 +193,7 @@ namespace MESProject
             this.공정순서관리ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.공정순서관리ToolStripMenuItem.Image = global::MESProject.Properties.Resources._888_removebg_preview;
             this.공정순서관리ToolStripMenuItem.Name = "공정순서관리ToolStripMenuItem";
-            this.공정순서관리ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.공정순서관리ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.공정순서관리ToolStripMenuItem.Text = "공정순서관리";
             this.공정순서관리ToolStripMenuItem.Click += new System.EventHandler(this.공정순서관리ToolStripMenuItem_Click);
             // 
@@ -200,7 +202,7 @@ namespace MESProject
             this.공정관리ToolStripMenuItem1.BackColor = System.Drawing.Color.White;
             this.공정관리ToolStripMenuItem1.Image = global::MESProject.Properties.Resources._999_removebg_preview;
             this.공정관리ToolStripMenuItem1.Name = "공정관리ToolStripMenuItem1";
-            this.공정관리ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.공정관리ToolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
             this.공정관리ToolStripMenuItem1.Text = "트랙적재공정";
             this.공정관리ToolStripMenuItem1.Click += new System.EventHandler(this.공정관리ToolStripMenuItem1_Click);
             // 
@@ -209,14 +211,15 @@ namespace MESProject
             this.조립공정ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.조립공정ToolStripMenuItem.Image = global::MESProject.Properties.Resources._1010_removebg_preview;
             this.조립공정ToolStripMenuItem.Name = "조립공정ToolStripMenuItem";
-            this.조립공정ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.조립공정ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.조립공정ToolStripMenuItem.Text = "조립공정";
             this.조립공정ToolStripMenuItem.Click += new System.EventHandler(this.조립공정ToolStripMenuItem_Click);
             // 
             // 종료ToolStripMenuItem
             // 
+            this.종료ToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(43, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(51, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -225,12 +228,13 @@ namespace MESProject
             this.txtVersion.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtVersion.BackColor = System.Drawing.SystemColors.Window;
             this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtVersion.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtVersion.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = true;
             this.txtVersion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtVersion.ShortcutsEnabled = false;
-            this.txtVersion.Size = new System.Drawing.Size(75, 22);
+            this.txtVersion.Size = new System.Drawing.Size(80, 22);
             this.txtVersion.Text = "ver 00.0000";
             // 
             // txtDT
@@ -238,10 +242,11 @@ namespace MESProject
             this.txtDT.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txtDT.BackColor = System.Drawing.SystemColors.Window;
             this.txtDT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDT.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtDT.Name = "txtDT";
             this.txtDT.ReadOnly = true;
             this.txtDT.ShortcutsEnabled = false;
-            this.txtDT.Size = new System.Drawing.Size(125, 22);
+            this.txtDT.Size = new System.Drawing.Size(140, 22);
             this.txtDT.Text = "0000-00-00 00:00:00";
             // 
             // pnlCRUD
@@ -380,9 +385,10 @@ namespace MESProject
             // 
             this.lblTimeUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTimeUse.AutoSize = true;
-            this.lblTimeUse.Location = new System.Drawing.Point(766, 2);
+            this.lblTimeUse.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTimeUse.Location = new System.Drawing.Point(766, 0);
             this.lblTimeUse.Name = "lblTimeUse";
-            this.lblTimeUse.Size = new System.Drawing.Size(194, 12);
+            this.lblTimeUse.Size = new System.Drawing.Size(194, 17);
             this.lblTimeUse.TabIndex = 5;
             this.lblTimeUse.Text = "label7";
             // 
@@ -390,9 +396,10 @@ namespace MESProject
             // 
             this.lblId.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(606, 2);
+            this.lblId.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblId.Location = new System.Drawing.Point(606, 0);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(38, 12);
+            this.lblId.Size = new System.Drawing.Size(50, 17);
             this.lblId.TabIndex = 4;
             this.lblId.Text = "label5";
             // 
@@ -400,9 +407,10 @@ namespace MESProject
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(536, 2);
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(536, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 12);
+            this.label4.Size = new System.Drawing.Size(50, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "label4";
             // 
@@ -410,9 +418,10 @@ namespace MESProject
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(466, 2);
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(466, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 12);
+            this.label3.Size = new System.Drawing.Size(50, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
@@ -420,9 +429,10 @@ namespace MESProject
             // 
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(676, 2);
+            this.lblName.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblName.Location = new System.Drawing.Point(676, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 12);
+            this.lblName.Size = new System.Drawing.Size(54, 17);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "가나다";
             // 
@@ -430,9 +440,10 @@ namespace MESProject
             // 
             this.lblStatemsg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblStatemsg.AutoSize = true;
-            this.lblStatemsg.Location = new System.Drawing.Point(3, 2);
+            this.lblStatemsg.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblStatemsg.Location = new System.Drawing.Point(3, 0);
             this.lblStatemsg.Name = "lblStatemsg";
-            this.lblStatemsg.Size = new System.Drawing.Size(93, 12);
+            this.lblStatemsg.Size = new System.Drawing.Size(109, 17);
             this.lblStatemsg.TabIndex = 1;
             this.lblStatemsg.Text = "StatusMessage";
             // 
