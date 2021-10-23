@@ -48,9 +48,9 @@ namespace MESProject.기준정보
             string[] DataPropertyName = new string[] { "PLANTCODE", "MAJORCODE", "MINORCODE", "CODENAME", "RELCODE1", "RELCODE2", "RELCODE3", "RELCODE4", "RELCODE5", "DISPLAYNO", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "주코드", "부코드", "코드명", "참조1", "참조2", "참조3", "참조4", "코드명", "순서", "사용", "등록자", "등록일시", "수정자", "수정일시" };
             string[] HiddenColumn     = null;
-            float[] FillWeight = new float[] { 40, 100, 50, 100, 100, 100, 100, 100, 100, 40, 40, 100, 130, 100, 130 };
-            Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
-            Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            Font StyleFont     = new Font("맑은고딕", 11, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
             HiddenColumn = new string[] { "PLANTCODE", "MINORCODE", "CODENAME", "RELCODE1", "RELCODE2", "RELCODE3", "RELCODE4", "DISPLAYNO", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
@@ -60,6 +60,12 @@ namespace MESProject.기준정보
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dataGridView1.ReadOnly = true;
+
+            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
+            dataGridView2.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
+
+
         }
 
         #region ========== CRUD
@@ -388,6 +394,11 @@ namespace MESProject.기준정보
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) Do_Search();
+        }
+
+        private void CODE_MST_Resize(object sender, EventArgs e)
+        {
+            Do_Search();
         }
     }
 }

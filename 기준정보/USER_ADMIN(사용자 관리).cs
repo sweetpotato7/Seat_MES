@@ -60,7 +60,6 @@ namespace MESProject.기준정보
         {
 
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
             //ColumnHeader 부분
@@ -71,7 +70,11 @@ namespace MESProject.기준정보
             //Row 부분
             dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.ForestGreen;
+            func.CboLoad(comboBox1, "TB_CODE_MST", "CODENAME",  true, "MAJORCODE", "BANCODE");
+
+
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         //콤보박스 세팅
@@ -232,5 +235,7 @@ namespace MESProject.기준정보
         {
             Do_Search();
         }
+
+        
     }
 }
