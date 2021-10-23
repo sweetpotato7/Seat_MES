@@ -202,7 +202,6 @@ namespace MESProject.기준정보
         }
         #endregion
 
-
         #region ========== 트리뷰
         public void TreeViewLoad() // 트리뷰 로드
         {
@@ -305,7 +304,6 @@ namespace MESProject.기준정보
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -317,14 +315,15 @@ namespace MESProject.기준정보
         #region ========== 콤보박스 셋팅
         private void CboSet()
         {
-            func.CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cboPlantCode,  "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE",  false);
-            func.CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cboPlantCode2, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboUseFlag,    "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
             func.CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
             func.CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
             func.CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE",  true);
             func.CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE",  true);
+            cboPlantCode.SelectedItem = cboPlantCode.Items[0];
         }
 
         private void cboPItemCode_SelectedValueChanged(object sender, EventArgs e) // 품목 선택 시 품명 출력
