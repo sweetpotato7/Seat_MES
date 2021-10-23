@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 
@@ -27,7 +23,9 @@ namespace MESProject
         #endregion
 
         public static string ID; // 로그인 아이디
-        
+        int iTime = 0; // 사용시간
+        Stopwatch sw = new Stopwatch();
+
         public Main()
         {
             InitializeComponent();
@@ -36,15 +34,15 @@ namespace MESProject
         private void Main_Load(object sender, EventArgs e)
         {
             ID = "USERID"; // 로그인폼 사용시 삭제
-
+            lblStatemsg.Text = $"{ID}님 접속 중";
+            lblTimeUse.Text = "사용시간 : 00:00:00";
+            
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState     = FormWindowState.Maximized;
-
+            
             txtVersion.Text = SQL.VerCheck(); // 실행 시 SQL로 버전 받아서 업데이트(SQLSetting에서 받아오기)
             btnImageLoad();
             timer();
-            lblStatemsg.Text = $"{ID}님 접속 중";
-            TimeUse(); // C# 소코반 코드 참고 사용시간 체크 추가하기 label7?
         }
 
         #region ========== 탭컨트롤
@@ -429,19 +427,17 @@ namespace MESProject
         #region ========== 시간
         private void timer()
         {
+            sw.Start();
             timer1.Interval = 1000;
             timer1.Enabled = true;
             timer1.Tick += timer1_Tick;
-            txtDT.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             txtDT.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        }
-        
-        private void TimeUse()
-        {
-            lblTimeUse.Text = "사용시간";
+            lblTimeUse.Text = $"사용시간 : {(sw.ElapsedMilliseconds / 1000 / 3600).ToString().PadLeft(2, '0')}" +
+                                        $":{(sw.ElapsedMilliseconds / 1000 / 60 % 60).ToString().PadLeft(2, '0')}" +
+                                        $":{(sw.ElapsedMilliseconds / 1000 % 60).ToString().PadLeft(2, '0')}";
         }
         #endregion
 
