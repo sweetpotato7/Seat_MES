@@ -58,6 +58,7 @@ namespace MESProject.기준정보
             HiddenColumn = new string[] { "MAJORCODE", "RELCODE5"};
             Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 15);
 
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
@@ -303,17 +304,24 @@ namespace MESProject.기준정보
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cboIPlantcode.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-            cboIMajorCode.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtIMajorName.Text = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
-            cboIMinorCode.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtIMinorName.Text = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtIDisplayNo.Text = dataGridView2.Rows[e.RowIndex].Cells[9].Value.ToString();
-            cboIUseFlag.Text   = dataGridView2.Rows[e.RowIndex].Cells[10].Value.ToString();
-            txtIRelCode1.Text  = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtIRelCode2.Text  = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txtIRelCode3.Text  = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
-            txtIRelCode4.Text  = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
+            try
+            {
+                cboIPlantcode.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+                cboIMajorCode.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtIMajorName.Text = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
+                cboIMinorCode.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtIMinorName.Text = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtIDisplayNo.Text = dataGridView2.Rows[e.RowIndex].Cells[9].Value.ToString();
+                cboIUseFlag.Text   = dataGridView2.Rows[e.RowIndex].Cells[10].Value.ToString();
+                txtIRelCode1.Text  = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtIRelCode2.Text  = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
+                txtIRelCode3.Text  = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
+                txtIRelCode4.Text  = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
+            }
+            catch
+            {
+
+            }
         }
 
         #region ========== 콤보박스

@@ -40,10 +40,6 @@ namespace MESProject.기준정보
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
             dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.RowHeadersVisible = false;
-
-            StyleDatagridview();
 
             //상단 콤보박스 세팅
             SqlCommand cmd = new SqlCommand("SELECT ITEMCODE FROM TB_BOM WHERE ITEMCODE LIKE '%ALC';", sql.con);
@@ -61,27 +57,6 @@ namespace MESProject.기준정보
             Do_Search();
         }
         #endregion
-
-        void StyleDatagridview()
-        {
-
-            dataGridView1.BorderStyle = BorderStyle.FixedSingle;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 70);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.EnableHeadersVisualStyles = false;
-
-
-
-            //alternating
-            dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
-
-            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.ForestGreen;
-        }
 
         public void SPEC_MST_Load(object sender, EventArgs e)
         {

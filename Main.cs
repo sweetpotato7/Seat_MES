@@ -45,6 +45,19 @@ namespace MESProject
             timer();
             lblStatemsg.Text = $"{ID}님 접속 중";
             TimeUse(); // C# 소코반 코드 참고 사용시간 체크 추가하기 label7?
+
+            #region ========== 그라데이션
+
+
+
+
+
+
+
+
+
+
+            #endregion
         }
 
         #region ========== 탭컨트롤
@@ -335,7 +348,12 @@ namespace MESProject
             Dgv.BorderStyle = BorderStyle.FixedSingle;
 
             Dgv.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Dgv.ScrollBars = ScrollBars.Both;
+            Dgv.RowsDefaultCellStyle.BackColor = Color.White;
+            Dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            Dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Dgv.ScrollBars      = ScrollBars.Both;
+            Dgv.SelectionMode   = DataGridViewSelectionMode.CellSelect;
+            Dgv.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
 
             Dgv.AllowUserToAddRows       = false;
             Dgv.AllowUserToDeleteRows    = false;
@@ -351,8 +369,8 @@ namespace MESProject
             Dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Dgv.ColumnHeadersHeight         = HeaderHeight;
             Dgv.ColumnHeadersBorderStyle    = DataGridViewHeaderBorderStyle.Single;
-            Dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Empty; // FromArgb(27, 85, 159);
-            Dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Empty; //White;
+            Dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 70);
+            Dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             Dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Dgv.ColumnHeadersDefaultCellStyle.Font      = HeaderCellFont;
 
@@ -453,7 +471,5 @@ namespace MESProject
         {
             //MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
-
-        
     }
 }
