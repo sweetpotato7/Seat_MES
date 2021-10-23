@@ -30,7 +30,7 @@ namespace MESProject.기준정보
                 sql.con.Close();
             }
             sql.con.Open();
-            //Grid Setting
+
             DGVLoad();
             CboSet();
         }
