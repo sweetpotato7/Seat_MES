@@ -44,6 +44,26 @@ namespace MESProject.기준정보
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
+            //dataGridView1.ColumnCount = 13;
+            //dataGridView1.Columns[0].Name = "아이디"; 
+            //dataGridView1.Columns[1].Name = "이름";
+            //dataGridView1.Columns[2].Name = "비밀번호";
+            //dataGridView1.Columns[3].Name = "작업그룹";
+            //dataGridView1.Columns[4].Name = "공장코드";
+            //dataGridView1.Columns[5].Name = "전화번호";
+            //dataGridView1.Columns[6].Name = "입사일";
+            //dataGridView1.Columns[7].Name = "퇴사일";
+            //dataGridView1.Columns[8].Name = "사용여부";
+            //dataGridView1.Columns[9].Name = "등록자";
+            //dataGridView1.Columns[10].Name = "등록일시";
+            //dataGridView1.Columns[11].Name = "수정자";
+            //dataGridView1.Columns[12].Name = "수정일시";
+
+            //데이터베이스 오픈
+            SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            dataGridView1.DataSource = da;
+            
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
 
@@ -54,11 +74,6 @@ namespace MESProject.기준정보
             //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //dataGridView1.RowHeadersVisible = false;
             //dataGridView1.Columns[2].Visible = false;
-
-            //데이터베이스 오픈
-            SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            dataGridView1.DataSource = da;
 
             //DataTable dt = new DataTable();
             //da.Fill(dt);
@@ -74,7 +89,6 @@ namespace MESProject.기준정보
         {
 
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
             //ColumnHeader 부분
@@ -85,7 +99,11 @@ namespace MESProject.기준정보
             //Row 부분
             dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.ForestGreen;
+            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
+
+
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         //콤보박스 세팅
@@ -246,5 +264,7 @@ namespace MESProject.기준정보
         {
             Do_Search();
         }
+
+        
     }
 }

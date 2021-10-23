@@ -80,7 +80,7 @@ namespace MESProject.기준정보
             this.cboUnit.FormattingEnabled = true;
             this.cboUnit.Items.AddRange(new object[] {
             "BBB"});
-            this.cboUnit.Location = new System.Drawing.Point(998, 18);
+            this.cboUnit.Location = new System.Drawing.Point(857, 17);
             this.cboUnit.Name = "cboUnit";
             this.cboUnit.Size = new System.Drawing.Size(100, 25);
             this.cboUnit.TabIndex = 4;
@@ -90,11 +90,11 @@ namespace MESProject.기준정보
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(880, 20);
+            this.label5.Location = new System.Drawing.Point(809, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 21);
+            this.label5.Size = new System.Drawing.Size(42, 21);
             this.label5.TabIndex = 18;
-            this.label5.Text = "단위(수정가능)";
+            this.label5.Text = "단위";
             // 
             // cboItemType
             // 
@@ -102,7 +102,7 @@ namespace MESProject.기준정보
             this.cboItemType.FormattingEnabled = true;
             this.cboItemType.Items.AddRange(new object[] {
             "BBB"});
-            this.cboItemType.Location = new System.Drawing.Point(739, 18);
+            this.cboItemType.Location = new System.Drawing.Point(675, 17);
             this.cboItemType.Name = "cboItemType";
             this.cboItemType.Size = new System.Drawing.Size(100, 25);
             this.cboItemType.TabIndex = 3;
@@ -112,11 +112,11 @@ namespace MESProject.기준정보
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(592, 20);
+            this.label4.Location = new System.Drawing.Point(593, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 21);
+            this.label4.Size = new System.Drawing.Size(74, 21);
             this.label4.TabIndex = 15;
-            this.label4.Text = "품목타입(수정가능)";
+            this.label4.Text = "품목타입";
             // 
             // cboItemCode
             // 
@@ -124,7 +124,7 @@ namespace MESProject.기준정보
             this.cboItemCode.FormattingEnabled = true;
             this.cboItemCode.Items.AddRange(new object[] {
             "AAA"});
-            this.cboItemCode.Location = new System.Drawing.Point(259, 18);
+            this.cboItemCode.Location = new System.Drawing.Point(262, 17);
             this.cboItemCode.Name = "cboItemCode";
             this.cboItemCode.Size = new System.Drawing.Size(100, 25);
             this.cboItemCode.TabIndex = 1;
@@ -134,7 +134,7 @@ namespace MESProject.기준정보
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(184, 20);
+            this.label3.Location = new System.Drawing.Point(185, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 21);
             this.label3.TabIndex = 13;
@@ -145,7 +145,7 @@ namespace MESProject.기준정보
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(398, 20);
+            this.label2.Location = new System.Drawing.Point(399, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 21);
             this.label2.TabIndex = 12;
@@ -154,7 +154,7 @@ namespace MESProject.기준정보
             // txtItemName
             // 
             this.txtItemName.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtItemName.Location = new System.Drawing.Point(456, 18);
+            this.txtItemName.Location = new System.Drawing.Point(459, 17);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(100, 25);
             this.txtItemName.TabIndex = 2;
@@ -165,7 +165,7 @@ namespace MESProject.기준정보
             this.cboPlantCode.FormattingEnabled = true;
             this.cboPlantCode.Items.AddRange(new object[] {
             "D001"});
-            this.cboPlantCode.Location = new System.Drawing.Point(54, 18);
+            this.cboPlantCode.Location = new System.Drawing.Point(57, 17);
             this.cboPlantCode.Name = "cboPlantCode";
             this.cboPlantCode.Size = new System.Drawing.Size(100, 25);
             this.cboPlantCode.TabIndex = 0;
@@ -175,7 +175,7 @@ namespace MESProject.기준정보
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 20);
+            this.label1.Location = new System.Drawing.Point(11, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 21);
             this.label1.TabIndex = 9;

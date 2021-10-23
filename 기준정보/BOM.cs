@@ -45,14 +45,16 @@ namespace MESProject.기준정보
             string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "PITEMNAME", "BASEQTY", "UNITCODE", "COMPONENT", "CITEMNAME", "COMPONENTQTY", "COMPONENTUNIT", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "품목", "품명", "수량", "단위", "하위품목", "품명", "수량", "단위", "사용", "등록자", "등록일시", "수정자", "수정일시" };
             string[] HiddenColumn     = null;
-            float[] FillWeight = new float[] { 40, 100, 100, 40, 40, 100, 100, 40, 40, 40, 100, 130, 100, 130 };
-            Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
-            Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            Font StyleFont     = new Font("맑은고딕", 11, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
             //dataGridView2.ReadOnly = false;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
+
         }
 
         #region ========== CRUD
