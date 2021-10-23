@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
+
 
 namespace MESProject.공정관리
 {
@@ -38,8 +40,10 @@ namespace MESProject.공정관리
         }
         public void Plan_dv()
         {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 order by ORDERNO";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 and CREATE_DT >=" + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
 
             for (int i = 1; i < dataGridView4.Rows.Count + 1; i++)
@@ -99,6 +103,7 @@ namespace MESProject.공정관리
             sql.con.Open();
             ProcSeq_dv();
             Plan_dv();
+            dv_item_mst();
             timer1_Tick(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
@@ -107,8 +112,10 @@ namespace MESProject.공정관리
         // 작업지시 타이머(자동새로고침)
         private void timer1_Tick(object sender, EventArgs e)
         {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 order by ORDERNO";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 and CREATE_DT >=" + "'" + today + "'" + "order by ORDERNO";
             dataGridView4.DataSource = func.GetDataTable(strqry);
             Cell_Lock();
         }
@@ -250,6 +257,47 @@ namespace MESProject.공정관리
         private void dataGridView4_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             Cell_Lock();
+        }
+
+        // 이미지 출력
+        private void view_image()
+        {
+            Image img = pictureBox1.Image;
+            byte[] arr;
+            ImageConverter converter = new ImageConverter();
+            arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+
+            string itemname;
+
+            itemname = dataGridView4.Rows[0].Cells[0].Value.ToString();
+        }
+
+        private void dv_item_mst()
+        {
+            string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
+            strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" +"";
+            dataGridView5.DataSource = func.GetDataTable(strqry);
+
+            var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
+
+            DataTable dt = dataGridView5.DataSource as DataTable;
+            if (picture != string.Empty)
+            {
+                DataRow row = dt.Rows[0];
+                pictureBox1.Image = ConvertByteToImage((byte[])row[0]);
+            }
+            if (picture == string.Empty)
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private Image ConvertByteToImage(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return Image.FromStream(ms);
+            }
         }
     }
 }
