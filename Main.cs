@@ -45,19 +45,6 @@ namespace MESProject
             timer();
             lblStatemsg.Text = $"{ID}님 접속 중";
             TimeUse(); // C# 소코반 코드 참고 사용시간 체크 추가하기 label7?
-
-            #region ========== 그라데이션
-
-
-
-
-
-
-
-
-
-
-            #endregion
         }
 
         #region ========== 탭컨트롤
