@@ -18,6 +18,7 @@ namespace MESProject.공정관리
         SQL sql = new SQL();
         string strqry = string.Empty;
         string strqry2 = string.Empty;
+        string strqry3 = string.Empty;
         Function func = new Function();
 
         public PROC_ASSEM_조립공정_()
@@ -115,7 +116,7 @@ namespace MESProject.공정관리
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 and CREATE_DT >=" + "'" + today + "'" + "order by ORDERNO";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 and CREATE_DT >=" + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
             Cell_Lock();
         }
@@ -146,12 +147,26 @@ namespace MESProject.공정관리
             if (check == true && check2 == true && check3 == true)
             {
                 string lotno;
+                string today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string orderno = dataGridView4.Rows[0].Cells[5].Value.ToString();
                 lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
-                strqry = "update TB_PLAN_DET set PROC_ASSEM = 1 where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
+                strqry = "update TB_PLAN_DET set PROC_ASSEM = 1, PRODDATE =" + "'" + today + "'" + ", MODIFY_DT =" + "'" + today + "'" + ", MODIFY_USERID =" + "'" + "USERID" + "'"
+                        + "where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
                 dataGridView3.DataSource = func.GetDataTable(strqry);
+                
+                // RH일때 수량 +1
+                if (label14.Text == "RH")
+                {
+                    strqry = "update TB_PLAN_MST set PRODQTY = PRODQTY + 1 " +
+                              "where ORDERNO = '" + orderno + "'";
+                    func.GetDataTable(strqry);
 
-                strqry2 = "update TB_PLAN_DET set CHK = 1 where LOTNO =" + "'" + label16.Text + "'" + "";
-                dataGridView3.DataSource = func.GetDataTable(strqry2);
+                    strqry = "insert into TB_PROD_RST ";
+                    func.GetDataTable(strqry);
+                }
+
+                strqry = "update TB_PLAN_DET set CHK = 1 where LOTNO =" + "'" + label16.Text + "'" + "";
+                dataGridView3.DataSource = func.GetDataTable(strqry);
 
                 MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
                 ProcSeq_dv();
@@ -274,21 +289,28 @@ namespace MESProject.공정관리
 
         private void dv_item_mst()
         {
-            string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
-            strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" +"";
-            dataGridView5.DataSource = func.GetDataTable(strqry);
-
-            var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
-
-            DataTable dt = dataGridView5.DataSource as DataTable;
-            if (picture != string.Empty)
+            try
             {
-                DataRow row = dt.Rows[0];
-                pictureBox1.Image = ConvertByteToImage((byte[])row[0]);
+                string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
+                strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" +"";
+                dataGridView5.DataSource = func.GetDataTable(strqry);
+
+                var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
+
+                DataTable dt = dataGridView5.DataSource as DataTable;
+                if (picture != string.Empty)
+                {
+                    DataRow row = dt.Rows[0];
+                    pictureBox1.Image = ConvertByteToImage((byte[])row[0]);
+                }
+                if (picture == string.Empty)
+                {
+                    pictureBox1.Image = null;
+                }
             }
-            if (picture == string.Empty)
+            catch
             {
-                pictureBox1.Image = null;
+
             }
         }
 

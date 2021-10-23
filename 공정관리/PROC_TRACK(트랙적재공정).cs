@@ -17,6 +17,7 @@ namespace MESProject.공정관리
     {
         SQL sql = new SQL();
         string strqry = string.Empty;
+        string strqry2 = string.Empty;
         Function func = new Function();
 
         public PROC_MST_공정관리_()
@@ -43,7 +44,7 @@ namespace MESProject.공정관리
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 and CREATE_DT >= " + "'" + today + "'" + "order by ORDERNO";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 and CREATE_DT >= " + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
 
             for (int i = 1; i < dataGridView4.Rows.Count + 1; i++)
@@ -57,6 +58,7 @@ namespace MESProject.공정관리
                     dataGridView4.Rows[i - 1].DefaultCellStyle.BackColor = Color.Gray;
                 }
             }
+
         }
 
         private void DGVLoad_Plan()
@@ -115,7 +117,7 @@ namespace MESProject.공정관리
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 and CREATE_DT >= " + "'" + today + "'" + "order by ORDERNO";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 and CREATE_DT >= " + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
             Cell_Lock();
         }
@@ -123,34 +125,49 @@ namespace MESProject.공정관리
         // 체크박스 체크시 셀 색변환
         private void dataGridView3_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            bool check = Convert.ToBoolean(dataGridView3.Rows[0].Cells[0].Value);
-            bool check2 = Convert.ToBoolean(dataGridView3.Rows[1].Cells[0].Value);
-            int i;
-            i = dataGridView3.SelectedCells[0].RowIndex;
-
-            foreach (DataGridViewRow row in dataGridView3.Rows)
+            try
             {
-                if (Convert.ToBoolean(row.Cells["작업완료"].Value) == true)
+                bool check = Convert.ToBoolean(dataGridView3.Rows[0].Cells[0].Value);
+                bool check2 = Convert.ToBoolean(dataGridView3.Rows[1].Cells[0].Value);
+                int i;
+                i = dataGridView3.SelectedCells[0].RowIndex;
+
+                foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    row.DefaultCellStyle.BackColor = Color.Blue;
+                    if (Convert.ToBoolean(row.Cells["작업완료"].Value) == true)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Blue;
+                    }
+
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
                 }
 
-                else
+                if (check == true && check2 == true)
                 {
-                    row.DefaultCellStyle.BackColor = Color.White;
+                    string lotno;
+                    string today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
+                    strqry = "update TB_PLAN_DET set PROC_TRACK = 1, INDATE =" + "'" + today + "'" + ", MODIFY_DT = " + "'" + today + "'" + ", MODIFY_USERID =" + "'" + "USERID" + "'"
+                            + "where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
+                    dataGridView3.DataSource = func.GetDataTable(strqry);
+                    MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
+                    ProcSeq_dv();
+                    Plan_dv();
+                }
+
+                if (check == true)
+                {
+                    string orderno = dataGridView4.Rows[0].Cells[5].Value.ToString();
+                    strqry2 = "update TB_PLAN_MST set PLANFLAG = 'I' where ORDERNO =" + "'" + orderno + "'" + "";
+                    func.GetDataTable(strqry2);
                 }
             }
-
-            if (check == true && check2 == true)
+            catch
             {
-                string lotno;
-                lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
-                strqry = "update TB_PLAN_DET set PROC_TRACK = 1 where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
-                dataGridView3.DataSource = func.GetDataTable(strqry);
-
-                MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
-                ProcSeq_dv();
-                Plan_dv();
+                
             }
         }
 
@@ -279,6 +296,17 @@ namespace MESProject.공정관리
             using (MemoryStream ms = new MemoryStream(data))
             {
                 return Image.FromStream(ms);
+            }
+        }
+
+        private void update_flag()
+        {
+            string orderno = dataGridView2.Rows[0].Cells[5].Value.ToString();
+            string indate = dataGridView2.Rows[0].Cells[10].Value.ToString();
+            if (indate != null)
+            {
+                strqry = "update TB_PLAN_MST set PLANFLAG = 'I' where  ";
+                dataGridView1.DataSource = func.GetDataTable(strqry);
             }
         }
     }

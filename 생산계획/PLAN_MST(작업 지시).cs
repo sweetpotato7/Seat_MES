@@ -16,7 +16,7 @@ namespace MESProject.생산계획
         /// <summary>
         /// 수정 부분 확인후 삭제
         /// </summary>
-        
+
         Function func = new Function();
         SQL sql = new SQL();
         SqlDataAdapter da;
@@ -41,10 +41,10 @@ namespace MESProject.생산계획
         {
             // DGV1
             string[] DataPropertyName = new string[] { "PLANTCODE", "PLANDATE", "PLANSEQ", "ALC_CD", "PLANQTY", "ORDERNO", "PRODQTY", "PLANFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText       = new string[] { "공장", "날짜", "순서", "ALC", "수량", "작업지시번호", "생산수량", "계획상태", "등록자", "등록일자", "수정자", "수정일자" };
-            string[] HiddenColumn     = new string[] { "PLANTCODE" };
-            float[] FillWeight        = new float[] { 40, 100, 40, 100, 40, 130, 40, 40, 100, 130, 100, 130 };
-            Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
+            string[] HeaderText = new string[] { "공장", "날짜", "순서", "ALC", "수량", "작업지시번호", "생산수량", "계획상태", "등록자", "등록일자", "수정자", "수정일자" };
+            string[] HiddenColumn = new string[] { "PLANTCODE" };
+            float[] FillWeight = new float[] { 40, 100, 40, 100, 40, 130, 40, 40, 100, 130, 100, 130 };
+            Font StyleFont = new Font("굴림", 9, FontStyle.Bold);
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
@@ -56,10 +56,10 @@ namespace MESProject.생산계획
         {
             // DGV2 수정!
             string[] DataPropertyName = new string[] { "CHK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText       = new string[] { "완료", "공장", "작업순서", "작업번호", "순서", "위치", "LOTNO", "ALC", "투입일자", "완료일자", "등록자", "등록일자", "수정자", "수정일자" };
-            string[] HiddenColumn     = new string[] { "PLANTCODE" };
-            float[]  FillWeight       = new float[]  { 40, 40, 40, 80, 40, 40, 130, 100, 100, 100, 100, 130, 100, 130 };
-            Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
+            string[] HeaderText = new string[] { "완료", "공장", "작업순서", "작업번호", "순서", "위치", "LOTNO", "ALC", "투입일자", "완료일자", "등록자", "등록일자", "수정자", "수정일자" };
+            string[] HiddenColumn = new string[] { "PLANTCODE" };
+            float[] FillWeight = new float[] { 40, 40, 40, 80, 40, 40, 130, 100, 100, 100, 100, 130, 100, 130 };
+            Font StyleFont = new Font("굴림", 9, FontStyle.Bold);
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
@@ -100,22 +100,22 @@ namespace MESProject.생산계획
                 try
                 {
                     string sDate = dtDate.Value.ToString("yyyyMMdd");
-                    string sALC  = cboALC.Text;
-                    int    iQty  = int.Parse(txtQty.Text);
+                    string sALC = cboALC.Text;
+                    int iQty = int.Parse(txtQty.Text);
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar).Value = "D100";
-                    cmd.Parameters.Add("@PLANDATE",  SqlDbType.VarChar).Value = sDate;
-                    cmd.Parameters.Add("@ALC_CD",    SqlDbType.VarChar).Value = sALC;
-                    cmd.Parameters.Add("@PLANQTY",   SqlDbType.Int    ).Value = iQty;
-                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
-                    
+                    cmd.Parameters.Add("@PLANDATE", SqlDbType.VarChar).Value = sDate;
+                    cmd.Parameters.Add("@ALC_CD", SqlDbType.VarChar).Value = sALC;
+                    cmd.Parameters.Add("@PLANQTY", SqlDbType.Int).Value = iQty;
+                    cmd.Parameters.Add("@USERID", SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
+
                     var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
-                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    var rsmsg = new SqlParameter("@RS_MSG", SqlDbType.VarChar);
                     rscode.Direction = ParameterDirection.Output;
-                    rsmsg.Direction  = ParameterDirection.Output;
+                    rsmsg.Direction = ParameterDirection.Output;
                     rscode.Size = 2;
-                    rsmsg.Size  = 200;
+                    rsmsg.Size = 200;
                     cmd.Parameters.Add(rscode);
                     cmd.Parameters.Add(rsmsg);
 
@@ -169,15 +169,15 @@ namespace MESProject.생산계획
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar).Value = "D100";
-                    cmd.Parameters.Add("@ORDERNO",   SqlDbType.VarChar).Value = sOrderno;
-                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
+                    cmd.Parameters.Add("@ORDERNO", SqlDbType.VarChar).Value = sOrderno;
+                    cmd.Parameters.Add("@USERID", SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
 
                     var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
-                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    var rsmsg = new SqlParameter("@RS_MSG", SqlDbType.VarChar);
                     rscode.Direction = ParameterDirection.Output;
-                    rsmsg.Direction  = ParameterDirection.Output;
+                    rsmsg.Direction = ParameterDirection.Output;
                     rscode.Size = 2;
-                    rsmsg.Size  = 200;
+                    rsmsg.Size = 200;
                     cmd.Parameters.Add(rscode);
                     cmd.Parameters.Add(rsmsg);
 
@@ -236,25 +236,25 @@ namespace MESProject.생산계획
                     sql.con.Open();
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar);
-                    cmd.Parameters.Add("@LOTNO",     SqlDbType.VarChar);
-                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar); // ID아닌 이름?
+                    cmd.Parameters.Add("@LOTNO", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@USERID", SqlDbType.VarChar); // ID아닌 이름?
 
                     var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
-                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    var rsmsg = new SqlParameter("@RS_MSG", SqlDbType.VarChar);
                     rscode.Direction = ParameterDirection.Output;
-                    rsmsg.Direction  = ParameterDirection.Output;
+                    rsmsg.Direction = ParameterDirection.Output;
                     rscode.Size = 2;
-                    rsmsg.Size  = 200;
+                    rsmsg.Size = 200;
                     cmd.Parameters.Add(rscode);
                     cmd.Parameters.Add(rsmsg);
 
                     cmd.Parameters["@PLANTCODE"].Value = "D100";
-                    cmd.Parameters["@USERID"].Value    = Main.ID;
+                    cmd.Parameters["@USERID"].Value = Main.ID;
 
                     for (int i = 0; i < dtchange.Rows.Count; i++)
                     {
                         sLotno = dtchange.Rows[i].ItemArray[8].ToString();
-                        cmd.Parameters["@LOTNO"].Value     = sLotno;
+                        cmd.Parameters["@LOTNO"].Value = sLotno;
 
                         transaction = sql.con.BeginTransaction();
                         cmd.Transaction = transaction;
@@ -336,5 +336,10 @@ namespace MESProject.생산계획
             }
         }
         #endregion
+
+        private void update_ea()
+        {
+            
+        }
     }
 }

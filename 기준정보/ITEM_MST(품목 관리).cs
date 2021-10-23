@@ -34,6 +34,7 @@ namespace MESProject.기준정보
             sql.con.Open();
             DGVLoad();
             Do_Search();
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
         }
 
         #region 그리드세팅
