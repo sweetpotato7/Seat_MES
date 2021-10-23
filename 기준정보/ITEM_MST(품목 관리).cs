@@ -54,6 +54,8 @@ namespace MESProject.기준정보
             dataGridView1.RowHeadersVisible = true;
             dataGridView1.Columns[6].Visible = false;
 
+            dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
+
         }
         #endregion
 

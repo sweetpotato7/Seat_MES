@@ -23,7 +23,6 @@ namespace MESProject
         #endregion
 
         public static string ID; // 로그인 아이디
-        int iTime = 0; // 사용시간
         Stopwatch sw = new Stopwatch();
 
         public Main()

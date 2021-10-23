@@ -45,14 +45,16 @@ namespace MESProject.기준정보
             string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "PITEMNAME", "BASEQTY", "UNITCODE", "COMPONENT", "CITEMNAME", "COMPONENTQTY", "COMPONENTUNIT", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "품목", "품명", "수량", "단위", "하위품목", "품명", "수량", "단위", "사용", "등록자", "등록일시", "수정자", "수정일시" };
             string[] HiddenColumn     = null;
-            float[] FillWeight = new float[] { 40, 100, 100, 40, 40, 100, 100, 40, 40, 40, 100, 130, 100, 130 };
-            Font StyleFont     = new Font("굴림", 9, FontStyle.Bold);
-            Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
+            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            Font StyleFont     = new Font("맑은고딕", 11, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
             //dataGridView2.ReadOnly = false;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
+
         }
 
         #region ========== CRUD
@@ -202,7 +204,6 @@ namespace MESProject.기준정보
         }
         #endregion
 
-
         #region ========== 트리뷰
         public void TreeViewLoad() // 트리뷰 로드
         {
@@ -305,7 +306,6 @@ namespace MESProject.기준정보
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -317,14 +317,15 @@ namespace MESProject.기준정보
         #region ========== 콤보박스 셋팅
         private void CboSet()
         {
-            func.CboLoad(cboPlantCode,  "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cboPlantCode,  "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboItemCode,   "TB_ITEM_MST", "ITEMCODE",  false);
-            func.CboLoad(cboPlantCode2, "TB_ITEM_MST", "PLANTCODE", true);
+            func.CboLoad(cboPlantCode2, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboUseFlag,    "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
             func.CboLoad(cboPItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
             func.CboLoad(cboCItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
             func.CboLoad(cboPUnitCode,  "TB_ITEM_MST", "UNITCODE",  true);
             func.CboLoad(cboCUnitCode,  "TB_ITEM_MST", "UNITCODE",  true);
+            cboPlantCode.SelectedItem = cboPlantCode.Items[0];
         }
 
         private void cboPItemCode_SelectedValueChanged(object sender, EventArgs e) // 품목 선택 시 품명 출력
