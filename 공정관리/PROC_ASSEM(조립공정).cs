@@ -214,7 +214,8 @@ namespace MESProject.공정관리
             Spec();
             label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString();
             label5.Text = dataGridView2.Rows[0].Cells[5].Value.ToString();
-            label12.Text = dataGridView2.Rows[0].Cells[8].Value.ToString();
+            label18.Text = dataGridView2.Rows[0].Cells[8].Value.ToString();
+            label7.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
 
             string formpad;
             string head;
@@ -230,14 +231,29 @@ namespace MESProject.공정관리
                 label3.BackColor = Color.Blue;
             }
 
+            if (head == "X")
+            {
+                label3.BackColor = Color.White;
+            }
+
             if (formpad == "O")
             {
                 label4.BackColor = Color.Blue;
             }
 
+            if (formpad == "X")
+            {
+                label4.BackColor = Color.White;
+            }
+
             if (sab == "O")
             {
                 label6.BackColor = Color.Blue;
+            }
+
+            if (sab == "X")
+            {
+                label6.BackColor = Color.White;
             }
             planmst();
         }
@@ -269,10 +285,10 @@ namespace MESProject.공정관리
             string alc;
             string cutalc;
             side = dataGridView4.Rows[0].Cells[7].Value.ToString();
-            alc = dataGridView1.Rows[0].Cells[0].Value.ToString();
+            alc = dataGridView4.Rows[0].Cells[9].Value.ToString();
             cutalc = alc.Substring(0, 2);
 
-            strqry = "select * from TB_SPEC where ITEMCODE LIKE" + "'" + cutalc + side + "'" + "";
+            strqry = "select * from TB_SPEC where ITEMCODE =" + "'" + cutalc + side + "'" + "";
             dataGridView2.DataSource = func.GetDataTable(strqry);
         }
 
