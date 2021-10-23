@@ -27,6 +27,18 @@ namespace MESProject.기준정보
             InitializeComponent();
         }
 
+        public void SPEC_MST_Load(object sender, EventArgs e)
+        {
+            if (sql.con.State == ConnectionState.Open)
+            {
+                sql.con.Close();
+            }
+            sql.con.Open();
+
+            DGVLoad();
+            CboSet();
+        }
+
         #region 그리드세팅
         private void DGVLoad()
         {
@@ -39,7 +51,7 @@ namespace MESProject.기준정보
 
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
-            dataGridView1.ReadOnly = true;
+            //dataGridView1.ReadOnly = true;
 
             //상단 콤보박스 세팅
             SqlCommand cmd = new SqlCommand("SELECT ITEMCODE FROM TB_BOM WHERE ITEMCODE LIKE '%ALC';", sql.con);
@@ -58,19 +70,7 @@ namespace MESProject.기준정보
         }
         #endregion
 
-        public void SPEC_MST_Load(object sender, EventArgs e)
-        {
-            if (sql.con.State == ConnectionState.Open)
-            {
-                sql.con.Close();
-            }
-            sql.con.Open();
-            CboSet();
-            DGVLoad();
-
-            //fill_cmb_ALC();
-            //fill_cmb_carcode();
-        }
+        
 
         #region CRUD버튼
         public void Do_Search()
@@ -88,6 +88,7 @@ namespace MESProject.기준정보
                 dataGridView1.DataSource = dt;
                 cmb_S_ALC.Text = "";
             }
+
             else
             {
                 string s = cmb_S_ALC.Text;

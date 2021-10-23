@@ -29,9 +29,9 @@ namespace MESProject.기준정보
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmb_S_ALC = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -75,7 +75,7 @@ namespace MESProject.기준정보
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(30, 18);
             this.label1.Name = "label1";
@@ -85,10 +85,11 @@ namespace MESProject.기준정보
             // 
             // cmb_S_ALC
             // 
+            this.cmb_S_ALC.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmb_S_ALC.FormattingEnabled = true;
-            this.cmb_S_ALC.Location = new System.Drawing.Point(84, 18);
+            this.cmb_S_ALC.Location = new System.Drawing.Point(83, 16);
             this.cmb_S_ALC.Name = "cmb_S_ALC";
-            this.cmb_S_ALC.Size = new System.Drawing.Size(94, 20);
+            this.cmb_S_ALC.Size = new System.Drawing.Size(100, 25);
             this.cmb_S_ALC.TabIndex = 27;
             // 
             // panel5
@@ -146,50 +147,55 @@ namespace MESProject.기준정보
             // dtEditDate
             // 
             this.dtEditDate.CustomFormat = "yyyy-MM-dd";
+            this.dtEditDate.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtEditDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEditDate.Location = new System.Drawing.Point(159, 579);
+            this.dtEditDate.Location = new System.Drawing.Point(155, 579);
             this.dtEditDate.Name = "dtEditDate";
-            this.dtEditDate.Size = new System.Drawing.Size(94, 21);
+            this.dtEditDate.Size = new System.Drawing.Size(100, 25);
             this.dtEditDate.TabIndex = 43;
             // 
             // dtMakeDate
             // 
             this.dtMakeDate.CustomFormat = "yyyy-MM-dd";
+            this.dtMakeDate.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtMakeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtMakeDate.Location = new System.Drawing.Point(159, 513);
+            this.dtMakeDate.Location = new System.Drawing.Point(155, 513);
             this.dtMakeDate.Name = "dtMakeDate";
-            this.dtMakeDate.Size = new System.Drawing.Size(94, 21);
+            this.dtMakeDate.Size = new System.Drawing.Size(100, 25);
             this.dtMakeDate.TabIndex = 42;
             // 
             // txtEditor
             // 
-            this.txtEditor.Location = new System.Drawing.Point(159, 545);
+            this.txtEditor.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtEditor.Location = new System.Drawing.Point(155, 545);
             this.txtEditor.Name = "txtEditor";
-            this.txtEditor.Size = new System.Drawing.Size(94, 21);
+            this.txtEditor.Size = new System.Drawing.Size(100, 25);
             this.txtEditor.TabIndex = 41;
             // 
             // txtMaker
             // 
-            this.txtMaker.Location = new System.Drawing.Point(159, 481);
+            this.txtMaker.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtMaker.Location = new System.Drawing.Point(155, 481);
             this.txtMaker.Name = "txtMaker";
-            this.txtMaker.Size = new System.Drawing.Size(94, 21);
+            this.txtMaker.Size = new System.Drawing.Size(100, 25);
             this.txtMaker.TabIndex = 40;
             // 
             // cmbUseFlag
             // 
+            this.cmbUseFlag.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbUseFlag.FormattingEnabled = true;
             this.cmbUseFlag.Items.AddRange(new object[] {
             "Y",
             "N"});
-            this.cmbUseFlag.Location = new System.Drawing.Point(159, 449);
+            this.cmbUseFlag.Location = new System.Drawing.Point(155, 449);
             this.cmbUseFlag.Name = "cmbUseFlag";
-            this.cmbUseFlag.Size = new System.Drawing.Size(94, 20);
+            this.cmbUseFlag.Size = new System.Drawing.Size(100, 25);
             this.cmbUseFlag.TabIndex = 39;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label16.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label16.Location = new System.Drawing.Point(34, 583);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(60, 17);
@@ -199,7 +205,7 @@ namespace MESProject.기준정보
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.Location = new System.Drawing.Point(34, 549);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(47, 17);
@@ -209,7 +215,7 @@ namespace MESProject.기준정보
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label14.Location = new System.Drawing.Point(34, 517);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 17);
@@ -219,7 +225,7 @@ namespace MESProject.기준정보
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label13.Location = new System.Drawing.Point(34, 485);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 17);
@@ -229,7 +235,7 @@ namespace MESProject.기준정보
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(34, 453);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 17);
@@ -238,16 +244,17 @@ namespace MESProject.기준정보
             // 
             // cmb_PlantCode
             // 
+            this.cmb_PlantCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmb_PlantCode.FormattingEnabled = true;
-            this.cmb_PlantCode.Location = new System.Drawing.Point(159, 27);
+            this.cmb_PlantCode.Location = new System.Drawing.Point(155, 27);
             this.cmb_PlantCode.Name = "cmb_PlantCode";
-            this.cmb_PlantCode.Size = new System.Drawing.Size(94, 20);
+            this.cmb_PlantCode.Size = new System.Drawing.Size(100, 25);
             this.cmb_PlantCode.TabIndex = 33;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label12.Location = new System.Drawing.Point(34, 30);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 17);
@@ -256,16 +263,17 @@ namespace MESProject.기준정보
             // 
             // cmb_ItemCode
             // 
+            this.cmb_ItemCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmb_ItemCode.FormattingEnabled = true;
-            this.cmb_ItemCode.Location = new System.Drawing.Point(159, 59);
+            this.cmb_ItemCode.Location = new System.Drawing.Point(155, 59);
             this.cmb_ItemCode.Name = "cmb_ItemCode";
-            this.cmb_ItemCode.Size = new System.Drawing.Size(94, 20);
+            this.cmb_ItemCode.Size = new System.Drawing.Size(100, 25);
             this.cmb_ItemCode.TabIndex = 31;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.Location = new System.Drawing.Point(34, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 17);
@@ -274,16 +282,17 @@ namespace MESProject.기준정보
             // 
             // cmb_SeatType
             // 
+            this.cmb_SeatType.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmb_SeatType.FormattingEnabled = true;
-            this.cmb_SeatType.Location = new System.Drawing.Point(159, 123);
+            this.cmb_SeatType.Location = new System.Drawing.Point(155, 123);
             this.cmb_SeatType.Name = "cmb_SeatType";
-            this.cmb_SeatType.Size = new System.Drawing.Size(94, 20);
+            this.cmb_SeatType.Size = new System.Drawing.Size(100, 25);
             this.cmb_SeatType.TabIndex = 29;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(34, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 17);
@@ -292,24 +301,26 @@ namespace MESProject.기준정보
             // 
             // cmb_CarCode
             // 
+            this.cmb_CarCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmb_CarCode.FormattingEnabled = true;
-            this.cmb_CarCode.Location = new System.Drawing.Point(159, 91);
+            this.cmb_CarCode.Location = new System.Drawing.Point(155, 91);
             this.cmb_CarCode.Name = "cmb_CarCode";
-            this.cmb_CarCode.Size = new System.Drawing.Size(94, 20);
+            this.cmb_CarCode.Size = new System.Drawing.Size(100, 25);
             this.cmb_CarCode.TabIndex = 26;
             // 
             // cmbSAB
             // 
+            this.cmbSAB.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbSAB.FormattingEnabled = true;
-            this.cmbSAB.Location = new System.Drawing.Point(159, 375);
+            this.cmbSAB.Location = new System.Drawing.Point(155, 375);
             this.cmbSAB.Name = "cmbSAB";
-            this.cmbSAB.Size = new System.Drawing.Size(94, 20);
+            this.cmbSAB.Size = new System.Drawing.Size(100, 25);
             this.cmbSAB.TabIndex = 21;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.Location = new System.Drawing.Point(34, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 17);
@@ -319,7 +330,7 @@ namespace MESProject.기준정보
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.Location = new System.Drawing.Point(34, 377);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 17);
@@ -328,24 +339,26 @@ namespace MESProject.기준정보
             // 
             // cmbCovering
             // 
+            this.cmbCovering.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbCovering.FormattingEnabled = true;
-            this.cmbCovering.Location = new System.Drawing.Point(159, 339);
+            this.cmbCovering.Location = new System.Drawing.Point(155, 339);
             this.cmbCovering.Name = "cmbCovering";
-            this.cmbCovering.Size = new System.Drawing.Size(94, 20);
+            this.cmbCovering.Size = new System.Drawing.Size(100, 25);
             this.cmbCovering.TabIndex = 19;
             // 
             // cmbHeadrestrian
             // 
+            this.cmbHeadrestrian.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbHeadrestrian.FormattingEnabled = true;
-            this.cmbHeadrestrian.Location = new System.Drawing.Point(159, 303);
+            this.cmbHeadrestrian.Location = new System.Drawing.Point(155, 303);
             this.cmbHeadrestrian.Name = "cmbHeadrestrian";
-            this.cmbHeadrestrian.Size = new System.Drawing.Size(94, 20);
+            this.cmbHeadrestrian.Size = new System.Drawing.Size(100, 25);
             this.cmbHeadrestrian.TabIndex = 19;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label9.Location = new System.Drawing.Point(34, 341);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 17);
@@ -355,7 +368,7 @@ namespace MESProject.기준정보
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.Location = new System.Drawing.Point(34, 305);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(117, 17);
@@ -364,16 +377,17 @@ namespace MESProject.기준정보
             // 
             // cmbFormpad
             // 
+            this.cmbFormpad.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbFormpad.FormattingEnabled = true;
-            this.cmbFormpad.Location = new System.Drawing.Point(159, 267);
+            this.cmbFormpad.Location = new System.Drawing.Point(155, 267);
             this.cmbFormpad.Name = "cmbFormpad";
-            this.cmbFormpad.Size = new System.Drawing.Size(94, 20);
+            this.cmbFormpad.Size = new System.Drawing.Size(100, 25);
             this.cmbFormpad.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.Location = new System.Drawing.Point(34, 269);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 17);
@@ -382,19 +396,20 @@ namespace MESProject.기준정보
             // 
             // cmbTrack
             // 
+            this.cmbTrack.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbTrack.FormattingEnabled = true;
             this.cmbTrack.Items.AddRange(new object[] {
             "메뉴얼",
             "자동"});
-            this.cmbTrack.Location = new System.Drawing.Point(159, 231);
+            this.cmbTrack.Location = new System.Drawing.Point(155, 231);
             this.cmbTrack.Name = "cmbTrack";
-            this.cmbTrack.Size = new System.Drawing.Size(94, 20);
+            this.cmbTrack.Size = new System.Drawing.Size(100, 25);
             this.cmbTrack.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.Location = new System.Drawing.Point(34, 233);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 17);
@@ -403,16 +418,17 @@ namespace MESProject.기준정보
             // 
             // cmbLocal
             // 
+            this.cmbLocal.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cmbLocal.FormattingEnabled = true;
-            this.cmbLocal.Location = new System.Drawing.Point(159, 195);
+            this.cmbLocal.Location = new System.Drawing.Point(155, 195);
             this.cmbLocal.Name = "cmbLocal";
-            this.cmbLocal.Size = new System.Drawing.Size(94, 20);
+            this.cmbLocal.Size = new System.Drawing.Size(100, 25);
             this.cmbLocal.TabIndex = 11;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label10.Location = new System.Drawing.Point(34, 197);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 17);
@@ -421,30 +437,30 @@ namespace MESProject.기준정보
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gulim", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.ForestGreen;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gulim", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.ForestGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 55);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
