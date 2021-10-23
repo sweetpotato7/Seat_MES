@@ -155,11 +155,11 @@ namespace MESProject.기준정보
             i = dataGridView1.SelectedCells[0].RowIndex;
             string picture = dataGridView1.Rows[i].Cells[5].Value.ToString();
 
-            if (picture != null)
+            if (picture != string.Empty)
             {
                 MessageBox.Show("기존 이미지를 삭제 후 Browse 해주세요.");
             }
-            else
+            if (picture == string.Empty)
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
@@ -207,25 +207,33 @@ namespace MESProject.기준정보
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i;
-            i = dataGridView1.SelectedCells[0].RowIndex;
-
-            cboPlantCode.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
-            cboItemCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-            txtItemName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            cboItemType.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-            
-            var picture = dataGridView1.Rows[i].Cells[5].Value.ToString();
-
-            DataTable dt = dataGridView1.DataSource as DataTable;
-            if (picture != string.Empty)
+            try
             {
-                DataRow row = dt.Rows[e.RowIndex];
-                pictureBox1.Image = ConvertByteToImage((byte[])row["IMAGE"]);
+                int i;
+                i = dataGridView1.SelectedCells[0].RowIndex;
+
+                cboPlantCode.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                cboItemCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                txtItemName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                cboItemType.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+
+                var picture = dataGridView1.Rows[i].Cells[5].Value.ToString();
+
+                DataTable dt = dataGridView1.DataSource as DataTable;
+                if (picture != string.Empty)
+                {
+                    DataRow row = dt.Rows[e.RowIndex];
+                    pictureBox1.Image = ConvertByteToImage((byte[])row["IMAGE"]);
+                }
+                if (picture == string.Empty)
+                {
+                    pictureBox1.Image = null;
+                }
             }
-            if (picture == string.Empty)
+
+            catch
             {
-                pictureBox1.Image = null;
+
             }
         }
 
