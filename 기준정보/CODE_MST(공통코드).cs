@@ -236,9 +236,11 @@ namespace MESProject.기준정보
                    + "RELCODE4  = '" + txtIRelCode4.Text  + "', "
                    + "DISPLAYNO = '" + txtIDisplayNo.Text + "', "
                    + "USEFLAG   = '" + cboIUseFlag.Text   + "' "
-                   + "WHERE PLANTCODE = '" + dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[0].Value.ToString() + "'"
-                     + "AND MAJORCODE = '" + dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[1].Value.ToString() + "'"
-                     + "AND MINORCODE = '" + dataGridView2.Rows[dataGridView2.SelectedCells[0].RowIndex].Cells[2].Value.ToString() + "'";
+                   + "MODIFY_USERID = '" + Main.ID + "' "
+                   + "MODIFY_DT = '"     + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "' "
+                   + "WHERE PLANTCODE = '" + cboIPlantcode.Text + "'"
+                     + "AND MAJORCODE = '" + cboIMajorCode.Text + "'"
+                     + "AND MINORCODE = '" + cboIMinorCode.Text + "'";
             try
             {
                 da = new SqlDataAdapter();

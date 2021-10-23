@@ -81,7 +81,7 @@ namespace MESProject.기준정보
             // 
             // txtSearch
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtSearch.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtSearch.Location = new System.Drawing.Point(282, 16);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 25);
@@ -90,7 +90,7 @@ namespace MESProject.기준정보
             // 
             // cboSearch
             // 
-            this.cboSearch.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboSearch.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboSearch.FormattingEnabled = true;
             this.cboSearch.Location = new System.Drawing.Point(175, 16);
             this.cboSearch.Name = "cboSearch";
@@ -100,7 +100,7 @@ namespace MESProject.기준정보
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(19, 18);
             this.label1.Name = "label1";
@@ -110,7 +110,7 @@ namespace MESProject.기준정보
             // 
             // cboPlantCode
             // 
-            this.cboPlantCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboPlantCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboPlantCode.FormattingEnabled = true;
             this.cboPlantCode.Items.AddRange(new object[] {
             "D001"});
@@ -153,205 +153,205 @@ namespace MESProject.기준정보
             // 
             // txtIDisplayNo
             // 
-            this.txtIDisplayNo.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIDisplayNo.Location = new System.Drawing.Point(127, 259);
+            this.txtIDisplayNo.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIDisplayNo.Location = new System.Drawing.Point(123, 259);
             this.txtIDisplayNo.Name = "txtIDisplayNo";
-            this.txtIDisplayNo.Size = new System.Drawing.Size(100, 25);
+            this.txtIDisplayNo.Size = new System.Drawing.Size(140, 38);
             this.txtIDisplayNo.TabIndex = 9;
             // 
             // txtIMinorName
             // 
-            this.txtIMinorName.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIMinorName.Location = new System.Drawing.Point(127, 220);
+            this.txtIMinorName.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIMinorName.Location = new System.Drawing.Point(123, 211);
             this.txtIMinorName.Name = "txtIMinorName";
-            this.txtIMinorName.Size = new System.Drawing.Size(100, 25);
+            this.txtIMinorName.Size = new System.Drawing.Size(140, 38);
             this.txtIMinorName.TabIndex = 8;
             // 
             // txtIMajorName
             // 
-            this.txtIMajorName.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIMajorName.Location = new System.Drawing.Point(127, 142);
+            this.txtIMajorName.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIMajorName.Location = new System.Drawing.Point(123, 114);
             this.txtIMajorName.Name = "txtIMajorName";
-            this.txtIMajorName.Size = new System.Drawing.Size(100, 25);
+            this.txtIMajorName.Size = new System.Drawing.Size(140, 38);
             this.txtIMajorName.TabIndex = 6;
             // 
             // txtIRelCode4
             // 
-            this.txtIRelCode4.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIRelCode4.Location = new System.Drawing.Point(127, 454);
+            this.txtIRelCode4.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIRelCode4.Location = new System.Drawing.Point(123, 500);
             this.txtIRelCode4.Name = "txtIRelCode4";
-            this.txtIRelCode4.Size = new System.Drawing.Size(100, 25);
+            this.txtIRelCode4.Size = new System.Drawing.Size(140, 38);
             this.txtIRelCode4.TabIndex = 14;
             // 
             // txtIRelCode3
             // 
-            this.txtIRelCode3.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIRelCode3.Location = new System.Drawing.Point(127, 415);
+            this.txtIRelCode3.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIRelCode3.Location = new System.Drawing.Point(123, 452);
             this.txtIRelCode3.Name = "txtIRelCode3";
-            this.txtIRelCode3.Size = new System.Drawing.Size(100, 25);
+            this.txtIRelCode3.Size = new System.Drawing.Size(140, 38);
             this.txtIRelCode3.TabIndex = 13;
             // 
             // txtIRelCode2
             // 
-            this.txtIRelCode2.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIRelCode2.Location = new System.Drawing.Point(127, 376);
+            this.txtIRelCode2.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIRelCode2.Location = new System.Drawing.Point(123, 404);
             this.txtIRelCode2.Name = "txtIRelCode2";
-            this.txtIRelCode2.Size = new System.Drawing.Size(100, 25);
+            this.txtIRelCode2.Size = new System.Drawing.Size(140, 38);
             this.txtIRelCode2.TabIndex = 12;
             // 
             // txtIRelCode1
             // 
-            this.txtIRelCode1.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtIRelCode1.Location = new System.Drawing.Point(127, 337);
+            this.txtIRelCode1.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtIRelCode1.Location = new System.Drawing.Point(123, 356);
             this.txtIRelCode1.Name = "txtIRelCode1";
-            this.txtIRelCode1.Size = new System.Drawing.Size(100, 25);
+            this.txtIRelCode1.Size = new System.Drawing.Size(140, 38);
             this.txtIRelCode1.TabIndex = 11;
             // 
             // cboIUseFlag
             // 
-            this.cboIUseFlag.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboIUseFlag.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboIUseFlag.FormattingEnabled = true;
-            this.cboIUseFlag.Location = new System.Drawing.Point(127, 298);
+            this.cboIUseFlag.Location = new System.Drawing.Point(123, 307);
             this.cboIUseFlag.Name = "cboIUseFlag";
-            this.cboIUseFlag.Size = new System.Drawing.Size(100, 25);
+            this.cboIUseFlag.Size = new System.Drawing.Size(140, 39);
             this.cboIUseFlag.TabIndex = 10;
             // 
             // cboIMinorCode
             // 
-            this.cboIMinorCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboIMinorCode.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboIMinorCode.FormattingEnabled = true;
-            this.cboIMinorCode.Location = new System.Drawing.Point(127, 181);
+            this.cboIMinorCode.Location = new System.Drawing.Point(123, 162);
             this.cboIMinorCode.Name = "cboIMinorCode";
-            this.cboIMinorCode.Size = new System.Drawing.Size(100, 25);
+            this.cboIMinorCode.Size = new System.Drawing.Size(140, 39);
             this.cboIMinorCode.TabIndex = 7;
             this.cboIMinorCode.SelectionChangeCommitted += new System.EventHandler(this.cboIMinorCode_SelectionChangeCommitted);
             // 
             // cboIMajorCode
             // 
-            this.cboIMajorCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboIMajorCode.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboIMajorCode.FormattingEnabled = true;
-            this.cboIMajorCode.Location = new System.Drawing.Point(127, 106);
+            this.cboIMajorCode.Location = new System.Drawing.Point(123, 65);
             this.cboIMajorCode.Name = "cboIMajorCode";
-            this.cboIMajorCode.Size = new System.Drawing.Size(100, 25);
+            this.cboIMajorCode.Size = new System.Drawing.Size(140, 39);
             this.cboIMajorCode.TabIndex = 5;
             this.cboIMajorCode.SelectionChangeCommitted += new System.EventHandler(this.cboIMajorCode_SelectionChangeCommitted);
             // 
             // cboIPlantcode
             // 
-            this.cboIPlantcode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboIPlantcode.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboIPlantcode.FormattingEnabled = true;
-            this.cboIPlantcode.Location = new System.Drawing.Point(127, 64);
+            this.cboIPlantcode.Location = new System.Drawing.Point(123, 16);
             this.cboIPlantcode.Name = "cboIPlantcode";
-            this.cboIPlantcode.Size = new System.Drawing.Size(100, 25);
+            this.cboIPlantcode.Size = new System.Drawing.Size(140, 39);
             this.cboIPlantcode.TabIndex = 4;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(57, 462);
+            this.label12.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(21, 503);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 17);
+            this.label12.Size = new System.Drawing.Size(73, 31);
             this.label12.TabIndex = 15;
             this.label12.Text = "참조4";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(57, 423);
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(21, 455);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 17);
+            this.label11.Size = new System.Drawing.Size(73, 31);
             this.label11.TabIndex = 14;
             this.label11.Text = "참조3";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(57, 384);
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(21, 407);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 17);
+            this.label8.Size = new System.Drawing.Size(73, 31);
             this.label8.TabIndex = 13;
             this.label8.Text = "참조2";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(57, 306);
+            this.label9.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(27, 310);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 17);
+            this.label9.Size = new System.Drawing.Size(60, 31);
             this.label9.TabIndex = 12;
             this.label9.Text = "사용";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(57, 345);
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(21, 359);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 17);
+            this.label10.Size = new System.Drawing.Size(73, 31);
             this.label10.TabIndex = 11;
             this.label10.Text = "참조1";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(57, 267);
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(27, 262);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 17);
+            this.label5.Size = new System.Drawing.Size(60, 31);
             this.label5.TabIndex = 10;
             this.label5.Text = "순서";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(57, 189);
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(16, 165);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 17);
+            this.label6.Size = new System.Drawing.Size(83, 31);
             this.label6.TabIndex = 9;
             this.label6.Text = "부코드";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(57, 228);
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(16, 214);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 17);
+            this.label7.Size = new System.Drawing.Size(83, 31);
             this.label7.TabIndex = 8;
             this.label7.Text = "코드명";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(57, 150);
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(16, 117);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(83, 31);
             this.label4.TabIndex = 7;
             this.label4.Text = "코드명";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(57, 72);
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(27, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 17);
+            this.label3.Size = new System.Drawing.Size(60, 31);
             this.label3.TabIndex = 6;
             this.label3.Text = "공장";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(57, 111);
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(16, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 17);
+            this.label2.Size = new System.Drawing.Size(83, 31);
             this.label2.TabIndex = 5;
             this.label2.Text = "주코드";
             // 
