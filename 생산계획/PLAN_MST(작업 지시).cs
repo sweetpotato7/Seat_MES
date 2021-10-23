@@ -77,6 +77,7 @@ namespace MESProject.생산계획
             dt = func.GetDataTable2(strqry);
             dataGridView1.DataSource = dt;
             DGV2Load();
+
         }
 
         public void Do_Insert()
@@ -337,9 +338,6 @@ namespace MESProject.생산계획
         }
         #endregion
 
-        private void update_ea()
-        {
-            
-        }
+       
     }
 }

@@ -44,7 +44,7 @@ namespace MESProject.공정관리
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 and CREATE_DT >=" + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM is null and CREATE_DT >=" + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
 
             for (int i = 1; i < dataGridView4.Rows.Count + 1; i++)
@@ -105,20 +105,10 @@ namespace MESProject.공정관리
             ProcSeq_dv();
             Plan_dv();
             dv_item_mst();
-            timer1_Tick(sender, e);
+            timer1_Tick_1(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
-        }
-
-        // 작업지시 타이머(자동새로고침)
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            string today = DateTime.Now.ToString("yyyy-MM-dd");
-
-            DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM = 0 and CREATE_DT >=" + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
-            dataGridView4.DataSource = func.GetDataTable(strqry);
-            Cell_Lock();
+            
         }
 
         // 체크박스 체크시 셀 색변환
@@ -150,8 +140,11 @@ namespace MESProject.공정관리
                 string today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string orderno = dataGridView4.Rows[0].Cells[5].Value.ToString();
                 lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
+                string sublotno = lotno.Substring(13, 3);
+                string procseq = dataGridView4.Rows[0].Cells[6].Value.ToString();
+
                 strqry = "update TB_PLAN_DET set PROC_ASSEM = 1, PRODDATE =" + "'" + today + "'" + ", MODIFY_DT =" + "'" + today + "'" + ", MODIFY_USERID =" + "'" + "USERID" + "'"
-                        + "where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
+                        + "where LOTNO =" + "'" + label16.Text + "'" + "";
                 dataGridView3.DataSource = func.GetDataTable(strqry);
                 
                 // RH일때 수량 +1
@@ -161,7 +154,9 @@ namespace MESProject.공정관리
                               "where ORDERNO = '" + orderno + "'";
                     func.GetDataTable(strqry);
 
-                    strqry = "insert into TB_PROD_RST ";
+                    
+                    strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
+                            "VALUES ('D100', '1', " + "'" + lotno + "LH" + sublotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", 'USERID')";
                     func.GetDataTable(strqry);
                 }
 
@@ -171,7 +166,18 @@ namespace MESProject.공정관리
                 MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
                 ProcSeq_dv();
                 Plan_dv();
+
+                planmst();
+                string planqty = dataGridView6.Rows[0].Cells[5].Value.ToString();
+                string prodqty = dataGridView6.Rows[0].Cells[6].Value.ToString();
+                if (planqty == prodqty)
+                {
+                    strqry = "update TB_PLAN_MST set PLANFLAG = 'C' where ORDERNO =" + "'" + orderno + "'" + "";
+                    func.GetDataTable(strqry);
+                }
             }
+
+
         }
 
         // 셀 색변환 바로 적용
@@ -233,6 +239,7 @@ namespace MESProject.공정관리
             {
                 label6.BackColor = Color.Blue;
             }
+            planmst();
         }
 
         private void Cell_Lock() // 셀잠금
@@ -320,6 +327,22 @@ namespace MESProject.공정관리
             {
                 return Image.FromStream(ms);
             }
+        }
+
+        private void planmst()
+        {
+            strqry = "select * from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
+            dataGridView6.DataSource = func.GetDataTable(strqry);
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+
+            DGVLoad_Plan();
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 1 AND PROC_ASSEM is null and CREATE_DT >=" + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
+            dataGridView4.DataSource = func.GetDataTable(strqry);
+            Cell_Lock();
         }
     }
 }

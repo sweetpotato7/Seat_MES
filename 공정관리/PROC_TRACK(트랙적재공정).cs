@@ -44,7 +44,7 @@ namespace MESProject.공정관리
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 and CREATE_DT >= " + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK is null and CREATE_DT >= " + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
 
             for (int i = 1; i < dataGridView4.Rows.Count + 1; i++)
@@ -117,7 +117,7 @@ namespace MESProject.공정관리
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             DGVLoad_Plan();
-            strqry = "select * from TB_PLAN_DET where PROC_TRACK = 0 and CREATE_DT >= " + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
+            strqry = "select * from TB_PLAN_DET where PROC_TRACK is null and CREATE_DT >= " + "'" + today + "'" + "ORDER BY ORDERNO, SUBSEQ, SIDE";
             dataGridView4.DataSource = func.GetDataTable(strqry);
             Cell_Lock();
         }
@@ -273,21 +273,28 @@ namespace MESProject.공정관리
 
         private void dv_item_mst()
         {
-            string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
-            strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" + "";
-            dataGridView5.DataSource = func.GetDataTable(strqry);
-
-            var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
-
-            DataTable dt = dataGridView5.DataSource as DataTable;
-            if (picture != string.Empty)
+            try
             {
-                DataRow row = dt.Rows[0];
-                pictureBox1.Image = ConvertByteToImage((byte[])row[0]);
+                string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
+                strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" + "";
+                dataGridView5.DataSource = func.GetDataTable(strqry);
+
+                var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
+
+                DataTable dt = dataGridView5.DataSource as DataTable;
+                if (picture != string.Empty)
+                {
+                    DataRow row = dt.Rows[0];
+                    pictureBox1.Image = ConvertByteToImage((byte[])row[0]);
+                }
+                if (picture == string.Empty)
+                {
+                    pictureBox1.Image = null;
+                }
             }
-            if (picture == string.Empty)
+            catch
             {
-                pictureBox1.Image = null;
+
             }
         }
 
