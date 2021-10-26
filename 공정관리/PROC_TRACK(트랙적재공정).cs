@@ -106,6 +106,8 @@ namespace MESProject.공정관리
             ProcSeq_dv();
             Plan_dv();
             dv_item_mst();
+
+
             timer1_Tick(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
@@ -240,7 +242,7 @@ namespace MESProject.공정관리
             {
                 label6.BackColor = Color.Blue;
             }
-
+            
             if (sab == "X")
             {
                 label6.BackColor = Color.White;
