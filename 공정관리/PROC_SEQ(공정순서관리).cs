@@ -53,15 +53,15 @@ namespace MESProject.공정관리
 
         private void CboSet()
         {
-            func.CboLoad(cboPlant, "TB_PROC_SEQ", "PLANTCODE", false);
-            func.CboLoad(cboLine, "TB_PROC_SEQ", "LINE_CD", false);
-            func.CboLoad(cboProc, "TB_PROC_SEQ", "PROC_CD", false);
+            func.CboLoad(cboPlant,     "TB_PROC_SEQ", "PLANTCODE", false);
+            func.CboLoad(cboLine,      "TB_PROC_SEQ", "LINE_CD", false);
+            func.CboLoad(cboProc,      "TB_PROC_SEQ", "PROC_CD", false);
             func.CboLoad(cboPlantCode, "TB_PROC_SEQ", "PLANTCODE", false);
-            func.CboLoad(cboLineNum, "TB_PROC_SEQ", "LINE_CD", false);
-            func.CboLoad(cboProcCode, "TB_PROC_SEQ", "PROC_CD", false);
-            func.CboLoad(cboProcName, "TB_PROC_SEQ", "PROC_NAME", false);
-            func.CboLoad(cboStepCode, "TB_PROC_SEQ", "STEP_CD", false);
-            func.CboLoad(cboStepName, "TB_PROC_SEQ", "STEP_NAME", false);
+            func.CboLoad(cboLineNum,   "TB_PROC_SEQ", "LINE_CD", false);
+            func.CboLoad(cboProcCode,  "TB_PROC_SEQ", "PROC_CD", false);
+            func.CboLoad(cboProcName,  "TB_PROC_SEQ", "PROC_NAME", false);
+            func.CboLoad(cboStepCode,  "TB_PROC_SEQ", "STEP_CD", false);
+            func.CboLoad(cboStepName,  "TB_PROC_SEQ", "STEP_NAME", false);
             cboPlant.Text = "D100";
             cboLine.Text = "1";
         }
