@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
 
 namespace MESProject.기준정보
 {
@@ -42,9 +36,9 @@ namespace MESProject.기준정보
         #region 그리드세팅
         private void DGVLoad()
         {
-            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SEATTYPE", "SPEC1", "SPEC2", "SPEC3", "SPEC4", "SPEC5", "SPEC6", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "공장코드", "품번", "차종", "시트타입", "지역", "트랙", "시트", "헤드레스트", "색상", "SAB", "사용여부", "등록자", "등록일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "CARCODE", "SEATTYPE", "SPEC1", "SPEC2", "SPEC3", "SPEC4",      "SPEC5", "SPEC6", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
+            string[] HeaderText       = new string[] { "공장코드",  "품번",     "차종",    "시트타입", "지역",  "트랙",  "시트",  "헤드레스트", "색상",  "SAB",   "사용여부", "등록자", "등록일시", "수정자", "수정일시" };
+            float[] FillWeight        = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -98,11 +92,6 @@ namespace MESProject.기준정보
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "SELECT * FROM TB_SPEC WHERE ITEMCODE = ANY(SELECT COMPONENT FROM TB_BOM WHERE ITEMCODE = ANY(SELECT COMPONENT FROM TB_BOM  WHERE ITEMCODE = '" + cmb_S_ALC.Text + "'))";
 
-                    //cmd.CommandText = "SELECT * FROM TB_BOM WHERE ITEMCODE = (SELECT COMPONENT FROM TB_BOM WHERE ITEMCODE = @ALC_CD";
-
-                    //SELECT * FROM TB_BOM WHERE ITEMCODE = (SELECT COMPONENT FROM TB_BOM WHERE ITEMCODE = @ALC_CD)
-                    //SELECT [퍼트 출력] FROM TB_BOM WHERE [팔레트] = (SELECT COMPONENT FROM TB_BOM WHERE [ALC])
-
                     cmd.ExecuteNonQuery();
 
                     da = new SqlDataAdapter(cmd);
@@ -124,7 +113,7 @@ namespace MESProject.기준정보
             {
                 SqlCommand cmd = sql.con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO TB_SPEC (PLANTCODE, ITEMCODE, CARCODE, SEATTYPE, SPEC1, SPEC2, SPEC3, SPEC4, SPEC5, SPEC6, USEFLAG) VALUES"
+                cmd.CommandText = "INSERT INTO TB_SPEC (PLANTCODE, ITEMCODE, CARCODE, SEATTYPE, SPEC1, SPEC2, SPEC3, SPEC4, SPEC5, SPEC6, USEFLAG, CREATE_USERID, CREATE_DT) VALUES"
                     + "('" 
                     + cmb_PlantCode.Text   + "','"
                     + cmb_ItemCode.Text    + "','"
@@ -136,7 +125,9 @@ namespace MESProject.기준정보
                     + cmbHeadrestrian.Text + "','"
                     + cmbCovering.Text     + "','"
                     + cmbSAB.Text          + "','"
-                    + cmbUseFlag.Text      + "')";
+                    + cmbUseFlag.Text      + "','"
+                    + Main.ID              + "','"
+                    + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
                 cmd.ExecuteNonQuery();
 
                 cmb_PlantCode.Text   = "";

@@ -55,15 +55,15 @@ namespace MESProject.생산계획
         private void DGV2Load()
         {
             // DGV2 수정!
-            string[] DataPropertyName = new string[] { "CHK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "완료", "공장", "작업순서", "작업번호", "순서", "위치", "LOTNO", "ALC", "투입일자", "완료일자", "등록자", "등록일자", "수정자", "수정일자" };
-            string[] HiddenColumn = new string[] { "PLANTCODE" };
-            float[] FillWeight = new float[] { 40, 40, 40, 80, 40, 40, 130, 100, 100, 100, 100, 130, 100, 130 };
+            string[] DataPropertyName = new string[] { "CHK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "PROC_TRACK", "PROC_ASSEM" };
+            string[] HeaderText = new string[] { "완료", "공장", "작업순서", "작업번호", "순서", "위치", "LOTNO", "ALC", "투입일자", "완료일자", "등록자", "등록일자", "수정자", "수정일자", "1", "1" };
+            string[] HiddenColumn = new string[] { "PLANTCODE", "PROC_TRACK", "PROC_ASSEM" };
+            float[] FillWeight = new float[] { 40, 40, 40, 80, 40, 40, 130, 100, 100, 100, 100, 130, 100, 130, 10, 10 };
             Font StyleFont = new Font("굴림", 9, FontStyle.Bold);
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
+            Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 16);
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
         #endregion
