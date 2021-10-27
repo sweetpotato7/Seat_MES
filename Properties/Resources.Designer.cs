@@ -93,6 +93,26 @@ namespace MESProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _274 {
+            get {
+                object obj = ResourceManager.GetObject("_274", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _275 {
+            get {
+                object obj = ResourceManager.GetObject("_275", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _333_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("_333_removebg_preview", resourceCulture);

@@ -32,17 +32,18 @@ namespace MESProject
         
         private void Main_Load(object sender, EventArgs e)
         {
-            ID = "USERID"; // 로그인폼 사용시 삭제
             lblStatemsg.Text = $"{ID}님 접속 중";
             lblTimeUse.Text = "사용시간 : 00:00:00";
-            
+
             this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.WindowState     = FormWindowState.Maximized;
-            
+            this.WindowState = FormWindowState.Maximized;
+
             txtVersion.Text = SQL.VerCheck(); // 실행 시 SQL로 버전 받아서 업데이트(SQLSetting에서 받아오기)
             btnImageLoad();
             timer();
+
         }
+
 
         #region ========== 탭컨트롤
         private void tabCtrlAdd(Form form, object sender)
@@ -451,7 +452,7 @@ namespace MESProject
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
     }
 }
