@@ -106,7 +106,14 @@ namespace MESProject.공정관리
             ProcSeq_dv();
             Plan_dv();
             dv_item_mst();
-
+            
+            // 초기 라벨 초기화
+            label5.Text = "--";
+            label8.Text = "--";
+            label18.Text = "--";
+            label10.Text = "--";
+            label14.Text = "--";
+            label16.Text = "--";
 
             timer1_Tick(sender, e);
             timer1.Interval = 5000; // 5초간격
