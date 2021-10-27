@@ -285,7 +285,7 @@ namespace MESProject
                         User_Admin.Do_Save();
                         break;
                     case "PLAN_MST":
-                        Plan_Mst.Do_Save();
+                        //Plan_Mst.Do_Save(); //조립공정 추가로 제거
                         break;
                     default:
                         break;
