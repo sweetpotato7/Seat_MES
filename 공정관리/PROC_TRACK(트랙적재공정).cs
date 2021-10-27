@@ -63,15 +63,16 @@ namespace MESProject.공정관리
 
         private void DGVLoad_Plan()
         {
-            string[] DataPropertyName = new string[] { "PROC_TRACK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "완료", "공장", "순서", "주문번호", "작업순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 200, 100, 100, 250, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PROC_TRACK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "CHK", "PROC_ASSEM", "PRODDATE" };
+            string[] HeaderText = new string[] { "완료", "공장", "순서", "주문번호", "작업순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시", "CHK", "PROC_ASSEM", "PRODDATE" };
+            float[] FillWeight = new float[] { 100, 100, 100, 200, 100, 100, 250, 100, 100, 100, 100, 100, 100, 100, 10, 10, 10 };
+            string[] HiddenColumn = new string[] { "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "CHK", "PROC_ASSEM", "PRODDATE", "INDATE" };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView4, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
+            Main.DGVSetting(this.dataGridView4, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
             dataGridView4.ReadOnly = true;
             dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.RowHeadersVisible = true;
@@ -106,7 +107,15 @@ namespace MESProject.공정관리
             ProcSeq_dv();
             Plan_dv();
             dv_item_mst();
-
+            
+            // 초기 라벨 초기화
+            label5.Text = "--";
+            label8.Text = "--";
+            label18.Text = "--";
+            label10.Text = "--";
+            label14.Text = "--";
+            label16.Text = "--";
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
             timer1_Tick(sender, e);
             timer1.Interval = 5000; // 5초간격

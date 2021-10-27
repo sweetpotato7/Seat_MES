@@ -57,7 +57,7 @@ namespace MESProject.생산계획
             // DGV2 수정!
             string[] DataPropertyName = new string[] { "CHK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "PROC_TRACK", "PROC_ASSEM" };
             string[] HeaderText = new string[] { "완료", "공장", "작업순서", "작업번호", "순서", "위치", "LOTNO", "ALC", "투입일자", "완료일자", "등록자", "등록일자", "수정자", "수정일자", "1", "1" };
-            string[] HiddenColumn = new string[] { "PLANTCODE", "PROC_TRACK", "PROC_ASSEM" };
+            string[] HiddenColumn = new string[] { "CHK", "PLANTCODE", "PROC_TRACK", "PROC_ASSEM" };
             float[] FillWeight = new float[] { 40, 40, 40, 80, 40, 40, 130, 100, 100, 100, 100, 130, 100, 130, 10, 10 };
             Font StyleFont = new Font("굴림", 9, FontStyle.Bold);
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
@@ -213,12 +213,9 @@ namespace MESProject.생산계획
             }
         }
 
+        //조립공정 추가로 사용 안함
         public void Do_Save()
         {
-            // dgv2 체크박스 추가 및 체크 저장 시 해당 작업 완료
-            // dgv1 planflag R -> I, 체크 개수 = 생산수량 (Count(*)사용)
-            // 전체 완료 시 I -> C / if( Count(*) == 0 ) update
-
             using (SqlCommand cmd = new SqlCommand("PLAN_MST_U1", sql.con))
             {
                 try

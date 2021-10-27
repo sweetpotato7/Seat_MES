@@ -62,15 +62,16 @@ namespace MESProject.공정관리
 
         private void DGVLoad_Plan()
         {
-            string[] DataPropertyName = new string[] { "PROC_ASSEM", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            string[] HeaderText = new string[] { "완료", "공장", "순서", "주문번호", "작업순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시" };
-            float[] FillWeight = new float[] { 100, 100, 100, 200, 100, 100, 250, 100, 100, 100, 100, 100, 100, 100 };
+            string[] DataPropertyName = new string[] { "PROC_ASSEM", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "CHK", "PROC_TRACK" };
+            string[] HeaderText = new string[] { "완료", "공장", "순서", "주문번호", "작업순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시", "1", "2" };
+            string[] HiddenColumn = new string[] { "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "CHK", "PROC_TRACK", "PRODDATE" };
+            float[] FillWeight = new float[] { 100, 100, 100, 200, 100, 100, 250, 100, 200, 200, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView4, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
+            Main.DGVSetting(this.dataGridView4, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 18);
             dataGridView4.ReadOnly = true;
             dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.RowHeadersVisible = true;
@@ -105,6 +106,16 @@ namespace MESProject.공정관리
             ProcSeq_dv();
             Plan_dv();
             dv_item_mst();
+
+            // 라벨 초기화
+            label5.Text = "--";
+            label7.Text = "--";
+            label8.Text = "--";
+            label10.Text = "--";
+            label14.Text = "--";
+            label16.Text = "--";
+            label18.Text = "--";
+
             timer1_Tick_1(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
