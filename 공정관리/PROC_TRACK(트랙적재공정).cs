@@ -65,31 +65,31 @@ namespace MESProject.공정관리
         {
             string[] DataPropertyName = new string[] { "PROC_TRACK", "PLANTCODE", "PLANSEQ", "ORDERNO", "SUBSEQ", "SIDE", "LOTNO", "ITEMCODE", "INDATE", "PRODDATE", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "CHK", "PROC_ASSEM", "PRODDATE" };
             string[] HeaderText = new string[] { "완료", "공장", "순서", "주문번호", "작업순서", "타입", "LOTNO", "품번", "INDATE", "PRODDATE", "생성자", "생성일시", "수정자", "수정일시", "CHK", "PROC_ASSEM", "PRODDATE" };
-            float[] FillWeight = new float[] { 100, 100, 100, 200, 100, 100, 250, 100, 100, 100, 100, 100, 100, 100, 10, 10, 10 };
+            float[] FillWeight = new float[] { 65, 80, 65, 190, 100, 65, 240, 90, 100, 100, 100, 100, 100, 100, 10, 10, 10 };
             string[] HiddenColumn = new string[] { "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT", "CHK", "PROC_ASSEM", "PRODDATE", "INDATE" };
-            Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
-            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
-
+            Font StyleFont = new Font("맑은고딕", 22, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 20, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView4, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
+            Main.DGVSetting(this.dataGridView4, DataPropertyName, 40, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
             dataGridView4.ReadOnly = true;
             dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.RowHeadersVisible = true;
+            dataGridView4.RowTemplate.Height = 40;
         }
 
         private void DGVLoad_ProcSeq()
         {
-            string[] DataPropertyName = new string[] { "PROC_SEQ", "STEP_CD", "STEP_NAME"};
-            string[] HeaderText = new string[] { "순서", "작업코드", "작업"};
-            float[] FillWeight = new float[] { 100, 100, 100};
-            Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
-            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
+            string[] DataPropertyName = new string[] { "CHK","PROC_SEQ", "STEP_CD", "STEP_NAME"};
+            string[] HeaderText = new string[] { "작업완료","순서", "작업코드", "작업"};
+            float[] FillWeight = new float[] { 40, 100, 100, 100};
+            Font StyleFont = new Font("맑은고딕", 22, FontStyle.Bold);
+            Font BodyStyleFont = new Font("맑은고딕", 20, FontStyle.Regular);
 
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView3, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
-            dataGridView3.ReadOnly = true;
+            Main.DGVSetting(this.dataGridView3, DataPropertyName, 40, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 17);
+            //dataGridView3.ReadOnly = true;
             dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView3.RowHeadersVisible = true;
         }
@@ -100,9 +100,11 @@ namespace MESProject.공정관리
             {
                 sql.con.Close();
             }
-            DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
-            check.Name = "작업완료";
-            dataGridView3.Columns.Add(check);
+            //DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
+            //check.Name = "작업완료";
+            //dataGridView3.Columns.Add(check);
+            DGVLoad_ProcSeq();
+
             sql.con.Open();
             ProcSeq_dv();
             Plan_dv();
@@ -145,7 +147,7 @@ namespace MESProject.공정관리
 
                 foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    if (Convert.ToBoolean(row.Cells["작업완료"].Value) == true)
+                    if (Convert.ToBoolean(row.Cells["CHK"].Value) == true)
                     {
                         row.DefaultCellStyle.BackColor = Color.Blue;
                     }
