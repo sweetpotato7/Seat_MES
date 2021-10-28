@@ -371,6 +371,7 @@ namespace MESProject
                     chkcol.FillWeight       = FillWeight[i];
                     chkcol.TrueValue  = 1;
                     chkcol.FalseValue = 0;
+                    chkcol.ReadOnly = false;
                     if (HiddenColumn != null)
                     {
                         for (int j = 0; j < HiddenColumn.Length; j++)
@@ -443,16 +444,16 @@ namespace MESProject
 
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                Application.Exit();
-            }
+            Application.Exit();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
