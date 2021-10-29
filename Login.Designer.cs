@@ -130,13 +130,13 @@ namespace MESProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(275, 280);
+            this.label2.Location = new System.Drawing.Point(422, 282);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(470, 21);
+            this.label2.Size = new System.Drawing.Size(166, 21);
             this.label2.TabIndex = 13;
-            this.label2.Text = "(아직 만드는 중)아이디: 0 비밀번호: 2 로 로그인 하시면 됩니당";
+            this.label2.Text = "아이디: 0 비밀번호: 2";
             // 
             // Login
             // 
