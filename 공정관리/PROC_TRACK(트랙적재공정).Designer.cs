@@ -143,11 +143,11 @@ namespace MESProject.공정관리
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 323);
+            this.dataGridView3.Location = new System.Drawing.Point(0, 299);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.Size = new System.Drawing.Size(1230, 330);
+            this.dataGridView3.Size = new System.Drawing.Size(1230, 354);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellValueChanged);
             this.dataGridView3.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView3_CurrentCellDirtyStateChanged);
@@ -162,7 +162,7 @@ namespace MESProject.공정관리
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(615, 165);
+            this.label4.Size = new System.Drawing.Size(615, 143);
             this.label4.TabIndex = 4;
             this.label4.Text = "HEAD";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,7 +177,7 @@ namespace MESProject.공정관리
             this.label6.Location = new System.Drawing.Point(615, 0);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(615, 165);
+            this.label6.Size = new System.Drawing.Size(615, 143);
             this.label6.TabIndex = 6;
             this.label6.Text = "SAB";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,10 +189,10 @@ namespace MESProject.공정관리
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label18.Location = new System.Drawing.Point(820, 79);
+            this.label18.Location = new System.Drawing.Point(820, 78);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(410, 79);
+            this.label18.Size = new System.Drawing.Size(410, 78);
             this.label18.TabIndex = 9;
             this.label18.Text = "가죽,레자";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,7 +207,7 @@ namespace MESProject.공정관리
             this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(410, 79);
+            this.label9.Size = new System.Drawing.Size(410, 78);
             this.label9.TabIndex = 1;
             this.label9.Text = "지역";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -219,10 +219,10 @@ namespace MESProject.공정관리
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(410, 79);
+            this.label5.Location = new System.Drawing.Point(410, 78);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(410, 79);
+            this.label5.Size = new System.Drawing.Size(410, 78);
             this.label5.TabIndex = 4;
             this.label5.Text = "POWER";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,7 +237,7 @@ namespace MESProject.공정관리
             this.label2.Location = new System.Drawing.Point(410, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(410, 79);
+            this.label2.Size = new System.Drawing.Size(410, 78);
             this.label2.TabIndex = 3;
             this.label2.Text = "TRACK";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -249,10 +249,10 @@ namespace MESProject.공정관리
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(0, 79);
+            this.label8.Location = new System.Drawing.Point(0, 78);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(410, 79);
+            this.label8.Size = new System.Drawing.Size(410, 78);
             this.label8.TabIndex = 2;
             this.label8.Text = "지역";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -267,7 +267,7 @@ namespace MESProject.공정관리
             this.label17.Location = new System.Drawing.Point(820, 0);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(410, 79);
+            this.label17.Size = new System.Drawing.Size(410, 78);
             this.label17.TabIndex = 8;
             this.label17.Text = "COVER";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -442,13 +442,13 @@ namespace MESProject.공정관리
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1230, 158);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1230, 156);
             this.tableLayoutPanel5.TabIndex = 8;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.dataGridView3, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 1);
@@ -457,9 +457,9 @@ namespace MESProject.공정관리
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.04943F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.95057F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 329F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1230, 653);
             this.tableLayoutPanel3.TabIndex = 8;
             // 
@@ -471,12 +471,12 @@ namespace MESProject.공정관리
             this.tableLayoutPanel4.Controls.Add(this.label6, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 158);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 156);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1230, 165);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1230, 143);
             this.tableLayoutPanel4.TabIndex = 9;
             // 
             // PROC_MST_공정관리_

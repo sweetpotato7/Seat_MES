@@ -232,23 +232,23 @@ namespace MESProject.공정관리
 
             if (head == "O")
             {
-                label3.BackColor = Color.Blue;
+                label4.BackColor = Color.Blue;
             }
 
             if (head == "X")
             {
-                label3.BackColor = Color.White;
-            }
-
-            if (formpad == "O")
-            {
-                label4.BackColor = Color.Blue;
-            }
-
-            if (formpad == "X")
-            {
                 label4.BackColor = Color.White;
             }
+
+            //if (formpad == "O")
+            //{
+            //    label4.BackColor = Color.Blue;
+            //}
+
+            //if (formpad == "X")
+            //{
+            //    label4.BackColor = Color.White;
+            //}
 
             if (sab == "O")
             {

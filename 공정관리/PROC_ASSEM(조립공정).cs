@@ -239,29 +239,29 @@ namespace MESProject.공정관리
             string sab;
 
             formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
-            head = dataGridView2.Rows[0].Cells[7].Value.ToString();
-            sab = dataGridView2.Rows[0].Cells[9].Value.ToString();
+            head    = dataGridView2.Rows[0].Cells[7].Value.ToString();
+            sab     = dataGridView2.Rows[0].Cells[9].Value.ToString();
 
 
             if (head == "O")
             {
-                label3.BackColor = Color.Blue;
+                label4.BackColor = Color.Blue;
             }
 
             if (head == "X")
             {
-                label3.BackColor = Color.White;
-            }
-
-            if (formpad == "O")
-            {
-                label4.BackColor = Color.Blue;
-            }
-
-            if (formpad == "X")
-            {
                 label4.BackColor = Color.White;
             }
+
+            //if (formpad == "O")
+            //{
+            //    label4.BackColor = Color.Blue;
+            //}
+
+            //if (formpad == "X")
+            //{
+            //    label4.BackColor = Color.White;
+            //}
 
             if (sab == "O")
             {
