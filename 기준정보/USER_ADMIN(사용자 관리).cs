@@ -17,6 +17,7 @@ namespace MESProject.기준정보
 
         SQL sql = new SQL();
         Function func = new Function();
+        string strqry = string.Empty;
 
         public USER_ADMIN()
         {
@@ -33,8 +34,8 @@ namespace MESProject.기준정보
 
             DGVLoad();
             CboSet();
+            Do_Search();
         }
-
 
         private void DGVLoad()
         {
@@ -84,7 +85,6 @@ namespace MESProject.기준정보
             func.CboLoad(comboBox2, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(comboBox3, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
         }
-
 
         public void Do_Search()
         {
@@ -217,25 +217,25 @@ namespace MESProject.기준정보
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i;
-            i = dataGridView1.SelectedCells[0].RowIndex;
+            try
+            {
+                int i;
+                i = dataGridView1.SelectedCells[0].RowIndex;
 
-            textBox1.Text        = dataGridView1.Rows[i].Cells[0].Value.ToString();    //아이디
-            textBox2.Text        = dataGridView1.Rows[i].Cells[1].Value.ToString();    //이름
-            textBox3.Text        = dataGridView1.Rows[i].Cells[2].Value.ToString();    //비밀번호
-            comboBox1.Text       = dataGridView1.Rows[i].Cells[3].Value.ToString();    //작업반
-            comboBox2.Text       = dataGridView1.Rows[i].Cells[4].Value.ToString();    //공장코드
-            maskedTextBox1.Text  = dataGridView1.Rows[i].Cells[5].Value.ToString();    //전화번호
-            dateTimePicker1.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();    //입사일
-            dateTimePicker2.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();    //퇴사일
-            comboBox3.Text       = dataGridView1.Rows[i].Cells[8].Value.ToString();    //사용유무
+                textBox1.Text        = dataGridView1.Rows[i].Cells[0].Value.ToString();    //아이디
+                textBox2.Text        = dataGridView1.Rows[i].Cells[1].Value.ToString();    //이름
+                textBox3.Text        = dataGridView1.Rows[i].Cells[2].Value.ToString();    //비밀번호
+                comboBox1.Text       = dataGridView1.Rows[i].Cells[3].Value.ToString();    //작업반
+                comboBox2.Text       = dataGridView1.Rows[i].Cells[4].Value.ToString();    //공장코드
+                maskedTextBox1.Text  = dataGridView1.Rows[i].Cells[5].Value.ToString();    //전화번호
+                dateTimePicker1.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();    //입사일
+                dateTimePicker2.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();    //퇴사일
+                comboBox3.Text       = dataGridView1.Rows[i].Cells[8].Value.ToString();    //사용유무
+            }
+            catch
+            {
+
+            }
         }
-
-        private void dataGridView1_SizeChanged(object sender, EventArgs e)
-        {
-            Do_Search();
-        }
-
-        
     }
 }
