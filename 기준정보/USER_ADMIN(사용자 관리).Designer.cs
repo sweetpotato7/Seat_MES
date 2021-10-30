@@ -335,7 +335,6 @@ namespace MESProject.기준정보
             this.dataGridView1.Size = new System.Drawing.Size(898, 614);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.SizeChanged += new System.EventHandler(this.dataGridView1_SizeChanged);
             // 
             // USER_ADMIN
             // 
