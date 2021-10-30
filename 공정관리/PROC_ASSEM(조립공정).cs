@@ -120,7 +120,9 @@ namespace MESProject.공정관리
             timer1_Tick_1(sender, e);
             timer1.Interval = 5000; // 5초간격
             timer1.Start();
-            
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+
         }
 
         // 체크박스 체크시 셀 색변환
@@ -231,14 +233,14 @@ namespace MESProject.공정관리
             Spec();
             label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString();
             label5.Text = dataGridView2.Rows[0].Cells[5].Value.ToString();
-            label18.Text = dataGridView2.Rows[0].Cells[8].Value.ToString();
+            label18.Text = dataGridView2.Rows[0].Cells[6].Value.ToString();
             label7.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
 
-            string formpad;
+            //string formpad;
             string head;
             string sab;
 
-            formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
+            //formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
             head    = dataGridView2.Rows[0].Cells[7].Value.ToString();
             sab     = dataGridView2.Rows[0].Cells[9].Value.ToString();
 

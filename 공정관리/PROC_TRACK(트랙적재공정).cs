@@ -104,7 +104,7 @@ namespace MESProject.공정관리
             //check.Name = "작업완료";
             //dataGridView3.Columns.Add(check);
             DGVLoad_ProcSeq();
-
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             sql.con.Open();
             ProcSeq_dv();
             Plan_dv();
@@ -216,16 +216,16 @@ namespace MESProject.공정관리
             }
 
             Spec();
-            label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString();
-            label5.Text = dataGridView2.Rows[0].Cells[5].Value.ToString();
-            label18.Text = dataGridView2.Rows[0].Cells[8].Value.ToString();
+            label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString(); // 지역
+            label5.Text = dataGridView2.Rows[0].Cells[5].Value.ToString(); // 트랙
+            label18.Text = dataGridView2.Rows[0].Cells[6].Value.ToString(); // 커버
             label7.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
 
-            string formpad;
+            //string formpad;
             string head;
             string sab;
 
-            formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
+            //formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
             head = dataGridView2.Rows[0].Cells[7].Value.ToString();
             sab = dataGridView2.Rows[0].Cells[9].Value.ToString();
 
