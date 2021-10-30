@@ -163,7 +163,7 @@ namespace MESProject.공정관리
                     string lotno;
                     string today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
-                    strqry = "update TB_PLAN_DET set PROC_TRACK = 1, INDATE =" + "'" + today + "'" + ", MODIFY_DT = " + "'" + today + "'" + ", MODIFY_USERID =" + "'" + "USERID" + "'"
+                    strqry = "update TB_PLAN_DET set PROC_TRACK = 1, INDATE =" + "'" + today + "'" + ", MODIFY_DT = " + "'" + today + "'" + ", MODIFY_USERID =" + "'" + Main.ID + "'"
                             + "where ORDERNO =" + "'" + label10.Text + "'" + "and SIDE =" + "'" + label14.Text + "'" + "and LOTNO =" + "'" + label16.Text + "'" + "";
                     dataGridView3.DataSource = func.GetDataTable(strqry);
                     MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");

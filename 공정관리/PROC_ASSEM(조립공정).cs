@@ -155,7 +155,7 @@ namespace MESProject.공정관리
                 string sublotno = lotno.Substring(13, 3);
                 string procseq = dataGridView4.Rows[0].Cells[6].Value.ToString();
 
-                strqry = "update TB_PLAN_DET set PROC_ASSEM = 1, PRODDATE =" + "'" + today + "'" + ", MODIFY_DT =" + "'" + today + "'" + ", MODIFY_USERID =" + "'" + "USERID" + "'"
+                strqry = "update TB_PLAN_DET set PROC_ASSEM = 1, PRODDATE =" + "'" + today + "'" + ", MODIFY_DT =" + "'" + today + "'" + ", MODIFY_USERID =" + "'" + Main.ID + "'"
                         + "where LOTNO =" + "'" + label16.Text + "'" + "";
                 dataGridView3.DataSource = func.GetDataTable(strqry);
                 
@@ -168,7 +168,7 @@ namespace MESProject.공정관리
 
                     
                     strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
-                            "VALUES ('D100', '1', " + "'" + lotno + "LH" + sublotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", 'USERID')";
+                            "VALUES ('D100', '1', " + "'" + lotno + "LH" + sublotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
                     func.GetDataTable(strqry);
                 }
 
