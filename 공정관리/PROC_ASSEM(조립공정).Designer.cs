@@ -228,7 +228,6 @@ namespace MESProject.공정관리
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::MESProject.Properties.Resources.AIRBAG;
             this.pictureBox1.Location = new System.Drawing.Point(1157, 308);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";

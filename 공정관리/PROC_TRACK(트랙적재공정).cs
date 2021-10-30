@@ -33,7 +33,7 @@ namespace MESProject.공정관리
 
         public void ProcSeq_dv()
         {
-            //DGVLoad_ProcSeq();
+            DGVLoad_ProcSeq();
             string proc_cd = "010";
             strqry = "select PROC_SEQ, STEP_CD, STEP_NAME from TB_PROC_SEQ WHERE PROC_CD =" + "'" + proc_cd + "'" + "";
             dataGridView3.DataSource = func.GetDataTable(strqry);
@@ -108,7 +108,7 @@ namespace MESProject.공정관리
             sql.con.Open();
             ProcSeq_dv();
             Plan_dv();
-            dv_item_mst();
+            //dv_item_mst();
             
             // 초기 라벨 초기화
             label5.Text = "--";
@@ -193,6 +193,7 @@ namespace MESProject.공정관리
 
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dv_item_mst();
             int i;
             i = dataGridView4.SelectedCells[0].RowIndex;
 
