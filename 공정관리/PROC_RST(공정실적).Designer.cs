@@ -179,7 +179,6 @@ namespace MESProject.공정관리
             // chart2
             // 
             chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea2.AxisX.MajorGrid.Enabled = false;
             chartArea2.AxisX.MajorTickMark.Enabled = false;
             chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;

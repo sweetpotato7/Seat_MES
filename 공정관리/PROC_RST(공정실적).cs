@@ -83,9 +83,9 @@ namespace MESProject.공정관리
             chart2.Titles.Clear();
             chart2.Titles.Add("월간 공정실적");
             chart2.Titles[0].Font = new Font("굴림", 17, FontStyle.Bold);
-            
+
             // 차트 끝부분 설정
-            chart2.ChartAreas[0].AxisX.IsMarginVisible = false;
+            chart2.ChartAreas[0].AxisX.Interval = 5;
         }
 
         private void Chart1Set()
