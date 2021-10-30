@@ -79,11 +79,11 @@ namespace MESProject.공정관리
             // 차트 기본 로드
             chart1.Legends.Clear();          // 범례 초기화
             chart1.Titles.Clear();           // 제목 초기화
-            chart1.Titles.Add("진행도");     // 제목 추가
-            chart1.Titles[0].Font = new Font("굴림", 17, FontStyle.Bold);
+            chart1.Titles.Add($"{dtDate.Value.Month}월 {dtDate.Value.Day}일");     // 제목 추가
+            chart1.Titles[0].Font = new Font("맑은 고딕", 17, FontStyle.Bold);
             chart2.Titles.Clear();
-            chart2.Titles.Add("월간 공정실적");
-            chart2.Titles[0].Font = new Font("굴림", 17, FontStyle.Bold);
+            chart2.Titles.Add($"{dtDate.Value.Month}월 공정실적");
+            chart2.Titles[0].Font = new Font("맑은 고딕", 17, FontStyle.Bold);
 
             // 차트 끝부분 설정
             chart2.ChartAreas[0].AxisX.Interval = 5;
@@ -124,9 +124,9 @@ namespace MESProject.공정관리
 
         private void chart1_PrePaint(object sender, ChartPaintEventArgs e)
         {
-            // 퍼센트 글자 추가
             if (e.ChartElement is ChartArea)
             {
+                // 퍼센트 글자 추가
                 chart1.Annotations.Clear();
                 if (sPercent == "NaN") return;
                 var ta = new TextAnnotation();
@@ -136,16 +136,16 @@ namespace MESProject.공정관리
                 ta.Height = e.Position.Height;
                 ta.X = e.Position.X;
                 ta.Y = e.Position.Y + 1;
-                ta.Font = new Font("굴림", 15, FontStyle.Bold);
+                ta.Font = new Font("맑은 고딕", 15, FontStyle.Bold);
 
                 chart1.Annotations.Add(ta);
             }
+            chart1.Titles[0].Text = $"{dtDate.Value.Month}월 {dtDate.Value.Day}일";
         }
 
         private void Chart2Set()
         {
-            
-            if (iYear == dtDate.Value.Year && iMonth == dtDate.Value.Month) return;
+            //if (iYear == dtDate.Value.Year && iMonth == dtDate.Value.Month) return;
 
             //월별 일수 가져옴
             iYear    = dtDate.Value.Year;

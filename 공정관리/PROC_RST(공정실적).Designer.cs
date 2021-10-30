@@ -140,7 +140,7 @@ namespace MESProject.공정관리
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 346F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.90902F));
             this.tableLayoutPanel2.Controls.Add(this.chart1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.chart2, 1, 0);
@@ -171,7 +171,7 @@ namespace MESProject.공정관리
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 294);
+            this.chart1.Size = new System.Drawing.Size(346, 294);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             this.chart1.PrePaint += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ChartPaintEventArgs>(this.chart1_PrePaint);
@@ -187,13 +187,13 @@ namespace MESProject.공정관리
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart2.Location = new System.Drawing.Point(300, 0);
+            this.chart2.Location = new System.Drawing.Point(346, 0);
             this.chart2.Margin = new System.Windows.Forms.Padding(0);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(1231, 294);
+            this.chart2.Size = new System.Drawing.Size(1185, 294);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
