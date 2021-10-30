@@ -165,14 +165,21 @@ namespace MESProject.공정관리
                     strqry = "update TB_PLAN_MST set PRODQTY = PRODQTY + 1 " +
                               "where ORDERNO = '" + orderno + "'";
                     func.GetDataTable(strqry);
-
-                    
                     strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
-                            "VALUES ('D100', '1', " + "'" + lotno + "LH" + sublotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
+                            "VALUES ('D100', '1', " + "'" + lotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
                     func.GetDataTable(strqry);
                 }
 
-                strqry = "update TB_PLAN_DET set CHK = 1 where LOTNO =" + "'" + label16.Text + "'" + "";
+                if (label14.Text == "LH")
+                {
+                    func.GetDataTable(strqry);
+                    strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
+                            "VALUES ('D100', '1', " + "'" + lotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
+                    func.GetDataTable(strqry);
+                }
+
+
+                    strqry = "update TB_PLAN_DET set CHK = 1 where LOTNO =" + "'" + label16.Text + "'" + "";
                 dataGridView3.DataSource = func.GetDataTable(strqry);
 
                 MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
@@ -208,7 +215,7 @@ namespace MESProject.공정관리
             label16.Text = dataGridView4.Rows[0].Cells[8].Value.ToString(); // LOTNO
 
             Plan_Mst();
-            label7.Text = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
+            //label7.Text = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
 
             if (e.RowIndex >= 1)
             {
