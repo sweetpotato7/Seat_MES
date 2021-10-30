@@ -29,7 +29,6 @@ namespace MESProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.txtUserid = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,22 +40,13 @@ namespace MESProject
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 330);
-            this.panel1.TabIndex = 6;
-            // 
             // txtUserid
             // 
             this.txtUserid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txtUserid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUserid.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserid.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtUserid.Location = new System.Drawing.Point(355, 105);
+            this.txtUserid.Location = new System.Drawing.Point(119, 103);
             this.txtUserid.Name = "txtUserid";
             this.txtUserid.Size = new System.Drawing.Size(296, 20);
             this.txtUserid.TabIndex = 0;
@@ -71,7 +61,7 @@ namespace MESProject
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtPassword.Location = new System.Drawing.Point(355, 154);
+            this.txtPassword.Location = new System.Drawing.Point(119, 152);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(296, 20);
             this.txtPassword.TabIndex = 1;
@@ -85,7 +75,7 @@ namespace MESProject
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(467, 43);
+            this.label1.Location = new System.Drawing.Point(231, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 33);
             this.label1.TabIndex = 9;
@@ -99,7 +89,7 @@ namespace MESProject
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.LightGray;
-            this.btnLogin.Location = new System.Drawing.Point(355, 215);
+            this.btnLogin.Location = new System.Drawing.Point(119, 213);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(296, 40);
             this.btnLogin.TabIndex = 2;
@@ -110,7 +100,7 @@ namespace MESProject
             // picMini
             // 
             this.picMini.Image = global::MESProject.Properties.Resources._274;
-            this.picMini.Location = new System.Drawing.Point(702, 12);
+            this.picMini.Location = new System.Drawing.Point(470, 12);
             this.picMini.Name = "picMini";
             this.picMini.Size = new System.Drawing.Size(30, 30);
             this.picMini.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -121,7 +111,7 @@ namespace MESProject
             // picClose
             // 
             this.picClose.Image = global::MESProject.Properties.Resources._275;
-            this.picClose.Location = new System.Drawing.Point(738, 12);
+            this.picClose.Location = new System.Drawing.Point(506, 12);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(30, 30);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -132,9 +122,9 @@ namespace MESProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(422, 282);
+            this.label2.Location = new System.Drawing.Point(186, 280);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 21);
             this.label2.TabIndex = 13;
@@ -145,7 +135,7 @@ namespace MESProject
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.ClientSize = new System.Drawing.Size(780, 330);
+            this.ClientSize = new System.Drawing.Size(548, 330);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.picClose);
             this.Controls.Add(this.picMini);
@@ -153,7 +143,6 @@ namespace MESProject
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserid);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.Opacity = 0.9D;
@@ -167,7 +156,6 @@ namespace MESProject
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtUserid;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
