@@ -114,7 +114,6 @@ namespace MESProject.공정관리
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = global::MESProject.Properties.Resources.AIRBAG;
             this.pictureBox1.Location = new System.Drawing.Point(1230, 338);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
