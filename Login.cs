@@ -90,6 +90,18 @@ namespace MESProject
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void txtUserid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                LoginTry();
+        }
 
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                LoginTry();
+            if (e.KeyCode == Keys.Tab)
+                this.ActiveControl = txtUserid;
+        }
     }
 }

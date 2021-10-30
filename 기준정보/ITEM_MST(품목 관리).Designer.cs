@@ -76,7 +76,7 @@ namespace MESProject.기준정보
             // 
             // cboUnit
             // 
-            this.cboUnit.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboUnit.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboUnit.FormattingEnabled = true;
             this.cboUnit.Items.AddRange(new object[] {
             "BBB"});
@@ -88,7 +88,7 @@ namespace MESProject.기준정보
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(809, 19);
             this.label5.Name = "label5";
@@ -98,7 +98,7 @@ namespace MESProject.기준정보
             // 
             // cboItemType
             // 
-            this.cboItemType.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboItemType.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboItemType.FormattingEnabled = true;
             this.cboItemType.Items.AddRange(new object[] {
             "BBB"});
@@ -110,7 +110,7 @@ namespace MESProject.기준정보
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(593, 19);
             this.label4.Name = "label4";
@@ -120,7 +120,7 @@ namespace MESProject.기준정보
             // 
             // cboItemCode
             // 
-            this.cboItemCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboItemCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboItemCode.FormattingEnabled = true;
             this.cboItemCode.Items.AddRange(new object[] {
             "AAA"});
@@ -132,7 +132,7 @@ namespace MESProject.기준정보
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(185, 19);
             this.label3.Name = "label3";
@@ -143,7 +143,7 @@ namespace MESProject.기준정보
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(399, 19);
             this.label2.Name = "label2";
@@ -153,7 +153,7 @@ namespace MESProject.기준정보
             // 
             // txtItemName
             // 
-            this.txtItemName.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtItemName.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtItemName.Location = new System.Drawing.Point(459, 17);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(100, 25);
@@ -161,7 +161,7 @@ namespace MESProject.기준정보
             // 
             // cboPlantCode
             // 
-            this.cboPlantCode.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboPlantCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboPlantCode.FormattingEnabled = true;
             this.cboPlantCode.Items.AddRange(new object[] {
             "D001"});
@@ -173,7 +173,7 @@ namespace MESProject.기준정보
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(11, 19);
             this.label1.Name = "label1";
@@ -184,26 +184,28 @@ namespace MESProject.기준정보
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 280);
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(28, 285);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 12);
+            this.label6.Size = new System.Drawing.Size(55, 31);
             this.label6.TabIndex = 3;
             this.label6.Text = "URL";
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(51, 278);
+            this.txtURL.Location = new System.Drawing.Point(89, 295);
             this.txtURL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(220, 21);
+            this.txtURL.Size = new System.Drawing.Size(178, 21);
             this.txtURL.TabIndex = 4;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(51, 328);
+            this.btnBrowse.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnBrowse.Location = new System.Drawing.Point(89, 337);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(85, 33);
+            this.btnBrowse.Size = new System.Drawing.Size(120, 49);
             this.btnBrowse.TabIndex = 5;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -211,10 +213,11 @@ namespace MESProject.기준정보
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(160, 328);
+            this.btnUpload.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnUpload.Location = new System.Drawing.Point(89, 403);
             this.btnUpload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(91, 33);
+            this.btnUpload.Size = new System.Drawing.Size(120, 49);
             this.btnUpload.TabIndex = 5;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
@@ -238,9 +241,10 @@ namespace MESProject.기준정보
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(51, 380);
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(89, 469);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(120, 49);
             this.button1.TabIndex = 7;
             this.button1.Tag = "";
             this.button1.Text = "Delete";

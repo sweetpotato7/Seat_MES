@@ -62,6 +62,7 @@ namespace MESProject
             this.txtUserid.TabIndex = 0;
             this.txtUserid.Text = "USER ID";
             this.txtUserid.Enter += new System.EventHandler(this.txtUserid_Enter);
+            this.txtUserid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserid_KeyDown);
             this.txtUserid.Leave += new System.EventHandler(this.txtUserid_Leave);
             // 
             // txtPassword
@@ -76,6 +77,7 @@ namespace MESProject
             this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "PASSWORD";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // label1
@@ -130,7 +132,7 @@ namespace MESProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
             this.label2.Location = new System.Drawing.Point(422, 282);
             this.label2.Name = "label2";

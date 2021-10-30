@@ -109,7 +109,7 @@ namespace MESProject
             this.공통코드ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.공통코드ToolStripMenuItem.Image = global::MESProject.Properties.Resources._111_removebg_preview;
             this.공통코드ToolStripMenuItem.Name = "공통코드ToolStripMenuItem";
-            this.공통코드ToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.공통코드ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.공통코드ToolStripMenuItem.Text = "공통코드";
             this.공통코드ToolStripMenuItem.Click += new System.EventHandler(this.공통코드ToolStripMenuItem_Click);
             // 
@@ -118,7 +118,7 @@ namespace MESProject
             this.품번ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.품번ToolStripMenuItem.Image = global::MESProject.Properties.Resources._222_removebg_preview;
             this.품번ToolStripMenuItem.Name = "품번ToolStripMenuItem";
-            this.품번ToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.품번ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.품번ToolStripMenuItem.Text = "품목관리";
             this.품번ToolStripMenuItem.Click += new System.EventHandler(this.품번ToolStripMenuItem_Click);
             // 
@@ -127,7 +127,7 @@ namespace MESProject
             this.bOMToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.bOMToolStripMenuItem.Image = global::MESProject.Properties.Resources._333_removebg_preview;
             this.bOMToolStripMenuItem.Name = "bOMToolStripMenuItem";
-            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.bOMToolStripMenuItem.Text = "BOM";
             this.bOMToolStripMenuItem.Click += new System.EventHandler(this.bOMToolStripMenuItem_Click);
             // 
@@ -136,7 +136,7 @@ namespace MESProject
             this.사양관리ToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.사양관리ToolStripMenuItem.Image = global::MESProject.Properties.Resources._444_removebg_preview;
             this.사양관리ToolStripMenuItem.Name = "사양관리ToolStripMenuItem";
-            this.사양관리ToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
+            this.사양관리ToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.사양관리ToolStripMenuItem.Text = "사양관리";
             this.사양관리ToolStripMenuItem.Click += new System.EventHandler(this.사양관리ToolStripMenuItem_Click);
             // 
@@ -145,7 +145,7 @@ namespace MESProject
             this.사용자관리ToolStripMenuItem1.BackColor = System.Drawing.Color.White;
             this.사용자관리ToolStripMenuItem1.Image = global::MESProject.Properties.Resources._555_removebg_preview;
             this.사용자관리ToolStripMenuItem1.Name = "사용자관리ToolStripMenuItem1";
-            this.사용자관리ToolStripMenuItem1.Size = new System.Drawing.Size(153, 24);
+            this.사용자관리ToolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
             this.사용자관리ToolStripMenuItem1.Text = "사용자관리";
             this.사용자관리ToolStripMenuItem1.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
             // 
@@ -471,6 +471,7 @@ namespace MESProject
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.tabControl1.Location = new System.Drawing.Point(3, 77);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -482,9 +483,9 @@ namespace MESProject
             this.tabPage1.BackColor = System.Drawing.SystemColors.Window;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(955, 478);
+            this.tabPage1.Size = new System.Drawing.Size(955, 476);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 

@@ -117,8 +117,6 @@ namespace MESProject.기준정보
             // 
             this.cboPlantCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboPlantCode.FormattingEnabled = true;
-            this.cboPlantCode.Items.AddRange(new object[] {
-            "D001"});
             this.cboPlantCode.Location = new System.Drawing.Point(68, 16);
             this.cboPlantCode.Name = "cboPlantCode";
             this.cboPlantCode.Size = new System.Drawing.Size(100, 25);

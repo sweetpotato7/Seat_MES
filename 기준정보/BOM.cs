@@ -392,8 +392,8 @@ namespace MESProject.기준정보
             cboCItemCode.Text = "";
             txtPQty.Text = "";
             txtCQty.Text = "";
-            lblPItemName.Text = "";
-            lblCItemName.Text = "";
+            lblPItemName.Text = "--";
+            lblCItemName.Text = "--";
         }
         #endregion
 

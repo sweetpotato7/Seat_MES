@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
 
 namespace MESProject.기준정보
 {
-    /// <summary>
-    /// DGV2 셀 클릭 시 주코드 입력되게 해야됨
-    /// </summary>
     public partial class CODE_MST : Form
     {
         SQL sql = new SQL();
@@ -28,9 +20,7 @@ namespace MESProject.기준정보
         {
             InitializeComponent();
         }
-        /// <summary>
-        /// 추가 수정 삭제 기능 넣기
-        /// </summary>
+        
         private void CODE_MST_Load(object sender, EventArgs e)
         {
             if (sql.con.State == ConnectionState.Open)
@@ -40,7 +30,7 @@ namespace MESProject.기준정보
             sql.con.Open();
             DGVLoad();
             Do_Search(); // 전체조회
-            CboSet(); // 콤보박스 세팅
+            CboSet();    // 콤보박스 세팅
         }
 
         private void DGVLoad()
@@ -60,12 +50,9 @@ namespace MESProject.기준정보
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dataGridView1.ReadOnly = true;
 
             dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
             dataGridView2.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
-
-
         }
 
         #region ========== CRUD
@@ -139,8 +126,6 @@ namespace MESProject.기준정보
                     MessageBox.Show(message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-
                 dt = new DataTable();
                 strqry = "INSERT INTO TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, RELCODE5, DISPLAYNO, USEFLAG) "
                                         + "VALUES ('" + cboIPlantcode.Text + "',"
@@ -339,12 +324,14 @@ namespace MESProject.기준정보
             cboSearch.Items.Add("주코드");
             cboSearch.Items.Add("부코드");
             cboSearch.Items.Add("코드명");
-            cboSearch.SelectedIndex = 0;
+            func.CboLoad(cboPlantCode,  "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboIPlantcode, "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "PLANT");
             func.CboLoad(cboIMajorCode, "TB_CODE_MST", "MAJORCODE", false);
             func.CboLoad(cboIUseFlag,   "TB_CODE_MST", "MINORCODE", true, "MAJORCODE", "USEFLAG");
+            cboSearch.SelectedIndex     = 0;
+            cboPlantCode.SelectedIndex  = 0;
             cboIPlantcode.SelectedIndex = 0;
-            cboIUseFlag.SelectedIndex = 0;
+            cboIUseFlag.SelectedIndex   = 0;
         }
 
         private void cboIMajorCode_SelectionChangeCommitted(object sender, EventArgs e)
