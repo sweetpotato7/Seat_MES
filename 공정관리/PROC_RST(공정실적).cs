@@ -59,7 +59,8 @@ namespace MESProject.공정관리
             strqry = "SELECT * FROM TB_PROC_RST"
                    + " WHERE PLANTCODE = '" + cboPlantCode.Text + "'"
                    + " AND PROC_RST  between '" + dtDate.Value.ToString("yy-MM-dd") + "'"
-                                      + "and '" + dtDate.Value.ToString("yy-MM-dd") + " 23:59:59'";
+                                      + "and '" + dtDate.Value.ToString("yy-MM-dd") + " 23:59:59'"
+                   + "ORDER BY PROC_RST";
             dt = func.GetDataTable2(strqry);
             dataGridView1.DataSource = dt;
             Chart1Set();

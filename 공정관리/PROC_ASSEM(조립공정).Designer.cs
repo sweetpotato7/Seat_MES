@@ -203,7 +203,7 @@ namespace MESProject.공정관리
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(387, 88);
             this.label17.TabIndex = 7;
-            this.label17.Text = "COLOR";
+            this.label17.Text = "COVER";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3

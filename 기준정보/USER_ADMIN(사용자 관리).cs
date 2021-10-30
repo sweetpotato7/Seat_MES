@@ -47,6 +47,7 @@ namespace MESProject.기준정보
 
             //스타일 지정 밎 그리드에 데이터 바인드
             Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 16);
+            dataGridView1.Columns[2].Visible = false;
 
             //데이터그리드뷰 스타일 지정
             StyleDatagridview();
