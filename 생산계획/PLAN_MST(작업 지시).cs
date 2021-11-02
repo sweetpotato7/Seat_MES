@@ -102,7 +102,7 @@ namespace MESProject.생산계획
                     cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
 
                     var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
-                    var rsmsg  = new SqlParameter("@RS_MSG", SqlDbType.VarChar);
+                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
                     rscode.Direction = ParameterDirection.Output;
                     rsmsg.Direction  = ParameterDirection.Output;
                     rscode.Size = 2;

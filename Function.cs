@@ -28,12 +28,12 @@ namespace MESProject
             Cbobox.Items.Clear();
             if (DropDownList)
             {
-                Cbobox.DropDownStyle = ComboBoxStyle.DropDownList;
+                Cbobox.DropDownStyle = ComboBoxStyle.DropDownList; // 콤보박스 직접입력 불가능하게
             }
             else
             {
-                Cbobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                Cbobox.AutoCompleteMode  = AutoCompleteMode.SuggestAppend; // 콤보박스 입력 시 자동 완성기능
+                Cbobox.AutoCompleteSource = AutoCompleteSource.ListItems;  // 콤보박스 입력 시 자동 완성기능
             }
 
             string strqry = "SELECT DISTINCT " + Column + " FROM " + Table;
