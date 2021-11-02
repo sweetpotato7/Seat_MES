@@ -39,6 +39,7 @@ namespace MESProject.공정관리
             strqry = "select PROC_SEQ, STEP_CD, STEP_NAME from TB_PROC_SEQ WHERE PROC_CD =" + "'" + proc_cd + "'" + "";
             dataGridView3.DataSource = func.GetDataTable(strqry);
         }
+
         public void Plan_dv()
         {
             string today = DateTime.Now.ToString("yyyy-MM-dd");
@@ -127,12 +128,9 @@ namespace MESProject.공정관리
         // 체크박스 체크시 셀 색변환
         private void dataGridView3_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
         {
-            bool check = Convert.ToBoolean(dataGridView3.Rows[0].Cells[0].Value);
+            bool check  = Convert.ToBoolean(dataGridView3.Rows[0].Cells[0].Value);
             bool check2 = Convert.ToBoolean(dataGridView3.Rows[1].Cells[0].Value);
             bool check3 = Convert.ToBoolean(dataGridView3.Rows[2].Cells[0].Value);
-
-            int i;
-            i = dataGridView3.SelectedCells[0].RowIndex;
 
             foreach (DataGridViewRow row in dataGridView3.Rows)
             {
@@ -151,12 +149,10 @@ namespace MESProject.공정관리
             {
                 if (check == true && check2 == true && check3 == true)
                 {
-                    string lotno;
-                    string today = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    string orderno = dataGridView4.Rows[0].Cells[5].Value.ToString();
-                    lotno = dataGridView4.Rows[0].Cells[8].Value.ToString();
-                    string sublotno = lotno.Substring(13, 3);
-                    string procseq = dataGridView4.Rows[0].Cells[6].Value.ToString();
+                    string today    = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    string orderno  = dataGridView4.Rows[0].Cells[5].Value.ToString();
+                    string lotno    = dataGridView4.Rows[0].Cells[8].Value.ToString();
+                    string procseq  = dataGridView4.Rows[0].Cells[6].Value.ToString();
 
                     strqry = "update TB_PLAN_DET set PROC_ASSEM = 1, PRODDATE =" + "'" + today + "'" + ", MODIFY_DT =" + "'" + today + "'" + ", MODIFY_USERID =" + "'" + Main.ID + "'"
                             + "where LOTNO =" + "'" + label16.Text + "'" + "";
@@ -165,31 +161,31 @@ namespace MESProject.공정관리
                     // RH일때 수량 +1
                     if (label14.Text == "RH")
                     {
-                        strqry = "update TB_PLAN_MST set PRODQTY = PRODQTY + 1 " +
+                        strqry = "update TB_PLAN_MST " +
+                                    "set PRODQTY = PRODQTY + 1 " +
                                   "where ORDERNO = '" + orderno + "'";
-                        func.GetDataTable(strqry);
-                        strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
-                                "VALUES ('D100', '1', " + "'" + lotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
                         func.GetDataTable(strqry);
                     }
 
                     if (label14.Text == "LH")
                     {
                         func.GetDataTable(strqry);
-                        strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
-                                "VALUES ('D100', '1', " + "'" + lotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
-                        func.GetDataTable(strqry);
                     }
 
+                    strqry = "insert into TB_PROC_RST (PLANTCODE, LINE_CD, LOTNO, PROC_CD, PROC_SEQ, PROC_RST, CREATE_USERID) " +
+                            "VALUES ('D100', '1', " + "'" + lotno + "'" + ", '010'," + "'" + procseq + "'" + "," + "'" + today + "'" + ", '" + Main.ID + "')";
+                    func.GetDataTable(strqry);
 
-                        strqry = "update TB_PLAN_DET set CHK = 1 where LOTNO =" + "'" + label16.Text + "'" + "";
+                    strqry = "update TB_PLAN_DET set CHK = 1 where LOTNO =" + "'" + label16.Text + "'" + "";
                     dataGridView3.DataSource = func.GetDataTable(strqry);
 
                     MessageBox.Show(label16.Text + " " + label14.Text + "의 작업이 완료되었습니다.");
                     ProcSeq_dv();
                     Plan_dv();
 
-                    planmst();
+                    strqry = "select * from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
+                    dataGridView6.DataSource = func.GetDataTable(strqry);
+
                     string planqty = dataGridView6.Rows[0].Cells[5].Value.ToString();
                     string prodqty = dataGridView6.Rows[0].Cells[6].Value.ToString();
                     if (planqty == prodqty)
@@ -213,7 +209,34 @@ namespace MESProject.공정관리
 
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dv_item_mst();
+            try
+            {
+                string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
+                strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" + "";
+                dataGridView5.DataSource = func.GetDataTable(strqry);
+
+                var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
+
+                DataTable dt = dataGridView5.DataSource as DataTable;
+
+                if (picture != string.Empty)
+                {
+                    DataRow row = dt.Rows[0];
+                    
+                    using (MemoryStream ms = new MemoryStream((byte[])row[0]))
+                    {
+                        pictureBox1.Image = Image.FromStream(ms);
+                    }
+                }
+                if (picture == string.Empty)
+                {
+                    pictureBox1.Image = null;
+                }
+            }
+            catch
+            {
+            }
+
             int i;
             i = dataGridView4.SelectedCells[0].RowIndex;
 
@@ -221,7 +244,9 @@ namespace MESProject.공정관리
             label14.Text = dataGridView4.Rows[0].Cells[7].Value.ToString(); // TYPE
             label16.Text = dataGridView4.Rows[0].Cells[8].Value.ToString(); // LOTNO
 
-            Plan_Mst();
+            strqry = "select ALC_CD from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
+            dataGridView1.DataSource = func.GetDataTable(strqry);
+
             //label7.Text = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
 
             if (e.RowIndex >= 1)
@@ -256,7 +281,6 @@ namespace MESProject.공정관리
             if (head == "X") label4.BackColor = Color.White;
             if (sab  == "O") label6.BackColor = Color.Blue;
             if (sab  == "X") label6.BackColor = Color.White;
-            planmst();
         }
 
         private void Cell_Lock() // 셀잠금
@@ -274,69 +298,9 @@ namespace MESProject.공정관리
             }
         }
 
-        public void Plan_Mst()
-        {
-            strqry = "select ALC_CD from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
-            dataGridView1.DataSource = func.GetDataTable(strqry);
-        }
-
         private void dataGridView4_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             Cell_Lock();
-        }
-
-        // 이미지 출력
-        private void view_image()
-        {
-            Image img = pictureBox1.Image;
-            byte[] arr;
-            ImageConverter converter = new ImageConverter();
-            arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
-
-            string itemname;
-
-            itemname = dataGridView4.Rows[0].Cells[0].Value.ToString();
-        }
-
-        private void dv_item_mst()
-        {
-            try
-            {
-                string itemtype = dataGridView4.Rows[0].Cells[7].Value.ToString();
-                strqry = "select TOP 1 IMAGE from TB_ITEM_MST where ITEMNAME =" + "'" + itemtype + "'" +"";
-                dataGridView5.DataSource = func.GetDataTable(strqry);
-
-                var picture = dataGridView5.Rows[0].Cells[0].Value.ToString();
-
-                DataTable dt = dataGridView5.DataSource as DataTable;
-                if (picture != string.Empty)
-                {
-                    DataRow row = dt.Rows[0];
-                    pictureBox1.Image = ConvertByteToImage((byte[])row[0]);
-                }
-                if (picture == string.Empty)
-                {
-                    pictureBox1.Image = null;
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private Image ConvertByteToImage(byte[] data)
-        {
-            using (MemoryStream ms = new MemoryStream(data))
-            {
-                return Image.FromStream(ms);
-            }
-        }
-
-        private void planmst()
-        {
-            strqry = "select * from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
-            dataGridView6.DataSource = func.GetDataTable(strqry);
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -350,3 +314,15 @@ namespace MESProject.공정관리
         }
     }
 }
+
+//private void view_image()
+//{
+//    Image img = pictureBox1.Image;
+//    byte[] arr;
+//    ImageConverter converter = new ImageConverter();
+//    arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+
+//    string itemname;
+
+//    itemname = dataGridView4.Rows[0].Cells[0].Value.ToString();
+//}

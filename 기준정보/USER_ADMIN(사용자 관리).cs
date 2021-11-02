@@ -82,7 +82,6 @@ namespace MESProject.기준정보
             textBox3.Text  = "";
             maskedTextBox1.Text  = "";
             dateTimePicker1.Value   = DateTime.Today;
-            dateTimePicker2.Checked = false;
         }
 
         public void Do_Add()
@@ -94,12 +93,7 @@ namespace MESProject.기준정보
                     MessageBox.Show("아이디를 입력하세요");
                     return;
                 }
-                if (dateTimePicker1.Value > dateTimePicker2.Value)
-                {
-                    MessageBox.Show("입사, 퇴사일 날짜를 확인해 주세요!");
-                    return;
-                }
-
+                
                 SqlCommand cmd = sql.con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, USEFLAG, CREATE_USERID, CREATE_DT) " +
@@ -113,21 +107,21 @@ namespace MESProject.기준정보
                                         + " '" + comboBox3.Text       + "',"
                                         + " '" + Main.ID + "', "
                                         + " '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
-                if (dateTimePicker1.Value.ToString() != dateTimePicker2.Value.ToString())
-                {
-                    cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_USERID, CREATE_DT) " +
-                                  "values ( '" + textBox1.Text + "',"
-                                        + " '" + textBox2.Text + "',"
-                                        + " '" + textBox3.Text + "',"
-                                        + " '" + comboBox1.Text + "',"
-                                        + " '" + comboBox2.Text + "',"
-                                        + " '" + maskedTextBox1.Text + "',"
-                                        + " '" + dateTimePicker1.Text + "',"
-                                        + " '" + dateTimePicker2.Text + "',"
-                                        + " '" + comboBox3.Text + "',"
-                                        + " '" + Main.ID + "', "
-                                        + " '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
-                }
+                //if (dateTimePicker1.Value.ToString() != dateTimePicker2.Value.ToString())
+                //{
+                //    cmd.CommandText = "INSERT INTO TB_USER_INFO(WORKERID, WORKERNAME, PASSWORD, BANCODE, PLANTCODE, PHONENO, INDATE, OUTDATE, USEFLAG, CREATE_USERID, CREATE_DT) " +
+                //                  "values ( '" + textBox1.Text + "',"
+                //                        + " '" + textBox2.Text + "',"
+                //                        + " '" + textBox3.Text + "',"
+                //                        + " '" + comboBox1.Text + "',"
+                //                        + " '" + comboBox2.Text + "',"
+                //                        + " '" + maskedTextBox1.Text + "',"
+                //                        + " '" + dateTimePicker1.Text + "',"
+                //                        + " '" + dateTimePicker2.Text + "',"
+                //                        + " '" + comboBox3.Text + "',"
+                //                        + " '" + Main.ID + "', "
+                //                        + " '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
+                //}
                 cmd.ExecuteNonQuery();
                 Do_Search();
                 MessageBox.Show("추가되었습니다");
@@ -182,7 +176,6 @@ namespace MESProject.기준정보
                                "PLANTCODE = '"      + comboBox2.Text       + "', " +
                                "PHONENO = '"        + maskedTextBox1.Text  + "', " +
                                "INDATE = '"         + dateTimePicker1.Text + "', " +
-                               "OUTDATE = '"        + dateTimePicker2.Text + "', " +
                                "USEFLAG = '"        + comboBox3.Text       + "', " +
                                "MODIFY_USERID = '"  + Main.ID + "', " +
                                "MODIFY_DT = '"      + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'" +
@@ -205,8 +198,8 @@ namespace MESProject.기준정보
                 comboBox1.Text       = dataGridView1.Rows[i].Cells[3].Value.ToString();    //작업반
                 comboBox2.Text       = dataGridView1.Rows[i].Cells[4].Value.ToString();    //공장코드
                 maskedTextBox1.Text  = dataGridView1.Rows[i].Cells[5].Value.ToString();    //전화번호
+                
                 dateTimePicker1.Text = dataGridView1.Rows[i].Cells[6].Value.ToString();    //입사일
-                dateTimePicker2.Text = dataGridView1.Rows[i].Cells[7].Value.ToString();    //퇴사일
                 comboBox3.Text       = dataGridView1.Rows[i].Cells[8].Value.ToString();    //사용유무
             }
             catch
