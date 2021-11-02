@@ -38,7 +38,7 @@ namespace MESProject.기준정보
             string[] DataPropertyName = new string[] { "PLANTCODE", "MAJORCODE", "MINORCODE", "CODENAME", "RELCODE1", "RELCODE2", "RELCODE3", "RELCODE4", "RELCODE5", "DISPLAYNO", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "주코드", "부코드", "코드명", "참조1", "참조2", "참조3", "참조4", "코드명", "순서", "사용", "등록자", "등록일시", "수정자", "수정일시" };
             string[] HiddenColumn     = null;
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            float[] FillWeight = new float[] { 50, 80, 80, 100, 100, 100, 100, 100, 100, 50, 50, 100, 90, 100, 90 };
             Font StyleFont     = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -289,9 +289,8 @@ namespace MESProject.기준정보
 
                 cboPlantCode.SelectedItem = "D001";
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -313,7 +312,6 @@ namespace MESProject.기준정보
             }
             catch
             {
-
             }
         }
 

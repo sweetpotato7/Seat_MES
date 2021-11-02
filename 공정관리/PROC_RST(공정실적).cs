@@ -145,8 +145,6 @@ namespace MESProject.공정관리
 
         private void Chart2Set()
         {
-            //if (iYear == dtDate.Value.Year && iMonth == dtDate.Value.Month) return;
-
             //월별 일수 가져옴
             iYear    = dtDate.Value.Year;
             iMonth   = dtDate.Value.Month;
@@ -161,37 +159,45 @@ namespace MESProject.공정관리
                     + "GROUP BY PLANDATE";
             dt = func.GetDataTable2(strqry);
 
-            foreach (DataRow dr in dt.Rows)
+            int i = 0;
+            for (i = 1; i < iDay + 1; i++)
             {
                 bool chk = false;
-                for (int i = 1; i < iDay + 1; i++)
+                foreach (DataRow dr in dt.Rows)
                 {
                     if ( int.Parse(dr.ItemArray[0].ToString().Substring(4)) == i)
                     {
                         chart2.Series[0].Points.AddXY(int.Parse(dr.ItemArray[0].ToString().Substring(4)), dr.ItemArray[1]);
+                        chart2.Series[0].Points[chart2.Series[0].Points.Count - 1].Label = chart2.Series[0].Points[chart2.Series[0].Points.Count - 1].YValues[0].ToString();
                         chk = true;
+                        if (chart2.Series[0].Points[chart2.Series[0].Points.Count - 1].YValues[0].ToString() == "0")
+                        {
+                            chart2.Series[0].Points[chart2.Series[0].Points.Count - 1].LabelForeColor = Color.White;
+                        }
                         break;
                     }
                 }
                 if (chk == false)
                 {
-                    chart2.Series[0].Points.AddXY(int.Parse(dr.ItemArray[0].ToString().Substring(4)), 0);
+                    chart2.Series[0].Points.AddXY(i, 0);
+                    chart2.Series[0].Points[i-1].Label = "0";
+                    chart2.Series[0].Points[i - 1].LabelForeColor = Color.White;
                 }
             }
-            try
-            {
-                for (int i = 0; i < iDay; i++)
-                {
-                    if (chart2.Series[0].Points[i].YValues[0].ToString() == "0")
-                    {
-                        continue;
-                    }
-                    chart2.Series[0].Points[i].Label = chart2.Series[0].Points[i].YValues[0].ToString();
-                }
-            }
-            catch
-            {
-            }
+            //try
+            //{
+            //    for (int i = 0; i < iDay; i++)
+            //    {
+            //        if (chart2.Series[0].Points[i].YValues[0].ToString() == "0")
+            //        {
+            //            continue;
+            //        }
+            //        chart2.Series[0].Points[i].Label = chart2.Series[0].Points[i].YValues[0].ToString();
+            //    }
+            //}
+            //catch
+            //{
+            //}
         }
         #endregion
     }

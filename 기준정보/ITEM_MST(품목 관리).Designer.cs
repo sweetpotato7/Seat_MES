@@ -78,8 +78,6 @@ namespace MESProject.기준정보
             // 
             this.cboUnit.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboUnit.FormattingEnabled = true;
-            this.cboUnit.Items.AddRange(new object[] {
-            "BBB"});
             this.cboUnit.Location = new System.Drawing.Point(857, 17);
             this.cboUnit.Name = "cboUnit";
             this.cboUnit.Size = new System.Drawing.Size(100, 25);
@@ -100,8 +98,6 @@ namespace MESProject.기준정보
             // 
             this.cboItemType.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboItemType.FormattingEnabled = true;
-            this.cboItemType.Items.AddRange(new object[] {
-            "BBB"});
             this.cboItemType.Location = new System.Drawing.Point(675, 17);
             this.cboItemType.Name = "cboItemType";
             this.cboItemType.Size = new System.Drawing.Size(100, 25);
@@ -122,8 +118,6 @@ namespace MESProject.기준정보
             // 
             this.cboItemCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboItemCode.FormattingEnabled = true;
-            this.cboItemCode.Items.AddRange(new object[] {
-            "AAA"});
             this.cboItemCode.Location = new System.Drawing.Point(262, 17);
             this.cboItemCode.Name = "cboItemCode";
             this.cboItemCode.Size = new System.Drawing.Size(100, 25);
@@ -163,8 +157,6 @@ namespace MESProject.기준정보
             // 
             this.cboPlantCode.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboPlantCode.FormattingEnabled = true;
-            this.cboPlantCode.Items.AddRange(new object[] {
-            "D001"});
             this.cboPlantCode.Location = new System.Drawing.Point(57, 17);
             this.cboPlantCode.Name = "cboPlantCode";
             this.cboPlantCode.Size = new System.Drawing.Size(100, 25);

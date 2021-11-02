@@ -254,9 +254,9 @@ namespace MESProject.기준정보
         }
         #endregion
 
-        private void dataGridView1_SizeChanged(object sender, EventArgs e)
+        private void cmb_S_ALC_KeyDown(object sender, KeyEventArgs e)
         {
-            Do_Search();
+            if (e.KeyCode == Keys.Enter) Do_Search();
         }
     }
 }

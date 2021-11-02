@@ -31,13 +31,10 @@ namespace MESProject.기준정보
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             DGVLoad();
-            //DGV1Set(strqry); 사용안함
             TreeViewLoad();
             CboSet();
             CboClear();
             Do_Search();
-            lblItemCode.Text = "";
-            lblItemName.Text = "";
         }
 
         private void DGVLoad()
@@ -62,9 +59,12 @@ namespace MESProject.기준정보
         {
             try
             {
-                sql.con.Open();
-                strqry = "SELECT * FROM TB_BOM";
-                dt = func.GetDataTable(strqry);
+                strqry = "SELECT B.PLANTCODE, B.ITEMCODE, I1.ITEMNAME AS PITEMNAME, B.BASEQTY, B.UNITCODE, B.COMPONENT, I2.ITEMNAME AS CITEMNAME, B.COMPONENTQTY, B.COMPONENTUNIT, B.USEFLAG, B.CREATE_USERID, B.CREATE_DT, B.MODIFY_USERID, B.MODIFY_DT"
+                        + " FROM TB_BOM B LEFT JOIN TB_ITEM_MST I1 "
+				                              + "ON B.ITEMCODE  = I1.ITEMCODE "
+			                           + "LEFT JOIN TB_ITEM_MST I2 "
+				                              + "ON B.COMPONENT = I2.ITEMCODE";
+                dt = func.GetDataTable2(strqry);
                 dataGridView2.DataSource = dt;
             }
             catch (SqlException ex)
@@ -74,10 +74,6 @@ namespace MESProject.기준정보
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sql.con.Close();
             }
         }
 
@@ -100,14 +96,11 @@ namespace MESProject.기준정보
                 da.InsertCommand.ExecuteNonQuery();
 
                 // 입력 후 재조회
-                strqry = "SELECT * FROM TB_BOM";
-                dt = func.GetDataTable(strqry);
-                dataGridView2.DataSource = dt;
+                Do_Search();
 
                 MessageBox.Show("입력되었습니다!");
 
                 CboClear();
-
             }
             catch ( SqlException ex )
             {
@@ -120,6 +113,7 @@ namespace MESProject.기준정보
             finally
             {
                 sql.con.Close();
+                TreeViewLoad();
             }
         }
 
@@ -156,6 +150,7 @@ namespace MESProject.기준정보
             finally
             {
                 sql.con.Close();
+                TreeViewLoad();
             }
         }
 
@@ -200,6 +195,7 @@ namespace MESProject.기준정보
             finally
             {
                 sql.con.Close();
+                TreeViewLoad();
             }
         }
         #endregion
@@ -207,6 +203,7 @@ namespace MESProject.기준정보
         #region ========== 트리뷰
         public void TreeViewLoad() // 트리뷰 로드
         {
+            treeView1.Nodes.Clear();
             TreeNode parentNode;
             string strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE NOT IN "
                          + "(SELECT COMPONENT FROM TB_BOM GROUP BY COMPONENT)";
@@ -256,10 +253,21 @@ namespace MESProject.기준정보
             try
             {
                 sql.con.Open();
-                LblItemName_Load(SelectItem);
                 string strqry = "SELECT * FROM FN_TopDown('" + SelectItem + "')";
                 dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
+
+                if (e.Node.Parent != null)
+                {
+                    sql.con.Close();
+                    cboPItemCode.Text = e.Node.Parent.Text;
+                    cboCItemCode.Text = e.Node.Text;
+                    txtPQty.Text = "1";
+                    txtCQty.Text = "1";
+                    sql.con.Open();
+                }
+                else
+                    CboClear();
 
                 #region 이미지 출력
                 int i = 0;
@@ -337,7 +345,7 @@ namespace MESProject.기준정보
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -360,14 +368,6 @@ namespace MESProject.기준정보
             {
                 sql.con.Close();
             }
-        }
-
-        private void LblItemName_Load(string NodeText) // 이미지 위 라벨 이름
-        {
-            string strqry = "SELECT ITEMCODE, ITEMNAME FROM TB_ITEM_MST WHERE ITEMCODE = '" + NodeText + "'";
-            dt = func.GetDataTable(strqry);
-            lblItemCode.Text = dt.Rows[0].ItemArray[0].ToString();
-            lblItemName.Text = dt.Rows[0].ItemArray[1].ToString();
         }
 
         private void LblItemName_Load(ComboBox CboName, Label LabelName) // 입력창 라벨 설정
@@ -401,11 +401,11 @@ namespace MESProject.기준정보
         {
             try
             {
-                cboPlantCode2.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
-                cboPItemCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
-                txtPQty.Text       = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
-                cboPUnitCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
-                cboCItemCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
+                cboPlantCode2.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+                cboPItemCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtPQty.Text       = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                cboPUnitCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cboCItemCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
                 txtCQty.Text       = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
                 cboCUnitCode.Text  = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
                 cboUseFlag.Text    = dataGridView2.Rows[e.RowIndex].Cells[9].Value.ToString();

@@ -11,6 +11,7 @@ namespace MESProject.기준정보
     {
         SQL sql = new SQL();
         string imageUrl = null;
+        Function func = new Function();
         //public byte[] Image { get; set; }
 
         public ITEM_MST()
@@ -28,6 +29,7 @@ namespace MESProject.기준정보
             }
             sql.con.Open();
             DGVLoad();
+            CboSet();
             Do_Search();
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
         }
@@ -37,7 +39,7 @@ namespace MESProject.기준정보
         {
             string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "ITEMNAME", "ITEMTYPE", "UNITCODE", "USEFLAG", "IMAGE", "CREATE_DT", "CREATE_USERID", "MODIFY_DT", "MODIFY_USERID"};
             string[] HeaderText = new string[] { "공장", "품목코드", "품목명", "품목타입", "단위", "사용여부", "이미지", "등록일시", "등록자", "수정일시", "수정자"};
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            float[] FillWeight = new float[] { 50, 100, 100, 50, 50, 50, 100, 100, 100, 100, 100, 100, 100 };
             Font StyleFont = new Font("맑은고딕", 11, FontStyle.Bold);
             Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
 
@@ -84,6 +86,33 @@ namespace MESProject.기준정보
         // 추가버튼
         public void Do_Add()
         {
+            string check = "해당 칸을 입력해주세요";
+            if (cboPlantCode.Text == "")
+            {
+                check += "\n공장";
+            }
+            if (cboItemCode.Text == "")
+            {
+                check += "\n품목코드 ";
+            }
+            if (txtItemName.Text == "")
+            {
+                check += "\n품목명 ";
+            }
+            if (cboItemType.Text == "")
+            {
+                check += "\n품목타입 ";
+            }
+            if (cboUnit.Text == "")
+            {
+                check += "\n단위 ";
+            }
+            if (check.Length != 12)
+            {
+                MessageBox.Show(check, "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             //cmd.CommandText = "insert into TB_ITEM_MST (PLANTCODE, ITEMCODE, ITEMNAME, ITEMTYPE, UNITCODE) values('" + cboPlantCode.SelectedItem.ToString() + "','" + txtItemName.Text + "','" + cboItemCode.Text.ToString() + "','" + cboItemType.Text.ToString() + "','" + cboUnit.Text.ToString() + "')";
@@ -109,6 +138,7 @@ namespace MESProject.기준정보
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update TB_ITEM_MST SET " +
+                              "ITEMNAME = '" + txtItemName.Text + "', " +
                               "ITEMTYPE = '" + cboItemType.Text + "', " +
                               "UNITCODE = '" + cboUnit.Text     + "'" +
                               "where ITEMCODE = '" + itemcode + "'";
@@ -117,11 +147,6 @@ namespace MESProject.기준정보
             Do_Search();
             MessageBox.Show("수정되었습니다.");
 
-        }
-        
-        private void Do_Exit()
-        {
-            this.Close();
         }
         #endregion
 
@@ -233,6 +258,18 @@ namespace MESProject.기준정보
             }
         }
 
+        #endregion
+
+        #region ========== 콤보박스
+        private void CboSet()
+        {
+            func.CboLoad(cboPlantCode, "TB_CODE_MST", "MINORCODE", false, "MAJORCODE", "PLANT");
+            func.CboLoad(cboItemCode,  "TB_ITEM_MST", "ITEMCODE",  false);
+            func.CboLoad(cboItemType,  "TB_CODE_MST", "MINORCODE", false, "MAJORCODE", "PART_TYPE");
+            func.CboLoad(cboUnit,      "TB_ITEM_MST", "UNITCODE",  false);
+            cboPlantCode.SelectedItem = cboPlantCode.Items[0];
+        }
+        
         #endregion
 
         private void button1_Click(object sender, EventArgs e)

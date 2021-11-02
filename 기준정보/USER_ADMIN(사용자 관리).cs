@@ -50,33 +50,10 @@ namespace MESProject.기준정보
             dataGridView1.Columns[2].Visible = false;
 
             //데이터그리드뷰 스타일 지정
-            StyleDatagridview();
-
-            //데이터베이스 오픈
-            SqlCommand command = new SqlCommand("SELECT * FROM TB_USER_INFO", sql.con);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            dataGridView1.DataSource = da;
-        }
-
-        private void StyleDatagridview()
-        {
-
-            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.BorderStyle     = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
-
-            //ColumnHeader 부분
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 70);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.EnableHeadersVisualStyles = false;
-
-            //Row 부분
-            dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            func.CboLoad(comboBox1, "TB_CODE_MST", "CODENAME",  true, "MAJORCODE", "BANCODE");
-
-
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+            dataGridView1.EnableHeadersVisualStyles = false; //ColumnHeader 부분
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Row선택 방식
         }
 
         //콤보박스 세팅
@@ -107,7 +84,6 @@ namespace MESProject.기준정보
             dateTimePicker1.Value   = DateTime.Today;
             dateTimePicker2.Checked = false;
         }
-
 
         public void Do_Add()
         {
