@@ -86,6 +86,7 @@ namespace MESProject.기준정보
         // 추가버튼
         public void Do_Add()
         {
+            #region 빈칸 체크
             string check = "해당 칸을 입력해주세요";
             if (cboPlantCode.Text == "")
             {
@@ -112,6 +113,7 @@ namespace MESProject.기준정보
                 MessageBox.Show(check, "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            #endregion
 
             SqlCommand cmd = sql.con.CreateCommand();
             cmd.CommandType = CommandType.Text;
