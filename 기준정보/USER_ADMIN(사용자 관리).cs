@@ -12,7 +12,6 @@ using System.Data.SqlClient;
 
 namespace MESProject.기준정보
 {
-    // 105줄 빈칸 체크 추가
     // do save do insret 체크
     public partial class USER_ADMIN : Form
     {
@@ -67,7 +66,7 @@ namespace MESProject.기준정보
             cboInout.DropDownStyle = ComboBoxStyle.DropDownList;
             cboInout.Items.Clear();
             cboInout.Items.Add("입사일");
-            cboInout.Items.Add("퇴사일"); //추가
+            cboInout.Items.Add("퇴사일");
             cboInout.SelectedIndex  = 0;
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
@@ -100,12 +99,10 @@ namespace MESProject.기준정보
             {
                 #region 빈칸 체크
                 string check = "해당 칸을 입력해주세요";
-                if (textBox1.Text == "")
-                {
-                    check += "\n아이디";
-                }
-                //추가하기
-
+                if (textBox1.Text == "")       check += "\n아이디";
+                if (textBox2.Text == "")       check += "\n이름";
+                if (textBox3.Text == "")       check += "\n비밀번호";
+                if (cboInout.Text == "퇴사일") check += "\n입사일";
                 if (check.Length != 12)
                 {
                     MessageBox.Show(check, "입력 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -185,8 +182,7 @@ namespace MESProject.기준정보
             else if (cboInout.Text == "퇴사일")
                 cmd.CommandText += "OUTDATE = '" + dateTimePicker1.Text + "', ";
 
-            cmd.CommandText += "INDATE = '"         + dateTimePicker1.Text + "', " +
-                               "USEFLAG = '"        + comboBox3.Text       + "', " +
+            cmd.CommandText += "USEFLAG = '"        + comboBox3.Text       + "', " +
                                "MODIFY_USERID = '"  + Main.ID + "', " +
                                "MODIFY_DT = '"      + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'" +
                                "WHERE WORKERID = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'";
