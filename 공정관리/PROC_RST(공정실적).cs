@@ -50,7 +50,7 @@ namespace MESProject.공정관리
             Font BodyStyleFont = new Font("굴림", 9, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
+            Function.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
         #region ========== CRUD

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,119 @@ namespace MESProject
         SQL sql = new SQL();
         SqlDataAdapter da;
         DataTable dt;
+
+        public static void DGVSetting(DataGridView Dgv, string[] DataPropertyName, int HeaderHeight, string[] HeaderText, string[] HiddenColumn, float[] FillWeight, Font HeaderStyleFont, Font CellStyleFont, int MaxRow)
+        {
+            Dgv.DataSource = null;
+            Dgv.Rows.Clear();
+            Dgv.Columns.Clear();
+
+            Font HeaderCellFont = null;
+            Font CellFont = null;
+
+            if (HeaderStyleFont == null) { HeaderCellFont = new Font("맑은 고딕", 14F, FontStyle.Bold); }
+            else { HeaderCellFont = HeaderStyleFont; }
+
+            if (CellStyleFont == null) { CellFont = new Font("맑은 고딕", 12F, FontStyle.Bold); }
+            else { CellFont = CellStyleFont; }
+
+            // DataGridView
+            Dgv.ReadOnly = false;
+            Dgv.EnableHeadersVisualStyles = false;
+            
+            Dgv.BorderStyle = BorderStyle.FixedSingle;
+            Dgv.ScrollBars  = ScrollBars.Both;
+            
+            Dgv.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Dgv.RowsDefaultCellStyle.BackColor = Color.White;
+            Dgv.RowsDefaultCellStyle.SelectionBackColor   = Color.FromArgb(95, 184, 255);
+            Dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            Dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Dgv.SelectionMode   = DataGridViewSelectionMode.CellSelect;
+
+            Dgv.AllowUserToAddRows       = false;
+            Dgv.AllowUserToDeleteRows    = false;
+            Dgv.AllowUserToOrderColumns  = false;
+            Dgv.AllowUserToResizeColumns = false;
+            Dgv.AllowUserToResizeRows    = false;
+            Dgv.MultiSelect              = false;
+
+            Dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Dgv.AutoSizeRowsMode    = DataGridViewAutoSizeRowsMode.None;
+
+            // Column Header
+            Dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Dgv.ColumnHeadersHeight         = HeaderHeight;
+            Dgv.ColumnHeadersBorderStyle    = DataGridViewHeaderBorderStyle.Single;
+            Dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 70);
+            Dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            Dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Dgv.ColumnHeadersDefaultCellStyle.Font      = HeaderCellFont;
+
+            // Column
+            for (int i = 0; i < DataPropertyName.Length; i++)
+            {
+                if (DataPropertyName[i] == "CHK" || DataPropertyName[i] == "PROC_TRACK" || DataPropertyName[i] == "PROC_ASSEM")
+                {
+                    DataGridViewCheckBoxColumn chkcol = new DataGridViewCheckBoxColumn();
+                    chkcol.Name             = DataPropertyName[i];
+                    chkcol.HeaderText       = HeaderText[i];
+                    chkcol.DataPropertyName = DataPropertyName[i];
+                    chkcol.FillWeight       = FillWeight[i];
+                    chkcol.TrueValue  = 1;
+                    chkcol.FalseValue = 0;
+                    chkcol.ReadOnly = false;
+                    if (HiddenColumn != null)
+                    {
+                        for (int j = 0; j < HiddenColumn.Length; j++)
+                        {
+                            if (chkcol.Name == HiddenColumn[j])
+                            {
+                                chkcol.Visible = false;
+                            }
+                        }
+                    }
+                    Dgv.Columns.Add(chkcol);
+                }
+
+                else
+                {
+                    DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                    column.Name             = DataPropertyName[i];
+                    column.HeaderText       = HeaderText[i];
+                    column.DataPropertyName = DataPropertyName[i];
+                    column.SortMode         = DataGridViewColumnSortMode.NotSortable;
+                    column.FillWeight       = FillWeight[i];
+                    column.DefaultCellStyle.SelectionBackColor = Dgv.DefaultCellStyle.BackColor;
+                    column.DefaultCellStyle.SelectionForeColor = Dgv.DefaultCellStyle.ForeColor;
+                    column.DefaultCellStyle.ForeColor          = Color.Black;
+                    column.DefaultCellStyle.Font               = CellFont;
+                    column.ReadOnly = true;
+
+                    if (HiddenColumn != null)
+                    {
+                        for (int j = 0; j < HiddenColumn.Length; j++)
+                        {
+                            if (column.Name == HiddenColumn[j])
+                            {
+                                column.Visible = false;
+                            }
+                        }
+                    }
+                    Dgv.Columns.Add(column);
+                }
+            }
+
+            // Row Header
+            Dgv.RowHeadersVisible = false;
+
+            // Row 행 높이 이상해서 주석처리
+            DataGridViewRow row = Dgv.RowTemplate;
+            //decimal calRowHeight = (Dgv.Height - Dgv.ColumnHeadersHeight) / MaxRow;
+            //int rowHeight = (int)Math.Truncate(calRowHeight);
+            //row.Height = rowHeight; 
+            row.MinimumHeight = 28;
+        }
 
         /// <summary>
         /// 테이블의 열 리스트를 가져온다
@@ -99,7 +213,6 @@ namespace MESProject
                 sql.con.Close();
             }
         }
-
 
         /// <summary>
         /// 해당 쿼리문 DataTable로 반환

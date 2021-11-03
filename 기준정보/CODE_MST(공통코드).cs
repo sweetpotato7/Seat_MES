@@ -21,18 +21,19 @@ namespace MESProject.기준정보
             InitializeComponent();
         }
         
-        private void CODE_MST_Load(object sender, EventArgs e)
+        private void CODE_MST_Load(object sender, EventArgs e) // 기준정보폼 로드
         {
             if (sql.con.State == ConnectionState.Open)
             {
-                sql.con.Close();
+                sql.con.Close(); 
             }
             sql.con.Open();
-            DGVLoad();
+            DGVLoad();   // 데이터그리드뷰 디자인
             Do_Search(); // 전체조회
             CboSet();    // 콤보박스 세팅
         }
 
+        // 데이터그리드뷰 디자인
         private void DGVLoad()
         {
             string[] DataPropertyName = new string[] { "PLANTCODE", "MAJORCODE", "MINORCODE", "CODENAME", "RELCODE1", "RELCODE2", "RELCODE3", "RELCODE4", "RELCODE5", "DISPLAYNO", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
@@ -44,11 +45,11 @@ namespace MESProject.기준정보
 
             //스타일 지정 밎 그리드에 데이터 바인드
             HiddenColumn = new string[] { "PLANTCODE", "MINORCODE", "CODENAME", "RELCODE1", "RELCODE2", "RELCODE3", "RELCODE4", "DISPLAYNO", "USEFLAG", "CREATE_USERID", "CREATE_DT", "MODIFY_USERID", "MODIFY_DT" };
-            Main.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 15);
+            Function.DGVSetting(this.dataGridView1, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 15);
             HiddenColumn = new string[] { "MAJORCODE", "RELCODE5"};
-            Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 15);
+            Function.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 15);
 
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // 셀 클릭 시 해당로우 전체선택
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
@@ -126,8 +127,7 @@ namespace MESProject.기준정보
                     MessageBox.Show(message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                dt = new DataTable();
-                strqry = "INSERT INTO TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, RELCODE5, DISPLAYNO, USEFLAG) "
+                strqry = "INSERT INTO TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, RELCODE5, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT) "
                                         + "VALUES ('" + cboIPlantcode.Text + "',"
                                                + " '" + cboIMajorCode.Text + "',"
                                                + " '" + cboIMinorCode.Text + "',"
@@ -138,13 +138,18 @@ namespace MESProject.기준정보
                                                + " '" + txtIRelCode4.Text  + "',"
                                                + " '" + txtIMajorName.Text + "',"
                                                + " '" + txtIDisplayNo.Text + "',"
-                                               + " '" + cboIUseFlag.Text   + "')";
-                da = new SqlDataAdapter();
-                da.InsertCommand = new SqlCommand(strqry, sql.con);
-                da.InsertCommand.ExecuteNonQuery();
+                                               + " '" + cboIUseFlag.Text   + "',"
+                                               + " '" + Main.ID            + "',"
+                                               + " '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
+                func.GetDataTable(strqry);
+
+                //da = new SqlDataAdapter();
+                //da.InsertCommand = new SqlCommand(strqry, sql.con);
+                //da.InsertCommand.ExecuteNonQuery();
 
                 // 입력 후 재조회
                 // 주코드 로드
+                dt = new DataTable();
                 strqry = "SELECT DISTINCT MAJORCODE, RELCODE5 from TB_CODE_MST";
                 dt = func.GetDataTable2(strqry);
                 dataGridView1.DataSource = dt;
@@ -160,13 +165,8 @@ namespace MESProject.기준정보
                 // 입력칸 초기화
                 cboclear();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -280,7 +280,6 @@ namespace MESProject.기준정보
                 majorcode = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
 
                 strqry = "SELECT * FROM TB_CODE_MST "
-                //strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST "
                         + "WHERE MAJORCODE = '" + majorcode + "' "
                         + "ORDER BY DISPLAYNO";
 

@@ -71,7 +71,7 @@ namespace MESProject.공정관리
             Font BodyStyleFont = new Font("맑은고딕", 20, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView4, DataPropertyName, 40, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
+            Function.DGVSetting(this.dataGridView4, DataPropertyName, 40, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
             dataGridView4.ReadOnly = true;
             dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.RowHeadersVisible = true;
@@ -88,7 +88,7 @@ namespace MESProject.공정관리
 
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView3, DataPropertyName, 40, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 17);
+            Function.DGVSetting(this.dataGridView3, DataPropertyName, 40, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 17);
             //dataGridView3.ReadOnly = true;
             dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView3.RowHeadersVisible = true;
@@ -193,71 +193,52 @@ namespace MESProject.공정관리
 
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dv_item_mst();
-            int i;
-            i = dataGridView4.SelectedCells[0].RowIndex;
-
-            label10.Text = dataGridView4.Rows[0].Cells[5].Value.ToString(); // ORDERNO
-            label14.Text = dataGridView4.Rows[0].Cells[7].Value.ToString(); // TYPE
-            label16.Text = dataGridView4.Rows[0].Cells[8].Value.ToString(); // LOTNO
-
-            Plan_Mst();
-            label7.Text = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
-
-            if (e.RowIndex >= 1)
+            try
             {
-                MessageBox.Show("이전 작업을 완료해주세요.");
-                dataGridView4.Rows[0].Selected = true;
+                dv_item_mst();
+                int i;
+                i = dataGridView4.SelectedCells[0].RowIndex;
+
+                label10.Text = dataGridView4.Rows[0].Cells[5].Value.ToString(); // ORDERNO
+                label14.Text = dataGridView4.Rows[0].Cells[7].Value.ToString(); // TYPE
+                label16.Text = dataGridView4.Rows[0].Cells[8].Value.ToString(); // LOTNO
+                label7.Text  = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
+
+                strqry = "select ALC_CD from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
+                dataGridView1.DataSource = func.GetDataTable(strqry);
+
+                if (e.RowIndex >= 1)
+                {
+                    MessageBox.Show("이전 작업을 완료해주세요.");
+                    dataGridView4.Rows[0].Selected = true;
+                }
+
+                if (dataGridView4.Rows[0].Cells[0].Selected == true)
+                {
+                    MessageBox.Show("공정작업을 완료해주세요.");
+                }
+
+                string side   = dataGridView4.Rows[0].Cells[7].Value.ToString();
+                string cutalc = dataGridView4.Rows[0].Cells[9].Value.ToString().Substring(0, 2);
+
+                strqry = "select * from TB_SPEC where ITEMCODE =" + "'" + cutalc + side + "'" + "";
+                dataGridView2.DataSource = func.GetDataTable(strqry);
+
+                label8.Text  = dataGridView2.Rows[0].Cells[4].Value.ToString(); // 지역
+                label5.Text  = dataGridView2.Rows[0].Cells[5].Value.ToString(); // 트랙
+                label18.Text = dataGridView2.Rows[0].Cells[6].Value.ToString(); // 커버
+                label7.Text  = dataGridView2.Rows[0].Cells[2].Value.ToString(); // 차종
+
+                string head = dataGridView2.Rows[0].Cells[7].Value.ToString();
+                string sab  = dataGridView2.Rows[0].Cells[9].Value.ToString();
+
+                if (head == "O") label4.BackColor = Color.Blue;
+                if (head == "X") label4.BackColor = Color.White;
+                if (sab  == "O") label6.BackColor = Color.Blue;
+                if (sab  == "X") label6.BackColor = Color.White;
             }
-
-            if (dataGridView4.Rows[0].Cells[0].Selected == true)
+            catch
             {
-                MessageBox.Show("공정작업을 완료해주세요.");
-            }
-
-            Spec();
-            label8.Text = dataGridView2.Rows[0].Cells[4].Value.ToString(); // 지역
-            label5.Text = dataGridView2.Rows[0].Cells[5].Value.ToString(); // 트랙
-            label18.Text = dataGridView2.Rows[0].Cells[6].Value.ToString(); // 커버
-            label7.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
-
-            //string formpad;
-            string head;
-            string sab;
-
-            //formpad = dataGridView2.Rows[0].Cells[6].Value.ToString();
-            head = dataGridView2.Rows[0].Cells[7].Value.ToString();
-            sab = dataGridView2.Rows[0].Cells[9].Value.ToString();
-
-
-            if (head == "O")
-            {
-                label4.BackColor = Color.Blue;
-            }
-
-            if (head == "X")
-            {
-                label4.BackColor = Color.White;
-            }
-
-            //if (formpad == "O")
-            //{
-            //    label4.BackColor = Color.Blue;
-            //}
-
-            //if (formpad == "X")
-            //{
-            //    label4.BackColor = Color.White;
-            //}
-
-            if (sab == "O")
-            {
-                label6.BackColor = Color.Blue;
-            }
-            
-            if (sab == "X")
-            {
-                label6.BackColor = Color.White;
             }
         }
 
@@ -290,12 +271,8 @@ namespace MESProject.공정관리
 
         public void Spec()
         {
-            string side;
-            string alc;
-            string cutalc;
-            side = dataGridView4.Rows[0].Cells[7].Value.ToString();
-            alc = dataGridView4.Rows[0].Cells[9].Value.ToString();
-            cutalc = alc.Substring(0, 2);
+            string side   = dataGridView4.Rows[0].Cells[7].Value.ToString();
+            string cutalc = dataGridView4.Rows[0].Cells[9].Value.ToString().Substring(0, 2);
 
             strqry = "select * from TB_SPEC where ITEMCODE =" + "'" + cutalc + side + "'" + "";
             dataGridView2.DataSource = func.GetDataTable(strqry);

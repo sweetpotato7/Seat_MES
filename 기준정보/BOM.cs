@@ -2,15 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
-
-/// <summary>
-/// 
-/// 
-/// </summary>
 
 namespace MESProject.기준정보
 {
@@ -42,13 +34,13 @@ namespace MESProject.기준정보
             string[] DataPropertyName = new string[] { "PLANTCODE", "ITEMCODE", "PITEMNAME", "BASEQTY", "UNITCODE", "COMPONENT", "CITEMNAME", "COMPONENTQTY", "COMPONENTUNIT", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
             string[] HeaderText       = new string[] { "공장", "품목", "품명", "수량", "단위", "하위품목", "품명", "수량", "단위", "사용", "등록자", "등록일시", "수정자", "수정일시" };
             string[] HiddenColumn     = null;
-            float[] FillWeight = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
-            Font StyleFont     = new Font("맑은고딕", 11, FontStyle.Bold);
-            Font BodyStyleFont = new Font("맑은고딕", 11, FontStyle.Regular);
+            float[]  FillWeight       = new float[] { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 };
+            Font StyleFont      = new Font("맑은 고딕", 11, FontStyle.Bold);
+            Font BodyStyleFont  = new Font("맑은 고딕", 11, FontStyle.Regular);
+
+            Function.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 14);
-            //dataGridView2.ReadOnly = false;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
 
@@ -205,6 +197,7 @@ namespace MESProject.기준정보
         {
             treeView1.Nodes.Clear();
             TreeNode parentNode;
+            // 최상위 품목 선택(하위 품목에 없는 것만)
             string strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE NOT IN "
                          + "(SELECT COMPONENT FROM TB_BOM GROUP BY COMPONENT)";
             try
@@ -212,14 +205,14 @@ namespace MESProject.기준정보
                 sql.con.Open();
                 dt = func.GetDataTable(strqry);
 
-                treeView1.Refresh();
+                treeView1.Refresh(); // 트리뷰 재조회
 
-                foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in dt.Rows) // 각 최상위품목 추가
                 {
-                    parentNode = treeView1.Nodes.Add(dr["ITEMCODE"].ToString());
+                    parentNode = treeView1.Nodes.Add(dr["ITEMCODE"].ToString()); // 노드에 추가
                     TreeViewSet(dr["ITEMCODE"].ToString(), parentNode);
                 }
-                treeView1.ExpandAll();
+                treeView1.ExpandAll(); //트리뷰 가지 확장
             }
             catch (Exception ex)
             {
@@ -253,7 +246,7 @@ namespace MESProject.기준정보
             try
             {
                 sql.con.Open();
-                string strqry = "SELECT * FROM FN_TopDown('" + SelectItem + "')";
+                string strqry = "SELECT * FROM FN_TopDown('" + SelectItem + "')"; // 테이블 반환함수 FN_TopDown를 사용
                 dt = func.GetDataTable(strqry);
                 dataGridView2.DataSource = dt;
 
