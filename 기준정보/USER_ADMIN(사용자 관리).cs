@@ -122,7 +122,7 @@ namespace MESProject.기준정보
                                         + " '" + dateTimePicker1.Text + "',"
                                         + " '" + comboBox3.Text       + "',"
                                         + " '" + Main.ID + "', "
-                                        + " '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
+                                        + " '" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
                 cmd.ExecuteNonQuery();
                 Do_Search();
                 MessageBox.Show("추가되었습니다");
@@ -184,7 +184,7 @@ namespace MESProject.기준정보
 
             cmd.CommandText += "USEFLAG = '"        + comboBox3.Text       + "', " +
                                "MODIFY_USERID = '"  + Main.ID + "', " +
-                               "MODIFY_DT = '"      + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'" +
+                               "MODIFY_DT = '"      + DateTime.Now.ToString("yyyy-MM-dd") + "'" +
                                "WHERE WORKERID = '" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'";
             cmd.ExecuteNonQuery();
             Do_Search();
