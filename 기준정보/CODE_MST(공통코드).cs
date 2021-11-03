@@ -21,18 +21,19 @@ namespace MESProject.기준정보
             InitializeComponent();
         }
         
-        private void CODE_MST_Load(object sender, EventArgs e)
+        private void CODE_MST_Load(object sender, EventArgs e) // 기준정보폼 로드
         {
             if (sql.con.State == ConnectionState.Open)
             {
-                sql.con.Close();
+                sql.con.Close(); 
             }
             sql.con.Open();
-            DGVLoad();
+            DGVLoad();   // 데이터그리드뷰 디자인
             Do_Search(); // 전체조회
             CboSet();    // 콤보박스 세팅
         }
 
+        // 데이터그리드뷰 디자인
         private void DGVLoad()
         {
             string[] DataPropertyName = new string[] { "PLANTCODE", "MAJORCODE", "MINORCODE", "CODENAME", "RELCODE1", "RELCODE2", "RELCODE3", "RELCODE4", "RELCODE5", "DISPLAYNO", "USEFLAG", "CREATE_USERID", "CREATE_DT",  "MODIFY_USERID", "MODIFY_DT" };
@@ -48,7 +49,7 @@ namespace MESProject.기준정보
             HiddenColumn = new string[] { "MAJORCODE", "RELCODE5"};
             Main.DGVSetting(this.dataGridView2, DataPropertyName, 30, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 15);
 
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // 셀 클릭 시 해당로우 전체선택
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(95, 184, 255);
