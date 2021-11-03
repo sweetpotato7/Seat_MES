@@ -57,23 +57,30 @@ namespace MESProject
                     tabControl1.SelectedIndex = index;
                     return;
                 }
-                index++;
+                index++; // 해당 탭컨트롤을 찾기 위해서 하나씩 추가
             }
 
-            form.TopLevel = false;
+            form.TopLevel = false; // 최상위 컨트롤 추가 불가로 false 해줘야 됨
+            
+            // 탭 제목만 추가됨,(탭 이름 가져옴, 페이지 추가된게 아님)
             tabControl1.TabPages.Add(sender.ToString());
+            // 탭 이름에 맞는 폼을 추가
             tabControl1.TabPages[tabControl1.TabPages.Count - 1].Controls.Add(form);
+            // 추가한 탭을 선택
             tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
 
-            int leng = (form.ToString().Length - 24) / 2;
-            int word = leng + 24;
+
+            //버튼 검색...에 쓸 Tab-Name 추가
+            //form.ToString() = "MESProject.기준정보.CODE_MST, Text: CODE_MST"
+            int leng = (form.ToString().Length - 24) / 2; //글자 개수
+            int word = leng + 24;                         //글자 시작 위치
             tabControl1.SelectedTab.Name = form.ToString().Substring(word, leng);
 
             form.Dock = DockStyle.Fill;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Show();
         }
-
+        
         private void 공통코드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Code_Mst = new 기준정보.CODE_MST();

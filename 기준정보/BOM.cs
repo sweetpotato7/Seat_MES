@@ -205,6 +205,7 @@ namespace MESProject.기준정보
         {
             treeView1.Nodes.Clear();
             TreeNode parentNode;
+            // 최상위 품목 선택(하위 품목에 없는 것만)
             string strqry = "SELECT * FROM TB_BOM WHERE ITEMCODE NOT IN "
                          + "(SELECT COMPONENT FROM TB_BOM GROUP BY COMPONENT)";
             try
@@ -212,14 +213,14 @@ namespace MESProject.기준정보
                 sql.con.Open();
                 dt = func.GetDataTable(strqry);
 
-                treeView1.Refresh();
+                treeView1.Refresh(); // 트리뷰 재조회
 
-                foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in dt.Rows) // 각 최상위품목 추가
                 {
-                    parentNode = treeView1.Nodes.Add(dr["ITEMCODE"].ToString());
+                    parentNode = treeView1.Nodes.Add(dr["ITEMCODE"].ToString()); // 노드에 추가
                     TreeViewSet(dr["ITEMCODE"].ToString(), parentNode);
                 }
-                treeView1.ExpandAll();
+                treeView1.ExpandAll(); //트리뷰 가지 확장
             }
             catch (Exception ex)
             {

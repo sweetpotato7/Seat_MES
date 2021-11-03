@@ -126,8 +126,7 @@ namespace MESProject.기준정보
                     MessageBox.Show(message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                dt = new DataTable();
-                strqry = "INSERT INTO TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, RELCODE5, DISPLAYNO, USEFLAG) "
+                strqry = "INSERT INTO TB_CODE_MST (PLANTCODE, MAJORCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, RELCODE5, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT) "
                                         + "VALUES ('" + cboIPlantcode.Text + "',"
                                                + " '" + cboIMajorCode.Text + "',"
                                                + " '" + cboIMinorCode.Text + "',"
@@ -138,13 +137,18 @@ namespace MESProject.기준정보
                                                + " '" + txtIRelCode4.Text  + "',"
                                                + " '" + txtIMajorName.Text + "',"
                                                + " '" + txtIDisplayNo.Text + "',"
-                                               + " '" + cboIUseFlag.Text   + "')";
-                da = new SqlDataAdapter();
-                da.InsertCommand = new SqlCommand(strqry, sql.con);
-                da.InsertCommand.ExecuteNonQuery();
+                                               + " '" + cboIUseFlag.Text   + "',"
+                                               + " '" + Main.ID            + "',"
+                                               + " '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
+                func.GetDataTable(strqry);
+
+                //da = new SqlDataAdapter();
+                //da.InsertCommand = new SqlCommand(strqry, sql.con);
+                //da.InsertCommand.ExecuteNonQuery();
 
                 // 입력 후 재조회
                 // 주코드 로드
+                dt = new DataTable();
                 strqry = "SELECT DISTINCT MAJORCODE, RELCODE5 from TB_CODE_MST";
                 dt = func.GetDataTable2(strqry);
                 dataGridView1.DataSource = dt;
@@ -160,13 +164,8 @@ namespace MESProject.기준정보
                 // 입력칸 초기화
                 cboclear();
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -280,7 +279,6 @@ namespace MESProject.기준정보
                 majorcode = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
 
                 strqry = "SELECT * FROM TB_CODE_MST "
-                //strqry = "SELECT PLANTCODE, MINORCODE, CODENAME, RELCODE1, RELCODE2, RELCODE3, RELCODE4, DISPLAYNO, USEFLAG, CREATE_USERID, CREATE_DT, MODIFY_USERID, MODIFY_DT FROM TB_CODE_MST "
                         + "WHERE MAJORCODE = '" + majorcode + "' "
                         + "ORDER BY DISPLAYNO";
 
