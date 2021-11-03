@@ -68,7 +68,6 @@ namespace MESProject
             // 추가한 탭을 선택
             tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
 
-
             //버튼 검색...에 쓸 Tab-Name 추가
             //form.ToString() = "MESProject.기준정보.CODE_MST, Text: CODE_MST"
             int leng = (form.ToString().Length - 24) / 2; //글자 개수
@@ -79,7 +78,7 @@ namespace MESProject
             form.FormBorderStyle = FormBorderStyle.None;
             form.Show();
         }
-        
+
         private void 공통코드ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Code_Mst = new 기준정보.CODE_MST();
@@ -104,11 +103,6 @@ namespace MESProject
         {
             User_Admin = new 기준정보.USER_ADMIN();
             tabCtrlAdd(User_Admin, sender);
-        }
-        private void 생산계획ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Plan_Mst = new 생산계획.PLAN_MST();
-            tabCtrlAdd(Plan_Mst, sender);
         }
         private void 작업지시ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -146,7 +140,7 @@ namespace MESProject
         #endregion
 
         #region ========== CRUD버튼
-        public void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == null) return;
             try
@@ -308,7 +302,7 @@ namespace MESProject
         {
             tabControl1.Controls.Clear();
             btnSearch.Image = Properties.Resources.Search;
-            btnInsert.Image    = Properties.Resources.Add;
+            btnInsert.Image = Properties.Resources.Add;
             btnDelete.Image = Properties.Resources.Delete;
             btnSave.Image   = Properties.Resources.Save;
             btnClose.Image  = Properties.Resources.Close;
