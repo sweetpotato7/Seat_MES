@@ -153,17 +153,10 @@ namespace MESProject.기준정보
         #endregion
 
         #region 이미지처리
-        // 바이트 단위로 저장된 이미지를 다시 이미지로 만드는 함수
-        private Image ConvertByteToImage(byte[] data)
-        {
-            using (MemoryStream ms = new MemoryStream(data))
-            {
-                return Image.FromStream(ms);
-            }
-        }
+        
         // 이미지를 바이트 단위로 저장하는 함수
 
-        private byte[] ConvertImageToByte(Image img)
+       /* private byte[] ConvertImageToByte(Image img)
         {
             Image temp = new Bitmap(img); // 중요
             using (MemoryStream ms = new MemoryStream())
@@ -171,7 +164,7 @@ namespace MESProject.기준정보
                 temp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 return ms.ToArray();
             }
-        }
+        }*/
         private void btnBrowse_Click_1(object sender, EventArgs e)
         {
             int i;
@@ -210,7 +203,7 @@ namespace MESProject.기준정보
             Image img = pictureBox1.Image;
             byte[] arr;
             ImageConverter converter = new ImageConverter();
-            arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+            arr = (byte[])converter.ConvertTo(img, typeof(byte[])); // picturebox 이미지를 byte로 변환해서 arr에 선언
 
             string itemcode;
             int i;
@@ -226,6 +219,15 @@ namespace MESProject.기준정보
             cmd.ExecuteNonQuery();
             MessageBox.Show("이미지가 업로드 되었습니다.");
             Do_Search();
+        }
+
+        // 바이트 단위로 저장된 이미지를 다시 이미지로 만드는 함수
+        private Image ConvertByteToImage(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return Image.FromStream(ms);
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
