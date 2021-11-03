@@ -71,7 +71,7 @@ namespace MESProject.공정관리
             Font BodyStyleFont = new Font("맑은고딕", 20, FontStyle.Regular);
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView4, DataPropertyName, 40, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
+            Function.DGVSetting(this.dataGridView4, DataPropertyName, 40, HeaderText, HiddenColumn, FillWeight, StyleFont, BodyStyleFont, 19);
             dataGridView4.ReadOnly = true;
             dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.RowHeadersVisible = true;
@@ -88,7 +88,7 @@ namespace MESProject.공정관리
 
 
             //스타일 지정 밎 그리드에 데이터 바인드
-            Main.DGVSetting(this.dataGridView3, DataPropertyName, 40, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 17);
+            Function.DGVSetting(this.dataGridView3, DataPropertyName, 40, HeaderText, null, FillWeight, StyleFont, BodyStyleFont, 17);
             //dataGridView3.ReadOnly = true;
             dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView3.RowHeadersVisible = true;
