@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-
+// 테스트 테스트
 namespace MESProject.기준정보
 {
     public partial class ITEM_MST : Form
@@ -215,7 +215,6 @@ namespace MESProject.기준정보
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update TB_ITEM_MST set IMAGE = @IMAGE where ITEMCODE =" + "'" + itemcode + "'";
             cmd.Parameters.AddWithValue("@IMAGE", arr);
-            //cmd.Parameters.AddWithValue("@IMAGE_URL", imageUrl);
             cmd.ExecuteNonQuery();
             MessageBox.Show("이미지가 업로드 되었습니다.");
             Do_Search();
