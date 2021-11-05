@@ -202,10 +202,12 @@ namespace MESProject.공정관리
                 label10.Text = dataGridView4.Rows[0].Cells[5].Value.ToString(); // ORDERNO
                 label14.Text = dataGridView4.Rows[0].Cells[7].Value.ToString(); // TYPE
                 label16.Text = dataGridView4.Rows[0].Cells[8].Value.ToString(); // LOTNO
-                label7.Text  = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
-
+                
                 strqry = "select ALC_CD from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
                 dataGridView1.DataSource = func.GetDataTable(strqry);
+                
+                label7.Text  = dataGridView1.Rows[0].Cells[0].Value.ToString(); // 차종
+
 
                 if (e.RowIndex >= 1)
                 {
@@ -237,8 +239,9 @@ namespace MESProject.공정관리
                 if (sab  == "O") label6.BackColor = Color.Blue;
                 if (sab  == "X") label6.BackColor = Color.White;
             }
-            catch
+            catch (Exception ex)
             {
+
             }
         }
 
@@ -258,24 +261,9 @@ namespace MESProject.공정관리
             }
         }
 
-        public void Plan_Mst()
-        {
-            strqry = "select ALC_CD from TB_PLAN_MST where ORDERNO =" + "'" + label10.Text + "'" + "";
-            dataGridView1.DataSource = func.GetDataTable(strqry);
-        }
-
         private void dataGridView4_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             Cell_Lock();
-        }
-
-        public void Spec()
-        {
-            string side   = dataGridView4.Rows[0].Cells[7].Value.ToString();
-            string cutalc = dataGridView4.Rows[0].Cells[9].Value.ToString().Substring(0, 2);
-
-            strqry = "select * from TB_SPEC where ITEMCODE =" + "'" + cutalc + side + "'" + "";
-            dataGridView2.DataSource = func.GetDataTable(strqry);
         }
 
         private void dv_item_mst()
