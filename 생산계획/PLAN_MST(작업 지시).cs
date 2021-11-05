@@ -98,17 +98,19 @@ namespace MESProject.생산계획
                     cmd.Parameters.Add("@PLANTCODE", SqlDbType.VarChar).Value = "D100";
                     cmd.Parameters.Add("@PLANDATE",  SqlDbType.VarChar).Value = sDate;
                     cmd.Parameters.Add("@ALC_CD",    SqlDbType.VarChar).Value = sALC;
-                    cmd.Parameters.Add("@PLANQTY",   SqlDbType.Int).Value     = iQty;
-                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID; // ID아닌 이름?
+                    cmd.Parameters.Add("@PLANQTY",   SqlDbType.Int    ).Value = iQty;
+                    cmd.Parameters.Add("@USERID",    SqlDbType.VarChar).Value = Main.ID;
+                    cmd.Parameters.Add("@RS_CODE",   SqlDbType.VarChar,   2).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@RS_MSG",    SqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
 
-                    var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
-                    var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
-                    rscode.Direction = ParameterDirection.Output;
-                    rsmsg.Direction  = ParameterDirection.Output;
-                    rscode.Size = 2;
-                    rsmsg.Size  = 200;
-                    cmd.Parameters.Add(rscode);
-                    cmd.Parameters.Add(rsmsg);
+                    //var rscode = new SqlParameter("@RS_CODE", SqlDbType.VarChar);
+                    //var rsmsg  = new SqlParameter("@RS_MSG",  SqlDbType.VarChar);
+                    //rscode.Direction = ParameterDirection.Output;
+                    //rsmsg.Direction  = ParameterDirection.Output;
+                    //rscode.Size = 2;
+                    //rsmsg.Size  = 200;
+                    //cmd.Parameters.Add(rscode);
+                    //cmd.Parameters.Add(rsmsg);
 
                     sql.con.Open();
                     transaction = sql.con.BeginTransaction();
@@ -121,15 +123,17 @@ namespace MESProject.생산계획
                         MessageBox.Show(cmd.Parameters["@RS_MSG"].Value.ToString());
                         return;
                     }
-
-                    transaction.Commit();
-                    MessageBox.Show("입력되었습니다!");
-                    txtQty.Text = "";
+                    if (cmd.Parameters["@RS_CODE"].Value.ToString() == "S")
+                    {
+                        transaction.Commit();
+                        MessageBox.Show("입력되었습니다!");
+                        txtQty.Text = "";
+                    }
                 }
                 catch (SqlException ex)
                 {
                     transaction.Rollback();
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "SQL Error");
                 }
                 catch (Exception ex)
                 {
@@ -182,8 +186,11 @@ namespace MESProject.생산계획
                         MessageBox.Show(cmd.Parameters["@RS_MSG"].Value.ToString());
                         return;
                     }
-                    transaction.Commit();
-                    MessageBox.Show("삭제되었습니다!");
+                    if (cmd.Parameters["@RS_CODE"].Value.ToString() == "S")
+                    {
+                        transaction.Commit();
+                        MessageBox.Show("삭제되었습니다!");
+                    }
                 }
                 catch (SqlException ex)
                 {
