@@ -2,7 +2,7 @@
 시트MES 프로젝트
 
 ✔ **주제소개**
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f29deb17-6e77-4763-aee0-62b119f43e85/Untitled.png)
+![MES소개](https://user-images.githubusercontent.com/91646481/142464015-a07f1a68-8bdd-4cc7-bebf-512e1b23a9dd.png)
 
 ✔ **프로젝트 요약**
 
