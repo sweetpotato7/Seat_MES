@@ -12,7 +12,7 @@
 
 ✔ **프로그램 구성 메뉴**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f830ee08-6a7c-4590-8249-20dcdb79f7ce/Untitled.png)
+![구성메뉴](https://user-images.githubusercontent.com/91646481/142464839-f77a1db2-f3af-4b25-bf55-9de671dd1ea5.png)
 
 ✔ **주요 폼 소개**
 
